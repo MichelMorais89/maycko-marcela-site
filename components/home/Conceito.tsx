@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import { Reveal } from '@/components/shared/Reveal'
 import { Eyebrow } from '@/components/shared/Eyebrow'
+import { FlameLetter } from '@/components/motion/FlameLetter'
+import { SplitText } from '@/components/motion/SplitText'
 
 const LINES = [
   'Amor sem direção vira desgaste.',
@@ -28,8 +30,9 @@ export function Conceito() {
               className="elv-h elv-h--light elv-fluid-h1"
               style={{ marginTop: 'var(--space-5)', maxWidth: '18ch' }}
             >
-              Casamentos não fracassam por falta de amor. Fracassam por falta de{' '}
-              <em className="elv-ital-gold">estrutura.</em>
+              <SplitText delay={100}>
+                Casamentos não fracassam por falta de amor. Fracassam por falta de estrutura.
+              </SplitText>
             </h2>
           </Reveal>
 
@@ -78,36 +81,35 @@ export function Conceito() {
                 textAlign: 'center',
               }}
             >
-              Relacionamento saudável não é ausência de problemas. É construção estratégica.
+              Relacionamento saudável não é ausência de problemas. É construção <FlameLetter size="0.9em" />stratégica.
             </p>
           </Reveal>
         </div>
 
-        {/* Foto sticky lateral — Marcela perfil dark */}
+        {/* Foto sticky lateral — Marcela perfil dark com mask-image */}
         <Reveal
           className="elv-sticky-col conceito-photo"
           style={{
-            borderRadius: 'var(--radius-lg)',
-            overflow: 'hidden',
             aspectRatio: '3 / 4',
             position: 'relative',
           }}
         >
-          <Image
-            src="/photos/conceito-marcela-dark.jpg"
-            alt="Marcela — introspecção"
-            fill
-            sizes="(max-width: 900px) 90vw, 38vw"
-            style={{ objectFit: 'cover', objectPosition: '50% 15%' }}
-          />
           <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(to top, rgba(42,16,22,0.65) 0%, transparent 50%)',
-            }}
-          />
+            className="elv-photo-float--gold"
+            style={{ position: 'relative', width: '100%', height: '100%', minHeight: 420 }}
+          >
+            <Image
+              src="/photos/conceito-marcela-dark.jpg"
+              alt="Marcela — introspecção"
+              fill
+              sizes="(max-width: 900px) 90vw, 38vw"
+              style={{
+                objectFit: 'cover',
+                objectPosition: '50% 15%',
+                mixBlendMode: 'screen',
+              }}
+            />
+          </div>
         </Reveal>
       </div>
     </section>

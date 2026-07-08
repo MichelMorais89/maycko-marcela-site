@@ -265,6 +265,62 @@ body:has(.flame-cursor) { cursor: none; }
 .final-cta-flame { animation: flameBgPulse 4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .final-cta-flame { animation: none; } }
 
+/* ---- Shimmer CTA (AC7) -------------------------------- */
+@keyframes shimmerPass {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+.shimmer-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    rgba(255,220,130,0.45) 50%,
+    transparent 75%
+  );
+  background-size: 300% 100%;
+  animation: shimmerPass 5s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+.shimmer-cta:hover::before { animation-duration: 1.2s; }
+@media (prefers-reduced-motion: reduce) { .shimmer-cta::before { animation: none; } }
+
+/* ---- Float animation 3D cards (AC3) ------------------- */
+@keyframes cardFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+.elv-card-float { animation: cardFloat 6s ease-in-out infinite; }
+.elv-card-float:nth-child(2) { animation-delay: 1.5s; }
+.elv-card-float:nth-child(3) { animation-delay: 3s; }
+@media (prefers-reduced-motion: reduce) { .elv-card-float { animation: none; } }
+
+/* ---- Foto integrada flutuante (mask-image) ------------ */
+.elv-photo-float {
+  mask-image: radial-gradient(ellipse at center, black 38%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 38%, transparent 78%);
+  filter: drop-shadow(0 8px 24px rgba(122,28,46,0.28));
+}
+.elv-photo-float--gold {
+  mask-image: radial-gradient(ellipse at center, black 42%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 42%, transparent 80%);
+  filter: drop-shadow(0 6px 18px rgba(184,140,72,0.22));
+}
+
+/* ---- Mentores — foto oval ------------------------------ */
+.elv-photo-oval {
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  overflow: hidden;
+  filter: drop-shadow(0 10px 30px rgba(42,16,22,0.22));
+}
+
+/* ---- Cursor trail ------------------------------------- */
+@media (prefers-reduced-motion: reduce) { .cursor-trail { display: none !important; } }
+
 /* ---- Gradiente conectivo entre blocos (AC5) ----------- */
 .elv-section-bleed-top { position: relative; }
 .elv-section-bleed-top::before {

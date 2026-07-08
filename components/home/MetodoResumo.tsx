@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Reveal } from '@/components/shared/Reveal'
 import { SectionHead } from '@/components/shared/SectionHead'
 import { TiltCard } from '@/components/motion/TiltCard'
+import { SplitText } from '@/components/motion/SplitText'
 
 const FASES = [
   {
@@ -99,12 +100,29 @@ export function MetodoResumo() {
         </div>
 
         <Reveal className="elv-center" style={{ position: 'relative', zIndex: 1 }}>
-          <SectionHead
-            align="center"
-            eyebrow="O método"
-            title="Doze meses, em duas fases"
-            lead="Seis meses de encontros e seis meses de acompanhamento. Primeiro cada um se eleva; depois, juntos, vocês constroem o nós."
-          />
+          <p
+            className="elv-sans"
+            style={{
+              fontSize: 'var(--text-xs)',
+              letterSpacing: 'var(--tracking-widest)',
+              textTransform: 'uppercase',
+              color: 'var(--wine-600)',
+              marginBottom: 'var(--space-4)',
+            }}
+          >
+            O método
+          </p>
+          <h2
+            className="elv-serif elv-fluid-h2"
+            style={{ color: 'var(--text-strong)', margin: '0 auto var(--space-5)', maxWidth: '22ch', textAlign: 'center' }}
+          >
+            <SplitText delay={100}>
+              Doze meses, em duas fases
+            </SplitText>
+          </h2>
+          <p className="elv-lead elv-fluid-lead" style={{ textAlign: 'center', maxWidth: '48ch', margin: '0 auto' }}>
+            Seis meses de encontros e seis meses de acompanhamento. Primeiro cada um se eleva; depois, juntos, vocês constroem o nós.
+          </p>
         </Reveal>
 
         {/* Mobile: horizontal snap scroll | Desktop: grid */}
@@ -118,7 +136,7 @@ export function MetodoResumo() {
             return (
               <TiltCard
                 key={i}
-                className="elv-hscroll-item md:min-w-0"
+                className={`elv-hscroll-item md:min-w-0 elv-card-float`}
                 style={{ height: '100%' }}
               >
                 <div
@@ -130,7 +148,8 @@ export function MetodoResumo() {
                     flexDirection: 'column',
                     gap: 'var(--space-4)',
                     height: '100%',
-                    animationDelay: `${i * 80}ms`,
+                    borderTop: '1px solid rgba(184,140,72,0.35)',
+                    boxShadow: '0 8px 24px rgba(42,16,22,0.08), 0 24px 64px rgba(42,16,22,0.12), inset 0 1px 0 rgba(255,255,255,0.08)',
                   }}
                 >
                   <div

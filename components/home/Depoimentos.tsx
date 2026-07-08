@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Reveal } from '@/components/shared/Reveal'
-import { SectionHead } from '@/components/shared/SectionHead'
 import { TiltCard } from '@/components/motion/TiltCard'
+import { SplitText } from '@/components/motion/SplitText'
 
 const ITEMS = [
   {
@@ -52,11 +52,24 @@ export function Depoimentos() {
 
       <div className="elv-wrap" style={{ position: 'relative', zIndex: 1 }}>
         <Reveal className="elv-center">
-          <SectionHead
-            align="center"
-            eyebrow="Quem viveu"
-            title="Casais que saíram do automático"
-          />
+          <p
+            className="elv-sans"
+            style={{
+              fontSize: 'var(--text-xs)',
+              letterSpacing: 'var(--tracking-widest)',
+              textTransform: 'uppercase',
+              color: 'var(--wine-600)',
+              marginBottom: 'var(--space-4)',
+            }}
+          >
+            Quem viveu
+          </p>
+          <h2
+            className="elv-serif elv-fluid-h2"
+            style={{ color: 'var(--text-strong)', margin: 0, textAlign: 'center' }}
+          >
+            <SplitText delay={100}>Casais que saíram do automático</SplitText>
+          </h2>
         </Reveal>
 
         <div className="elv-grid-3" style={{ marginTop: 'var(--space-9)', alignItems: 'stretch' }}>

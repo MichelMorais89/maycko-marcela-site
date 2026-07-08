@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Reveal } from '@/components/shared/Reveal'
 import { Photo } from '@/components/shared/Photo'
+import { SplitText } from '@/components/motion/SplitText'
 
 const MENTORS = [
   {
@@ -40,10 +41,7 @@ export function Mentores() {
             className="elv-serif elv-fluid-h2"
             style={{ color: 'var(--text-strong)', margin: 0 }}
           >
-            Marcela &{' '}
-            <span className="elv-ital-warm" style={{ fontStyle: 'italic' }}>
-              Maycko
-            </span>
+            <SplitText mode="chars" staggerMs={40}>Marcela & Maycko</SplitText>
           </h2>
           <p
             className="elv-lead elv-fluid-lead elv-measure"
@@ -68,15 +66,11 @@ export function Mentores() {
             }}
             className="mentores-row"
           >
-            {/* Sticky photo */}
+            {/* Sticky photo — máscara oval */}
             <div className="elv-sticky-col" style={{ direction: 'ltr' }}>
               <div
-                style={{
-                  borderRadius: 'var(--radius-lg)',
-                  overflow: 'hidden',
-                  aspectRatio: '3 / 4',
-                  position: 'relative',
-                }}
+                className="elv-photo-oval"
+                style={{ aspectRatio: '3 / 4', position: 'relative' }}
               >
                 <Photo
                   src={m.foto}
@@ -113,7 +107,7 @@ export function Mentores() {
                     letterSpacing: 'var(--tracking-tight)',
                   }}
                 >
-                  {m.nome}
+                  <SplitText mode="chars" staggerMs={35}>{m.nome}</SplitText>
                 </h3>
                 <span
                   style={{

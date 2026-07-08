@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Reveal } from '@/components/shared/Reveal'
 import { SectionHead } from '@/components/shared/SectionHead'
+import { SplitText } from '@/components/motion/SplitText'
 
 const PAINS = [
   'Conversam menos — e discutem pelos mesmos motivos de sempre.',
@@ -20,13 +21,11 @@ export function Dores() {
         className="elv-wrap dores-grid"
         style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'var(--space-10)', alignItems: 'center' }}
       >
-        {/* Foto BW lateral */}
+        {/* Foto BW flutuante com mask-image — sem caixa retangular */}
         <Reveal
-          className="dores-photo"
+          className="dores-photo elv-photo-float"
           style={{
             position: 'relative',
-            borderRadius: 'var(--radius-lg)',
-            overflow: 'hidden',
             aspectRatio: '4 / 5',
             maxWidth: 460,
             margin: '0 auto',
@@ -39,15 +38,9 @@ export function Dores() {
             sizes="(max-width: 900px) 90vw, 40vw"
             style={{
               objectFit: 'cover',
-              objectPosition: '50% 25%',
-              filter: 'grayscale(15%) contrast(1.05)',
-            }}
-          />
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'linear-gradient(to bottom, transparent 55%, rgba(42,16,22,0.62) 100%)',
+              objectPosition: '50% 22%',
+              filter: 'grayscale(10%) contrast(1.08)',
+              mixBlendMode: 'screen',
             }}
           />
         </Reveal>
@@ -55,12 +48,43 @@ export function Dores() {
         {/* Texto */}
         <div>
           <Reveal>
-            <SectionHead
-              eyebrow="Talvez você reconheça"
-              title="Vocês se amam. Mas sabem que poderiam estar melhores."
-              lead="A casa funciona, os filhos estão bem, o trabalho anda. Mas o relacionamento está apenas funcionando."
-              tone="light"
-            />
+            <p
+              className="elv-sans"
+              style={{
+                fontSize: 'var(--text-xs)',
+                letterSpacing: 'var(--tracking-widest)',
+                textTransform: 'uppercase',
+                color: 'var(--gold-400)',
+                marginBottom: 'var(--space-4)',
+              }}
+            >
+              Talvez você reconheça
+            </p>
+            <h2
+              className="elv-serif"
+              style={{
+                fontSize: 'clamp(1.75rem, 3.5vw, 3rem)',
+                color: 'var(--white-warm)',
+                lineHeight: 1.1,
+                margin: '0 0 var(--space-5)',
+                maxWidth: '22ch',
+              }}
+            >
+              <SplitText delay={100}>
+                Vocês se amam. Mas sabem que poderiam estar melhores.
+              </SplitText>
+            </h2>
+            <p
+              className="elv-sans"
+              style={{
+                fontSize: 'var(--text-md)',
+                color: 'rgba(255,248,235,0.70)',
+                lineHeight: 'var(--leading-relaxed)',
+                maxWidth: '44ch',
+              }}
+            >
+              A casa funciona, os filhos estão bem, o trabalho anda. Mas o relacionamento está apenas funcionando.
+            </p>
           </Reveal>
           <Reveal
             delay={1}

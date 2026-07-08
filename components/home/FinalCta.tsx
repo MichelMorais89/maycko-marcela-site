@@ -1,7 +1,9 @@
-import Link from 'next/link'
 import Image from 'next/image'
 import { Reveal } from '@/components/shared/Reveal'
 import { Eyebrow } from '@/components/shared/Eyebrow'
+import { SplitText } from '@/components/motion/SplitText'
+import { MagneticButton } from '@/components/motion/MagneticButton'
+import { ShimmerCTA } from '@/components/motion/ShimmerCTA'
 
 export function FinalCta() {
   return (
@@ -102,7 +104,9 @@ export function FinalCta() {
             className="elv-serif elv-fluid-h1"
             style={{ marginTop: 'var(--space-4)', maxWidth: '20ch', color: 'var(--white-warm)' }}
           >
-            Se o casamento de vocês pode viver em outro nível
+            <SplitText delay={100}>
+              Se o casamento de vocês pode viver em outro nível
+            </SplitText>
           </h2>
 
           <p
@@ -123,26 +127,11 @@ export function FinalCta() {
             className="elv-row"
             style={{ justifyContent: 'center', marginTop: 'var(--space-7)' }}
           >
-            <Link
-              href="/mentoria#aplicar"
-              className="elv-cta-glow"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                padding: '16px 36px',
-                borderRadius: 'var(--radius-pill)',
-                background: 'var(--wine-600)',
-                color: 'var(--white-warm)',
-                fontFamily: 'var(--font-sans)',
-                fontSize: 'var(--text-sm)',
-                fontWeight: 'var(--weight-semibold)',
-                letterSpacing: 'var(--tracking-wider)',
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-              }}
-            >
-              Quero aplicar
-            </Link>
+            <MagneticButton>
+              <ShimmerCTA href="/mentoria#aplicar" style={{ padding: '16px 36px' }}>
+                Quero aplicar
+              </ShimmerCTA>
+            </MagneticButton>
           </div>
 
           <p
