@@ -1,5 +1,6 @@
 import { Reveal } from '@/components/shared/Reveal'
 import { SectionHead } from '@/components/shared/SectionHead'
+import { TiltCard } from '@/components/motion/TiltCard'
 
 const ITEMS = [
   {
@@ -37,76 +38,86 @@ export function Depoimentos() {
         <div className="elv-grid-3" style={{ marginTop: 'var(--space-9)', alignItems: 'stretch' }}>
           {ITEMS.map((t, i) => (
             <Reveal key={i} delay={i as 0 | 1 | 2} as="div" style={{ display: 'flex' }}>
-              <div
-                className="elv-lift"
-                style={{
-                  background: 'var(--surface-card)',
-                  borderRadius: 'var(--radius-md)',
-                  boxShadow: 'var(--ring-hairline)',
-                  padding: 'var(--space-8)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 'var(--space-5)',
-                  width: '100%',
-                }}
-              >
-                <span
-                  className="elv-serif"
+              <TiltCard style={{ width: '100%' }}>
+                <div
                   style={{
-                    fontSize: 'var(--text-4xl)',
-                    color: 'var(--gold-400)',
-                    lineHeight: 0.6,
-                    height: 24,
+                    background: 'var(--surface-card)',
+                    borderRadius: 'var(--radius-md)',
+                    boxShadow: 'var(--ring-hairline)',
+                    padding: 'var(--space-8)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 'var(--space-5)',
+                    width: '100%',
+                    height: '100%',
                   }}
                 >
-                  &ldquo;
-                </span>
-                <p
-                  className="elv-serif"
-                  style={{
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: 'var(--leading-snug)',
-                    color: 'var(--text-strong)',
-                    margin: 0,
-                    flex: 1,
-                  }}
-                >
-                  {t.q}
-                </p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-                  <div
+                  <span
+                    className="elv-serif"
                     style={{
-                      width: 40,
-                      height: 40,
-                      borderRadius: '50%',
-                      background: 'var(--sand)',
-                      border: '2px solid var(--gold-500)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
+                      fontSize: 'var(--text-4xl)',
+                      color: 'var(--gold-400)',
+                      lineHeight: 0.6,
+                      height: 24,
                     }}
                   >
-                    <span
-                      className="elv-serif"
-                      style={{ fontSize: 'var(--text-xs)', fontWeight: 'var(--weight-semibold)', color: 'var(--wine-700)' }}
-                    >
-                      {t.initials}
-                    </span>
-                  </div>
-                  <div>
+                    &ldquo;
+                  </span>
+                  <p
+                    className="elv-serif"
+                    style={{
+                      fontSize: 'var(--text-lg)',
+                      lineHeight: 'var(--leading-snug)',
+                      color: 'var(--text-strong)',
+                      margin: 0,
+                      flex: 1,
+                    }}
+                  >
+                    {t.q}
+                  </p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
                     <div
-                      className="elv-sans"
-                      style={{ fontWeight: 'var(--weight-semibold)', fontSize: 'var(--text-sm)', color: 'var(--text-strong)' }}
+                      style={{
+                        width: 40,
+                        height: 40,
+                        borderRadius: '50%',
+                        background: 'var(--sand)',
+                        border: '2px solid var(--gold-500)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
                     >
-                      {t.n}
+                      <span
+                        className="elv-serif"
+                        style={{
+                          fontSize: 'var(--text-xs)',
+                          fontWeight: 'var(--weight-semibold)',
+                          color: 'var(--wine-700)',
+                        }}
+                      >
+                        {t.initials}
+                      </span>
                     </div>
-                    <div className="elv-sans elv-muted" style={{ fontSize: 'var(--text-xs)' }}>
-                      {t.r}
+                    <div>
+                      <div
+                        className="elv-sans"
+                        style={{
+                          fontWeight: 'var(--weight-semibold)',
+                          fontSize: 'var(--text-sm)',
+                          color: 'var(--text-strong)',
+                        }}
+                      >
+                        {t.n}
+                      </div>
+                      <div className="elv-sans elv-muted" style={{ fontSize: 'var(--text-xs)' }}>
+                        {t.r}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>

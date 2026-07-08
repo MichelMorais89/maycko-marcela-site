@@ -1,11 +1,12 @@
 import { Reveal } from '@/components/shared/Reveal'
+import { CountUp } from '@/components/motion/CountUp'
 
 const STATS = [
-  ['+20', 'anos juntos'],
-  ['13', 'anos de casamento'],
-  ['3', 'filhos'],
-  ['100%', 'digital · Brasil'],
-] as const
+  { value: 20, suffix: '+', label: 'anos juntos' },
+  { value: 13, suffix: '', label: 'anos de casamento' },
+  { value: 3, suffix: '', label: 'filhos' },
+  { value: 100, suffix: '%', label: 'digital · Brasil' },
+]
 
 export function Prova() {
   return (
@@ -31,7 +32,7 @@ export function Prova() {
                 lineHeight: 1,
               }}
             >
-              {s[0]}
+              <CountUp to={s.value} suffix={s.suffix} />
             </div>
             <div
               className="elv-sans elv-muted"
@@ -42,7 +43,7 @@ export function Prova() {
                 marginTop: 'var(--space-2)',
               }}
             >
-              {s[1]}
+              {s.label}
             </div>
           </Reveal>
         ))}

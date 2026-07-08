@@ -4,6 +4,12 @@ import { spectral, mulish } from './fonts'
 import { SiteNav } from '@/components/layout/SiteNav'
 import { SiteFooter } from '@/components/layout/SiteFooter'
 import { MobileCTABar } from '@/components/layout/MobileCTABar'
+import { Aurora } from '@/components/motion/Aurora'
+import { DottedGrid } from '@/components/motion/DottedGrid'
+import { GrainOverlay } from '@/components/motion/GrainOverlay'
+import { ScrollProgress } from '@/components/motion/ScrollProgress'
+import { CustomCursor } from '@/components/motion/CustomCursor'
+import { LenisProvider } from '@/components/motion/LenisProvider'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -31,13 +37,22 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider attribute="data-theme" defaultTheme="light" disableTransitionOnChange>
-          <a href="#conteudo" className="elv-skip">
-            Pular para o conteúdo
-          </a>
-          <SiteNav active="/" />
-          <main id="conteudo">{children}</main>
-          <SiteFooter />
-          <MobileCTABar />
+          <LenisProvider>
+            {/* Global ambient layers */}
+            <Aurora />
+            <DottedGrid />
+            <GrainOverlay />
+            <ScrollProgress />
+            <CustomCursor />
+
+            <a href="#conteudo" className="elv-skip">
+              Pular para o conteúdo
+            </a>
+            <SiteNav active="/" />
+            <main id="conteudo">{children}</main>
+            <SiteFooter />
+            <MobileCTABar />
+          </LenisProvider>
         </ThemeProvider>
       </body>
     </html>

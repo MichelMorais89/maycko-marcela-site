@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Reveal } from '@/components/shared/Reveal'
 import { SectionHead } from '@/components/shared/SectionHead'
+import { TiltCard } from '@/components/motion/TiltCard'
 
 const FASES = [
   {
@@ -27,6 +28,18 @@ const FASES = [
       'Visão financeira conjunta e legado',
     ],
   },
+  {
+    n: 'Resultado',
+    t: 'Legado em Casal',
+    d: '12 meses',
+    variant: 'gold' as const,
+    items: [
+      'Decisões financeiras alinhadas',
+      'Casamento como ativo estratégico',
+      'Rotina com propósito e presença',
+      'Impacto que dura gerações',
+    ],
+  },
 ]
 
 const CARD_STYLES = {
@@ -35,12 +48,21 @@ const CARD_STYLES = {
     rule: 'var(--ink-400)',
     dot: 'var(--ink-400)',
     text: 'var(--ink-100)',
+    label: 'var(--gold-300)',
   },
   wine: {
     bg: 'var(--surface-wine)',
     rule: 'var(--rule-gold-on-wine)',
     dot: 'var(--gold-400)',
     text: 'var(--text-on-wine)',
+    label: 'var(--gold-300)',
+  },
+  gold: {
+    bg: 'var(--gold-800, #3d2a0a)',
+    rule: 'var(--gold-400)',
+    dot: 'var(--gold-300)',
+    text: 'var(--gold-100, #faf3e0)',
+    label: 'var(--gold-300)',
   },
 }
 
@@ -57,16 +79,21 @@ export function MetodoResumo() {
           />
         </Reveal>
 
+        {/* Mobile: horizontal snap scroll | Desktop: grid */}
         <div
-          className="elv-grid-2 elv-grid-2-sm"
-          style={{ marginTop: 'var(--space-9)', alignItems: 'stretch' }}
+          aria-label="Fases do método"
+          className="elv-hscroll md:grid md:grid-cols-3"
+          style={{ marginTop: 'var(--space-9)' }}
         >
           {FASES.map((f, i) => {
             const s = CARD_STYLES[f.variant]
             return (
-              <Reveal key={i} delay={i as 0 | 1} as="div" style={{ display: 'flex' }}>
+              <TiltCard
+                key={i}
+                className="elv-hscroll-item md:min-w-0"
+                style={{ height: '100%' }}
+              >
                 <div
-                  className="elv-lift"
                   style={{
                     background: s.bg,
                     borderRadius: 'var(--radius-md)',
@@ -74,31 +101,62 @@ export function MetodoResumo() {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 'var(--space-4)',
-                    width: '100%',
+                    height: '100%',
+                    animationDelay: `${i * 80}ms`,
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'baseline',
+                      justifyContent: 'space-between',
+                    }}
+                  >
                     <span
                       className="elv-serif"
-                      style={{ fontStyle: 'italic', fontSize: 'var(--text-lg)', color: 'var(--gold-300)', whiteSpace: 'nowrap' }}
+                      style={{
+                        fontStyle: 'italic',
+                        fontSize: 'var(--text-lg)',
+                        color: s.label,
+                        whiteSpace: 'nowrap',
+                      }}
                     >
                       {f.n}
                     </span>
                     <span
                       className="elv-sans"
-                      style={{ fontSize: 'var(--text-2xs)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase', color: 'var(--gold-300)' }}
+                      style={{
+                        fontSize: 'var(--text-2xs)',
+                        letterSpacing: 'var(--tracking-wide)',
+                        textTransform: 'uppercase',
+                        color: s.label,
+                      }}
                     >
                       {f.d}
                     </span>
                   </div>
                   <h3
                     className="elv-serif"
-                    style={{ fontWeight: 'var(--weight-semibold)', fontSize: 'var(--text-2xl)', color: 'var(--white-warm)', margin: 0 }}
+                    style={{
+                      fontWeight: 'var(--weight-semibold)',
+                      fontSize: 'var(--text-2xl)',
+                      color: 'var(--white-warm)',
+                      margin: 0,
+                    }}
                   >
                     {f.t}
                   </h3>
                   <span style={{ width: 30, height: 1, background: s.rule }} />
-                  <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                  <ul
+                    style={{
+                      listStyle: 'none',
+                      margin: 0,
+                      padding: 0,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 'var(--space-3)',
+                    }}
+                  >
                     {f.items.map((it, j) => (
                       <li
                         key={j}
@@ -127,7 +185,7 @@ export function MetodoResumo() {
                     ))}
                   </ul>
                 </div>
-              </Reveal>
+              </TiltCard>
             )
           })}
         </div>
