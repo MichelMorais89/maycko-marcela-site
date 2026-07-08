@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
 import { spectral, mulish } from './fonts'
+import { SiteNav } from '@/components/layout/SiteNav'
+import { SiteFooter } from '@/components/layout/SiteFooter'
+import { MobileCTABar } from '@/components/layout/MobileCTABar'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -11,7 +14,7 @@ export const metadata: Metadata = {
     title: 'Elevem-se — Mentoria para Casais',
     description:
       'Para casais que já conquistaram muito e decidiram que o casamento também precisa evoluir no mesmo nível.',
-    images: [{ url: '/photos/casal-01-web.jpg', width: 1200, height: 630 }],
+    images: [{ url: '/photos/hero-couple.jpg', width: 1200, height: 630 }],
   },
 }
 
@@ -28,7 +31,13 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider attribute="data-theme" defaultTheme="light" disableTransitionOnChange>
-          {children}
+          <a href="#conteudo" className="elv-skip">
+            Pular para o conteúdo
+          </a>
+          <SiteNav active="/" />
+          <main id="conteudo">{children}</main>
+          <SiteFooter />
+          <MobileCTABar />
         </ThemeProvider>
       </body>
     </html>
