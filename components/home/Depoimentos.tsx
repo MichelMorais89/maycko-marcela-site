@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Reveal } from '@/components/shared/Reveal'
 import { SectionHead } from '@/components/shared/SectionHead'
 import { TiltCard } from '@/components/motion/TiltCard'
@@ -25,8 +26,31 @@ const ITEMS = [
 
 export function Depoimentos() {
   return (
-    <section className="elv-sec elv-sec--page">
-      <div className="elv-wrap">
+    <section className="elv-sec elv-sec--page" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Foto Marcela tablet — fundo em blur */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          right: 0,
+          top: 0,
+          bottom: 0,
+          width: '35%',
+          zIndex: 0,
+          opacity: 0.08,
+          pointerEvents: 'none',
+        }}
+      >
+        <Image
+          src="/photos/depoimentos-marcela-tablet.jpg"
+          alt=""
+          fill
+          sizes="35vw"
+          style={{ objectFit: 'cover', objectPosition: '50% 20%', filter: 'blur(2px)' }}
+        />
+      </div>
+
+      <div className="elv-wrap" style={{ position: 'relative', zIndex: 1 }}>
         <Reveal className="elv-center">
           <SectionHead
             align="center"

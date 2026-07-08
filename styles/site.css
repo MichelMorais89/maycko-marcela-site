@@ -189,9 +189,11 @@ button[data-variant] { white-space: nowrap; }
 .elv-cta-glow { animation: ctaGlow 2.4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .elv-cta-glow { animation: none; } }
 
-/* ---- Custom cursor ------------------------------------ */
-body:has(.cursor-custom) { cursor: none; }
-@media (hover: none) { body:has(.cursor-custom) { cursor: auto; } }
+/* ---- Flame cursor ------------------------------------- */
+@keyframes flameFlicker { 0%,100% { transform: translate(var(--fx,0), var(--fy,0)) translate(-50%,-80%) scaleX(1); } 25% { transform: translate(var(--fx,0), var(--fy,0)) translate(-50%,-80%) scaleX(0.92) rotate(-3deg); } 75% { transform: translate(var(--fx,0), var(--fy,0)) translate(-50%,-80%) scaleX(1.06) rotate(2deg); } }
+body:has(.flame-cursor) { cursor: none; }
+@media (hover: none) { body:has(.flame-cursor) { cursor: auto; } }
+@media (prefers-reduced-motion: reduce) { .flame-cursor { display: none !important; } }
 
 /* ---- Horizontal scroll snap (Método) ------------------ */
 .elv-hscroll { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: var(--space-6); padding-block: var(--space-4); }
@@ -215,6 +217,65 @@ body:has(.cursor-custom) { cursor: none; }
 .elv-nav-link:hover { color: var(--wine-700) !important; }
 .elv-nav-link:hover::after { left: 0; right: 0; }
 
+/* ---- Hero: foto split desktop / full-bleed mobile ----- */
+@media (min-width: 900px) {
+  .hero-photo-col { width: 55% !important; }
+  .hero-overlay { background: linear-gradient(to right, rgba(18,8,12,0.99) 0%, rgba(18,8,12,0.90) 28%, rgba(18,8,12,0.32) 62%, rgba(18,8,12,0.08) 100%) !important; }
+  .hero-content { max-width: 52% !important; }
+}
+
 /* ---- Mentores sticky rows — collapse on mobile -------- */
 .mentores-row { grid-template-columns: 1fr !important; direction: ltr !important; }
 @media (min-width: 768px) { .mentores-row { grid-template-columns: 1fr 1fr !important; } }
+
+/* ---- Dores split grid --------------------------------- */
+@media (min-width: 900px) {
+  .dores-grid { grid-template-columns: 420px 1fr !important; }
+}
+
+/* ---- Conceito split grid ------------------------------ */
+@media (min-width: 900px) {
+  .conceito-grid { grid-template-columns: 1fr 380px !important; align-items: start !important; }
+  .conceito-photo { order: 2; }
+}
+
+/* ---- Prova números — fundo ink com brilho dourado ----- */
+.elv-sec--prova {
+  background: var(--surface-anchor);
+  border-top: 1px solid rgba(184,140,72,0.15);
+  border-bottom: 1px solid rgba(184,140,72,0.15);
+}
+
+/* ---- Método — diagonal gold lines texture ------------- */
+.elv-sec--metodo-texture {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(184,140,72,0.04) 0px,
+    rgba(184,140,72,0.04) 1px,
+    transparent 1px,
+    transparent 28px
+  );
+}
+
+/* ---- FinalCta chama grande atrás do CTA --------------- */
+@keyframes flameBgPulse {
+  0%,100% { transform: scale(1) rotate(-3deg); opacity: 0.08; }
+  50% { transform: scale(1.08) rotate(2deg); opacity: 0.13; }
+}
+.final-cta-flame { animation: flameBgPulse 4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .final-cta-flame { animation: none; } }
+
+/* ---- Gradiente conectivo entre blocos (AC5) ----------- */
+.elv-section-bleed-top { position: relative; }
+.elv-section-bleed-top::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: inherit;
+  clip-path: ellipse(60% 100% at 50% 0%);
+  z-index: 1;
+  pointer-events: none;
+}

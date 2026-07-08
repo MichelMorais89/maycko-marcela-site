@@ -11,12 +11,8 @@ const STATS = [
 export function Prova() {
   return (
     <section
-      className="elv-sec--cream"
-      style={{
-        paddingBlock: 'var(--space-7)',
-        borderTop: '1px solid var(--border-hairline)',
-        borderBottom: '1px solid var(--border-hairline)',
-      }}
+      className="elv-sec--prova"
+      style={{ paddingBlock: 'var(--space-8)' }}
     >
       <div
         className="elv-wrap"
@@ -27,20 +23,21 @@ export function Prova() {
             <div
               className="elv-serif"
               style={{
-                fontSize: 'clamp(2rem, 1.4rem + 2vw, 3rem)',
-                color: 'var(--wine-700)',
+                fontSize: 'clamp(2.2rem, 1.6rem + 2.4vw, 3.5rem)',
+                color: 'var(--gold-400)',
                 lineHeight: 1,
               }}
             >
               <CountUp to={s.value} suffix={s.suffix} />
             </div>
             <div
-              className="elv-sans elv-muted"
+              className="elv-sans"
               style={{
                 fontSize: 'var(--text-xs)',
                 letterSpacing: 'var(--tracking-wide)',
                 textTransform: 'uppercase',
                 marginTop: 'var(--space-2)',
+                color: 'rgba(255,248,235,0.55)',
               }}
             >
               {s.label}

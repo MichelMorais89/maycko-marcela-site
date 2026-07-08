@@ -8,8 +8,9 @@ import { Aurora } from '@/components/motion/Aurora'
 import { DottedGrid } from '@/components/motion/DottedGrid'
 import { GrainOverlay } from '@/components/motion/GrainOverlay'
 import { ScrollProgress } from '@/components/motion/ScrollProgress'
-import { CustomCursor } from '@/components/motion/CustomCursor'
+import { FlameCursor } from '@/components/motion/FlameCursor'
 import { LenisProvider } from '@/components/motion/LenisProvider'
+import { NarrativeThread } from '@/components/motion/NarrativeThread'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -43,7 +44,8 @@ export default function RootLayout({
             <DottedGrid />
             <GrainOverlay />
             <ScrollProgress />
-            <CustomCursor />
+            <FlameCursor />
+            <NarrativeThread />
 
             <a href="#conteudo" className="elv-skip">
               Pular para o conteúdo

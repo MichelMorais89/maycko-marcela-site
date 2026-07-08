@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Reveal } from '@/components/shared/Reveal'
 import { SectionHead } from '@/components/shared/SectionHead'
 import { TiltCard } from '@/components/motion/TiltCard'
@@ -68,9 +69,36 @@ const CARD_STYLES = {
 
 export function MetodoResumo() {
   return (
-    <section className="elv-sec elv-sec--page">
+    <section className="elv-sec elv-sec--page elv-sec--metodo-texture" style={{ position: 'relative', overflow: 'hidden' }}>
       <div className="elv-wrap">
-        <Reveal className="elv-center">
+        {/* Foto flutuante lateral — Marcela kimono */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            right: '-40px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: 'clamp(160px, 18vw, 280px)',
+            aspectRatio: '3 / 5',
+            borderRadius: 'var(--radius-lg)',
+            overflow: 'hidden',
+            opacity: 0.18,
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
+          className="metodo-kimono-float"
+        >
+          <Image
+            src="/photos/metodo-marcela-kimono.jpg"
+            alt=""
+            fill
+            sizes="280px"
+            style={{ objectFit: 'cover', objectPosition: '50% 20%' }}
+          />
+        </div>
+
+        <Reveal className="elv-center" style={{ position: 'relative', zIndex: 1 }}>
           <SectionHead
             align="center"
             eyebrow="O método"

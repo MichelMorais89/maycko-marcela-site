@@ -17,41 +17,41 @@ export function Hero() {
       ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
       : false
 
-  // Parallax + spotlight on mouse
+  // Spotlight radial vinho segue o cursor
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
       if (prefersReduced) return
       const sec = sectionRef.current
       if (!sec) return
       const r = sec.getBoundingClientRect()
-      const xPct = (e.clientX - r.left) / r.width
-      const yPct = (e.clientY - r.top) / r.height
-
       if (spotlightRef.current) {
-        spotlightRef.current.style.background = `radial-gradient(600px circle at ${e.clientX - r.left}px ${e.clientY - r.top}px, rgba(122,28,46,0.22) 0%, transparent 70%)`
+        spotlightRef.current.style.background = `radial-gradient(500px circle at ${e.clientX - r.left}px ${e.clientY - r.top}px, rgba(122,28,46,0.18) 0%, transparent 70%)`
       }
+      // Parallax sutil na foto (movimento inverso)
       if (imgRef.current) {
-        const dx = (xPct - 0.5) * -18
-        const dy = (yPct - 0.5) * -10
-        imgRef.current.style.transform = `translate(${dx}px, ${dy}px) scale(1.06)`
+        const xPct = (e.clientX - r.left) / r.width
+        const yPct = (e.clientY - r.top) / r.height
+        const dx = (xPct - 0.5) * -12
+        const dy = (yPct - 0.5) * -7
+        imgRef.current.style.transform = `translate(${dx}px, ${dy}px) scale(1.04)`
       }
     },
     [prefersReduced]
   )
 
-  // Scroll parallax
+  // Scroll parallax na foto
   useEffect(() => {
     if (prefersReduced) return
     const onScroll = () => {
       const el = imgRef.current
       if (!el) return
-      el.style.transform = `translateY(${window.scrollY * 0.18}px)`
+      el.style.transform = `translateY(${window.scrollY * 0.14}px)`
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [prefersReduced])
 
-  // Canvas particles
+  // Canvas partículas douradas
   useEffect(() => {
     if (prefersReduced) return
     const canvas = canvasRef.current
@@ -60,7 +60,10 @@ export function Hero() {
     if (!ctx) return
 
     let raf: number
-    const particles: { x: number; y: number; vx: number; vy: number; size: number; opacity: number; phase: number }[] = []
+    const particles: {
+      x: number; y: number; vx: number; vy: number
+      size: number; opacity: number; phase: number
+    }[] = []
 
     const resize = () => {
       canvas.width = canvas.offsetWidth
@@ -69,14 +72,14 @@ export function Hero() {
     resize()
     window.addEventListener('resize', resize)
 
-    for (let i = 0; i < 38; i++) {
+    for (let i = 0; i < 42; i++) {
       particles.push({
-        x: Math.random() * canvas.width,
+        x: Math.random() * (canvas.width * 0.55), // lado esquerdo/centro
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: -Math.random() * 0.4 - 0.1,
-        size: Math.random() * 2.2 + 0.6,
-        opacity: Math.random() * 0.5 + 0.15,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: -Math.random() * 0.35 - 0.08,
+        size: Math.random() * 2.0 + 0.5,
+        opacity: Math.random() * 0.45 + 0.12,
         phase: Math.random() * Math.PI * 2,
       })
     }
@@ -86,9 +89,9 @@ export function Hero() {
       for (const p of particles) {
         p.x += p.vx
         p.y += p.vy
-        if (p.y < -4) { p.y = canvas.height + 4; p.x = Math.random() * canvas.width }
-        if (p.x < -4) p.x = canvas.width + 4
-        if (p.x > canvas.width + 4) p.x = -4
+        if (p.y < -4) { p.y = canvas.height + 4; p.x = Math.random() * canvas.width * 0.55 }
+        if (p.x < -4) p.x = canvas.width * 0.55
+        if (p.x > canvas.width * 0.55) p.x = -4
         const pulse = 0.7 + 0.3 * Math.sin(t * 0.001 + p.phase)
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
@@ -120,22 +123,27 @@ export function Hero() {
         position: 'relative',
         minHeight: '100svh',
         display: 'grid',
-        gridTemplateRows: '1fr',
-        alignItems: 'center',
+        gridTemplateColumns: '1fr',
+        alignItems: 'stretch',
         overflow: 'hidden',
         background: 'var(--surface-anchor)',
       }}
     >
-      {/* Photo with parallax */}
+      {/* Foto à direita — ocupa ~48% da largura no desktop, full no mobile */}
       <div
         ref={imgRef}
         style={{
           position: 'absolute',
-          inset: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          // Mobile: foto full-bleed escurecida; Desktop: 48% direita
+          width: '100%',
           willChange: 'transform',
-          transition: 'transform 0.1s linear',
+          transition: prefersReduced ? 'none' : 'transform 0.1s linear',
           zIndex: 0,
         }}
+        className="hero-photo-col"
       >
         <Image
           src="/photos/hero-couple.jpg"
@@ -143,15 +151,16 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          style={{ objectFit: 'cover', objectPosition: '50% 20%' }}
+          style={{ objectFit: 'cover', objectPosition: '65% 20%' }}
         />
-        {/* Gradient vinho→creme */}
+        {/* Overlay: no desktop, vela esquerda para garantir copy legível */}
         <div
+          className="hero-overlay"
           style={{
             position: 'absolute',
             inset: 0,
             background:
-              'linear-gradient(to right, rgba(42,16,22,0.88) 0%, rgba(42,16,22,0.55) 60%, rgba(42,16,22,0.18) 100%)',
+              'linear-gradient(to right, rgba(18,8,12,0.96) 0%, rgba(18,8,12,0.82) 45%, rgba(18,8,12,0.28) 72%, rgba(18,8,12,0.10) 100%)',
           }}
         />
       </div>
@@ -165,11 +174,11 @@ export function Hero() {
           inset: 0,
           zIndex: 1,
           pointerEvents: 'none',
-          transition: 'background 0.12s ease',
+          transition: 'background 0.14s ease',
         }}
       />
 
-      {/* Canvas particles */}
+      {/* Canvas partículas (lado esquerdo) */}
       <canvas
         ref={canvasRef}
         aria-hidden="true"
@@ -183,14 +192,17 @@ export function Hero() {
         }}
       />
 
-      {/* Content */}
+      {/* Content — coluna esquerda, máx 52% desktop */}
       <div
-        className="elv-wrap"
+        className="elv-wrap hero-content"
         style={{
           position: 'relative',
           zIndex: 3,
-          paddingBlock: 'clamp(100px, 14vh, 160px)',
-          maxWidth: '820px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          paddingBlock: 'clamp(120px, 15vh, 180px)',
+          maxWidth: '640px',
         }}
       >
         <p
@@ -206,19 +218,19 @@ export function Hero() {
           Mentoria para casais
         </p>
 
-        {/* Stagger letter title */}
+        {/* AC1: sempre em 1 linha — whitespace-nowrap + clamp que cabe em 375px */}
         <h1
           className="elv-serif"
           style={{
-            fontSize: 'clamp(3.5rem, 10vw, 9rem)',
+            fontSize: 'clamp(2.8rem, 8.5vw, 8rem)',
             fontWeight: 'var(--weight-medium)',
-            letterSpacing: '0.12em',
+            letterSpacing: '0.14em',
             textTransform: 'uppercase',
             color: 'var(--white-warm)',
             lineHeight: 1,
             margin: 0,
+            whiteSpace: 'nowrap',
             display: 'flex',
-            flexWrap: 'wrap',
             gap: '0.04em',
           }}
           aria-label={TITLE}
@@ -235,15 +247,25 @@ export function Hero() {
           ))}
         </h1>
 
+        {/* Linha dourada separadora */}
+        <span
+          style={{
+            display: 'block',
+            width: 48,
+            height: 1,
+            background: 'var(--gold-500)',
+            margin: 'var(--space-7) 0',
+          }}
+        />
+
         <p
           className="elv-sans"
           style={{
-            fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
+            fontSize: 'clamp(0.95rem, 1.6vw, 1.2rem)',
             lineHeight: 'var(--leading-relaxed)',
-            color: 'rgba(255,248,235,0.82)',
-            maxWidth: '56ch',
-            marginTop: 'var(--space-7)',
-            marginBottom: 0,
+            color: 'rgba(255,248,235,0.80)',
+            maxWidth: '50ch',
+            margin: 0,
           }}
         >
           Uma mentoria exclusiva para casais que já conquistaram muito — e decidiram que o
@@ -286,7 +308,7 @@ export function Hero() {
               alignItems: 'center',
               padding: '15px 32px',
               borderRadius: 'var(--radius-pill)',
-              border: '1px solid var(--gold-500)',
+              border: '1px solid rgba(184,140,72,0.6)',
               color: 'var(--white-warm)',
               background: 'transparent',
               fontFamily: 'var(--font-sans)',
@@ -307,27 +329,27 @@ export function Hero() {
             fontSize: 'var(--text-2xs)',
             letterSpacing: 'var(--tracking-widest)',
             textTransform: 'uppercase',
-            color: 'rgba(255,248,235,0.45)',
+            color: 'rgba(255,248,235,0.38)',
             marginTop: 'var(--space-6)',
           }}
         >
-          Processo seletivo por aplicação · Poucos casais por ciclo
+          Processo seletivo · Poucos casais por ciclo
         </p>
       </div>
 
-      {/* Floating quote card */}
+      {/* Floating quote card — fora dos rostos, canto inferior esquerdo */}
       <div
         style={{
           position: 'absolute',
-          right: 'clamp(16px, 5vw, 64px)',
-          bottom: 'clamp(32px, 6vh, 64px)',
+          left: 'clamp(16px, 4vw, 48px)',
+          bottom: 'clamp(28px, 5vh, 52px)',
           zIndex: 4,
-          width: 'min(300px, 80vw)',
-          background: 'rgba(42,16,22,0.72)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(184,140,72,0.25)',
+          width: 'min(280px, 80vw)',
+          background: 'rgba(18,8,12,0.78)',
+          backdropFilter: 'blur(18px)',
+          border: '1px solid rgba(184,140,72,0.22)',
           borderRadius: 'var(--radius-md)',
-          padding: 'var(--space-6)',
+          padding: 'var(--space-5)',
         }}
       >
         <span
@@ -335,16 +357,16 @@ export function Hero() {
           style={{
             display: 'block',
             fontStyle: 'italic',
-            fontSize: 'var(--text-base)',
+            fontSize: 'var(--text-sm)',
             lineHeight: 'var(--leading-snug)',
             color: 'var(--white-warm)',
-            marginBottom: 'var(--space-4)',
+            marginBottom: 'var(--space-3)',
           }}
         >
           Ensinamos o que vivemos e estruturamos.
         </span>
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-          <span style={{ width: 24, height: 1, background: 'var(--gold-500)', flexShrink: 0 }} />
+          <span style={{ width: 22, height: 1, background: 'var(--gold-500)', flexShrink: 0 }} />
           <div>
             <div
               className="elv-sans"

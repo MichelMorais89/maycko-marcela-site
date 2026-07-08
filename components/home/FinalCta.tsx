@@ -30,9 +30,45 @@ export function FinalCta() {
             position: 'absolute',
             inset: 0,
             background:
-              'linear-gradient(to bottom, rgba(18,10,14,0.70) 0%, rgba(18,10,14,0.82) 100%)',
+              'linear-gradient(to bottom, rgba(8,4,8,0.80) 0%, rgba(8,4,8,0.88) 100%)',
           }}
         />
+      </div>
+
+      {/* Chama grande atrás do CTA */}
+      <div
+        aria-hidden="true"
+        className="final-cta-flame"
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 0,
+          width: 'clamp(200px, 30vw, 420px)',
+          height: 'clamp(260px, 40vw, 540px)',
+          pointerEvents: 'none',
+        }}
+      >
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+          <defs>
+            <filter id="flame-blur">
+              <feGaussianBlur stdDeviation="6" />
+            </filter>
+          </defs>
+          <g filter="url(#flame-blur)">
+            <path
+              d="M59 99 C 51 80 46 58 51 40 C 54 31 58 30 60 33 C 56 31 49 44 44 64 C 42 80 50 92 59 99 Z"
+              fill="var(--wine-600)"
+              opacity="0.9"
+            />
+            <path
+              d="M61 99 C 69 78 74 56 69 36 C 66 26 62 22 60 19 C 62 23 71 40 76 60 C 78 78 70 92 61 99 Z"
+              fill="var(--gold-500)"
+              opacity="0.85"
+            />
+          </g>
+        </svg>
       </div>
 
       <div
