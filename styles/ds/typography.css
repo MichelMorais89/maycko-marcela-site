@@ -1,0 +1,153 @@
+/* ============================================================
+   Elevem-se — Typography tokens
+   ------------------------------------------------------------
+   Titles: editorial text serif (Spectral).
+   Support / taglines / labels: clean sans with wide tracking
+   (Mulish). Generous sizing, lots of air, calm rhythm.
+   ============================================================ */
+
+:root {
+  /* ---- Type scale (1.250 major-third-ish, editorial) ----- */
+  --text-2xs: 0.6875rem; /* 11px — micro labels (uppercase)    */
+  --text-xs:  0.75rem;   /* 12px                                */
+  --text-sm:  0.875rem;  /* 14px                                */
+  --text-base:1rem;      /* 16px — body                         */
+  --text-md:  1.125rem;  /* 18px — lead body                    */
+  --text-lg:  1.375rem;  /* 22px                                */
+  --text-xl:  1.75rem;   /* 28px                                */
+  --text-2xl: 2.25rem;   /* 36px — section titles               */
+  --text-3xl: 3rem;      /* 48px                                */
+  --text-4xl: 4rem;      /* 64px — display                      */
+  --text-5xl: 5.5rem;    /* 88px — hero display                 */
+  --text-6xl: 7.5rem;    /* 120px — oversized editorial         */
+
+  /* ---- Weights ------------------------------------------- */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ---- Line heights -------------------------------------- */
+  --leading-tight:   1.04;  /* big display serif                */
+  --leading-snug:    1.18;  /* headings                         */
+  --leading-normal:  1.5;   /* body                             */
+  --leading-relaxed: 1.7;   /* long-form body                   */
+
+  /* ========================================================
+     SEMANTIC TYPE ROLES
+     ======================================================== */
+
+  /* Display serif (Spectral) — editorial, contained accents */
+  --type-display-family: var(--font-display);
+  --type-display-weight: var(--weight-regular);
+  --type-display-leading: var(--leading-tight);
+  --type-display-tracking: var(--tracking-tight);
+
+  /* Heading serif */
+  --type-heading-family: var(--font-display);
+  --type-heading-weight: var(--weight-semibold);
+  --type-heading-leading: var(--leading-snug);
+
+  /* Eyebrow / tagline (Mulish, wide tracking, uppercase) */
+  --type-eyebrow-family: var(--font-sans);
+  --type-eyebrow-weight: var(--weight-medium);
+  --type-eyebrow-size: var(--text-2xs);
+  --type-eyebrow-tracking: var(--tracking-widest);
+
+  /* Body (Mulish) */
+  --type-body-family: var(--font-sans);
+  --type-body-weight: var(--weight-regular);
+  --type-body-leading: var(--leading-relaxed);
+
+  /* Label / UI (Mulish) */
+  --type-label-family: var(--font-sans);
+  --type-label-weight: var(--weight-medium);
+  --type-label-tracking: var(--tracking-wide);
+}
+
+/* ---- Optional helper classes (consumers may use) -------- */
+.elv-display {
+  font-family: var(--type-display-family);
+  font-weight: var(--type-display-weight);
+  line-height: var(--type-display-leading);
+  letter-spacing: var(--type-display-tracking);
+  color: var(--text-strong);
+}
+.elv-heading {
+  font-family: var(--type-heading-family);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-leading);
+  color: var(--text-strong);
+}
+.elv-eyebrow {
+  font-family: var(--type-eyebrow-family);
+  font-weight: var(--type-eyebrow-weight);
+  font-size: var(--type-eyebrow-size);
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--text-gold);
+}
+.elv-body {
+  font-family: var(--type-body-family);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-leading);
+  color: var(--text-body);
+}
+.elv-label {
+  font-family: var(--type-label-family);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  color: var(--text-strong);
+}
+/* Warm "marca-texto" — soft candlelit wash behind an emphasised
+   word in a serif heading. Calor (Amante/Explorador), used sparingly. */
+.elv-mark {
+  background: linear-gradient(to bottom, transparent 58%, var(--highlight-warm) 58%);
+  padding: 0 0.06em;
+  border-radius: 1px;
+}
+/* Warm italic emphasis inside a heading */
+.elv-warm {
+  font-style: italic;
+  color: var(--text-warm);
+}
+
+/* ============================================================
+   CAIXA-ALTA — headline de impacto (peças produzidas)
+   ------------------------------------------------------------
+   REGRA para posts, criativos, slides e anúncios: o título
+   "grita". CAIXA-ALTA, grande e impactante. A leitura vem
+   primeiro. Nunca minúsculas no título de impacto, nunca
+   manuscrita/cursiva, nunca texto pequeno ilegível.
+   Elegância via tracking, respiro entre linhas e hierarquia
+   (tamanho/peso/cor) — não via decoração.
+   Use Spectral; o registro editorial (sentence-case) fica só
+   para texto longo de PRODUTO (site/app), não para criativos.
+   ============================================================ */
+:root {
+  --type-impact-family: var(--font-display);
+  --type-impact-weight: var(--weight-semibold);   /* 600 — presença */
+  --type-impact-leading: 1.04;                     /* respiro firme  */
+  --type-impact-tracking: 0.015em;                 /* caps respiram  */
+}
+.elv-impact {
+  font-family: var(--type-impact-family);
+  font-weight: var(--type-impact-weight);
+  text-transform: uppercase;
+  letter-spacing: var(--type-impact-tracking);
+  line-height: var(--type-impact-leading);
+  color: var(--text-strong);
+  text-wrap: balance;
+}
+/* Gold or wine emphasis word inside an impact headline (cor = hierarquia) */
+.elv-impact .accent { color: var(--text-gold); }
+.elv-impact .accent-wine { color: var(--wine-600); }
+/* Kicker above an impact headline — small caps label, wide tracking */
+.elv-impact-kicker {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-gold);
+}
