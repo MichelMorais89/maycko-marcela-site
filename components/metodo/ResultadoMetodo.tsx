@@ -26,22 +26,33 @@ export function ResultadoMetodo() {
     >
       {/* Foto full-bleed */}
       <Image
-        src="/photos/stock/casal-montanha-bw.jpg"
-        alt="Casal conquistando o topo"
+        src="/photos/stock/conquista-casal-praia.jpg"
+        alt="Casal em conquista — intimidade, presença e destino"
         fill
         sizes="100vw"
-        style={{ objectFit: 'cover', objectPosition: '20% 35%' }}
+        style={{ objectFit: 'cover', objectPosition: '55% 40%' }}
         priority={false}
       />
 
-      {/* Overlay: escuro à esquerda (casal), claro à direita (copy legível em vinho) */}
+      {/* Overlay: escuro à esquerda (casal respira), creme sólido à direita (copy vinho ganha contraste) */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(to right, rgba(10,5,8,0.92) 0%, rgba(20,10,14,0.65) 38%, rgba(240,225,200,0.55) 65%, rgba(250,238,215,0.72) 100%)',
+            'linear-gradient(to right, rgba(10,5,8,0.55) 0%, rgba(20,10,14,0.35) 30%, rgba(245,232,208,0.92) 55%, var(--surface-cream, #f5e8d0) 72%)',
+        }}
+      />
+      {/* Vinheta superior/inferior pra dar profundidade */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'linear-gradient(to bottom, rgba(10,5,8,0.35) 0%, transparent 20%, transparent 82%, rgba(10,5,8,0.28) 100%)',
+          pointerEvents: 'none',
         }}
       />
 
@@ -137,7 +148,7 @@ export function ResultadoMetodo() {
                       className="elv-sans"
                       style={{
                         fontSize: 'clamp(0.88rem, 1.1vw, 0.98rem)',
-                        color: 'rgba(61,10,20,0.72)',
+                        color: 'rgba(61,10,20,0.85)',
                         margin: 0,
                         lineHeight: 1.5,
                       }}

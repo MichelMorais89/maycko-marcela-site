@@ -3,58 +3,31 @@ import { Reveal } from '@/components/shared/Reveal'
 import { Photo } from '@/components/shared/Photo'
 import { SplitText } from '@/components/motion/SplitText'
 import { Ornament } from '@/components/shared/Ornament'
-
-const BIO = [
-  'Há mais de vinte anos caminhamos juntos.',
-  'Somos casados há treze anos e pais de três filhos.',
-  'A Elevem-se nasceu da nossa própria história.',
-  'Antes de ensinar qualquer princípio, nós o vivemos.',
-  'Aprendemos, erramos, reconstruímos, amadurecemos e estruturamos aquilo que hoje compartilhamos com centenas de casais.',
-  'Não acreditamos em fórmulas prontas.',
-  'Acreditamos em princípios sólidos que fortalecem relacionamentos para toda a vida.',
-]
+import { BrandArrow } from '@/components/shared/BrandArrow'
 
 export function Mentores() {
   return (
-    <section className="elv-sec elv-sec--cream">
+    <section className="elv-sec elv-sec--cream" style={{ paddingBlock: 'clamp(6rem, 12vw, 10rem)' }}>
       <div className="elv-wrap">
-        <Reveal className="elv-center" style={{ marginBottom: 'var(--space-10)' }}>
-          <Ornament tone="gold" style={{ marginBottom: 'var(--space-5)', opacity: 0.85 }} />
-          <p
-            className="elv-sans"
-            style={{
-              fontSize: 'clamp(0.75rem, 0.7rem + 0.2vw, 0.9rem)',
-              letterSpacing: '0.26em',
-              textTransform: 'uppercase',
-              color: 'var(--gold-600, #8a6a2c)',
-              fontWeight: 600,
-              marginBottom: 'var(--space-4)',
-            }}
-          >
-            Quem conduz essa jornada
-          </p>
-          <h2
-            className="elv-serif elv-fluid-h2"
-            style={{ color: 'var(--text-strong)', margin: 0 }}
-          >
-            <SplitText mode="chars" staggerMs={40}>Maycko & Marcela</SplitText>
-          </h2>
-        </Reveal>
-
         <div
           className="mentores-row"
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
-            gap: 'var(--space-11)',
+            gap: 'clamp(3rem, 8vw, 7rem)',
             alignItems: 'center',
           }}
         >
-          {/* Foto do casal juntos */}
+          {/* Foto casal */}
           <Reveal className="elv-sticky-col">
             <div
-              className="elv-photo-oval"
-              style={{ position: 'relative', aspectRatio: '4 / 5' }}
+              className="elv-photo-oval elv-photo-hover"
+              style={{
+                position: 'relative',
+                aspectRatio: '4 / 5',
+                borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
+                overflow: 'hidden',
+              }}
             >
               <Photo
                 src="/photos/mentores-couple.jpg"
@@ -66,73 +39,92 @@ export function Mentores() {
             </div>
           </Reveal>
 
-          {/* Bio conjunta */}
-          <div style={{ paddingTop: 'var(--space-3)' }}>
-            <Reveal
-              as="div"
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 'var(--space-4)',
-                maxWidth: '46ch',
-              }}
-            >
-              {BIO.map((line, i) => (
+          {/* Texto enxuto */}
+          <div>
+            <Reveal>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 'var(--space-3)',
+                  marginBottom: 'var(--space-5)',
+                }}
+              >
+                <Ornament variant="rule" ruleWidth={44} tone="gold" style={{ opacity: 0.8 }} />
                 <p
-                  key={i}
-                  className={i === BIO.length - 1 ? 'elv-serif' : 'elv-sans'}
+                  className="elv-sans"
                   style={{
-                    fontSize: i === BIO.length - 1 ? 'clamp(1.15rem, 1.8vw, 1.5rem)' : 'clamp(1rem, 1.35vw, 1.15rem)',
-                    fontStyle: i === BIO.length - 1 ? 'italic' : 'normal',
-                    color: i === BIO.length - 1 ? 'var(--wine-700)' : 'var(--text-body)',
-                    lineHeight: 'var(--leading-relaxed)',
+                    fontSize: 'clamp(1rem, 1.15vw, 1.35rem)',
+                    letterSpacing: '0.26em',
+                    textTransform: 'uppercase',
+                    color: 'var(--gold-600, #8a6a2c)',
+                    fontWeight: 600,
                     margin: 0,
                   }}
                 >
-                  {line}
+                  Quem conduz essa jornada
                 </p>
-              ))}
+              </div>
             </Reveal>
 
-            <Reveal delay={2} style={{ marginTop: 'var(--space-8)' }}>
+            <Reveal delay={1}>
+              <h2
+                className="elv-serif"
+                style={{
+                  fontSize: 'clamp(1.9rem, 3.8vw, 3.4rem)',
+                  color: 'var(--text-strong)',
+                  lineHeight: 1.05,
+                  margin: 0,
+                  fontWeight: 'var(--weight-medium)',
+                  letterSpacing: '-0.005em',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <SplitText mode="chars" staggerMs={38}>Maycko & Marcela</SplitText>
+              </h2>
+            </Reveal>
+
+            <Reveal delay={2} style={{ marginTop: 'var(--space-7)' }}>
               <p
                 className="elv-serif"
                 style={{
-                  fontStyle: 'italic',
-                  fontSize: 'clamp(1.2rem, 2vw, 1.7rem)',
-                  color: 'var(--gold-600, #8a6a2c)',
-                  lineHeight: 1.35,
+                  fontSize: 'clamp(1.2rem, 1.9vw, 1.6rem)',
+                  color: 'var(--text-body)',
+                  lineHeight: 1.4,
                   margin: 0,
                   maxWidth: '30ch',
+                  fontStyle: 'italic',
                 }}
               >
-                Porque ensinamos aquilo que construímos.
+                Há mais de duas décadas construindo aquilo que hoje ensinam para outros casais.
               </p>
             </Reveal>
-          </div>
-        </div>
 
-        <div className="elv-center" style={{ marginTop: 'var(--space-10)' }}>
-          <Link
-            href="/sobre"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              padding: '12px 24px',
-              borderRadius: 'var(--radius-pill)',
-              border: '1px solid var(--gold-500)',
-              color: 'var(--wine-700)',
-              background: 'transparent',
-              fontFamily: 'var(--font-sans)',
-              fontSize: 'var(--text-xs)',
-              fontWeight: 'var(--weight-medium)',
-              letterSpacing: 'var(--tracking-wider)',
-              textTransform: 'uppercase',
-              textDecoration: 'none',
-            }}
-          >
-            Conhecer a história
-          </Link>
+            <Reveal delay={3} style={{ marginTop: 'var(--space-9)' }}>
+              <Link
+                href="/sobre"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 10,
+                  padding: '14px 28px',
+                  borderRadius: 'var(--radius-pill)',
+                  border: '1px solid var(--gold-500)',
+                  color: 'var(--wine-700)',
+                  background: 'transparent',
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: 'var(--text-xs)',
+                  fontWeight: 600,
+                  letterSpacing: 'var(--tracking-wider)',
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                }}
+              >
+                Conheça nossa história
+                <BrandArrow variant="fios" size={18} />
+              </Link>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

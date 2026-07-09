@@ -15,7 +15,7 @@ export function SobreVideo() {
     >
       {/* Vídeo background */}
       <video
-        src="/videos/casal-2.mp4"
+        src="/videos/essencia.mp4"
         autoPlay
         muted
         loop

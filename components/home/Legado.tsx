@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Reveal } from '@/components/shared/Reveal'
 import { SplitText } from '@/components/motion/SplitText'
 import { Ornament } from '@/components/shared/Ornament'
@@ -28,13 +27,23 @@ export function Legado() {
         overflow: 'hidden',
       }}
     >
-      {/* Foto full-bleed com casal reposicionado pra ESQUERDA */}
-      <Image
-        src="/photos/legado-couple-white.jpg"
-        alt="Maycko e Marcela"
-        fill
-        sizes="100vw"
-        style={{ objectFit: 'cover', objectPosition: '18% 28%' }}
+      {/* Vídeo full-bleed — legado começa aqui */}
+      <video
+        src="/videos/legado-inicio.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: '30% 50%',
+        }}
       />
       {/* Overlay: escurece à direita pra copy respirar */}
       <div
@@ -43,7 +52,7 @@ export function Legado() {
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(to left, rgba(42,16,22,0.95) 0%, rgba(42,16,22,0.82) 45%, rgba(42,16,22,0.20) 100%)',
+            'linear-gradient(to left, rgba(42,16,22,0.95) 0%, rgba(42,16,22,0.82) 45%, rgba(42,16,22,0.28) 100%)',
         }}
       />
 
@@ -76,7 +85,7 @@ export function Legado() {
                 margin: 0,
               }}
             >
-              No final da vida…
+              Legado começa aqui
             </p>
           </Reveal>
 

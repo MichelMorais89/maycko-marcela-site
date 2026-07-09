@@ -5,7 +5,7 @@ import { SobreMarcela } from '@/components/sobre/SobreMarcela'
 import { SobreMaycko } from '@/components/sobre/SobreMaycko'
 import { SobrePrincipios } from '@/components/sobre/SobrePrincipios'
 import { SobreVideo } from '@/components/sobre/SobreVideo'
-import { SobreLegado } from '@/components/sobre/SobreLegado'
+import { SobreIntimidadePresenca } from '@/components/sobre/SobreIntimidadePresenca'
 import { SobreCTA } from '@/components/sobre/SobreCTA'
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default function SobrePage() {
       <SobreMaycko />
       <SobrePrincipios />
       <SobreVideo />
-      <SobreLegado />
+      <SobreIntimidadePresenca />
       <SobreCTA />
     </>
   )

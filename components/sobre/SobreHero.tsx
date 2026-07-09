@@ -17,12 +17,12 @@ export function SobreHero() {
       {/* Foto full-bleed */}
       <div style={{ position: 'absolute', inset: 0 }}>
         <Image
-          src="/photos/hero-couple.jpg"
+          src="/photos/sobre-hero-couple-black.jpg"
           alt="Maycko e Marcela"
           fill
           priority
           sizes="100vw"
-          style={{ objectFit: 'cover', objectPosition: '50% 30%' }}
+          style={{ objectFit: 'cover', objectPosition: '50% 25%' }}
         />
         {/* Overlay vinho dominante na base */}
         <div

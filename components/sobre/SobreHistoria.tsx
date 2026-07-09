@@ -22,14 +22,14 @@ export function SobreHistoria() {
             alignItems: 'stretch',
           }}
         >
-          {/* Foto casal */}
+          {/* Foto casal (nova #45 navy) — com sway */}
           <Reveal style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ position: 'relative', flexGrow: 1, minHeight: '400px', overflow: 'hidden', borderRadius: 'var(--radius-lg)' }}>
+            <div className="elv-photo-sway" style={{ position: 'relative', flexGrow: 1, minHeight: '400px', overflow: 'hidden', borderRadius: 'var(--radius-lg)' }}>
               <Photo
-                src="/photos/mentores-couple.jpg"
-                alt="Maycko e Marcela"
+                src="/photos/mentores-couple-warm.jpg"
+                alt="Maycko e Marcela — mentores em ação"
                 ratio="4 / 5"
-                position="50% 20%"
+                position="50% 22%"
                 sizes="(max-width: 768px) 100vw, 44vw"
                 priority
               />

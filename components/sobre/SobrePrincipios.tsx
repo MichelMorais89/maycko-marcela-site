@@ -38,7 +38,7 @@ type Principio = (typeof PRINCIPIOS)[number]
 
 function PrincipioCard({ p, delay }: { p: Principio; delay: 0 | 1 | 2 | 3 }) {
   return (
-    <Reveal delay={delay}>
+    <Reveal delay={delay} style={{ display: 'flex', width: '100%', height: '100%' }}>
       <div
         className="elv-hover-card"
         style={{
@@ -48,7 +48,8 @@ function PrincipioCard({ p, delay }: { p: Principio; delay: 0 | 1 | 2 | 3 }) {
           borderRadius: 'var(--radius-lg)',
           padding: 'var(--space-7) var(--space-6)',
           overflow: 'hidden',
-          height: '100%',
+          width: '100%',
+          minHeight: '100%',
         }}
       >
         <span
@@ -182,6 +183,7 @@ export function SobrePrincipios() {
             style={{
               display: 'flex',
               justifyContent: 'center',
+              alignItems: 'stretch',
               gap: 'var(--space-6)',
               flexWrap: 'wrap',
             }}
@@ -192,6 +194,8 @@ export function SobrePrincipios() {
                 style={{
                   flex: '0 1 calc((100% - 2 * var(--space-6)) / 3)',
                   minWidth: 280,
+                  display: 'flex',
+                  alignSelf: 'stretch',
                 }}
               >
                 <PrincipioCard p={p} delay={((i + 3) % 4) as 0 | 1 | 2 | 3} />

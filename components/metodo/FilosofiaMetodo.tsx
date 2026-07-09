@@ -165,6 +165,7 @@ export function FilosofiaMetodo() {
             gap: 'clamp(20px, 2.5vw, 36px)',
             maxWidth: 860,
             marginInline: 'auto',
+            alignItems: 'stretch',
           }}
         >
           {PILLARS.map((p, i) => (
@@ -178,8 +179,9 @@ export function FilosofiaMetodo() {
                       maxWidth: 'calc(50% - clamp(8px, 1vw, 14px))',
                       justifySelf: 'center',
                       width: '100%',
+                      display: 'flex',
                     }
-                  : {}
+                  : { display: 'flex', width: '100%', height: '100%' }
               }
             >
               <article
@@ -194,6 +196,7 @@ export function FilosofiaMetodo() {
                     '0 14px 40px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,220,150,0.08)',
                   textAlign: 'center',
                   minHeight: 340,
+                  width: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',

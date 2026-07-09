@@ -44,7 +44,7 @@ export function HeroMetodo() {
         }}
       >
         <video
-          src="/videos/casal-3-hd.mp4"
+          src="/videos/caminho-metodo.mp4"
           autoPlay
           muted
           loop

@@ -2,101 +2,262 @@ import { Reveal } from '@/components/shared/Reveal'
 import { SplitText } from '@/components/motion/SplitText'
 import { Ornament } from '@/components/shared/Ornament'
 
-const PARTIAL_TRUTHS = [
-  { strong: 'Vocês se amam.', rest: '' },
-  { strong: 'Vocês constroem juntos.', rest: '' },
-  { strong: 'Vocês querem crescer.', rest: '' },
-]
-
-const PILLARS = [
+const PILARES = [
   {
-    title: 'Propósito',
-    tagline: 'Direção clara pra caminhar juntos',
+    title: 'Intenção',
+    tagline: 'Nada aqui é deixado ao acaso',
     icon: (
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="elv-pillar-flame" style={{ width: '100%', height: '100%' }}>
+      // Bússola — direção clara, propósito de norte
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
         <defs>
-          <linearGradient id="flameGrad" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0%" stopColor="var(--wine-600)" />
-            <stop offset="100%" stopColor="var(--gold-400)" />
+          <linearGradient id="intencaoGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="var(--gold-300)" />
+            <stop offset="100%" stopColor="var(--gold-500)" />
           </linearGradient>
         </defs>
-        {/* Base da chama */}
+        {/* Anel externo da bússola */}
+        <circle cx="50" cy="50" r="36" fill="none" stroke="url(#intencaoGrad)" strokeWidth="1.5" />
+        <circle cx="50" cy="50" r="32" fill="none" stroke="url(#intencaoGrad)" strokeWidth="1" opacity="0.35" />
+        {/* Marcas dos 4 pontos cardeais */}
+        <line x1="50" y1="14" x2="50" y2="22" stroke="url(#intencaoGrad)" strokeWidth="1.6" strokeLinecap="round" />
+        <line x1="50" y1="78" x2="50" y2="86" stroke="url(#intencaoGrad)" strokeWidth="1.2" strokeLinecap="round" opacity="0.55" />
+        <line x1="14" y1="50" x2="22" y2="50" stroke="url(#intencaoGrad)" strokeWidth="1.2" strokeLinecap="round" opacity="0.55" />
+        <line x1="78" y1="50" x2="86" y2="50" stroke="url(#intencaoGrad)" strokeWidth="1.2" strokeLinecap="round" opacity="0.55" />
+        {/* Agulha norte (dourado sólido) — mais destaque */}
         <path
-          d="M50 88 C 40 84 34 76 34 66 C 34 58 38 52 42 46 C 42 52 46 54 50 54 C 54 54 58 52 58 46 C 62 52 66 58 66 66 C 66 76 60 84 50 88 Z"
-          fill="none"
-          stroke="url(#flameGrad)"
-          strokeWidth="1.4"
-        />
-        {/* Chama interna */}
-        <path
-          d="M50 78 C 44 74 42 68 44 62 C 46 58 49 56 50 52 C 51 56 54 58 56 62 C 58 68 56 74 50 78 Z"
+          d="M 50 22 L 55 50 L 50 44 L 45 50 Z"
           fill="var(--gold-500)"
-          opacity="0.55"
-        />
-        {/* Detalhe superior */}
-        <circle cx="50" cy="20" r="1.5" fill="var(--gold-400)" opacity="0.7" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Aliança',
-    tagline: 'Duas vidas alinhadas em um só sentido',
-    icon: (
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="elv-pillar-rings" style={{ width: '100%', height: '100%' }}>
-        <defs>
-          <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="var(--gold-300)" />
-            <stop offset="100%" stopColor="var(--gold-500)" />
-          </linearGradient>
-        </defs>
-        {/* Anel esquerdo */}
-        <circle cx="38" cy="50" r="22" fill="none" stroke="url(#ringGrad)" strokeWidth="1.6" />
-        <circle cx="38" cy="50" r="22" fill="none" stroke="var(--gold-400)" strokeWidth="0.4" opacity="0.5" transform="translate(0.8 0.8)" />
-        {/* Anel direito */}
-        <circle cx="62" cy="50" r="22" fill="none" stroke="url(#ringGrad)" strokeWidth="1.6" />
-        <circle cx="62" cy="50" r="22" fill="none" stroke="var(--gold-400)" strokeWidth="0.4" opacity="0.5" transform="translate(0.8 0.8)" />
-        {/* Ponto de encontro */}
-        <circle cx="50" cy="50" r="1.8" fill="var(--gold-500)" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Estrutura',
-    tagline: 'A base que sustenta o casamento',
-    icon: (
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="elv-pillar-column" style={{ width: '100%', height: '100%' }}>
-        <defs>
-          <linearGradient id="colGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="var(--gold-300)" />
-            <stop offset="100%" stopColor="var(--gold-500)" />
-          </linearGradient>
-        </defs>
-        {/* Ápice (frontão) */}
-        <path
-          d="M 20 22 L 50 10 L 80 22 Z"
-          fill="none"
-          stroke="url(#colGrad)"
-          strokeWidth="1.5"
+          stroke="var(--gold-400)"
+          strokeWidth="0.5"
           strokeLinejoin="round"
         />
-        {/* Capitel */}
-        <rect x="22" y="24" width="56" height="5" fill="none" stroke="url(#colGrad)" strokeWidth="1.5" />
-        <rect x="26" y="29" width="48" height="3" fill="none" stroke="url(#colGrad)" strokeWidth="1.2" />
-        {/* Fuste com estrias — coluna central em destaque */}
-        <line x1="30" y1="32" x2="30" y2="76" stroke="url(#colGrad)" strokeWidth="1.6" />
-        <line x1="38" y1="32" x2="38" y2="76" stroke="url(#colGrad)" strokeWidth="1" opacity="0.55" />
-        <line x1="46" y1="32" x2="46" y2="76" stroke="url(#colGrad)" strokeWidth="1" opacity="0.55" />
-        {/* Pilar central destacado */}
-        <line x1="50" y1="32" x2="50" y2="76" stroke="url(#colGrad)" strokeWidth="1.8" />
-        <line x1="54" y1="32" x2="54" y2="76" stroke="url(#colGrad)" strokeWidth="1" opacity="0.55" />
-        <line x1="62" y1="32" x2="62" y2="76" stroke="url(#colGrad)" strokeWidth="1" opacity="0.55" />
-        <line x1="70" y1="32" x2="70" y2="76" stroke="url(#colGrad)" strokeWidth="1.6" />
-        {/* Base 1 */}
-        <rect x="26" y="76" width="48" height="3" fill="none" stroke="url(#colGrad)" strokeWidth="1.2" />
-        {/* Base 2 */}
-        <rect x="22" y="79" width="56" height="5" fill="none" stroke="url(#colGrad)" strokeWidth="1.5" />
-        {/* Base 3 (pedestal) */}
-        <rect x="18" y="84" width="64" height="6" fill="none" stroke="url(#colGrad)" strokeWidth="1.4" />
+        {/* Agulha sul (contorno apenas) */}
+        <path
+          d="M 50 78 L 55 50 L 50 56 L 45 50 Z"
+          fill="none"
+          stroke="url(#intencaoGrad)"
+          strokeWidth="1.3"
+          strokeLinejoin="round"
+          opacity="0.55"
+        />
+        {/* Pivô central */}
+        <circle cx="50" cy="50" r="2.5" fill="var(--gold-500)" />
+        <circle cx="50" cy="50" r="4" fill="none" stroke="url(#intencaoGrad)" strokeWidth="0.8" opacity="0.5" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Maturidade',
+    tagline: 'A escuta amplia. O ego recua',
+    icon: (
+      // Árvore da vida — copa cheia com galhos + tronco + raízes em espelho
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+        <defs>
+          <linearGradient id="maturidadeGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="var(--gold-300)" />
+            <stop offset="100%" stopColor="var(--gold-500)" />
+          </linearGradient>
+        </defs>
+
+        {/* Linha do solo (horizonte suave) */}
+        <line
+          x1="14"
+          y1="52"
+          x2="86"
+          y2="52"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="0.7"
+          strokeLinecap="round"
+          strokeDasharray="1.5 3"
+          opacity="0.35"
+        />
+
+        {/* Copa preenchida sutil — dá volume */}
+        <path
+          d="M 50 8
+             C 34 8, 22 20, 24 32
+             C 20 32, 16 36, 18 42
+             C 22 48, 30 50, 38 48
+             C 42 50, 44 50, 50 50
+             C 56 50, 58 50, 62 48
+             C 70 50, 78 48, 82 42
+             C 84 36, 80 32, 76 32
+             C 78 20, 66 8, 50 8 Z"
+          fill="url(#maturidadeGrad)"
+          opacity="0.10"
+        />
+        {/* Copa contorno */}
+        <path
+          d="M 50 8
+             C 34 8, 22 20, 24 32
+             C 20 32, 16 36, 18 42
+             C 22 48, 30 50, 38 48
+             C 42 50, 44 50, 50 50
+             C 56 50, 58 50, 62 48
+             C 70 50, 78 48, 82 42
+             C 84 36, 80 32, 76 32
+             C 78 20, 66 8, 50 8 Z"
+          fill="none"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="1.4"
+          strokeLinejoin="round"
+        />
+
+        {/* Galhos internos (esqueleto da copa) */}
+        <path
+          d="M 50 50 L 50 22"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          opacity="0.55"
+        />
+        <path
+          d="M 50 30 L 40 22 M 50 30 L 60 22"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="1"
+          strokeLinecap="round"
+          opacity="0.45"
+        />
+        <path
+          d="M 50 38 L 36 34 M 50 38 L 64 34"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="1"
+          strokeLinecap="round"
+          opacity="0.45"
+        />
+
+        {/* Tronco */}
+        <path
+          d="M 47 50 L 47 62 L 53 62 L 53 50"
+          fill="url(#maturidadeGrad)"
+          opacity="0.85"
+        />
+        <path
+          d="M 47 50 L 47 62 M 53 50 L 53 62"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+        <line
+          x1="47"
+          y1="62"
+          x2="53"
+          y2="62"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+
+        {/* Raízes — espelho da copa em formato mais aberto */}
+        {/* Raiz principal central */}
+        <path
+          d="M 50 62 L 50 90"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+        />
+        {/* Raízes secundárias — curvas suaves saindo do tronco */}
+        <path
+          d="M 47 62 C 40 68, 30 74, 22 84"
+          fill="none"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+        <path
+          d="M 53 62 C 60 68, 70 74, 78 84"
+          fill="none"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+        {/* Raízes intermediárias */}
+        <path
+          d="M 48 68 C 42 74, 36 80, 32 88"
+          fill="none"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          opacity="0.65"
+        />
+        <path
+          d="M 52 68 C 58 74, 64 80, 68 88"
+          fill="none"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          opacity="0.65"
+        />
+        {/* Sub-raízes terminais */}
+        <path
+          d="M 30 78 L 26 84"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="0.9"
+          strokeLinecap="round"
+          opacity="0.5"
+        />
+        <path
+          d="M 70 78 L 74 84"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="0.9"
+          strokeLinecap="round"
+          opacity="0.5"
+        />
+        <path
+          d="M 42 82 L 38 88"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="0.8"
+          strokeLinecap="round"
+          opacity="0.4"
+        />
+        <path
+          d="M 58 82 L 62 88"
+          stroke="url(#maturidadeGrad)"
+          strokeWidth="0.8"
+          strokeLinecap="round"
+          opacity="0.4"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: 'Escolhas diárias',
+    tagline: 'A soma dos pequenos gestos que se tornam legado',
+    icon: (
+      // Tijolos empilhados — construção literal do casamento
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+        <defs>
+          <linearGradient id="escolhasGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="var(--gold-300)" />
+            <stop offset="100%" stopColor="var(--gold-500)" />
+          </linearGradient>
+        </defs>
+        {/* Linha 1 (topo) — 3 tijolos alinhados */}
+        <rect x="24" y="26" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" />
+        <rect x="41.5" y="26" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" />
+        <rect x="59" y="26" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" />
+        {/* Linha 2 — 4 tijolos deslocados (estilo tijolo travado) */}
+        <rect x="15.5" y="37" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.9" />
+        <rect x="33" y="37" width="17" height="10" fill="url(#escolhasGrad)" opacity="0.18" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" />
+        <rect x="50.5" y="37" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.9" />
+        <rect x="68" y="37" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.7" />
+        {/* Linha 3 — 3 tijolos alinhados */}
+        <rect x="24" y="48" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.9" />
+        <rect x="41.5" y="48" width="17" height="10" fill="url(#escolhasGrad)" opacity="0.25" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" />
+        <rect x="59" y="48" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.9" />
+        {/* Linha 4 — 4 tijolos deslocados */}
+        <rect x="15.5" y="59" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.75" />
+        <rect x="33" y="59" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.85" />
+        <rect x="50.5" y="59" width="17" height="10" fill="url(#escolhasGrad)" opacity="0.15" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" />
+        <rect x="68" y="59" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.75" />
+        {/* Base — linha do chão */}
+        <line x1="10" y1="72" x2="90" y2="72" stroke="url(#escolhasGrad)" strokeWidth="1.6" strokeLinecap="round" opacity="0.9" />
+        {/* Chama pequena no topo — coroa simbólica do que se constrói */}
+        <path
+          d="M 50 22 C 47 19 46 15 48 12 C 49 15 51 15 52 12 C 54 15 53 19 50 22 Z"
+          fill="var(--gold-500)"
+          opacity="0.75"
+        />
       </svg>
     ),
   },
@@ -110,31 +271,31 @@ export function Conceito() {
         background: 'var(--ink-900, #0a0709)',
         position: 'relative',
         overflow: 'hidden',
-        paddingBlock: 'clamp(90px, 12vw, 150px)',
+        paddingBlock: 'clamp(7rem, 14vw, 12rem)',
         color: 'var(--white-warm)',
       }}
     >
-      {/* Aurora sutil */}
+      {/* Aurora */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
           background:
-            'radial-gradient(ellipse 60% 50% at 20% 15%, rgba(184,140,72,0.10) 0%, transparent 65%), radial-gradient(ellipse 55% 50% at 85% 90%, rgba(122,28,46,0.15) 0%, transparent 60%)',
+            'radial-gradient(ellipse 65% 55% at 20% 15%, rgba(184,140,72,0.10) 0%, transparent 65%), radial-gradient(ellipse 60% 55% at 85% 90%, rgba(122,28,46,0.15) 0%, transparent 60%)',
           pointerEvents: 'none',
         }}
       />
 
       <div className="elv-wrap elv-wrap--md" style={{ position: 'relative', zIndex: 1 }}>
-        {/* Header */}
+        {/* Header eyebrow com ornamento estilo V1 */}
         <Reveal className="elv-center" style={{ marginBottom: 'var(--space-9)' }}>
           <Ornament tone="gold" style={{ marginBottom: 'var(--space-5)' }} />
           <p
             className="elv-sans"
             style={{
-              fontSize: 'clamp(0.75rem, 0.7rem + 0.2vw, 0.9rem)',
-              letterSpacing: '0.26em',
+              fontSize: 'clamp(0.85rem, 1.05vw, 1.05rem)',
+              letterSpacing: '0.28em',
               textTransform: 'uppercase',
               color: 'var(--gold-400)',
               fontWeight: 600,
@@ -145,23 +306,24 @@ export function Conceito() {
           </p>
         </Reveal>
 
-        {/* H2 gigante caixa-alta serifado */}
+        {/* H2 GIGANTE CAIXA-ALTA — estilo V1 */}
         <Reveal className="elv-center">
           <h2
             className="elv-serif"
             style={{
-              fontSize: 'clamp(2rem, 4vw, 3.6rem)',
+              fontSize: 'clamp(2.4rem, 6vw, 5.5rem)',
               color: 'var(--white-warm)',
-              lineHeight: 1.1,
+              lineHeight: 1.05,
               margin: '0 auto',
-              maxWidth: '20ch',
-              textTransform: 'uppercase',
-              letterSpacing: '0.01em',
+              maxWidth: '18ch',
               fontWeight: 'var(--weight-medium)',
+              letterSpacing: '0.015em',
+              textAlign: 'center',
+              textTransform: 'uppercase',
               textWrap: 'balance',
             }}
           >
-            <SplitText>Nenhum casamento extraordinário nasce</SplitText>{' '}
+            <SplitText>{`O QUE SIGNIFICA`}</SplitText>{' '}
             <em
               style={{
                 fontStyle: 'italic',
@@ -170,31 +332,36 @@ export function Conceito() {
                 textTransform: 'lowercase',
               }}
             >
-              <SplitText delay={500}>por sorte.</SplitText>
+              <SplitText delay={400}>{`Elevem-se?`}</SplitText>
             </em>
           </h2>
+
+          {/* Subtítulo dourado */}
           <p
             className="elv-serif"
             style={{
-              marginTop: 'var(--space-6)',
-              fontSize: 'clamp(1.1rem, 1.8vw, 1.55rem)',
+              marginTop: 'var(--space-8)',
+              fontSize: 'clamp(1.2rem, 2vw, 1.7rem)',
               color: 'var(--gold-300)',
               fontStyle: 'italic',
-              lineHeight: 1.35,
-              maxWidth: '38ch',
+              lineHeight: 1.4,
+              maxWidth: '46ch',
               marginInline: 'auto',
+              textAlign: 'center',
             }}
           >
-            Alguns são <em style={{ fontStyle: 'italic', color: 'var(--gold-400)' }}>construídos</em> — com estrutura, alinhamento e decisão diária.
+            Elevar-se é{' '}
+            <em style={{ color: 'var(--gold-400)' }}>decidir crescer</em>{' '}
+            antes que os problemas obriguem vocês a mudar.
           </p>
         </Reveal>
 
         {/* Rule dourada */}
-        <div style={{ display: 'flex', justifyContent: 'center', margin: 'var(--space-10) 0 var(--space-9)' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', margin: 'clamp(48px, 6vw, 72px) 0 clamp(40px, 5vw, 64px)' }}>
           <Ornament variant="rule" ruleWidth={140} tone="gold" style={{ opacity: 0.7 }} />
         </div>
 
-        {/* Intro pra lista */}
+        {/* Intro pra corpo */}
         <Reveal className="elv-center">
           <p
             className="elv-sans"
@@ -202,48 +369,47 @@ export function Conceito() {
               fontSize: 'clamp(1rem, 1.4vw, 1.2rem)',
               color: 'rgba(255,248,235,0.72)',
               lineHeight: 'var(--leading-relaxed)',
-              margin: '0 auto var(--space-7)',
-              maxWidth: '42ch',
+              margin: '0 auto',
+              maxWidth: '46ch',
+              textAlign: 'center',
             }}
           >
-            Se vocês estão aqui, provavelmente já sabem:
+            É entender que um relacionamento saudável não nasce pronto.
           </p>
         </Reveal>
 
-        {/* Lista de verdades parciais — CENTRALIZADA */}
-        <Reveal delay={1} as="ul" style={{
-          listStyle: 'none',
-          margin: 0,
-          padding: 0,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 'var(--space-4)',
-        }}>
-          {PARTIAL_TRUTHS.map((t, i) => (
-            <li
-              key={i}
-              className="elv-sans"
+        {/* Statement destacado */}
+        <Reveal delay={1} className="elv-center" style={{ marginTop: 'var(--space-6)' }}>
+          <p
+            className="elv-serif"
+            style={{
+              fontSize: 'clamp(1.8rem, 3.4vw, 2.8rem)',
+              color: 'var(--white-warm)',
+              lineHeight: 1.25,
+              margin: '0 auto',
+              maxWidth: '20ch',
+              fontStyle: 'italic',
+              fontWeight: 500,
+              textAlign: 'center',
+            }}
+          >
+            Ele é{' '}
+            <span
               style={{
-                display: 'inline-flex',
-                gap: 'var(--space-3)',
-                alignItems: 'baseline',
-                fontSize: 'clamp(1.05rem, 1.5vw, 1.25rem)',
-                color: 'var(--white-warm)',
-                textAlign: 'center',
+                background:
+                  'linear-gradient(180deg, var(--gold-300) 0%, var(--gold-500) 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
               }}
             >
-              <span style={{ color: 'var(--gold-400)', fontSize: '0.7em', flexShrink: 0 }}>●</span>
-              <span>
-                <strong style={{ fontWeight: 600 }}>{t.strong}</strong>
-                {t.rest && <span style={{ color: 'rgba(255,248,235,0.72)' }}> {t.rest}</span>}
-              </span>
-            </li>
-          ))}
+              construído.
+            </span>
+          </p>
         </Reveal>
 
-        {/* Transição */}
-        <Reveal delay={2} className="elv-center" style={{ marginTop: 'var(--space-10)' }}>
+        {/* Ponte narrativa */}
+        <Reveal delay={2} className="elv-center" style={{ marginTop: 'clamp(48px, 6vw, 72px)' }}>
           <p
             className="elv-sans"
             style={{
@@ -251,11 +417,12 @@ export function Conceito() {
               color: 'rgba(255,248,235,0.72)',
               lineHeight: 'var(--leading-relaxed)',
               margin: 0,
-              maxWidth: '44ch',
+              maxWidth: '38ch',
               marginInline: 'auto',
+              textAlign: 'center',
             }}
           >
-            Mas quando o desafio real chega…
+            Não com sorte.
           </p>
           <p
             className="elv-sans"
@@ -264,13 +431,14 @@ export function Conceito() {
               fontWeight: 600,
               color: 'var(--white-warm)',
               margin: 'var(--space-3) 0 0',
+              textAlign: 'center',
             }}
           >
-            é preciso mais do que amor:
+            Com estes três pilares:
           </p>
         </Reveal>
 
-        {/* 3 pilares em TRIÂNGULO — 2 topo + 1 base centralizado */}
+        {/* 3 pilares em TRIÂNGULO — estilo V1 (2 em cima + 1 embaixo centralizado) */}
         <div
           className="conceito-triangle"
           style={{
@@ -282,7 +450,7 @@ export function Conceito() {
             marginInline: 'auto',
           }}
         >
-          {PILLARS.map((p, i) => (
+          {PILARES.map((p, i) => (
             <Reveal
               key={i}
               delay={(i % 3) as 0 | 1 | 2}
@@ -352,6 +520,30 @@ export function Conceito() {
             </Reveal>
           ))}
         </div>
+
+        {/* Assinatura filosofia */}
+        <Reveal delay={3} style={{ marginTop: 'clamp(56px, 7vw, 88px)' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--space-6)' }}>
+            <Ornament tone="gold" />
+          </div>
+          <p
+            className="elv-serif"
+            style={{
+              fontSize: 'clamp(1.15rem, 1.8vw, 1.55rem)',
+              color: 'var(--gold-300)',
+              lineHeight: 1.4,
+              margin: '0 auto',
+              maxWidth: '32ch',
+              textAlign: 'center',
+              fontStyle: 'italic',
+            }}
+          >
+            Essa é a{' '}
+            <strong style={{ color: 'var(--white-warm)', fontStyle: 'normal', fontWeight: 500 }}>
+              essência da Elevem-se.
+            </strong>
+          </p>
+        </Reveal>
       </div>
     </section>
   )

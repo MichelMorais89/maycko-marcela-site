@@ -214,9 +214,96 @@ button[data-variant] { white-space: nowrap; }
   box-shadow: 0 20px 50px rgba(0,0,0,0.45), 0 40px 100px rgba(184,140,72,0.10) !important;
 }
 
+/* ---- Photo sway — balanço pendular contínuo ----------- */
+@keyframes photoSway {
+  0%, 100% { transform: rotate(-0.5deg) translateY(0) scale(1.015); }
+  50% { transform: rotate(0.5deg) translateY(-8px) scale(1.015); }
+}
+@keyframes photoSwayInner {
+  0%, 100% { transform: scale(1.03) translate(-4px, 2px); }
+  50% { transform: scale(1.06) translate(4px, -4px); }
+}
+.elv-photo-sway {
+  animation: photoSway 8s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+.elv-photo-sway img,
+.elv-photo-sway video {
+  animation: photoSwayInner 12s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .elv-photo-sway,
+  .elv-photo-sway img,
+  .elv-photo-sway video { animation: none; }
+}
+
 /* ---- Manifesto photo parallax hover ------------------- */
-.elv-photo-hover { transition: transform 640ms cubic-bezier(0.16,1,0.3,1), filter 640ms ease; }
-.elv-photo-hover:hover { transform: scale(1.03); filter: brightness(1.05) contrast(1.08); }
+.elv-photo-hover {
+  transition: transform 900ms cubic-bezier(0.16,1,0.3,1), filter 900ms ease, box-shadow 900ms ease;
+  transform-origin: center;
+}
+.elv-photo-hover:hover {
+  transform: scale(1.04) rotate(-0.4deg);
+  filter: brightness(1.08) contrast(1.12) saturate(1.08);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.65), 0 60px 120px rgba(184,140,72,0.14), inset 0 0 0 1px rgba(184,140,72,0.24);
+}
+.elv-photo-hover img,
+.elv-photo-hover video {
+  transition: transform 1200ms cubic-bezier(0.16,1,0.3,1), filter 900ms ease;
+}
+.elv-photo-hover:hover img,
+.elv-photo-hover:hover video {
+  transform: scale(1.06);
+}
+
+/* ---- Full-bleed photo interactive — reveal on hover -- */
+.elv-photo-fullbleed {
+  overflow: hidden;
+  position: relative;
+}
+.elv-photo-fullbleed img,
+.elv-photo-fullbleed video {
+  transition: transform 1400ms cubic-bezier(0.16,1,0.3,1), filter 900ms ease;
+  will-change: transform;
+}
+.elv-photo-fullbleed:hover img,
+.elv-photo-fullbleed:hover video {
+  transform: scale(1.045);
+  filter: brightness(1.06) contrast(1.05) saturate(1.05);
+}
+
+/* Shimmer diagonal — passa uma luz na foto ao hover */
+.elv-photo-fullbleed::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 60%;
+  height: 300%;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,220,150,0.10) 48%, rgba(255,240,200,0.16) 50%, rgba(255,220,150,0.10) 52%, transparent 70%);
+  transform: translateX(-50%) rotate(0deg);
+  transition: opacity 400ms ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.elv-photo-fullbleed:hover::before {
+  opacity: 1;
+  animation: photoShimmer 1400ms cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes photoShimmer {
+  from { transform: translate(-100%, -50%) rotate(0deg); }
+  to { transform: translate(300%, -50%) rotate(0deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .elv-photo-hover, .elv-photo-fullbleed { transition: none; }
+  .elv-photo-hover:hover, .elv-photo-fullbleed:hover { transform: none; filter: none; }
+  .elv-photo-hover:hover img, .elv-photo-fullbleed:hover img { transform: none; }
+  .elv-photo-fullbleed::before { display: none; }
+}
 
 /* ---- Prova stat card hover ---------------------------- */
 .elv-stat-card {
@@ -245,6 +332,50 @@ button[data-variant] { white-space: nowrap; }
 }
 @media (prefers-reduced-motion: reduce) {
   .elv-hero-photo-fade { animation: none; opacity: 1; }
+}
+
+/* ---- Strike-through RÁPIDO (EvolucaoSemCrise) ---------- */
+@keyframes strikeFast {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.elv-strike-fast::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 55%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, rgba(164,74,92,0.9) 0%, rgba(122,28,46,0.85) 100%);
+  transform: translateY(-50%);
+  animation: strikeFast 2400ms linear 1400ms forwards;
+}
+.asc-reveal .elv-strike-fast::after,
+.is-in .elv-strike-fast::after { animation-play-state: running; }
+@media (prefers-reduced-motion: reduce) {
+  .elv-strike-fast::after { animation: none; width: 100%; }
+}
+
+/* ---- Underline dourado (EvolucaoSemCrise) -------------- */
+@keyframes underlineIn {
+  from { transform: scaleX(0); opacity: 0.4; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+.elv-underline-gold::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 3px;
+  background: linear-gradient(to right, var(--gold-500) 0%, var(--gold-300) 50%, var(--gold-500) 100%);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: underlineIn 2400ms cubic-bezier(0.22, 1, 0.36, 1) 4400ms forwards;
+  box-shadow: 0 0 12px rgba(184,140,72,0.35);
+}
+@media (prefers-reduced-motion: reduce) {
+  .elv-underline-gold::after { animation: none; transform: scaleX(1); opacity: 1; }
 }
 
 /* ---- Strike-through progressivo (Legado) --------------- */

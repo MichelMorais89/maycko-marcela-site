@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { HeroMetodo } from '@/components/metodo/HeroMetodo'
 import { FilosofiaMetodo } from '@/components/metodo/FilosofiaMetodo'
 import { TimelineMetodo } from '@/components/metodo/TimelineMetodo'
-import { FormatoEncontros } from '@/components/metodo/FormatoEncontros'
 import { ResultadoMetodo } from '@/components/metodo/ResultadoMetodo'
 
 export const metadata: Metadata = {
@@ -23,7 +22,6 @@ export default function MetodoPage() {
       <HeroMetodo />
       <FilosofiaMetodo />
       <TimelineMetodo />
-      <FormatoEncontros />
       <ResultadoMetodo />
     </>
   )
