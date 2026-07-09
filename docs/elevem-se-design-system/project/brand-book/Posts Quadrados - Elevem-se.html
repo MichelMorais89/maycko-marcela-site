@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elevem-se — Posts quadrados</title>
+<link rel="icon" href="assets/elevemse-monogram.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  deck-stage:not(:defined) { visibility: hidden; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #1C1518; }
+
+  .sq {
+    width: 1080px; height: 1080px; position: relative; overflow: hidden;
+    background: var(--ivory); color: var(--text-strong);
+    font-family: var(--font-sans);
+    display: flex; flex-direction: column;
+    padding: 92px 88px;
+  }
+  .sq--wine { background: var(--wine-600); color: var(--gold-100); }
+  .sq--noir { background: var(--ink-900); color: #D8DCE3; }
+  .sq--cream { background: var(--cream); }
+
+  /* chrome */
+  .top { display: flex; justify-content: space-between; align-items: center; flex: none; }
+  .top .lg { display: flex; align-items: center; gap: 16px; }
+  .top .lg img { width: 46px; height: 46px; }
+  .top .lg b { font-family: var(--font-display); font-weight: 500; font-size: 30px; color: var(--wine-700); }
+  .sq--wine .top .lg b, .sq--noir .top .lg b { color: var(--white-warm); }
+  .top .pg { font-size: 19px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--text-gold); }
+  .sq--wine .top .pg, .sq--noir .top .pg { color: var(--gold-300); }
+
+  .mid { flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+
+  .kick { font-family: var(--font-sans); font-weight: 600; font-size: 24px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-gold); margin: 0; }
+  .sq--wine .kick, .sq--noir .kick { color: var(--gold-300); }
+  .tick { width: 64px; height: 3px; background: var(--gold-500); border: 0; margin: 26px 0; flex: none; }
+  .sq--wine .tick, .sq--noir .tick { background: var(--gold-400); }
+  .ttl { font-family: var(--font-display); font-weight: 400; font-size: 76px; line-height: 1.05; letter-spacing: -0.01em; color: var(--text-strong); margin: 0; }
+  .sq--wine .ttl, .sq--noir .ttl { color: var(--white-warm); }
+  .si { font-family: var(--font-display); font-style: italic; }
+  em.warm { font-style: italic; color: var(--text-warm); }
+  .sq--wine em.warm, .sq--noir em.warm { color: var(--gold-300); }
+  .body { font-family: var(--font-sans); font-size: 30px; line-height: 1.6; color: var(--text-body); margin: 0; }
+  .sq--wine .body { color: var(--gold-100); }
+  .sq--noir .body { color: #D8DCE3; }
+
+  .foot { display: flex; justify-content: space-between; align-items: center; flex: none; font-size: 19px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; color: var(--graphite-500); }
+  .sq--wine .foot { color: var(--gold-300); } .sq--noir .foot { color: #99A2AF; }
+  .foot .b { color: var(--text-brand); } .sq--wine .foot .b, .sq--noir .foot .b { color: var(--gold-200); }
+
+  .center { align-items: center; justify-content: center; text-align: center; }
+
+  /* cover */
+  .cover .wm { font-family: var(--font-display); font-weight: 500; color: var(--wine-700); font-size: 128px; line-height: 1; }
+  .cover .tag { font-family: var(--font-sans); font-weight: 500; color: var(--gold-800); text-transform: uppercase; letter-spacing: 0.34em; font-size: 27px; }
+
+  /* logo constructions — the requested one */
+  .logos { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 8px; }
+  .ltile { background: var(--white-warm); border-radius: var(--radius-lg); box-shadow: inset 0 0 0 1px var(--border-hairline); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px 28px; position: relative; min-height: 208px; }
+  .ltile .cap { position: absolute; bottom: 22px; font-size: 17px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; }
+  .lk-word { font-family: var(--font-display); font-weight: 500; color: var(--wine-700); font-size: 50px; line-height: 1; }
+  .lk-tag { font-family: var(--font-sans); font-weight: 500; color: var(--gold-800); text-transform: uppercase; letter-spacing: 0.28em; font-size: 14px; }
+
+  /* symbol */
+  .symwrap { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+  .symtiles { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .symtile { aspect-ratio: 1; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; }
+  .symtile.ivory { background: var(--ivory); box-shadow: inset 0 0 0 1px var(--border-hairline); }
+  .symtile.wine { background: var(--wine-600); }
+  .means { display: flex; flex-direction: column; }
+  .mean { padding: 22px 0; border-top: 1px solid var(--border-hairline); }
+  .mean:last-child { border-bottom: 1px solid var(--border-hairline); }
+  .mean .k { font-family: var(--font-display); font-style: italic; font-size: 32px; color: var(--gold-700); }
+  .mean .v { font-size: 24px; color: var(--text-body); line-height: 1.4; margin-top: 6px; }
+  .mean .v b { color: var(--text-strong); }
+
+  /* colors */
+  .swrow { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
+  .sw { border-radius: var(--radius-lg); overflow: hidden; box-shadow: inset 0 0 0 1px var(--border-hairline); display: flex; }
+  .sw .chip { width: 150px; flex: none; }
+  .sw .meta { background: var(--white-warm); padding: 28px 30px; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+  .sw .meta b { font-family: var(--font-display); font-size: 34px; font-weight: 600; color: var(--text-strong); }
+  .sw .meta .hex { font-size: 20px; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
+  .sw .meta .use { font-size: 21px; color: var(--text-body); margin-top: 6px; }
+  .propbar { display: flex; height: 70px; border-radius: var(--radius-pill); overflow: hidden; box-shadow: inset 0 0 0 1px var(--border-hairline); margin-top: 28px; }
+  .propbar div { display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; letter-spacing: 0.06em; }
+
+  /* type */
+  .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .specimen { background: var(--white-warm); border-radius: var(--radius-lg); box-shadow: inset 0 0 0 1px var(--border-hairline); padding: 44px 40px; display: flex; flex-direction: column; gap: 14px; }
+  .specimen .aa { font-family: var(--font-display); font-size: 150px; line-height: 0.82; color: var(--text-strong); }
+  .specimen .aa.sans { font-family: var(--font-sans); font-weight: 700; }
+  .specimen .nm { font-family: var(--font-display); font-size: 34px; font-weight: 600; color: var(--text-brand); }
+  .specimen .ds { font-size: 22px; color: var(--text-body); line-height: 1.45; }
+
+  /* voice diga/evite */
+  .vcols { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .vcol h3 { font-family: var(--font-display); font-size: 30px; font-weight: 600; margin: 0 0 20px; }
+  .vcol.say h3 { color: var(--wine-700); } .vcol.no h3 { color: var(--graphite-400); }
+  .pills { display: flex; flex-wrap: wrap; gap: 14px; }
+  .pill { font-size: 24px; padding: 13px 24px; border-radius: var(--radius-pill); font-weight: 500; }
+  .pill.s { background: var(--wine-50); color: var(--wine-700); box-shadow: inset 0 0 0 1px var(--wine-200); }
+  .pill.n { color: var(--graphite-300); box-shadow: inset 0 0 0 1px var(--graphite-100); text-decoration: line-through; }
+
+  /* modes */
+  .modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .mode { border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; min-height: 360px; box-shadow: var(--shadow-sm); }
+  .mode .mb { flex: 1; padding: 36px 30px; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+  .mode .mt { padding: 20px 30px; font-size: 18px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
+  .mode h3 { font-family: var(--font-display); font-size: 34px; font-weight: 600; margin: 0; }
+  .mode p { font-size: 21px; line-height: 1.5; margin: 0; }
+  .mode.light { background: var(--ivory); box-shadow: inset 0 0 0 1px var(--border-hairline); } .mode.light h3 { color: var(--wine-700); } .mode.light p { color: var(--text-body); } .mode.light .mt { background: var(--white-warm); color: var(--text-gold); }
+  .mode.wine { background: var(--wine-600); } .mode.wine h3 { color: #fff; } .mode.wine p { color: var(--gold-100); } .mode.wine .mt { background: var(--wine-800); color: var(--gold-300); }
+  .mode.noir { background: var(--ink-900); } .mode.noir h3 { color: #fff; } .mode.noir p { color: #D8DCE3; } .mode.noir .mt { background: var(--ink-950); color: var(--gold-300); }
+
+  /* values grid */
+  .vals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .val { background: var(--white-warm); border-radius: var(--radius-lg); box-shadow: inset 0 0 0 1px var(--border-hairline); padding: 30px 24px; display: flex; flex-direction: column; gap: 10px; min-height: 180px; }
+  .val .n { font-family: var(--font-display); font-size: 26px; color: var(--gold-600); }
+  .val h3 { font-family: var(--font-display); font-size: 30px; font-weight: 600; color: var(--wine-700); margin: 0; }
+  .val p { font-size: 18px; line-height: 1.4; color: var(--text-muted); margin: 0; }
+
+  /* photo */
+  .pbig { flex: 1; border-radius: var(--radius-lg); overflow: hidden; position: relative; min-height: 0; }
+  .pbig img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .pbig .ov { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 56px; gap: 16px; background: linear-gradient(180deg, transparent 45%, rgba(13,20,34,0.82)); }
+  .pbig .ov .k { font-size: 22px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-300); font-weight: 600; }
+  .pbig .ov .t { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; color: #fff; font-size: 58px; line-height: 1.05; }
+  .pbig .ov .t .g { color: var(--gold-400); }
+
+  /* entrance */
+  @media (prefers-reduced-motion: no-preference) {
+    .sq [data-rise] { opacity: 0; transform: translateY(24px); }
+    .sq[data-deck-active] [data-rise] { animation: rise 0.66s cubic-bezier(0.16,1,0.3,1) both; }
+    .sq[data-deck-active] [data-rise="2"] { animation-delay: 0.09s; }
+    .sq[data-deck-active] [data-rise="3"] { animation-delay: 0.18s; }
+  }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<deck-stage width="1080" height="1080">
+
+  <!-- 01 capa -->
+  <section class="sq cover center" data-label="Capa">
+    <div style="display:flex; flex-direction:column; align-items:center; gap:34px;">
+      <img src="assets/elevemse-monogram.svg" width="128" height="128" alt="" data-rise>
+      <p class="kick" data-rise="2">Brand Book</p>
+      <div class="wm" data-rise="2">Elevem-se</div>
+      <hr class="tick" data-rise="3" style="margin:6px 0;">
+      <div class="tag" data-rise="3">Mentoria para casais</div>
+    </div>
+  </section>
+
+  <!-- 02 essência -->
+  <section class="sq sq--wine center" data-label="Essência">
+    <div style="display:flex; flex-direction:column; gap:34px; max-width:860px;">
+      <hr class="tick" data-rise>
+      <p class="ttl" data-rise style="font-size:82px;">“Vivemos o que <span class="si" style="color:var(--gold-300);">ensinamos.</span>”</p>
+      <p class="body" data-rise="2" style="font-size:32px;">Mais de 20 anos a dois. Uma marca para casais que querem sair do modo automático e reconstruir, com método, a vida em comum.</p>
+    </div>
+  </section>
+
+  <!-- 03 logo construções -->
+  <section class="sq" data-label="Logotipo">
+    <div class="top"><div class="lg"><img src="assets/elevemse-monogram.svg" alt=""><b>Elevem-se</b></div><span class="pg">03 · Logotipo</span></div>
+    <div class="mid">
+      <p class="kick" data-rise>O logotipo</p>
+      <hr class="tick" data-rise>
+      <h2 class="ttl" data-rise style="font-size:60px; margin-bottom:30px;">Quatro construções, uma identidade.</h2>
+      <div class="logos" data-rise="2">
+        <div class="ltile">
+          <img src="assets/elevemse-monogram.svg" width="74" height="74" alt="">
+          <div class="lk-word">Elevem-se</div>
+          <div class="lk-tag">Mentoria para casais</div>
+          <span class="cap">Lockup</span>
+        </div>
+        <div class="ltile">
+          <div style="display:flex; align-items:center; gap:18px;">
+            <img src="assets/elevemse-monogram.svg" width="62" height="62" alt="">
+            <div style="display:flex; flex-direction:column; gap:7px;">
+              <div class="lk-word" style="font-size:40px;">Elevem-se</div>
+              <div class="lk-tag" style="font-size:12px;">Mentoria para casais</div>
+            </div>
+          </div>
+          <span class="cap">Horizontal</span>
+        </div>
+        <div class="ltile">
+          <div class="lk-word" style="font-size:56px;">Elevem-se</div>
+          <div class="lk-tag">Mentoria para casais</div>
+          <span class="cap">Wordmark</span>
+        </div>
+        <div class="ltile">
+          <img src="assets/elevemse-monogram.svg" width="120" height="120" alt="">
+          <span class="cap">Símbolo</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Mentoria para casais</span><span class="b">Elevem-se</span></div>
+  </section>
+
+  <!-- 04 símbolo -->
+  <section class="sq" data-label="Símbolo">
+    <div class="top"><div class="lg"><img src="assets/elevemse-monogram.svg" alt=""><b>Elevem-se</b></div><span class="pg">04 · Símbolo</span></div>
+    <div class="mid">
+      <p class="kick" data-rise>O símbolo · a chama</p>
+      <hr class="tick" data-rise>
+      <h2 class="ttl" data-rise style="font-size:58px; margin-bottom:40px;">Dois fios que sobem juntos.</h2>
+      <div class="symwrap" data-rise="2">
+        <div class="symtiles">
+          <div class="symtile ivory"><img src="assets/elevemse-monogram.svg" width="120" height="120" alt=""></div>
+          <div class="symtile wine"><img src="assets/elevemse-monogram-light.svg" width="120" height="120" alt=""></div>
+        </div>
+        <div class="means">
+          <div class="mean"><div class="k">dois fios</div><div class="v">o <b>casal</b> — vinho e dourado, que se completam.</div></div>
+          <div class="mean"><div class="k">mesma base</div><div class="v"><b>união</b> — partem de um único ponto.</div></div>
+          <div class="mean"><div class="k">sobem juntos</div><div class="v"><b>elevação</b> — o gesto que dá o nome.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Chapado · vinho + dourado</span><span class="b">Elevem-se</span></div>
+  </section>
+
+  <!-- 05 cores -->
+  <section class="sq" data-label="Cores">
+    <div class="top"><div class="lg"><img src="assets/elevemse-monogram.svg" alt=""><b>Elevem-se</b></div><span class="pg">05 · Cores</span></div>
+    <div class="mid">
+      <p class="kick" data-rise>Paleta</p>
+      <hr class="tick" data-rise>
+      <h2 class="ttl" data-rise style="font-size:58px; margin-bottom:36px;">Vinho, navy e dourado sobre claros.</h2>
+      <div class="swrow" data-rise="2">
+        <div class="sw"><div class="chip" style="background:var(--wine-600);"></div><div class="meta"><b>Vinho</b><span class="hex">#6E2A36</span><span class="use">Marca · emoção</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--gold-500);"></div><div class="meta"><b>Dourado</b><span class="hex">#C2A14D</span><span class="use">Acento · prosperidade</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--ink-800);"></div><div class="meta"><b>Navy</b><span class="hex">#21314F</span><span class="use">Estrutura · força</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--ivory); box-shadow:inset 0 0 0 1px var(--border-hairline);"></div><div class="meta"><b>Marfim</b><span class="hex">#F4EEE2</span><span class="use">Fundo principal</span></div></div>
+      </div>
+      <div class="propbar" data-rise="3">
+        <div style="flex:70; background:var(--ivory); color:var(--text-strong); box-shadow:inset 0 0 0 1px var(--border-hairline);">70% Claros</div>
+        <div style="flex:15; background:var(--wine-600); color:var(--gold-100);">15% Vinho</div>
+        <div style="flex:10; background:var(--ink-800); color:#fff;">10% Navy</div>
+        <div style="flex:5; background:var(--gold-500); color:var(--wine-900);">5%</div>
+      </div>
+    </div>
+    <div class="foot"><span>Equilíbrio é a essência</span><span class="b">Elevem-se</span></div>
+  </section>
+
+  <!-- 06 tipografia -->
+  <section class="sq" data-label="Tipografia">
+    <div class="top"><div class="lg"><img src="assets/elevemse-monogram.svg" alt=""><b>Elevem-se</b></div><span class="pg">06 · Tipografia</span></div>
+    <div class="mid">
+      <p class="kick" data-rise>Tipografia</p>
+      <hr class="tick" data-rise>
+      <h2 class="ttl" data-rise style="font-size:58px; margin-bottom:40px;">Editorial na voz, limpa no apoio.</h2>
+      <div class="specs" data-rise="2">
+        <div class="specimen">
+          <div class="aa">Aa</div>
+          <div class="nm">Spectral</div>
+          <div class="ds">Serifa editorial. Títulos, wordmark e itálicos de acento.</div>
+        </div>
+        <div class="specimen">
+          <div class="aa sans">Aa</div>
+          <div class="nm" style="font-family:var(--font-sans); font-weight:700;">Mulish</div>
+          <div class="ds">Sans suave e quente. Corpo, sobrancelhas e rótulos.</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Spectral + Mulish</span><span class="b">Elevem-se</span></div>
+  </section>
+
+  <!-- 07 voz -->
+  <section class="sq sq--cream" data-label="Voz">
+    <div class="top"><div class="lg"><img src="assets/elevemse-monogram.svg" alt=""><b>Elevem-se</b></div><span class="pg">07 · Voz</span></div>
+    <div class="mid">
+      <p class="kick" data-rise>Tom de voz</p>
+      <hr class="tick" data-rise>
+      <h2 class="ttl" data-rise style="font-size:58px; margin-bottom:40px;">As palavras certas.</h2>
+      <div class="vcols" data-rise="2">
+        <div class="vcol say">
+          <h3>Diga</h3>
+          <div class="pills">
+            <span class="pill s">construir</span><span class="pill s">propósito</span><span class="pill s">parceria</span><span class="pill s">método</span><span class="pill s">elevação</span><span class="pill s">presença real</span><span class="pill s">direção</span><span class="pill s">legado</span>
+          </div>
+        </div>
+        <div class="vcol no">
+          <h3>Evite</h3>
+          <div class="pills">
+            <span class="pill n">jornada</span><span class="pill n">mindset</span><span class="pill n">energia</span><span class="pill n">manifestar</span><span class="pill n">universo</span><span class="pill n">7 passos</span><span class="pill n">milagre</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Firme, próximo e direto</span><span class="b">Elevem-se</span></div>
+  </section>
+
+  <!-- 08 modos -->
+  <section class="sq" data-label="Modos">
+    <div class="top"><div class="lg"><img src="assets/elevemse-monogram.svg" alt=""><b>Elevem-se</b></div><span class="pg">08 · Modos</span></div>
+    <div class="mid">
+      <p class="kick" data-rise>O sistema visual</p>
+      <hr class="tick" data-rise>
+      <h2 class="ttl" data-rise style="font-size:58px; margin-bottom:40px;">Um sistema, três registros.</h2>
+      <div class="modes" data-rise="2">
+        <div class="mode light"><div class="mb"><h3>Claro</h3><p>O padrão. Luxo leve para site, app e leitura.</p></div><div class="mt">Dia a dia</div></div>
+        <div class="mode wine"><div class="mb"><h3>Vinho</h3><p>Cerimonial. Para manifesto, assinatura e fechamento.</p></div><div class="mt">Momentos</div></div>
+        <div class="mode noir"><div class="mb"><h3>Noir</h3><p>Cinematográfico. Para peças de impacto e ensaio.</p></div><div class="mt">Impacto</div></div>
+      </div>
+    </div>
+    <div class="foot"><span>Leveza com peso</span><span class="b">Elevem-se</span></div>
+  </section>
+
+  <!-- 09 valores -->
+  <section class="sq" data-label="Valores">
+    <div class="top"><div class="lg"><img src="assets/elevemse-monogram.svg" alt=""><b>Elevem-se</b></div><span class="pg">09 · Valores</span></div>
+    <div class="mid">
+      <p class="kick" data-rise>O que defendemos</p>
+      <hr class="tick" data-rise>
+      <h2 class="ttl" data-rise style="font-size:58px; margin-bottom:36px;">Oito valores, uma direção.</h2>
+      <div class="vals" data-rise="2">
+        <div class="val"><span class="n">01</span><h3>Fé</h3><p>Princípio que orienta.</p></div>
+        <div class="val"><span class="n">02</span><h3>Família</h3><p>A vida a dois e o legado.</p></div>
+        <div class="val"><span class="n">03</span><h3>Verdade</h3><p>Honestidade, sem hype.</p></div>
+        <div class="val"><span class="n">04</span><h3>Excelência</h3><p>Padrão premium.</p></div>
+        <div class="val"><span class="n">05</span><h3>Coragem</h3><p>Decidir reconstruir.</p></div>
+        <div class="val"><span class="n">06</span><h3>Disciplina</h3><p>Método e constância.</p></div>
+        <div class="val"><span class="n">07</span><h3>Propósito</h3><p>O porquê que sustenta.</p></div>
+        <div class="val"><span class="n">08</span><h3>Legado</h3><p>O que fica adiante.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>O que defendemos</span><span class="b">Elevem-se</span></div>
+  </section>
+
+  <!-- 10 fotografia / key visual -->
+  <section class="sq sq--noir" data-label="Fotografia" style="padding:0;">
+    <div class="pbig" style="border-radius:0;">
+      <img src="assets/casal-bw.jpg" alt="">
+      <div class="ov">
+        <span class="k">Mentoria para casais</span>
+        <div class="t">Saiam do modo <span class="g">automático.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 fechamento -->
+  <section class="sq sq--wine center" data-label="Fechamento">
+    <div style="display:flex; flex-direction:column; align-items:center; gap:30px; max-width:840px;">
+      <img src="assets/elevemse-monogram-light.svg" width="104" height="104" alt="" data-rise>
+      <p class="ttl" data-rise="2" style="font-size:72px;">Construam a vida a dois <span class="si" style="color:var(--gold-300);">com método.</span></p>
+      <hr class="tick" data-rise="3">
+      <div class="tag" data-rise="3" style="color:var(--gold-300);">Maycko &amp; Marcela · Elevem-se</div>
+    </div>
+  </section>
+
+</deck-stage>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="120" fill="#F4EEE2"/>
+    <path d="M59 90 C 52 74 48 56 52 42 C 55 35 58 34 60 36 C 56 34 50 46 46 62 C 44 75 51 84 59 90 Z" fill="#6E2A36"/>
+    <path d="M61 90 C 68 72 72 55 68 38 C 65 30 62 27 60 25 C 62 28 69 42 73 58 C 75 73 68 84 61 90 Z" fill="#C2A14D"/>
+  </svg>
+</template>
+
+<script src="deck-stage.js"></script>
+</body>
+</html>

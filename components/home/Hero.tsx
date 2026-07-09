@@ -6,6 +6,8 @@ import { useRef, useEffect, useCallback } from 'react'
 import { SplitText } from '@/components/motion/SplitText'
 import { MagneticButton } from '@/components/motion/MagneticButton'
 import { ShimmerCTA } from '@/components/motion/ShimmerCTA'
+import { Ornament } from '@/components/shared/Ornament'
+import { BrandArrow } from '@/components/shared/BrandArrow'
 
 const TITLE = 'ELEVEM-SE'
 
@@ -129,13 +131,43 @@ export function Hero() {
         background: 'var(--surface-anchor)',
       }}
     >
-      {/* Photo with parallax */}
+      {/* Wordmark topo — monograma + Elevem-se */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: 'clamp(20px, 3vw, 32px)',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 5,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.7rem',
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/monogram-light.svg" alt="" width={26} height={26} style={{ display: 'block' }} />
+        <span
+          className="elv-serif"
+          style={{
+            fontSize: '1.15rem',
+            letterSpacing: '0.02em',
+            color: 'var(--white-warm)',
+            fontWeight: 500,
+          }}
+        >
+          Elevem-se
+        </span>
+      </div>
+
+      {/* Photo with parallax + fade-in inicial */}
       <div
         ref={imgRef}
+        className="elv-hero-photo-fade"
         style={{
           position: 'absolute',
           inset: 0,
-          willChange: 'transform',
+          willChange: 'transform, opacity',
           transition: 'transform 0.1s linear',
           zIndex: 0,
         }}
@@ -186,7 +218,7 @@ export function Hero() {
         }}
       />
 
-      {/* Content */}
+      {/* Content — centralizado */}
       <div
         className="elv-wrap"
         style={{
@@ -194,65 +226,82 @@ export function Hero() {
           zIndex: 3,
           paddingBlock: 'clamp(100px, 14vh, 160px)',
           maxWidth: '820px',
+          textAlign: 'center',
+          marginInline: 'auto',
         }}
       >
-        <p
-          className="elv-sans"
+        <div
           style={{
-            fontSize: 'var(--text-xs)',
-            letterSpacing: 'var(--tracking-widest)',
-            textTransform: 'uppercase',
-            color: 'var(--gold-300)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 'var(--space-3)',
             marginBottom: 'var(--space-6)',
+            justifyContent: 'center',
           }}
         >
-          Mentoria para casais
-        </p>
+          <Ornament variant="rule" ruleWidth={32} tone="gold" style={{ opacity: 0.8 }} />
+          <p
+            className="elv-sans"
+            style={{
+              fontSize: 'clamp(0.75rem, 0.7rem + 0.2vw, 0.9rem)',
+              letterSpacing: '0.26em',
+              textTransform: 'uppercase',
+              color: 'var(--gold-400)',
+              fontWeight: 600,
+              margin: 0,
+            }}
+          >
+            Mentoria para casais
+          </p>
+        </div>
 
-        {/* Stagger letter title */}
+        {/* Título — direto ao visitante */}
         <h1
           className="elv-serif"
           style={{
-            fontSize: 'clamp(2.4rem, 10vw, 9rem)',
+            fontSize: 'clamp(1.8rem, 3.8vw, 3.2rem)',
             fontWeight: 'var(--weight-medium)',
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
+            letterSpacing: '-0.005em',
             color: 'var(--white-warm)',
-            lineHeight: 1,
-            margin: 0,
-            display: 'flex',
-            flexWrap: 'nowrap',
-            whiteSpace: 'nowrap',
-            gap: '0.04em',
-            justifyContent: 'center',
+            lineHeight: 1.12,
+            margin: '0 auto',
+            maxWidth: '28ch',
           }}
-          aria-label={TITLE}
         >
-          {TITLE.split('').map((ch, i) => (
-            <span
-              key={i}
-              className="elv-letter elv-letter-drop"
-              aria-hidden="true"
-              style={{ animationDelay: `${i * 70}ms` }}
-            >
-              {ch}
-            </span>
-          ))}
+          <SplitText delay={1200}>{`Vocês construíram uma empresa.`}</SplitText>
+          <br />
+          <SplitText delay={1500}>{`Construíram patrimônio.`}</SplitText>
+          <br />
+          <SplitText delay={1800}>{`Construíram uma família.`}</SplitText>
+          <br />
+          <em
+            style={{
+              display: 'block',
+              marginTop: 'var(--space-4)',
+              fontStyle: 'italic',
+              color: 'var(--gold-400)',
+              fontWeight: 'var(--weight-regular)',
+            }}
+          >
+            <SplitText delay={2200}>{`Agora, é hora de construir o relacionamento que sustentará tudo isso.`}</SplitText>
+          </em>
         </h1>
 
         <p
-          className="elv-sans"
+          className="elv-serif"
           style={{
-            fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
-            lineHeight: 'var(--leading-relaxed)',
-            color: 'rgba(255,248,235,0.82)',
-            maxWidth: '56ch',
-            marginTop: 'var(--space-7)',
+            marginTop: 'var(--space-8)',
+            marginInline: 'auto',
             marginBottom: 0,
+            fontStyle: 'italic',
+            color: 'var(--gold-300)',
+            fontSize: 'clamp(1.05rem, 1.5vw, 1.35rem)',
+            lineHeight: 1.4,
+            maxWidth: '38ch',
           }}
         >
-          <SplitText delay={600}>
-            Uma mentoria exclusiva para casais que já conquistaram muito — e decidiram que o casamento também precisa evoluir no mesmo nível. Em 12 meses, saem do modo automático e constroem um relacionamento estruturado, consciente e próspero.
+          <SplitText delay={2800}>
+            {`Casamentos extraordinários não acontecem por sorte. Eles são construídos.`}
           </SplitText>
         </p>
 
@@ -262,6 +311,7 @@ export function Hero() {
             flexWrap: 'wrap',
             gap: 'var(--space-4)',
             marginTop: 'var(--space-9)',
+            justifyContent: 'center',
           }}
         >
           <MagneticButton>
@@ -301,65 +351,48 @@ export function Hero() {
             marginTop: 'var(--space-6)',
           }}
         >
-          Processo seletivo por aplicação · Poucos casais por ciclo
+          Processo seletivo · Poucos casais por ciclo
         </p>
       </div>
 
-      {/* Floating quote card */}
+      {/* Scroll hint */}
       <div
+        aria-hidden="true"
         style={{
           position: 'absolute',
-          right: 'clamp(16px, 5vw, 64px)',
-          bottom: 'clamp(32px, 6vh, 64px)',
+          bottom: 'clamp(20px, 3vh, 32px)',
+          left: '50%',
+          transform: 'translateX(-50%)',
           zIndex: 4,
-          width: 'min(300px, 80vw)',
-          background: 'rgba(42,16,22,0.72)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(184,140,72,0.25)',
-          borderRadius: 'var(--radius-md)',
-          padding: 'var(--space-6)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '10px',
+          color: 'var(--gold-300)',
         }}
       >
         <span
-          className="elv-serif"
+          className="elv-sans"
           style={{
-            display: 'block',
-            fontStyle: 'italic',
-            fontSize: 'var(--text-base)',
-            lineHeight: 'var(--leading-snug)',
-            color: 'var(--white-warm)',
-            marginBottom: 'var(--space-4)',
+            fontSize: '10px',
+            letterSpacing: '0.32em',
+            textTransform: 'uppercase',
+            opacity: 0.85,
           }}
         >
-          Ensinamos o que vivemos e estruturamos.
+          Comece a subir
         </span>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-          <span style={{ width: 24, height: 1, background: 'var(--gold-500)', flexShrink: 0 }} />
-          <div>
-            <div
-              className="elv-sans"
-              style={{
-                fontSize: 'var(--text-xs)',
-                fontWeight: 'var(--weight-semibold)',
-                color: 'var(--white-warm)',
-              }}
-            >
-              Maycko &amp; Marcela
-            </div>
-            <div
-              className="elv-sans"
-              style={{
-                fontSize: 'var(--text-2xs)',
-                letterSpacing: 'var(--tracking-wide)',
-                textTransform: 'uppercase',
-                color: 'var(--gold-300)',
-              }}
-            >
-              Mentores
-            </div>
-          </div>
-        </div>
+        <BrandArrow variant="subir" size={22} color="var(--gold-400)" style={{ opacity: 0.85 }} />
+        <span
+          style={{
+            display: 'block',
+            width: 1,
+            height: 36,
+            background: 'linear-gradient(to bottom, var(--gold-500), transparent)',
+          }}
+        />
       </div>
+
     </section>
   )
 }

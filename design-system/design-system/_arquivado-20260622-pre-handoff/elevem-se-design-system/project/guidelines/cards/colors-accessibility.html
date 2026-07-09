@@ -1,0 +1,39 @@
+<!-- @dsCard group="Colors" viewport="700x300" name="Acessibilidade — WCAG AA" subtitle="Contraste verificado dos pares principais · claro e escuro" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); font-family: var(--font-sans); padding: 22px 24px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 26px; }
+  .col h4 { margin: 0 0 10px; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); }
+  .pair { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border-hairline); }
+  .chip { width: 30px; height: 24px; border-radius: 4px; flex: none; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 13px; font-weight: 600; }
+  .desc { font-size: 11px; color: var(--text-body); flex: 1; }
+  .ratio { font-size: 11px; font-variant-numeric: tabular-nums; color: var(--graphite-900); font-weight: 600; }
+  .aa { font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--success); border: 1px solid var(--success); border-radius: 999px; padding: 2px 6px; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="col">
+      <h4>Modo claro</h4>
+      <div class="pair"><span class="chip" style="background:var(--ivory);color:var(--graphite-900)">Aa</span><span class="desc">Texto forte / marfim</span><span class="ratio">12.3</span><span class="aa">AA</span></div>
+      <div class="pair"><span class="chip" style="background:var(--ivory);color:var(--graphite-700)">Aa</span><span class="desc">Corpo / marfim</span><span class="ratio">7.9</span><span class="aa">AA</span></div>
+      <div class="pair"><span class="chip" style="background:var(--ivory);color:var(--wine-600)">Aa</span><span class="desc">Vinho título / marfim</span><span class="ratio">8.9</span><span class="aa">AA</span></div>
+      <div class="pair"><span class="chip" style="background:var(--ivory);color:var(--gold-800)">Aa</span><span class="desc">Dourado label / marfim</span><span class="ratio">6.0</span><span class="aa">AA</span></div>
+      <div class="pair"><span class="chip" style="background:var(--wine-600);color:var(--white-warm)">Aa</span><span class="desc">Botão branco / vinho</span><span class="ratio">10.1</span><span class="aa">AA</span></div>
+    </div>
+    <div class="col">
+      <h4>Modo escuro (noturno)</h4>
+      <div class="pair"><span class="chip" style="background:#1A1F28;color:var(--white-warm)">Aa</span><span class="desc">Texto forte / navy</span><span class="ratio">16.3</span><span class="aa">AA</span></div>
+      <div class="pair"><span class="chip" style="background:#1A1F28;color:#D8DCE3">Aa</span><span class="desc">Corpo / navy</span><span class="ratio">12.0</span><span class="aa">AA</span></div>
+      <div class="pair"><span class="chip" style="background:#1A1F28;color:var(--gold-300)">Aa</span><span class="desc">Dourado label / navy</span><span class="ratio">10.4</span><span class="aa">AA</span></div>
+      <div class="pair"><span class="chip" style="background:#1A1F28;color:#A7B4C6">Aa</span><span class="desc">Steel / navy</span><span class="ratio">7.9</span><span class="aa">AA</span></div>
+      <div class="pair"><span class="chip" style="background:var(--wine-600);color:var(--white-warm)">Aa</span><span class="desc">Botão branco / vinho</span><span class="ratio">10.1</span><span class="aa">AA</span></div>
+    </div>
+  </div>
+  <p style="margin:14px 0 0; font-size:10.5px; color:var(--text-muted); line-height:1.5;">Texto normal exige ≥4.5 · texto grande e ícones ≥3.0. Regra: dourado nunca em corpo de texto pequeno; texto apagado (muted) não vai sobre fundo areia.</p>
+</body>
+</html>

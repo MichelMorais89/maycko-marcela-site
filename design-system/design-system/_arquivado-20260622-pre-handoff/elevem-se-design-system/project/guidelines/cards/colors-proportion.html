@@ -1,0 +1,49 @@
+<!-- @dsCard group="Colors" viewport="700x210" name="Proporção & uso" subtitle="≈70% claros · ≈15% vinho · ≈10% navy/grafite · ≈5% dourado" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); font-family: var(--font-sans); padding: 22px 24px; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .bar { display: flex; height: 26px; border-radius: var(--radius-pill); overflow: hidden; box-shadow: var(--ring-hairline); }
+  .bar i { display: flex; align-items: center; padding-left: 12px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+  .panels { display: flex; gap: 12px; }
+  .panel { flex: 1; border-radius: var(--radius-md); padding: 15px 16px; min-height: 84px; }
+  .light { background: var(--ivory); box-shadow: var(--ring-hairline); }
+  .wine { background: var(--surface-wine); }
+  .navy { background: var(--ink-800); }
+  .eye { font-size: 9px; letter-spacing: .24em; text-transform: uppercase; }
+  .ttl { font-family: var(--font-display); font-size: 24px; line-height: 1.05; margin-top: 6px; }
+  .rule { width: 30px; height: 1px; background: var(--rule-gold); margin: 8px 0; }
+</style>
+</head>
+<body>
+  <div class="stack">
+    <div class="bar">
+      <i style="flex:70; background:var(--ivory); color:var(--graphite-700)">Neutros claros · respiro</i>
+      <i style="flex:15; background:var(--wine-600); color:var(--gold-100)">Vinho</i>
+      <i style="flex:11; background:var(--ink-800); color:var(--ink-100)">Navy</i>
+      <i style="flex:5; background:var(--gold-500); color:var(--wine-900)">Ouro</i>
+    </div>
+    <div class="panels">
+      <div class="panel light">
+        <div class="eye" style="color:var(--text-gold)">Mentoria para casais</div>
+        <div class="ttl" style="color:var(--wine-600)">Elevem-se</div>
+        <div class="rule"></div>
+      </div>
+      <div class="panel wine">
+        <div class="eye" style="color:var(--gold-300)">Emoção · romance</div>
+        <div class="ttl" style="color:var(--white-warm)">Vida a dois</div>
+        <div class="rule" style="background:var(--rule-gold-on-wine)"></div>
+      </div>
+      <div class="panel navy">
+        <div class="eye" style="color:var(--ink-200)">Estrutura · força</div>
+        <div class="ttl" style="color:var(--white-warm)">Método</div>
+        <div class="rule" style="background:var(--ink-400)"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

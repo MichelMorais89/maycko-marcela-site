@@ -1,0 +1,42 @@
+<!-- @dsCard group="Brand" viewport="700x300" name="Fundo claro / fundo escuro" subtitle="Mesma marca, dois fundos — vinho e dourado legíveis em ambos" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .panel { padding: 30px 30px 32px; min-height: 236px; display: flex; flex-direction: column; gap: 14px; background: var(--surface-page); }
+  .eye { font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--text-gold); font-weight: 500; display: flex; align-items: center; gap: 10px; }
+  .eye::before { content: ""; width: 24px; height: 1px; background: var(--rule-gold); }
+  h3 { font-family: var(--font-display); font-weight: 500; font-size: 30px; line-height: 1.06; margin: 0; color: var(--text-brand); letter-spacing: -.01em; }
+  p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--text-body); max-width: 32ch; font-weight: 300; }
+  .row { display: flex; gap: 10px; align-items: center; margin-top: auto; }
+  .btn { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; padding: 10px 20px; border-radius: var(--radius-pill); border: 1px solid; cursor: default; }
+  .btn-primary { background: var(--action-primary); color: var(--white-warm); border-color: var(--action-primary); }
+  .btn-outline { background: transparent; color: var(--text-brand); border-color: var(--rule-gold); }
+  .head { display: flex; align-items: center; gap: 11px; }
+  .head img { display: block; }
+  .head b { font-family: var(--font-display); font-weight: 500; font-size: 22px; color: var(--text-brand); white-space: nowrap; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="panel">
+      <div class="head"><img src="../../assets/elevemse-monogram.svg" width="34" height="34"><b>Elevem-se</b></div>
+      <div class="eye">Mentoria para casais</div>
+      <h3>Luz, vinho e dourado</h3>
+      <p>Base clara e arejada — o respiro é parte da marca.</p>
+      <div class="row"><span class="btn btn-primary">Quero a mentoria</span><span class="btn btn-outline">Saber mais</span></div>
+    </div>
+    <div class="panel" data-theme="noturno">
+      <div class="head"><img src="../../assets/elevemse-monogram-light.svg" width="34" height="34"><b>Elevem-se</b></div>
+      <div class="eye">Mentoria para casais</div>
+      <h3>Noturno, forte e dramático</h3>
+      <p>Grafite-navy profundo com dourado — para peças de impacto.</p>
+      <div class="row"><span class="btn btn-primary">Quero a mentoria</span><span class="btn btn-outline">Saber mais</span></div>
+    </div>
+  </div>
+</body>
+</html>

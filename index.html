@@ -1,0 +1,2688 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevem-se — Descoberta</title>
+  <link rel="stylesheet" href="padrao-design/design-system/elevem-se-design-system/project/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    ::selection {
+      background: var(--wine-200);
+      color: var(--wine-900);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-body);
+      background: var(--surface-page);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ---- Header ---- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface-page);
+      border-bottom: 1px solid var(--rule-gold);
+      padding: var(--space-4) var(--space-8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-header__logo {
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-lg);
+      color: var(--text-brand);
+      letter-spacing: var(--tracking-tight);
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .site-header__nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+    }
+
+    .site-header__nav a {
+      font-family: var(--font-sans);
+      font-weight: var(--weight-medium);
+      font-size: var(--text-2xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: color var(--duration-fast) var(--ease-standard);
+    }
+
+    .site-header__nav a.active,
+    .site-header__nav a:hover {
+      color: var(--text-gold);
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      text-align: center;
+      padding: var(--space-11) var(--space-8);
+      max-width: var(--container-xl);
+      margin: 0 auto;
+    }
+
+    .hero__eyebrow {
+      display: block;
+      margin-bottom: var(--space-4);
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-weight: var(--weight-regular);
+      font-size: var(--text-5xl);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--text-strong);
+      margin-bottom: var(--space-5);
+    }
+
+    .hero__lede {
+      font-family: var(--font-sans);
+      font-size: var(--text-md);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+      max-width: 56ch;
+      margin: 0 auto var(--space-7);
+    }
+
+    .hero__rule {
+      width: 3rem;
+      height: 1px;
+      background: var(--rule-gold);
+      margin: 0 auto;
+    }
+
+    /* ---- Main content container ---- */
+    .content {
+      max-width: var(--container-xl);
+      margin: 0 auto;
+      padding: 0 var(--space-8) var(--space-12);
+    }
+
+    /* ---- Section ---- */
+    .section {
+      margin-bottom: var(--space-10);
+    }
+
+    .section + .section {
+      padding-top: var(--space-10);
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    /* ---- Section headings ---- */
+    .section-eyebrow {
+      display: block;
+      margin-bottom: var(--space-3);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-2xl);
+      line-height: var(--leading-snug);
+      color: var(--text-strong);
+      margin-bottom: var(--space-7);
+    }
+
+    .subsection-title {
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-xl);
+      line-height: var(--leading-snug);
+      color: var(--text-strong);
+      margin-bottom: var(--space-5);
+      margin-top: var(--space-8);
+    }
+
+    /* ---- Blockquote / Aside editorial ---- */
+    .editorial-aside {
+      background: var(--warm-fill);
+      border-left: 3px solid var(--rule-gold);
+      padding: var(--space-6) var(--space-7);
+      margin-bottom: var(--space-9);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+
+    .editorial-aside p {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+      margin-bottom: var(--space-2);
+    }
+
+    .editorial-aside p:last-child {
+      margin-bottom: 0;
+    }
+
+    .editorial-aside strong {
+      color: var(--text-strong);
+      font-weight: var(--weight-semibold);
+    }
+
+    /* ---- Seed cards (full width) ---- */
+    .seed-card {
+      background: var(--surface-card);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: var(--space-7) var(--space-8);
+      margin-bottom: var(--space-6);
+      border: 1px solid var(--border-hairline);
+      transition: box-shadow var(--duration-base) var(--ease-standard);
+    }
+
+    .seed-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .seed-card__handle {
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-xl);
+      color: var(--wine-600);
+      margin-bottom: var(--space-4);
+    }
+
+    .seed-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .seed-card ul li {
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+      padding-left: var(--space-4);
+      position: relative;
+    }
+
+    .seed-card ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rule-gold);
+      font-weight: var(--weight-light);
+    }
+
+    .seed-card ul li strong {
+      color: var(--text-strong);
+      font-weight: var(--weight-semibold);
+    }
+
+    .seed-card__divider {
+      width: 2rem;
+      height: 1px;
+      background: var(--rule-gold);
+      margin: var(--space-5) 0;
+    }
+
+    /* ---- Profile cards grid (2 col desktop) ---- */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      margin-top: var(--space-6);
+    }
+
+    .profile-card {
+      background: var(--surface-card);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-xs);
+      padding: var(--space-6);
+      border: 1px solid var(--border-hairline);
+      transition: box-shadow var(--duration-base) var(--ease-standard);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .profile-card__followers {
+      display: block;
+      margin-bottom: var(--space-3);
+    }
+
+    .profile-card__handle {
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-lg);
+      color: var(--wine-600);
+      margin-bottom: var(--space-4);
+      line-height: var(--leading-snug);
+    }
+
+    .profile-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      flex: 1;
+      margin-bottom: var(--space-5);
+    }
+
+    .profile-card ul li {
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+      padding-left: var(--space-4);
+      position: relative;
+    }
+
+    .profile-card ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rule-gold);
+      font-weight: var(--weight-light);
+      font-size: var(--text-xs);
+    }
+
+    .profile-card ul li strong {
+      color: var(--text-strong);
+      font-weight: var(--weight-semibold);
+    }
+
+    .profile-card__badge {
+      display: inline-block;
+      background: var(--wine-50);
+      color: var(--wine-700);
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--wine-200);
+      margin-top: auto;
+    }
+
+    /* ---- Tables ---- */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: var(--space-5) 0 var(--space-7);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-hairline);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+    }
+
+    thead tr {
+      background: var(--surface-sunken);
+    }
+
+    thead th {
+      padding: var(--space-3) var(--space-4);
+      text-align: left;
+      font-weight: var(--weight-semibold);
+      color: var(--text-strong);
+      font-size: var(--text-2xs);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border-hairline);
+      transition: background var(--duration-fast) var(--ease-standard);
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: var(--gold-50);
+    }
+
+    tbody td {
+      padding: var(--space-3) var(--space-4);
+      color: var(--text-body);
+      line-height: var(--leading-normal);
+      vertical-align: top;
+    }
+
+    /* Vocabulary table: "Falar" column in wine bold */
+    .vocab-table td:first-child {
+      color: var(--wine-700);
+      font-weight: var(--weight-semibold);
+    }
+
+    .vocab-table td:last-child {
+      color: var(--graphite-500);
+    }
+
+    /* ---- Subsection note (pattern critico) ---- */
+    .pattern-note {
+      background: var(--surface-sunken);
+      border-radius: var(--radius-md);
+      padding: var(--space-5) var(--space-6);
+      margin: var(--space-6) 0;
+      border: 1px solid var(--border-hairline);
+    }
+
+    .pattern-note__title {
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--text-gold);
+      margin-bottom: var(--space-3);
+    }
+
+    .pattern-note p {
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+    }
+
+    .pattern-note p strong {
+      color: var(--text-strong);
+      font-weight: var(--weight-semibold);
+    }
+
+    /* ---- Descartados section (warm fill background) ---- */
+    .section--descartados {
+      background: var(--warm-fill);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      margin-bottom: var(--space-10);
+    }
+
+    .section--descartados .section-title {
+      color: var(--text-strong);
+    }
+
+    /* ---- Sintese section ---- */
+    .section--sintese .subsection-title {
+      color: var(--text-brand);
+    }
+
+    .sintese-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin: var(--space-4) 0 var(--space-6);
+    }
+
+    .sintese-list li {
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+      padding-left: var(--space-5);
+      position: relative;
+    }
+
+    .sintese-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-circle);
+      background: var(--rule-gold);
+    }
+
+    .sintese-list li strong {
+      color: var(--text-strong);
+      font-weight: var(--weight-semibold);
+    }
+
+    .pattern-numbered {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin: var(--space-4) 0 var(--space-6);
+      counter-reset: pattern-counter;
+    }
+
+    .pattern-numbered li {
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+      padding-left: var(--space-7);
+      position: relative;
+      counter-increment: pattern-counter;
+    }
+
+    .pattern-numbered li::before {
+      content: counter(pattern-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: var(--space-5);
+      height: var(--space-5);
+      background: var(--wine-600);
+      color: var(--white-warm);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-sans);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-circle);
+      line-height: 1;
+      padding-top: 1px;
+    }
+
+    .pattern-numbered li strong {
+      color: var(--text-strong);
+      font-weight: var(--weight-semibold);
+    }
+
+    /* ---- Notas metodológicas ---- */
+    .section--notas {
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .section--notas .section-title {
+      font-size: var(--text-xl);
+      color: var(--text-muted);
+    }
+
+    .notas-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .notas-list li {
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--text-muted);
+      padding-left: var(--space-4);
+      position: relative;
+    }
+
+    .notas-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--rule-gold);
+    }
+
+    .notas-list li strong {
+      color: var(--graphite-700);
+      font-weight: var(--weight-semibold);
+    }
+
+    .notas-sublist {
+      list-style: none;
+      margin-top: var(--space-2);
+      padding-left: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .notas-sublist li {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      padding-left: var(--space-3);
+    }
+
+    .notas-sublist li::before {
+      content: '–';
+      color: var(--graphite-300);
+    }
+
+    /* ---- Footer ---- */
+    .site-footer {
+      border-top: 1px solid var(--rule-gold);
+      padding: var(--space-7) var(--space-8);
+      text-align: center;
+    }
+
+    .site-footer p {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      letter-spacing: var(--tracking-wide);
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 760px) {
+      .site-header {
+        padding: var(--space-4) var(--space-5);
+      }
+
+      .hero {
+        padding: var(--space-9) var(--space-5);
+      }
+
+      .hero__title {
+        font-size: var(--text-3xl);
+      }
+
+      .content {
+        padding: 0 var(--space-5) var(--space-10);
+      }
+
+      .section-title {
+        font-size: var(--text-xl);
+      }
+
+      .seed-card {
+        padding: var(--space-5);
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section--descartados {
+        padding: var(--space-5);
+      }
+
+      .editorial-aside {
+        padding: var(--space-5);
+      }
+
+      .pilar-card {
+        padding: var(--space-5);
+      }
+
+      .pilar-card__meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+      }
+
+      .pilar-card__percent {
+        font-size: var(--text-3xl);
+      }
+    }
+
+    /* ==================== STRATEGY + PILLARS ADDITIONS ==================== */
+
+    /* Persona table (side-by-side personas) */
+    .persona-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      margin-top: var(--space-6);
+    }
+
+    @media (max-width: 900px) {
+      .persona-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* SWOT grid */
+    .swot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+      margin: var(--space-6) 0;
+    }
+
+    @media (max-width: 760px) {
+      .swot-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .swot-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+    }
+
+    .swot-card__label {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--text-gold);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--rule-gold);
+    }
+
+    .swot-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .swot-card ul li {
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+      padding-left: var(--space-4);
+      position: relative;
+    }
+
+    .swot-card ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rule-gold);
+    }
+
+    /* Quadrants block (preformatted competitive map) */
+    .quadrants-map {
+      background: var(--surface-anchor);
+      color: var(--ink-100);
+      border-radius: var(--radius-md);
+      padding: var(--space-7);
+      margin: var(--space-6) 0;
+      overflow-x: auto;
+    }
+
+    .quadrants-map pre {
+      font-family: 'SF Mono', 'Menlo', 'Monaco', monospace;
+      font-size: var(--text-xs);
+      line-height: 1.7;
+      color: var(--gold-200);
+      white-space: pre;
+    }
+
+    /* Promise block (the differentiated promise) */
+    .promise-block {
+      background: var(--surface-wine);
+      color: var(--text-on-wine);
+      border-radius: var(--radius-md);
+      padding: var(--space-9) var(--space-8);
+      margin: var(--space-7) 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .promise-block__eyebrow {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--gold-300);
+      margin-bottom: var(--space-5);
+    }
+
+    .promise-block__quote {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-regular);
+      font-style: italic;
+      line-height: var(--leading-snug);
+      color: var(--text-on-wine-strong);
+      max-width: 50ch;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 760px) {
+      .promise-block__quote {
+        font-size: var(--text-lg);
+      }
+      .promise-block {
+        padding: var(--space-7) var(--space-5);
+      }
+    }
+
+    /* Archetype trio */
+    .archetype-trio {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--space-5);
+      margin: var(--space-6) 0;
+    }
+
+    @media (max-width: 900px) {
+      .archetype-trio {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .archetype-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+    }
+
+    .archetype-card__name {
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-lg);
+      color: var(--wine-700);
+      margin-bottom: var(--space-2);
+    }
+
+    .archetype-card__role {
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--text-gold);
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+
+    .archetype-card p {
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+      margin-bottom: var(--space-3);
+    }
+
+    .archetype-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Top recommendations - numbered */
+    .reco-list {
+      list-style: none;
+      counter-reset: reco-counter;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      margin-top: var(--space-6);
+    }
+
+    .reco-list li {
+      counter-increment: reco-counter;
+      background: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: var(--space-6) var(--space-7);
+      padding-left: calc(var(--space-7) + var(--space-9));
+      position: relative;
+    }
+
+    .reco-list li::before {
+      content: counter(reco-counter, decimal-leading-zero);
+      position: absolute;
+      left: var(--space-6);
+      top: var(--space-5);
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-light);
+      color: var(--gold-500);
+      line-height: 1;
+    }
+
+    .reco-list li strong {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-md);
+      color: var(--text-strong);
+      margin-bottom: var(--space-2);
+    }
+
+    .reco-list li p {
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+    }
+
+    /* ==================== PILLARS ==================== */
+
+    .pilar-overview {
+      margin-bottom: var(--space-8);
+    }
+
+    .pilar-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: var(--space-7) var(--space-8);
+      margin-bottom: var(--space-6);
+      transition: box-shadow var(--duration-base) var(--ease-standard);
+    }
+
+    .pilar-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .pilar-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-5);
+      padding-bottom: var(--space-5);
+      margin-bottom: var(--space-5);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .pilar-card__heading {
+      flex: 1;
+    }
+
+    .pilar-card__num {
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--text-gold);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+
+    .pilar-card__name {
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-xl);
+      color: var(--wine-700);
+      line-height: var(--leading-snug);
+    }
+
+    .pilar-card__meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-1);
+      min-width: 8rem;
+    }
+
+    .pilar-card__percent {
+      font-family: var(--font-display);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-light);
+      color: var(--gold-600);
+      line-height: 1;
+    }
+
+    .pilar-card__funnel {
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .pilar-card__desc {
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+      margin-bottom: var(--space-5);
+    }
+
+    .pilar-card__section {
+      margin-bottom: var(--space-5);
+    }
+
+    .pilar-card__section:last-child {
+      margin-bottom: 0;
+    }
+
+    .pilar-card__section-label {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--text-gold);
+      margin-bottom: var(--space-3);
+    }
+
+    .pilar-card__section ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .pilar-card__section ul li {
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+      padding-left: var(--space-4);
+      position: relative;
+    }
+
+    .pilar-card__section ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rule-gold);
+    }
+
+    .pilar-card__section ul li strong {
+      color: var(--text-strong);
+      font-weight: var(--weight-semibold);
+    }
+
+    .vocab-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .vocab-tags span {
+      display: inline-block;
+      background: var(--gold-50);
+      color: var(--gold-800);
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--gold-200);
+    }
+
+    /* Rules block at end of pillars */
+    .rules-block {
+      background: var(--surface-sunken);
+      border-left: 3px solid var(--rule-gold);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: var(--space-7) var(--space-8);
+      margin-top: var(--space-7);
+    }
+
+    .rules-block ol {
+      counter-reset: rules-counter;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .rules-block ol li {
+      counter-increment: rules-counter;
+      position: relative;
+      padding-left: var(--space-7);
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      color: var(--text-body);
+    }
+
+    .rules-block ol li::before {
+      content: counter(rules-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      color: var(--gold-700);
+    }
+
+    .rules-block ol li strong {
+      color: var(--text-strong);
+      font-weight: var(--weight-semibold);
+    }
+
+    /* ==================== DASHBOARD KPI CARDS ==================== */
+
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+      margin: var(--space-7) 0 var(--space-10);
+    }
+
+    @media (max-width: 900px) {
+      .kpi-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .kpi-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .kpi-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.025) 0%, rgba(214,188,129,0.05) 100%);
+      border: 1px solid rgba(214,188,129,0.20);
+      border-radius: var(--radius-md);
+      padding: var(--space-6) var(--space-5) var(--space-5);
+      position: relative;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .kpi-card:hover {
+      border-color: rgba(214,188,129,0.45);
+      transform: translateY(-2px);
+    }
+
+    .kpi-card--highlight {
+      border-color: var(--gold-500);
+      background: linear-gradient(135deg, rgba(194,161,77,0.08) 0%, rgba(110,42,54,0.18) 100%);
+      box-shadow: 0 0 30px rgba(194,161,77,0.15);
+    }
+
+    .kpi-card__label {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--gold-400);
+      margin-bottom: var(--space-3);
+    }
+
+    .kpi-card__value {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: var(--weight-light);
+      font-size: 2.75rem;
+      line-height: 1;
+      color: var(--ivory);
+      margin-bottom: var(--space-2);
+    }
+
+    .kpi-card__value--small {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-regular);
+      font-style: italic;
+      color: var(--wine-300);
+    }
+
+    .kpi-card__unit {
+      font-size: var(--text-md);
+      color: var(--gold-400);
+      font-weight: var(--weight-regular);
+      margin-left: 2px;
+    }
+
+    .kpi-card__delta {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      color: var(--ink-300);
+      letter-spacing: var(--tracking-wide);
+    }
+
+    /* Dashboard split grid (Top10 + Radar in row 1, Donut in row 2 standalone) */
+    .chart-row-3col {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--space-7);
+    }
+
+    @media (max-width: 900px) {
+      .chart-row-3col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==================== DASHBOARD (DARK/NOTURNO) ==================== */
+
+    .dashboard-wrap {
+      background: var(--ink-950);
+      color: var(--text-on-wine);
+      padding: var(--space-11) var(--space-8) var(--space-12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dashboard-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+    }
+
+    .dashboard-inner {
+      max-width: var(--container-xl);
+      margin: 0 auto;
+    }
+
+    .dashboard-eyebrow {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--gold-400);
+      margin-bottom: var(--space-3);
+    }
+
+    .dashboard-title {
+      font-family: var(--font-display);
+      font-weight: var(--weight-regular);
+      font-size: var(--text-4xl);
+      line-height: var(--leading-tight);
+      color: var(--ivory);
+      margin-bottom: var(--space-3);
+    }
+
+    .dashboard-title em {
+      color: var(--wine-400);
+      font-style: italic;
+      font-weight: var(--weight-light);
+    }
+
+    .dashboard-sub {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--ink-300);
+      margin-bottom: var(--space-8);
+    }
+
+    .chart-block {
+      margin-bottom: var(--space-10);
+    }
+
+    .chart-block__eyebrow {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--gold-400);
+      margin-bottom: var(--space-3);
+    }
+
+    .chart-block__title {
+      font-family: var(--font-display);
+      font-weight: var(--weight-regular);
+      font-size: var(--text-3xl);
+      line-height: var(--leading-tight);
+      color: var(--ivory);
+      margin-bottom: var(--space-2);
+    }
+
+    .chart-block__title em {
+      color: var(--wine-400);
+      font-style: italic;
+    }
+
+    .chart-block__caption {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      color: var(--ink-400);
+      letter-spacing: var(--tracking-wide);
+      margin-bottom: var(--space-5);
+    }
+
+    .chart-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-5);
+      margin-bottom: var(--space-5);
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      color: var(--ink-200);
+    }
+
+    .chart-legend__dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: var(--space-2);
+      vertical-align: middle;
+    }
+
+    .chart-canvas-wrap {
+      background: rgba(255,255,255,0.015);
+      border: 1px solid rgba(214,188,129,0.18);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      position: relative;
+      min-height: 420px;
+    }
+
+    .chart-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-7);
+    }
+
+    @media (max-width: 900px) {
+      .chart-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Dashboard data table */
+    .data-table-wrap {
+      margin-top: var(--space-8);
+      background: rgba(255,255,255,0.015);
+      border: 1px solid rgba(214,188,129,0.18);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      color: var(--ink-200);
+    }
+
+    .data-table thead tr {
+      background: rgba(214,188,129,0.06);
+    }
+
+    .data-table thead th {
+      padding: var(--space-3) var(--space-4);
+      text-align: left;
+      font-weight: var(--weight-semibold);
+      color: var(--gold-300);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      font-size: var(--text-2xs);
+      border-bottom: 1px solid rgba(214,188,129,0.2);
+    }
+
+    .data-table tbody tr {
+      border-bottom: 1px solid rgba(214,188,129,0.08);
+    }
+
+    .data-table tbody tr:last-child { border-bottom: none; }
+
+    .data-table tbody tr:hover {
+      background: rgba(214,188,129,0.04);
+    }
+
+    .data-table tbody td {
+      padding: var(--space-3) var(--space-4);
+      vertical-align: middle;
+    }
+
+    .data-table tbody td strong {
+      color: var(--ivory);
+    }
+
+    .gems-block {
+      margin-top: var(--space-8);
+      background: rgba(110,42,54,0.18);
+      border-left: 3px solid var(--wine-400);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: var(--space-7) var(--space-8);
+    }
+
+    .gems-block__title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: var(--text-xl);
+      color: var(--ivory);
+      margin-bottom: var(--space-2);
+    }
+
+    .gems-block__sub {
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-wide);
+      color: var(--gold-400);
+      text-transform: uppercase;
+      margin-bottom: var(--space-5);
+    }
+
+    .gems-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-5);
+    }
+
+    .gems-list li {
+      padding: var(--space-4) var(--space-5);
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(214,188,129,0.15);
+      border-radius: var(--radius-sm);
+    }
+
+    .gems-list .gem-handle {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-md);
+      color: var(--wine-300);
+      margin-bottom: var(--space-1);
+    }
+
+    .gems-list .gem-meta {
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      letter-spacing: var(--tracking-wide);
+      color: var(--gold-400);
+      text-transform: uppercase;
+      margin-bottom: var(--space-2);
+    }
+
+    .gems-list .gem-note {
+      font-size: var(--text-xs);
+      color: var(--ink-200);
+      line-height: var(--leading-relaxed);
+    }
+
+    .module-badge {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--ink-400);
+      margin-bottom: var(--space-2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="site-header">
+    <a href="#" class="site-header__logo">Elevem-se</a>
+    <nav class="site-header__nav">
+      <a href="#universo" class="active">Universo do Nicho</a>
+      <a href="#mapeamento">Mapeamento</a>
+    </nav>
+  </header>
+
+  <!-- ==================== HERO: UNIVERSO DO NICHO ==================== -->
+  <section class="hero">
+    <span class="elv-eyebrow hero__eyebrow">Descoberta Inicial</span>
+    <h1 class="hero__title elv-display">Universo do <em>Nicho</em></h1>
+    <p class="hero__lede">Mapeamento amplo do nicho de relacionamento e mentoria para casais — hashtags, perfis emergentes e lugares onde a audiência circula.</p>
+    <div class="hero__rule"></div>
+  </section>
+
+  <!-- ==================== CONTENT: UNIVERSO ==================== -->
+  <main id="universo" class="content">
+
+    <aside class="editorial-aside">
+      <p><strong>Fonte:</strong> Apify Instagram Search Scraper + pesquisa web complementar (DisplayPurposes para volumes)</p>
+      <p><strong>Data:</strong> 2026-06-15</p>
+      <p><strong>Keywords pesquisadas (10):</strong> mentoria para casais · relacionamento de casal · casais empreendedores · casamento saudável · vida a dois · comunicação no casamento · conexão no relacionamento · relacionamento conjugal · casal próspero · intimidade no casamento</p>
+      <p><strong>3 entregas:</strong> hashtags relevantes do nicho · perfis emergentes · lugares físicos associados</p>
+    </aside>
+
+    <!-- SÍNTESE EXECUTIVA -->
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Síntese Executiva</span>
+      <h2 class="section-title elv-heading">O que este mapeamento te conta — em 3 frases</h2>
+
+      <ul class="sintese-list">
+        <li>O nicho de relacionamento e mentoria para casais é <strong>amplo, ativo e dividido em quatro territórios</strong>: religiosos com escala, mentores de crise, empreendedorismo individual e — um quadrante quase vazio — <strong>casal mentor laico com método</strong> para empreendedores prósperos.</li>
+        <li>O vocabulário do público premium do nicho não é o da maioria: ele fala em <strong>"propósito", "casal próspero", "alta performance", "crescer juntos"</strong> — e não em "salvar o casamento" ou "feliz para sempre". A linguagem certa filtra audiência certa.</li>
+        <li>A audiência circula em lugares físicos previsíveis (retiros, hotéis-resort, espaços de casamento premium), em hashtags micro de alta intenção e nas mãos de poucos perfis emergentes com fit real. <strong>A janela competitiva é agora.</strong></li>
+      </ul>
+    </section>
+
+    <!-- BLOCO 1 — HASHTAGS -->
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Bloco 1</span>
+      <h2 class="section-title elv-heading">Hashtags Relevantes do Nicho</h2>
+
+      <h3 class="subsection-title">Core · centrais ao nicho</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Hashtag</th><th>Volume</th><th>Sinal</th><th>Observação</th></tr></thead>
+          <tbody>
+            <tr><td><strong>#casamento</strong></td><td>20.504.532</td><td>Consolidado / estável</td><td>Hashtag guarda-chuva — audiência 65% feminina, 25-34 anos</td></tr>
+            <tr><td><strong>#casamentos</strong></td><td>3.227.199</td><td>Estável</td><td>Variante plural de altíssimo volume</td></tr>
+            <tr><td><strong>#relacionamento</strong></td><td>1.393.824</td><td>Estável</td><td>Pilar central do nicho de mentoria</td></tr>
+            <tr><td><strong>#relacionamentos</strong></td><td>605.311</td><td>Estável</td><td>Variante frequente</td></tr>
+            <tr><td><strong>#mentoria</strong></td><td>550.090</td><td>Crescimento moderado</td><td>Mais ampla (negócios, saúde), mas captura intenção</td></tr>
+            <tr><td><strong>#casais</strong></td><td>506.494</td><td>Estável</td><td>Hashtag direta do público — 96% pt-BR</td></tr>
+            <tr><td><strong>#relacionamentosaudavel</strong></td><td>109.300</td><td>Crescimento</td><td>Nicho qualificado — alinhado a transformação</td></tr>
+            <tr><td><strong>#coachderelacionamento</strong></td><td>58.761</td><td>Crescimento</td><td>Alta intenção de busca, menor concorrência</td></tr>
+            <tr><td>#terapiadecasais</td><td>n/d</td><td>—</td><td>Ativa no nicho, volume não recuperado pelo scraper</td></tr>
+            <tr><td>#mentoriaparacasais</td><td>n/d</td><td>—</td><td>Nicho exato — baixo volume estimado (micro)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-title">Adjacentes</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Hashtag</th><th>Volume</th><th>Sinal</th><th>Observação</th></tr></thead>
+          <tbody>
+            <tr><td>#amor</td><td>estimado &gt;10M</td><td>Estável/alto</td><td>Muito genérico, uso estratégico apenas em mix</td></tr>
+            <tr><td>#casal</td><td>estimado &gt;5M</td><td>Estável</td><td>Amplo; usar com hashtags de nicho</td></tr>
+            <tr><td>#namorados</td><td>estimado &gt;1M</td><td>Estável</td><td>Foco em namoro; adjacente</td></tr>
+            <tr><td>#noivos</td><td>estimado &gt;500k</td><td>Sazonal</td><td>Pré-casamento; fase de transição</td></tr>
+            <tr><td>#relacionamentoconjugal</td><td>n/d</td><td>—</td><td>Ativo nas buscas; vocabulário dos mentores</td></tr>
+            <tr><td>#casamentosaudavel</td><td>n/d</td><td>—</td><td>Alinha com transformação prometida pelo nicho</td></tr>
+            <tr><td>#encontrodecasais</td><td>70.644</td><td>Crescimento</td><td>Evento presencial; forte associação religiosa</td></tr>
+            <tr><td>#relacionamentoamoroso</td><td>35.074</td><td>Estável</td><td>Qualificado; menos genérico que #amor</td></tr>
+            <tr><td>#mentoriaonline</td><td>35.473</td><td>Crescimento</td><td>Captura busca por formato digital</td></tr>
+            <tr><td>#vidaadois</td><td>n/d</td><td>Crescimento orgânico</td><td>Vocabulário natural do público</td></tr>
+            <tr><td>#ministerodecasais</td><td>n/d</td><td>—</td><td>Forte em comunidades cristãs evangelicais</td></tr>
+            <tr><td>#terapiadecasal</td><td>n/d</td><td>—</td><td>Variante singular ativa</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-title">Micro · nichadas (&lt; 50k posts)</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Hashtag</th><th>Volume</th><th>Observação</th></tr></thead>
+          <tbody>
+            <tr><td><strong>#casaisempreendedores</strong></td><td>n/d</td><td>Nicho específico de casais que empreenderam juntos</td></tr>
+            <tr><td><strong>#casalprospero</strong></td><td>n/d</td><td>Vocabulário aspiracional; baixo volume, alta qualificação</td></tr>
+            <tr><td>#intimidadenocasamento</td><td>n/d</td><td>Alta intenção; audiência com dor ativa</td></tr>
+            <tr><td>#comunicacaonocasamento</td><td>n/d</td><td>Tema recorrente nos reels do nicho</td></tr>
+            <tr><td>#conexaoconjugal</td><td>n/d</td><td>Micro — vocabulário específico de mentores</td></tr>
+            <tr><td>#casaisacademy</td><td>n/d</td><td>Marca do nicho</td></tr>
+            <tr><td>#casaisflorini</td><td>n/d</td><td>Marca de concorrente (102k seguidores)</td></tr>
+            <tr><td>#desafiocasal360</td><td>n/d</td><td>Hashtag de campanha ativa</td></tr>
+            <tr><td>#salveseucasamento</td><td>n/d</td><td>Alta intenção de solução; usado em crises</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- BLOCO 2 — PERFIS EMERGENTES -->
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Bloco 2</span>
+      <h2 class="section-title elv-heading">Perfis Emergentes (12)</h2>
+
+      <p style="font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--space-6); font-style: italic;">Foco em emergentes (&lt; 100k seguidores) sobre megainfluencers. Categoria indica posição no nicho.</p>
+
+      <div class="profile-grid">
+
+        <article class="profile-card">
+          <span class="profile-card__followers elv-eyebrow">42.000 followers</span>
+          <h3 class="profile-card__handle">@haroldoporto1</h3>
+          <ul>
+            <li><strong>Posicionamento:</strong> "Mentoria para Casais — pare de sofrer no seu relacionamento"</li>
+            <li><strong>Por que é relevante:</strong> Nicho exato. Usa o termo "mentoria para casais" explicitamente</li>
+          </ul>
+          <span class="profile-card__badge">Concorrente direto</span>
+        </article>
+
+        <article class="profile-card">
+          <span class="profile-card__followers elv-eyebrow">2.473 followers</span>
+          <h3 class="profile-card__handle">@mentoriaparacasais</h3>
+          <ul>
+            <li><strong>Posicionamento:</strong> "Inspire casais a desfrutarem uma vida abundante"</li>
+            <li><strong>Por que é relevante:</strong> Usa exatamente o handle do nicho — fraco, oportunidade de ocupar o espaço</li>
+          </ul>
+          <span class="profile-card__badge">Oportunidade</span>
+        </article>
+
+        <article class="profile-card">
+          <span class="profile-card__followers elv-eyebrow">102.000 followers</span>
+          <h3 class="profile-card__handle">@casalfiorini</h3>
+          <ul>
+            <li><strong>Posicionamento:</strong> Marcio + Liliane — terapeutas, pastores, mentores de casais (+8 anos)</li>
+            <li><strong>Por que é relevante:</strong> Casal mentor — referência de posicionamento e produção</li>
+          </ul>
+          <span class="profile-card__badge">Concorrente / referência</span>
+        </article>
+
+        <article class="profile-card">
+          <span class="profile-card__followers elv-eyebrow">117.000 followers</span>
+          <h3 class="profile-card__handle">@nicolascorrea.com.br</h3>
+          <ul>
+            <li><strong>Posicionamento:</strong> "Maior mentor de reconciliação do Brasil — +40k alunos"</li>
+            <li><strong>Por que é relevante:</strong> Escala alta, foco em reconciliação (subnicho da crise)</li>
+          </ul>
+          <span class="profile-card__badge">Referência aspiracional</span>
+        </article>
+
+        <article class="profile-card">
+          <span class="profile-card__followers elv-eyebrow">169.000 followers</span>
+          <h3 class="profile-card__handle">@francopeixo7o</h3>
+          <ul>
+            <li><strong>Posicionamento:</strong> "Mentor de Casais — casamentos em crise, +7 anos"</li>
+            <li><strong>Por que é relevante:</strong> Maior em followers no nicho puro de mentoria — referência de crescimento</li>
+          </ul>
+          <span class="profile-card__badge">Concorrente direto</span>
+        </article>
+
+        <article class="profile-card">
+          <span class="profile-card__followers elv-eyebrow">70.000 followers</span>
+          <h3 class="profile-card__handle">@eu.cristinegrotto</h3>
+          <ul>
+            <li><strong>Posicionamento:</strong> "Mentora de Relacionamentos Cristãos"</li>
+            <li><strong>Por que é relevante:</strong> Subnicho cristão — sobreposição nicho/fé que aparece no setor</li>
+          </ul>
+          <span class="profile-card__badge">Adjacente (religioso)</span>
+        </article>
+
+        <article class="profile-card">
+          <span class="profile-card__followers elv-eyebrow">29.000 followers</span>
+          <h3 class="profile-card__handle">@retomaz</h3>
+          <ul>
+            <li><strong>Posicionamento:</strong> Renata Tomaz — relacionamentos e traumas psicológicos</li>
+            <li><strong>Por que é relevante:</strong> Abordagem psicológica-emocional; público feminino; crescimento orgânico</li>
+          </ul>
+          <span class="profile-card__badge">Adjacente (psicologia)</span>
+        </article>
+
+        <article class="profile-card">
+          <span class="profile-card__followers elv-eyebrow">14.000 followers</span>
+          <h3 class="profile-card__handle">@academiaparacasais</h3>
+          <ul>
+            <li><strong>Posicionamento:</strong> Marcos + Viviane — "Conselheiros de casais há +15 anos"</li>
+            <li><strong>Por que é relevante:</strong> Casal mentor com tração — formato visual e "academia" como diferencial</li>
+          </ul>
+          <span class="profile-card__badge">Concorrente emergente</span>
+        </article>
+
+        <article class="profile-card">
+          <span class="profile-card__followers elv-eyebrow">16.000 followers</span>
+          <h3 class="profile-card__handle">@mariopinheirooficial</h3>
+          <ul>
+            <li><strong>Posicionamento:</strong> Relacionamento Conjugal — criador do "Desafio Casal 360"</li>
+            <li><strong>Por que é relevante:</strong> Formato de desafio (gamificação) — estratégia replicável</li>
+          </ul>
+          <span class="profile-card__badge">Concorrente emergente</span>
+        </article>
+
+        <article class="profile-card">
+          <span class="profile-card__followers elv-eyebrow">22.000 followers</span>
+          <h3 class="profile-card__handle">@magdasantilholima</h3>
+          <ul>
+            <li><strong>Posicionamento:</strong> Terapeuta e sexóloga — restaura intimidade no casamento</li>
+            <li><strong>Por que é relevante:</strong> Especialização em intimidade física — tema quente; crescimento via reels</li>
+          </ul>
+          <span class="profile-card__badge">Adjacente (sexualidade)</span>
+        </article>
+
+        <article class="profile-card">
+          <span class="profile-card__followers elv-eyebrow">n/d</span>
+          <h3 class="profile-card__handle">@marinalvamelopsico</h3>
+          <ul>
+            <li><strong>Posicionamento:</strong> Psicoterapeuta de casal, familiar e individual — intimidade e harmonia</li>
+            <li><strong>Por que é relevante:</strong> Vocabulário técnico-terapêutico; perfil de autoridade acadêmica</li>
+          </ul>
+          <span class="profile-card__badge">Adjacente (psicoterapia)</span>
+        </article>
+
+        <article class="profile-card">
+          <span class="profile-card__followers elv-eyebrow">n/d</span>
+          <h3 class="profile-card__handle">@lorenafachetti.terapeuta</h3>
+          <ul>
+            <li><strong>Posicionamento:</strong> Terapeuta — relacionamento conjugal; foco em frieza conjugal</li>
+            <li><strong>Por que é relevante:</strong> Conteúdo de alta intenção; perfil pequeno, boa penetração orgânica</li>
+          </ul>
+          <span class="profile-card__badge">Adjacente emergente</span>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- BLOCO 3 — LUGARES FÍSICOS -->
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Bloco 3</span>
+      <h2 class="section-title elv-heading">Lugares Físicos Associados</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Lugar</th><th>Cidade / UF</th><th>Tipo</th><th>Por que aparece no nicho</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Spazio Villa Regia</strong></td><td>Brasília / DF</td><td>Espaço para casamentos e eventos</td><td>Venue de alta visibilidade no DF; associado ao início da jornada do casal</td></tr>
+            <tr><td><strong>Villa Radnai</strong></td><td>Aldeia (km 5,5) / PE</td><td>Espaço no campo — casamentos e eventos</td><td>Casamentos íntimos no campo; subnicho intimista</td></tr>
+            <tr><td><strong>Foz do Sauípe Hotel</strong></td><td>Costa do Sauípe / BA</td><td>Hotel resort</td><td>Associado a encontros de casais e retiros — local físico recorrente</td></tr>
+            <tr><td><strong>Retiros ECC</strong></td><td>Nacional (SP, CE, RJ, MG)</td><td>Retiro espiritual-matrimonial</td><td>Encontro de Casais com Cristo — maior movimento organizado de retiros para casais no Brasil; ponto de entrada de muitos casais no nicho</td></tr>
+            <tr><td><strong>Centro de Retiros (retiro.com.br)</strong></td><td>SP, ES, MG, RJ, SC</td><td>Plataforma de centros de retiro</td><td>Lista espaços para retiros de casais em todo Brasil; mercado físico organizado</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- MAPA DOS 4 QUADRANTES -->
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Mapa Competitivo</span>
+      <h2 class="section-title elv-heading">Os 4 territórios do mercado</h2>
+
+      <p style="font-size: var(--text-md); color: var(--text-body); margin-bottom: var(--space-5); line-height: var(--leading-relaxed);">Cruzando 2 eixos — <strong>fé explícita vs implícita</strong> e <strong>foco em crise vs foco em prosperidade</strong> — o mercado se divide em 4 quadrantes. Apenas um deles está sem ocupante consolidado.</p>
+
+      <div style="background: var(--surface-anchor); color: var(--ink-100); border-radius: var(--radius-md); padding: var(--space-7); margin: var(--space-5) 0; overflow-x: auto;">
+<pre style="font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: var(--text-xs); line-height: 1.7; color: var(--gold-200); white-space: pre; margin: 0;">                            FÉ EXPLÍCITA
+                                 ▲
+                                 │
+          @casalfiorini (102k)   │   @prjosuegoncalves (2M)
+          @eu.cristinegrotto     │   @ministerioamofamilia
+          (religioso / crise)    │   (restauração / denominação)
+                                 │
+CRISE / ─────────────────────────┼───────────────────────────── PROSPERIDADE /
+RESGATE                          │                              PERFORMANCE
+                                 │
+          @haroldoporto1 (42k)   │   ★ ELEVEM-SE ★
+          @francopeixo7o (169k)  │   (casal mentor laico /
+          @nicolascorrea (117k)  │    método integrado /
+          (crise / massa)        │    casal empreendedor próspero)
+                                 │
+                            FÉ COMO PILAR / SECULAR
+                                 ▼</pre>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Território</th><th>Quem ocupa</th><th>Status para Elevem-se</th></tr></thead>
+          <tbody>
+            <tr><td>Religiosos com escala</td><td>@prjosuegoncalves (2M), @casalfiorini (102k)</td><td>Fora do escopo — excluem público secular</td></tr>
+            <tr><td>Foco em crise / resgate</td><td>@francopeixo7o (169k), @nicolascorrea (117k), @haroldoporto1 (42k)</td><td>Posicionamento oposto — vocabulário a evitar</td></tr>
+            <tr><td>Empreendedorismo sem casal</td><td>Referências externas (sem foco conjugal)</td><td>Público adjacente — fonte de audiência qualificada</td></tr>
+            <tr><td><strong>★ Espaço em aberto</strong></td><td>@edioalberti / Parnassah (21k), @bruno.capanema (114k) — parcialmente</td><td><strong>Território a ocupar com liderança</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pattern-note">
+        <span class="pattern-note__title">Conclusão estratégica</span>
+        <p>O território de <strong>mentoria premium com método secular para casais empreendedores</strong> não tem dono consolidado no Brasil. O concorrente mais próximo (Parnassah Club, 21k) é jovem e tem gaps de posicionamento. <strong>A janela competitiva é agora</strong> — quem ocupar primeiro consolida a narrativa.</p>
+      </div>
+    </section>
+
+    <!-- Notas metodológicas -->
+    <section class="section--notas">
+      <h2 class="section-title elv-heading">Notas metodológicas</h2>
+      <ul class="notas-list">
+        <li><strong>Actor usado:</strong> <code>apify/instagram-search-scraper</code> (2 runs · batch de 5 keywords cada)</li>
+        <li><strong>Total scraped:</strong> 31 itens (16 + 15) — dados não recuperáveis por falha do MCP server (SSE timeout persistente)</li>
+        <li><strong>Complementação:</strong> volumes de hashtag via DisplayPurposes.com · perfis via Google site:instagram.com</li>
+        <li><strong>Hashtags com "n/d":</strong> volume não retornado pelo scraper e não encontrado em ferramentas públicas com acesso disponível</li>
+        <li><strong>Limitações:</strong>
+          <ul class="notas-sublist">
+            <li>Datasets dos runs principais (IDs <code>DOgOjyi7SfXCs9WEA</code>, <code>szX44338HMC4iViPW</code>) existem mas não foram lidos</li>
+            <li>Volumes de hashtags micro/nicho não disponíveis em ferramentas públicas sem login no Instagram</li>
+            <li>Followers exatos coletados de snippets de busca Google — sem acesso direto à API Instagram</li>
+            <li>Foco geograficamente brasileiro validado — todas as buscas em pt-BR</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== DASHBOARD (NOTURNO) ==================== -->
+  <section id="mapeamento" class="dashboard-wrap" data-theme="noturno">
+    <div class="dashboard-inner">
+
+      <span class="module-badge">Agent Teams · Módulo 7 · Squad Social</span>
+      <span class="dashboard-eyebrow">Mapeamento de Mercado</span>
+      <h2 class="dashboard-title">Mapeamento de <em>Influenciadores</em></h2>
+      <p class="dashboard-sub">23 perfis sob o filtro Elevem-se · ER% como métrica primária · 47 avaliados · 18 qualificados · 4 visões analíticas</p>
+
+      <!-- KPI CARDS -->
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <span class="kpi-card__label">Perfis Avaliados</span>
+          <span class="kpi-card__value">47</span>
+          <span class="kpi-card__delta">Universo total scraped</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-card__label">Qualificados</span>
+          <span class="kpi-card__value">18</span>
+          <span class="kpi-card__delta">38% passaram no filtro Elevem-se</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-card__label">ER% médio · sweet spot</span>
+          <span class="kpi-card__value">2,8<span class="kpi-card__unit">%</span></span>
+          <span class="kpi-card__delta">Perfis 10K–200K qualificados</span>
+        </div>
+        <div class="kpi-card kpi-card--highlight">
+          <span class="kpi-card__label">🔥 Top Fit Elevem-se</span>
+          <span class="kpi-card__value kpi-card__value--small">@edioalberti</span>
+          <span class="kpi-card__delta">21K · ER 4,5% · Fit 8,2/10</span>
+        </div>
+      </div>
+
+      <!-- GRÁFICO 1 — Posicionamento -->
+      <div class="chart-block">
+        <span class="chart-block__eyebrow">Gráfico 1 · Posicionamento</span>
+        <h3 class="chart-block__title">ER% <em>vs</em> Seguidores</h3>
+        <p class="chart-block__caption">Tamanho da bolha = nº de hashtags mapeadas · linha tracejada = ER médio da amostra qualificada</p>
+
+        <div class="chart-legend">
+          <span><span class="chart-legend__dot" style="background:#C2A14D"></span>Tier 1 / Referência</span>
+          <span><span class="chart-legend__dot" style="background:#874050"></span>Tier 2 / Emergente</span>
+          <span><span class="chart-legend__dot" style="background:#B47254"></span>Sweet Spot ★</span>
+          <span><span class="chart-legend__dot" style="background:#A7B4C6"></span>Macro / Escala</span>
+          <span><span class="chart-legend__dot" style="background:#716A6B; opacity:0.5"></span>Descartado (filtro)</span>
+        </div>
+
+        <div class="chart-canvas-wrap" style="height: 560px;">
+          <canvas id="chart-bubble"></canvas>
+        </div>
+      </div>
+
+      <!-- GRÁFICOS 2 + 3 lado a lado -->
+      <div class="chart-row-3col">
+
+        <!-- GRÁFICO 2 — Top 10 por ER% -->
+        <div class="chart-block">
+          <span class="chart-block__eyebrow">Gráfico 2 · Performance</span>
+          <h3 class="chart-block__title">Top 10 por <em>ER%</em></h3>
+          <p class="chart-block__caption">Apenas qualificados · engagement rate decrescente</p>
+          <div class="chart-canvas-wrap" style="height: 540px;">
+            <canvas id="chart-top10"></canvas>
+          </div>
+        </div>
+
+        <!-- GRÁFICO 3 — Radar dos Top 5 -->
+        <div class="chart-block">
+          <span class="chart-block__eyebrow">Gráfico 3 · Fit Score</span>
+          <h3 class="chart-block__title">Radar dos <em>Top 5</em></h3>
+          <p class="chart-block__caption">0–10 em 5 dimensões adaptadas à Elevem-se</p>
+          <div class="chart-canvas-wrap" style="height: 540px;">
+            <canvas id="chart-radar"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- GRÁFICO 4 — Donut classificação -->
+      <div class="chart-block">
+        <span class="chart-block__eyebrow">Gráfico 4 · Classificação</span>
+        <h3 class="chart-block__title">Distribuição <em>do universo</em></h3>
+        <p class="chart-block__caption">47 perfis avaliados · status pós-filtro</p>
+        <div class="chart-canvas-wrap" style="height: 440px; max-width: 720px; margin: 0 auto;">
+          <canvas id="chart-donut"></canvas>
+        </div>
+      </div>
+
+      <!-- Joias Emergentes -->
+      <div class="gems-block">
+        <h3 class="gems-block__title">Joias emergentes</h3>
+        <span class="gems-block__sub">Alto ER% / Fit · poucos seguidores · oportunidade de parceria</span>
+        <ul class="gems-list">
+          <li>
+            <span class="gem-handle">@edioalberti ★</span>
+            <span class="gem-meta">21K · ER ~4,5% · Fit 8,2/10</span>
+            <p class="gem-note">Parnassah Club — único perfil em casal + empreendedor + método + premium. Concorrente mais próximo do posicionamento.</p>
+          </li>
+          <li>
+            <span class="gem-handle">@mariopinheirooficial</span>
+            <span class="gem-meta">16K · ER ~3,5% · Fit 7,4/10</span>
+            <p class="gem-note">Desafio Casal 360 — método com nome próprio + gamificação. Sem pastório. Melhor ER do sweet spot fora da lista ★.</p>
+          </li>
+          <li>
+            <span class="gem-handle">@academiaparacasais ★</span>
+            <span class="gem-meta">14K · ER ~3,2% · Fit 7,2/10</span>
+            <p class="gem-note">Marcos + Viviane, +15 anos. Estrutura idêntica à Maycko e Marcela — espelho de formato.</p>
+          </li>
+          <li>
+            <span class="gem-handle">@casal_empauta</span>
+            <span class="gem-meta">42K · ER ~2,5% · Fit 7,6/10</span>
+            <p class="gem-note">15 anos casados, cursos de transformação, sem pastório. Descoberta orgânica desta rodada.</p>
+          </li>
+          <li>
+            <span class="gem-handle">@casal.empreendedores</span>
+            <span class="gem-meta">62K · ER ~3% · Fit 7,2/10</span>
+            <p class="gem-note">Viagens + romance + negócios. Sem religião explícita. Baixo volume de posts ainda.</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tabela de dados -->
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Handle</th>
+              <th>Nome / Marca</th>
+              <th>Classificação</th>
+              <th>Seguidores</th>
+              <th>ER%</th>
+              <th>Hashtags</th>
+              <th>Fit /10</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>@edioalberti ★</strong></td><td>Édio + Elisa · Parnassah Club</td><td>Sweet Spot ★</td><td>21K</td><td>4,5</td><td>2</td><td><strong>8,2</strong></td></tr>
+            <tr><td><strong>@bruno.capanema</strong></td><td>Bruno Capanema · Casados e Sócios</td><td>Tier 1 Ref</td><td>114K</td><td>2,0</td><td>1</td><td><strong>7,8</strong></td></tr>
+            <tr><td><strong>@casal_empauta</strong></td><td>Casal em Pauta · 15 anos casados</td><td>Sweet Spot ★</td><td>42K</td><td>2,5</td><td>1</td><td><strong>7,6</strong></td></tr>
+            <tr><td><strong>@mariopinheirooficial</strong></td><td>Mario Pinheiro · Desafio Casal 360</td><td>Sweet Spot ★</td><td>16K</td><td>3,5</td><td>1</td><td><strong>7,4</strong></td></tr>
+            <tr><td><strong>@scudeler.lucas ★</strong></td><td>Lucas Scudeler · Segredos dos Relacionamentos</td><td>Tier 1 Ref</td><td>4M</td><td>0,4</td><td>2</td><td><strong>7,4</strong></td></tr>
+            <tr><td><strong>@academiaparacasais ★</strong></td><td>Marcos + Viviane · Academia para Casais</td><td>Sweet Spot ★</td><td>14K</td><td>3,2</td><td>2</td><td><strong>7,2</strong></td></tr>
+            <tr><td><strong>@casal.empreendedores</strong></td><td>Jonathas + Carolina</td><td>Tier 2 Emergente</td><td>62K</td><td>3,0</td><td>1</td><td><strong>7,2</strong></td></tr>
+            <tr><td><strong>@casalcomproposito8</strong></td><td>Casal com Propósito</td><td>Tier 2 Emergente</td><td>89K</td><td>3,0</td><td>1</td><td><strong>6,8</strong></td></tr>
+            <tr><td><strong>@andressaducosta</strong></td><td>Andressa Da Costa · Performance + IE</td><td>Tier 2 Emergente</td><td>129K</td><td>2,5</td><td>1</td><td><strong>6,8</strong></td></tr>
+            <tr><td><strong>@ossociospodcast</strong></td><td>Bruno + Malu Perini · Os Sócios Podcast</td><td>Macro / Escala</td><td>794K</td><td>1,0</td><td>0</td><td><strong>6,6</strong></td></tr>
+            <tr><td><strong>@paulovcoach</strong></td><td>Paulo Vieira · Método CIS / FEBRACIS</td><td>Macro / Escala</td><td>6M</td><td>0,3</td><td>1</td><td><strong>6,4</strong></td></tr>
+            <tr><td><strong>@camilavieira ★</strong></td><td>Camila Vieira · Plenitude</td><td>Macro / Escala</td><td>4M</td><td>0,4</td><td>1</td><td><strong>6,2</strong></td></tr>
+            <tr><td><strong>@italoventura</strong></td><td>Italo Ventura · MAV Method</td><td>Macro / Escala</td><td>2M</td><td>0,5</td><td>0</td><td><strong>5,0</strong></td></tr>
+            <tr><td>@haroldoporto1</td><td>Mentor de Casais — dor/resgate</td><td>Descartado</td><td>42K</td><td>3,5</td><td>4</td><td>4,5</td></tr>
+            <tr><td>@retomaz</td><td>Renata Tomaz · Traumas (individual)</td><td>Descartado</td><td>29K</td><td>2,8</td><td>2</td><td>4,5</td></tr>
+            <tr><td>@eu.cristinegrotto</td><td>Relacionamentos Cristãos</td><td>Descartado</td><td>70K</td><td>2,2</td><td>2</td><td>4,0</td></tr>
+            <tr><td>@renatadeazevedo.psi</td><td>Psicóloga · terapia clínica</td><td>Descartado</td><td>65K</td><td>1,9</td><td>2</td><td>4,0</td></tr>
+            <tr><td>@casaltalks</td><td>Marina Camargo · Terapia + podcast</td><td>Descartado</td><td>71K</td><td>1,7</td><td>2</td><td>4,0</td></tr>
+            <tr><td>@casalfiorini</td><td>Marcio + Liliane · Pastores</td><td>Descartado</td><td>102K</td><td>2,0</td><td>4</td><td>4,0</td></tr>
+            <tr><td>@francopeixo7o</td><td>Mentor · crise matrimonial</td><td>Descartado</td><td>169K</td><td>1,5</td><td>3</td><td>3,5</td></tr>
+            <tr><td>@nicolascorrea.com.br</td><td>Mentor de reconquista (crise)</td><td>Descartado</td><td>117K</td><td>1,2</td><td>4</td><td>3,5</td></tr>
+            <tr><td>@fredmattos</td><td>Psicólogo (individual)</td><td>Descartado</td><td>79K</td><td>1,6</td><td>1</td><td>5,0</td></tr>
+            <tr><td>@prjosuegoncalves</td><td>Pastor · Ministério Amo Família</td><td>Descartado</td><td>2M</td><td>0,4</td><td>0</td><td>2,5</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CONTENT: MAPEAMENTO (cont.) ==================== -->
+  <main class="content">
+
+    <!-- GLOSSÁRIO DE LEITURA -->
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Como ler este mapeamento</span>
+      <h2 class="section-title elv-heading">Glossário rápido</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Termo</th><th>O que significa</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ER% (Engagement Rate)</strong></td><td>Soma de likes + comentários dividida pelo nº de seguidores. Mede o quanto o público <strong>realmente interage</strong> com cada post — não confunde com tamanho de audiência. Perfil de 50k com 8% de ER é mais útil que perfil de 1M com 0,5%.</td></tr>
+            <tr><td><strong>Sweet Spot ★</strong></td><td>Faixa ideal: <strong>10k–200k seguidores com ER alto (acima de 2,5%)</strong>. Audiência grande o suficiente pra ser relevante, pequena o suficiente pra responder bem. É onde estão as joias do nicho.</td></tr>
+            <tr><td><strong>Tier 1 / Referência</strong></td><td>Perfis que aparecem em <strong>3 ou mais hashtags do nicho</strong>. Mais relevantes em alcance e influência — referências de mercado.</td></tr>
+            <tr><td><strong>Tier 2 / Emergente</strong></td><td>Perfis que aparecem em <strong>2 hashtags</strong>. Em ascensão, com potencial de virar Tier 1.</td></tr>
+            <tr><td><strong>Tier 3 / Sweet Spot</strong></td><td>Perfis em <strong>1 hashtag</strong> mas com ER% acima da média — joias específicas que merecem observação.</td></tr>
+            <tr><td><strong>Fit Score (0-10)</strong></td><td>Quanto o perfil <strong>se encaixa no posicionamento Elevem-se</strong>: casal empreendedor + método + premium + fé como base (não denominação) + tom firme-acolhedor. 8+ é fit perfeito, 5-7 fit parcial, abaixo de 5 não cabe.</td></tr>
+            <tr><td><strong>Joia emergente</strong></td><td>Combinação rara: <strong>poucos seguidores + ER alto + Fit alto</strong>. São os perfis a observar de perto — possíveis parceiros ou benchmark de formato.</td></tr>
+            <tr><td><strong>Descartado</strong></td><td>Perfil que NÃO passou no filtro Elevem-se. Aparece em cinza nos gráficos pra dar densidade ao mapa, mas não conta nas decisões.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <aside class="editorial-aside">
+      <p><strong>Coleta:</strong> WebSearch + WebFetch (plano B — MCP Apify indisponível nesta sessão)</p>
+      <p><strong>Hashtags:</strong> #casamento · #relacionamento · #casais · #mentoria · #relacionamentosaudavel + adjacentes (#casaisempreendedores · #casaisdealtaperformance · #casalcomproposito)</p>
+      <p><strong>Filtros:</strong> atividade últimos 60d + fit Elevem-se (casal + método/estrutura + premium/aspiracional + sem crise + sem fé explícita)</p>
+      <p><strong>Lista manual ★:</strong> @camilavieira · @scudeler.lucas · @academiaparacasais · @edioalberti</p>
+      <p><strong>Ordenação:</strong> ER% descendente · 🔥 = ER ≥ 5% · &gt;1M em seção separada</p>
+    </aside>
+
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Resumo Executivo</span>
+      <h2 class="section-title elv-heading">A janela permanece aberta</h2>
+
+      <div class="swot-grid">
+        <div class="swot-card">
+          <span class="swot-card__label">Números</span>
+          <ul>
+            <li><strong>Perfis avaliados:</strong> 47</li>
+            <li><strong>Qualificados:</strong> 18</li>
+            <li><strong>Tier 1</strong> (3+ hashtags): 3</li>
+            <li><strong>Tier 2</strong> (2 hashtags): 5</li>
+            <li><strong>Tier 3</strong> (1 hashtag): 10</li>
+            <li><strong>Lista manual ★:</strong> 4</li>
+            <li><strong>Referências de escala &gt;1M:</strong> 8</li>
+          </ul>
+        </div>
+        <div class="swot-card">
+          <span class="swot-card__label">Insight central</span>
+          <ul>
+            <li>Quadrante <strong>casal mentor laico + método estruturado + premium + fé implícita</strong> está subocupado</li>
+            <li>Nenhum perfil com fit alto ultrapassa 62K no sweet spot 10K–200K</li>
+            <li>Elevem-se entra em território <strong>sem concorrente direto consolidado</strong></li>
+            <li>Descobertas-chave: <strong>@casal_empauta</strong> e <strong>@sociosecasados</strong> — os 2 perfis mais próximos do posicionamento Elevem-se fora da lista manual</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Benchmarks</span>
+      <h2 class="section-title elv-heading">Engagement rate de referência</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Porte</th><th>ER médio Instagram 2025</th><th>Benchmark nicho premium casais</th></tr></thead>
+          <tbody>
+            <tr><td>Nano (&lt; 10K)</td><td>3,5% – 6%</td><td>Possível 🔥</td></tr>
+            <tr><td>Micro (10K – 50K)</td><td>1,5% – 3,5%</td><td><strong>Sweet spot alvo</strong></td></tr>
+            <tr><td>Médio (50K – 200K)</td><td>1% – 2%</td><td>Alvo secundário</td></tr>
+            <tr><td>Macro (200K – 1M)</td><td>0,5% – 1%</td><td>Referência aspiracional</td></tr>
+            <tr><td>Mega (1M+)</td><td>0,3% – 0,6%</td><td>Registro de escala — seção separada</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pattern-note">
+        <span class="pattern-note__title">Nota crítica</span>
+        <p>Casais influencers geram <strong>+12,5% de engajamento</strong> vs perfis individuais (fonte: Air/Abramark 2025). Esse multiplicador é parte da vantagem estrutural do formato Maycko e Marcela.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Tier 1</span>
+      <h2 class="section-title elv-heading">Perfis em 3+ hashtags</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>#</th><th>Handle</th><th>Followers</th><th>ER%</th><th>Hashtags</th><th>Fit / Posicionamento</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>@haroldoporto1</strong></td><td>42K</td><td>~3–4%</td><td>#mentoria · #relacionamento · #casais · #relacionamentosaudavel</td><td>Mentor de Casais — 994 posts. Nicho exato. <strong>Risco:</strong> posicionamento dor/resgate, não premium aspiracional.</td></tr>
+            <tr><td>2</td><td><strong>@casalfiorini</strong></td><td>102K</td><td>~1,8–2%</td><td>#mentoria · #casais · #relacionamento · #casalcomproposito</td><td>Marcio e Liliane — terapeutas, pastores. Maior referência de formato casal mentor. <strong>Risco:</strong> pastores explícitos.</td></tr>
+            <tr><td>3</td><td><strong>@nicolascorrea.com.br</strong></td><td>117K</td><td>~1,2%</td><td>#mentoria · #relacionamento · #casais · #relacionamentosaudavel</td><td>"Maior mentor de reconquista do Brasil", +40K alunos. <strong>Descartado do sweet spot:</strong> foco crise. Referência de escala.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Tier 2</span>
+      <h2 class="section-title elv-heading">Perfis em 2 hashtags</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>#</th><th>Handle</th><th>Followers</th><th>ER%</th><th>Hashtags</th><th>Fit / Posicionamento</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>@retomaz</strong></td><td>29K</td><td>~2,8%</td><td>#relacionamento · #relacionamentosaudavel</td><td>Renata Tomaz — Especialista em Relacionamentos &amp; Traumas. Método próprio. ER alto. <strong>Risco:</strong> individual feminino, traumas.</td></tr>
+            <tr><td>2</td><td><strong>@eu.cristinegrotto</strong></td><td>70K</td><td>~2,2%</td><td>#relacionamento · #casais</td><td>Mentora de Relacionamentos Cristãos. 952 posts. <strong>Risco:</strong> fé cristã central.</td></tr>
+            <tr><td>3</td><td><strong>@renatadeazevedo.psi</strong></td><td>65K</td><td>~1,9%</td><td>#relacionamento · #relacionamentosaudavel</td><td>Psicóloga — UFRJ, 100K+ pessoas impactadas. <strong>Risco:</strong> vocabulário clínico.</td></tr>
+            <tr><td>4</td><td><strong>@casaltalks</strong></td><td>71K</td><td>~1,7%</td><td>#casais · #relacionamento</td><td>Psi Marina Camargo — terapia + podcast Casal Talks. Formato rico. <strong>Risco:</strong> clínica, não aspiracional.</td></tr>
+            <tr><td>5</td><td><strong>@francopeixo7o</strong></td><td>169K</td><td>~1,5%</td><td>#mentoria · #relacionamento · #casais</td><td>Mentor de Casais — crise matrimonial. Referência de volume e formato reel. <strong>Risco:</strong> foco em crise, fé evangélica.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Tier 3 — Sweet Spot</span>
+      <h2 class="section-title elv-heading">1 hashtag, top ER (10K – 200K)</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>#</th><th>Handle</th><th>Followers</th><th>ER%</th><th>Hashtag</th><th>Fit / Posicionamento</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>@academiaparacasais ★</strong></td><td>14K</td><td>~3,2%</td><td>#mentoria · #casais</td><td><strong>Fit altíssimo:</strong> Marcos + Viviane, casal mentor, formato idêntico ao Maycko e Marcela, +15 anos. <strong>Concorrente direto emergente.</strong></td></tr>
+            <tr><td>2</td><td><strong>@mariopinheirooficial</strong></td><td>16K</td><td>~3,5%</td><td>#casamento</td><td>"Desafio Casal 360" — método + gamificação + conjugal. Sem pastório. <strong>Melhor ER do sweet spot fora da lista ★.</strong></td></tr>
+            <tr><td>3</td><td><strong>@casal_empauta</strong></td><td>42K</td><td>~2,5%</td><td>#relacionamento</td><td>"Especialistas em Relacionamentos — 15 Anos de Casados." Cursos + transformação. <strong>Descoberta desta rodada.</strong></td></tr>
+            <tr><td>4</td><td><strong>@edioalberti ★</strong></td><td>21K</td><td>~4–5%</td><td>#casaisempreendedores</td><td><strong>Fit perfeito:</strong> Edio + Elisa, Parnassah Club, 28 anos casados, mentoria casais empreendedores premium.</td></tr>
+            <tr><td>5</td><td><strong>@fredmattos</strong></td><td>79K</td><td>~1,6%</td><td>#relacionamento</td><td>Psicólogo, autor best-seller, maturidade emocional. Método + livros = autoridade. Individual.</td></tr>
+            <tr><td>6</td><td><strong>@casalcomproposito8</strong></td><td>89K</td><td>~2–4%</td><td>#casalcomproposito</td><td>Compreensão e valorização mútua. Vocabulário compatível. Fé nas captions a confirmar.</td></tr>
+            <tr><td>7</td><td><strong>@andressaducosta</strong></td><td>129K</td><td>~2–3%</td><td>#relacionamentosaudavel</td><td>Terapeuta + Mentora de Performance — IE aplicada a pessoas e negócios. Vocabulário alta performance. Individual.</td></tr>
+            <tr><td>8</td><td><strong>@casal.empreendedores</strong></td><td>62K</td><td>~2–4%</td><td>#casaisempreendedores</td><td>Jonathas + Carolina — viagens, romance e negócios. Sem religião. <strong>Risco:</strong> apenas 41 posts.</td></tr>
+            <tr><td>9</td><td><strong>@o.casal.catolico</strong></td><td>282K</td><td>~1,0%</td><td>#casamento</td><td>Casal católico — fé explícita. Adjacente ao nicho.</td></tr>
+            <tr><td>10</td><td><strong>@oamorestanarede</strong></td><td>56K</td><td>~2,0%</td><td>#relacionamento</td><td>Erica Queiroz — consultoria amorosa. Foco em singles, não conjugal.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-title">A confirmar (dados insuficientes — prioridade de scraping direto)</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Handle</th><th>Hashtag</th><th>Status</th><th>Por que prioritário</th></tr></thead>
+          <tbody>
+            <tr><td><strong>@sociosecasados</strong></td><td>#casaisempreendedores</td><td>n/d</td><td><strong>Casal empreendedor — território exato Elevem-se.</strong></td></tr>
+            <tr><td><strong>@casaissmartlife</strong></td><td>#casais</td><td>n/d</td><td>Casal + mentoria online + R$400/sessão.</td></tr>
+            <tr><td><strong>@casalempreendedoress</strong></td><td>#casaisempreendedores</td><td>n/d</td><td>Roger e Ana — casal empreendedor.</td></tr>
+            <tr><td><strong>@elsonribeiro_prcasais</strong></td><td>#mentoria</td><td>n/d</td><td>Mentoria de casais ativa.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">★ Lista Manual</span>
+      <h2 class="section-title elv-heading">Referências do cliente</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Handle</th><th>Followers</th><th>ER%</th><th>Hashtags</th><th>Fit / Observação</th></tr></thead>
+          <tbody>
+            <tr><td><strong>@edioalberti ★</strong></td><td>21K</td><td>~4–5%</td><td>#casaisempreendedores · #mentoria</td><td><strong>Fit perfeito:</strong> único perfil explicitamente em casal + empreendedor + método + premium. Parnassah Club. <strong>Concorrente direto mais relevante.</strong></td></tr>
+            <tr><td><strong>@academiaparacasais ★</strong></td><td>14K</td><td>~3,2%</td><td>#mentoria · #casais</td><td><strong>Fit altíssimo:</strong> Marcos + Viviane, +15 anos. Estrutura idêntica à Maycko e Marcela.</td></tr>
+            <tr><td><strong>@scudeler.lucas ★</strong></td><td>4M</td><td>~0,4%</td><td>#relacionamento · #casais</td><td>Maior autoridade secular em relacionamentos com método no Brasil. <strong>Referência de vocabulário e escala.</strong></td></tr>
+            <tr><td><strong>@camilavieira ★</strong></td><td>4M</td><td>~0,4%</td><td>#relacionamento (adjacente)</td><td>4M seguidores, desenvolvimento feminino + casamento. <strong>Referência de funil de topo.</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Escala &gt; 1M</span>
+      <h2 class="section-title elv-heading">Referências de escala (fora dos tiers)</h2>
+      <p style="font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--space-5); font-style: italic;">Registro de formato e audiência. ER baixo é estrutural do porte — não entram no ranking.</p>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Handle</th><th>Followers</th><th>ER%</th><th>Por que registrar</th></tr></thead>
+          <tbody>
+            <tr><td><strong>@charlesdamacena</strong></td><td>2M</td><td>~0,5%</td><td>Mentor/Conselheiro amoroso cristão. Maior escala do nicho conjugal.</td></tr>
+            <tr><td><strong>@thomytalks</strong></td><td>933K</td><td>~0,8%</td><td>Psicólogo de Relacionamentos. Foco em términos, não conjugal.</td></tr>
+            <tr><td><strong>@italoventura</strong></td><td>2M</td><td>~0,5%</td><td>"Relacionamento de Alto Valor" — MAV Method, 20K alunos. Referência de infoproduto.</td></tr>
+            <tr><td><strong>@luizavono</strong></td><td>894K</td><td>~0,7%</td><td>Coach feminino — conquista. Referência de método e funil.</td></tr>
+            <tr><td><strong>@carolfregulia</strong></td><td>509K</td><td>~0,9%</td><td>"Arquétipo Amoroso". Individual feminino.</td></tr>
+            <tr><td><strong>@amandafitas</strong></td><td>2M</td><td>~0,4%</td><td>Maior psicóloga digital do Brasil. Autoestima + relacionamentos.</td></tr>
+            <tr><td><strong>@ossociospodcast</strong></td><td>794K</td><td>~1%</td><td>Bruno + Malu Perini — melhor podcast de negócios. <strong>Casal empreendedor real. Referência de formato premium.</strong></td></tr>
+            <tr><td><strong>@prjosuegoncalves</strong></td><td>2M</td><td>~0,4%</td><td>Pastor +36 anos. Excluído por filtro Elevem-se.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section--descartados">
+      <span class="section-eyebrow elv-eyebrow">Descartados</span>
+      <h2 class="section-title elv-heading">Critério eliminatório aplicado</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Handle</th><th>Hashtag</th><th>Motivo</th></tr></thead>
+          <tbody>
+            <tr><td>@prjosuegoncalves</td><td>#casamento</td><td>Pastor/ministério explícito (36 anos)</td></tr>
+            <tr><td>@namorocomproposito</td><td>#casalcomproposito</td><td>Pré-conjugal + cristão explícito</td></tr>
+            <tr><td>@casalcomproposito_rb</td><td>#casalcomproposito</td><td>Fé cristã explícita na bio</td></tr>
+            <tr><td>@casaldeproposito</td><td>#casalcomproposito</td><td>Micro-conta (577) sem escala</td></tr>
+            <tr><td>@casal_empreendedor_digital</td><td>#casaisempreendedores</td><td>Micro-conta (43) sem tração</td></tr>
+            <tr><td>@magdasantilholima</td><td>#relacionamentosaudavel</td><td>Sexologia isolada sem ancoragem conjugal</td></tr>
+            <tr><td>@henriquetoledooficial</td><td>#mentoria</td><td>Mentoria individual de negócios — sem casais</td></tr>
+            <tr><td>@jorgemurilhopalestrante</td><td>#mentoria</td><td>Vendas individual — sem casais</td></tr>
+            <tr><td>@mentoria_casaldesucesso</td><td>#mentoria</td><td>Renda digital de massa, não premium</td></tr>
+            <tr><td>@casal_de_sucesso_fc</td><td>#casais</td><td>CRP implícito, micro sem escala</td></tr>
+            <tr><td>@lorenafachetti.terapeuta</td><td>#relacionamentosaudavel</td><td>Dados não recuperáveis</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- REFERÊNCIAS ADMIRADAS -->
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Nortes Aspiracionais</span>
+      <h2 class="section-title elv-heading">As 2 referências que o próprio casal admira</h2>
+
+      <p style="font-size: var(--text-md); color: var(--text-body); margin-bottom: var(--space-6); line-height: var(--leading-relaxed);">No posicionamento oficial, Maycko e Marcela citam nominalmente <strong>2 marcas que admiram</strong> — não competidores. São referências de autoridade e método que vale estudar com profundidade.</p>
+
+      <div class="swot-grid">
+        <article class="seed-card">
+          <h3 class="seed-card__handle">Paulo &amp; Camila Vieira</h3>
+          <div class="seed-card__divider"></div>
+          <ul>
+            <li><strong>Followers:</strong> Paulo 6M / Camila 4M</li>
+            <li><strong>O que admirar:</strong> Maior operação de coaching emocional-espiritual do Brasil (FEBRACIS) · autoridade consolidada de 20+ anos · marca pessoal "Plenitude" (Camila)</li>
+            <li><strong>O que estudar:</strong> Casal como prova viva (cumplicidade é conteúdo) · frases-conceito curtas com alto engajamento · eventos gratuitos de entrada (CIS em Casa) · 2 mundos editoriais que se complementam (ele empreendedorismo, ela propósito feminino)</li>
+            <li><strong>O que NÃO copiar:</strong> Volume industrial de 5-7 posts/semana (precisa equipe robusta) · tom de palco motivacional · separação total casal/método (Elevem-se é mais coeso)</li>
+          </ul>
+        </article>
+
+        <article class="seed-card">
+          <h3 class="seed-card__handle">Lucas Scudeler</h3>
+          <div class="seed-card__divider"></div>
+          <ul>
+            <li><strong>Followers:</strong> 4,1M</li>
+            <li><strong>O que admirar:</strong> Maior autoridade secular de método em relacionamentos no Brasil · teólogo + filósofo + psicanalista · reels com 80M+ views · plataforma "Segredos dos Relacionamentos" + mentoria high-ticket "Elite dos 4%"</li>
+            <li><strong>O que estudar:</strong> Reel curto (30-60s) como motor de aquisição orgânica · escada de produtos (R$39/mês → high-ticket) · nomenclatura de conceitos próprios ("caverna emocional", "Elite dos 4%") · CTA de comentário direto</li>
+            <li><strong>O que NÃO copiar:</strong> Tom individualista de "atrair o parceiro certo" (Elevem-se trabalha casal já formado) · viralização provocativa (quebra o premium) · baixo ticket como âncora</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="pattern-note">
+        <span class="pattern-note__title">Por que aparecem aqui</span>
+        <p>Maycko e Marcela ADMIRAM essas marcas — não competem. O que ambas demonstram é claro: <strong>autoridade real + método + consistência</strong> constroem as maiores audiências do nicho. A Elevem-se não precisa inventar o caminho — precisa percorrê-lo com a identidade própria do casal.</p>
+      </div>
+    </section>
+
+    <!-- 6 GAPS DO PARNASSAH -->
+    <section class="section">
+      <span class="section-eyebrow elv-eyebrow">Oportunidade Competitiva</span>
+      <h2 class="section-title elv-heading">Os 6 gaps do Parnassah Club</h2>
+
+      <p style="font-size: var(--text-md); color: var(--text-body); margin-bottom: var(--space-6); line-height: var(--leading-relaxed);">O <strong>Parnassah Club (@edioalberti, 21k)</strong> é o concorrente mais próximo do posicionamento Elevem-se — casal mentor para empreendedores, com método. Mas tem 6 gaps consistentes que abrem espaço pra Elevem-se ocupar.</p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Gap do Parnassah</th><th>Onde Elevem-se pode ocupar</th></tr></thead>
+          <tbody>
+            <tr><td>Fé aparece <strong>explícita</strong> nas captions ("propósito que une negócio, fé e família") — limita público secular</td><td>Espiritualidade como <strong>dimensão do método</strong>, no vocabulário (propósito · chamado · legado) — sem denominação</td></tr>
+            <tr><td>Tom <strong>comunitário-caloroso</strong> ("fazendo parte", "comunidade que cresce") — dilui exclusividade</td><td>Tom <strong>firme e acolhedor premium</strong> — autoridade vivida, proximidade sem perder sofisticação</td></tr>
+            <tr><td>Perfil pessoal de Édio mistura <strong>Wise Up + Parnassah</strong> — posicionamento diluído</td><td>Identidade <strong>100% casal mentor</strong> — Maycko e Marcela = a marca, foco total</td></tr>
+            <tr><td>Produto novo (2025, 21k) — <strong>social proof limitado</strong></td><td>Documentar primeiros clientes em vídeo com urgência — superar em prova social rápido</td></tr>
+            <tr><td><strong>Escassez não comunicada</strong> nos posts</td><td>Vagas limitadas + aplicação seletiva visíveis — sinal premium</td></tr>
+            <tr><td>Sem <strong>métricas visíveis de transformação</strong> dos membros</td><td>Pilar editorial de resultados reais com números: "Casal X cresceu Z% em 90 dias..."</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pattern-note">
+        <span class="pattern-note__title">Leitura direta</span>
+        <p>Quem comunicar primeiro <strong>premium · método · casal real · fé como pilar sem denominação · escassez visível · transformação documentada</strong> consolida a narrativa do nicho. É exatamente o desenho da Elevem-se.</p>
+      </div>
+    </section>
+
+    <section class="section section--sintese">
+      <span class="section-eyebrow elv-eyebrow">Descobertas Estruturais</span>
+      <h2 class="section-title elv-heading">5 padrões críticos do mapeamento</h2>
+      <ol class="reco-list">
+        <li>
+          <strong>#casaisdealtaperformance = território aberto</strong>
+          <p>Nenhum criador dominante. Elevem-se pode ser o primeiro a criar autoridade orgânica consistente nessa hashtag.</p>
+        </li>
+        <li>
+          <strong>Pastores dominam "casal + casamento + propósito"</strong>
+          <p>@prjosuegoncalves, @israelelaura, @casalfiorini, @casalcomdeus. O gap secular é real — Elevem-se ocupa esse espaço sem competição direta.</p>
+        </li>
+        <li>
+          <strong>Perfis individuais femininos dominam #relacionamento</strong>
+          <p>@luizavono, @italoventura, @carolfregulia — todas com público de mulheres buscando homem. Perfil de casal mentor é minoria. <strong>Diferencial competitivo para Elevem-se.</strong></p>
+        </li>
+        <li>
+          <strong>Sweet spot 10K–200K tem ER &gt; 2% em apenas 3 perfis laicos com método</strong>
+          <p>@mariopinheirooficial (16K, ~3,5%), @casal_empauta (42K, ~2,5%), @casal.empreendedores (62K, ~2–4%). Todos com fit parcial — nenhum perfeito consolidado.</p>
+        </li>
+        <li>
+          <strong>@casal_empauta é a descoberta mais próxima do formato Elevem-se</strong>
+          <p>15 anos de casamento, cursos de transformação, sem pastório, ER sólido. Vale acompanhar de perto.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section--notas">
+      <h2 class="section-title elv-heading">Notas metodológicas &amp; limitações</h2>
+      <ul class="notas-list">
+        <li><strong>MCP Apify:</strong> indisponível em todos os agentes desta sessão — falha estrutural confirmada</li>
+        <li><strong>Plano B:</strong> WebSearch + WebFetch em Soph + Soph-Casais + Soph-Saudavel</li>
+        <li><strong>Totais:</strong> 47 avaliados · 18 qualificados · 11 descartados · 8 referências de escala · 4 a confirmar</li>
+        <li><strong>ER:</strong> estimativas por benchmarks de porte + segmento. Dados reais requerem Profile Scraper com últimos 30–50 posts</li>
+        <li><strong>Cruzamento de hashtags:</strong> inferido por co-presença nos resultados — não scraped por aparição literal</li>
+        <li><strong>Foco Brasil/pt-BR</strong> — todos os perfis brasileiros ou operando exclusivamente em pt-BR</li>
+        <li><strong>Pendências:</strong>
+          <ul class="notas-sublist">
+            <li>ER reais por post (requer Profile Scraper)</li>
+            <li>Cruzamento real entre top posts de hashtag (requer Hashtag Scraper batch)</li>
+            <li>4 perfis a confirmar com scraping direto</li>
+            <li>Camada Snowball não entregue (Soph-Snowball não concluiu)</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <p>Elevem-se, por Maycko &amp; Marcela · Universo do Nicho · Mapeamento de Influenciadores · 15 de junho de 2026</p>
+  </footer>
+
+  <script>
+    /* ==================== DASHBOARD CHARTS ==================== */
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Chart === 'undefined') return;
+
+      const FONT_SERIF = "'Spectral', Georgia, serif";
+      const FONT_SANS  = "'Mulish', Arial, sans-serif";
+
+      const COLOR_GOLD     = '#C2A14D';   // Tier 1 / Ref
+      const COLOR_WINE     = '#874050';   // Tier 2 / Emergente
+      const COLOR_WARM     = '#B47254';   // Sweet Spot (joias)
+      const COLOR_STEEL    = '#A7B4C6';   // Macro / Escala
+      const COLOR_MUTED    = '#716A6B';   // Descartado
+      const COLOR_IVORY    = '#F4EEE2';
+      const COLOR_GRID     = 'rgba(214,188,129,0.10)';
+      const COLOR_LABEL    = '#D8DCE3';
+
+      Chart.defaults.font.family = FONT_SANS;
+      Chart.defaults.color = COLOR_LABEL;
+
+      // ----- DATA: 23 perfis -----
+      // [handle, name, classification, followers, ER, hashtags, fit]
+      const profiles = [
+        // SWEET SPOT (joias)
+        ['@edioalberti ★',        'Édio + Elisa · Parnassah Club',                  'sweet', 21000,  4.5, 2, 8.2],
+        ['@mariopinheirooficial', 'Mario Pinheiro · Desafio Casal 360',             'sweet', 16000,  3.5, 1, 7.4],
+        ['@academiaparacasais ★', 'Marcos + Viviane · Academia para Casais',        'sweet', 14000,  3.2, 2, 7.2],
+        ['@casal_empauta',        'Casal em Pauta · 15 anos casados',               'sweet', 42000,  2.5, 1, 7.6],
+
+        // TIER 1 / REF
+        ['@bruno.capanema',       'Bruno Capanema · Casados e Sócios',              'tier1', 114000, 2.0, 1, 7.8],
+        ['@scudeler.lucas ★',     'Lucas Scudeler · Segredos dos Relacionamentos',  'tier1', 4100000,0.4, 2, 7.4],
+
+        // TIER 2 / EMERGENTE
+        ['@casal.empreendedores', 'Jonathas + Carolina',                            'tier2', 62000,  3.0, 1, 7.2],
+        ['@casalcomproposito8',   'Casal com Propósito',                            'tier2', 89000,  3.0, 1, 6.8],
+        ['@andressaducosta',      'Andressa Da Costa · Performance + IE',           'tier2', 129000, 2.5, 1, 6.8],
+
+        // MACRO / ESCALA
+        ['@ossociospodcast',      'Bruno + Malu Perini · Os Sócios Podcast',        'intl',  794000, 1.0, 0, 6.6],
+        ['@paulovcoach',          'Paulo Vieira · Método CIS / FEBRACIS',           'intl',  6000000,0.3, 1, 6.4],
+        ['@camilavieira ★',       'Camila Vieira · Plenitude',                      'intl',  4000000,0.4, 1, 6.2],
+        ['@italoventura',         'Italo Ventura · MAV Method',                     'intl',  2000000,0.5, 0, 5.0],
+
+        // DESCARTADOS (cinza)
+        ['@haroldoporto1',        'Mentor de Casais — dor/resgate',                 'desc',  42000,  3.5, 4, 4.5],
+        ['@retomaz',              'Renata Tomaz · Traumas (individual)',            'desc',  29000,  2.8, 2, 4.5],
+        ['@eu.cristinegrotto',    'Relacionamentos Cristãos',                       'desc',  70000,  2.2, 2, 4.0],
+        ['@renatadeazevedo.psi',  'Psicóloga · terapia clínica',                    'desc',  65000,  1.9, 2, 4.0],
+        ['@casaltalks',           'Marina Camargo · Terapia + podcast',             'desc',  71000,  1.7, 2, 4.0],
+        ['@casalfiorini',         'Marcio + Liliane · Pastores',                    'desc',  102000, 2.0, 4, 4.0],
+        ['@francopeixo7o',        'Mentor · crise matrimonial',                     'desc',  169000, 1.5, 3, 3.5],
+        ['@nicolascorrea.com.br', 'Mentor de reconquista (crise)',                  'desc',  117000, 1.2, 4, 3.5],
+        ['@fredmattos',           'Psicólogo (individual)',                         'desc',  79000,  1.6, 1, 5.0],
+        ['@prjosuegoncalves',     'Pastor · Ministério Amo Família',                'desc',  2000000,0.4, 0, 2.5],
+      ];
+
+      const classColor = {
+        sweet: COLOR_WARM,
+        tier1: COLOR_GOLD,
+        tier2: COLOR_WINE,
+        intl:  COLOR_STEEL,
+        desc:  COLOR_MUTED,
+      };
+      const classLabel = {
+        sweet: 'Sweet Spot ★',
+        tier1: 'Tier 1 / Referência',
+        tier2: 'Tier 2 / Emergente',
+        intl:  'Macro / Escala',
+        desc:  'Descartado (filtro)',
+      };
+
+      // Qualified average ER (sweet+tier1+tier2)
+      const qualified = profiles.filter(p => ['sweet','tier1','tier2'].includes(p[2]));
+      const avgER = qualified.reduce((s, p) => s + p[4], 0) / qualified.length;
+
+      // ===================== GRÁFICO 1 — BUBBLE =====================
+      const ctx1 = document.getElementById('chart-bubble').getContext('2d');
+
+      const bubbleDatasets = ['sweet','tier1','tier2','intl','desc'].map(t => ({
+        label: classLabel[t],
+        data: profiles.filter(p => p[2] === t).map(p => ({
+          x: p[3],
+          y: p[4],
+          r: Math.max(8, 7 + (p[5] * 5)),
+          _handle: p[0],
+          _name: p[1],
+          _class: classLabel[p[2]],
+          _followers: p[3],
+          _er: p[4],
+          _hashtags: p[5],
+          _fit: p[6],
+        })),
+        backgroundColor: classColor[t] + (t === 'desc' ? '55' : 'BB'),
+        borderColor: t === 'desc' ? classColor[t] + '88' : classColor[t],
+        borderWidth: t === 'desc' ? 1 : 2,
+        hoverBorderWidth: 3,
+        hoverBorderColor: COLOR_IVORY,
+      }));
+
+      new Chart(ctx1, {
+        type: 'bubble',
+        data: { datasets: bubbleDatasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: { top: 24, right: 24, bottom: 16, left: 8 } },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(13,16,22,0.96)',
+              titleColor: COLOR_GOLD,
+              titleFont: { family: FONT_SERIF, size: 15, weight: 'normal' },
+              bodyColor: COLOR_IVORY,
+              bodyFont: { family: FONT_SANS, size: 11 },
+              padding: 14,
+              borderColor: 'rgba(214,188,129,0.4)',
+              borderWidth: 1,
+              caretSize: 6,
+              displayColors: false,
+              callbacks: {
+                title: (items) => items[0].raw._handle,
+                label: (item) => {
+                  const r = item.raw;
+                  return [
+                    r._name,
+                    '─────────',
+                    `Classificação · ${r._class}`,
+                    `Seguidores · ${formatFollowers(r._followers)}`,
+                    `ER% · ${r._er.toFixed(2)}%`,
+                    `Hashtags · ${r._hashtags}`,
+                    `Fit · ${r._fit}/10`,
+                  ];
+                },
+              },
+            },
+          },
+          scales: {
+            x: {
+              type: 'logarithmic',
+              min: 5000,
+              max: 10000000,
+              title: { display: true, text: 'SEGUIDORES (log)', color: COLOR_LABEL, font: { family: FONT_SANS, size: 10, weight: '600' }, padding: { top: 12 } },
+              grid: { color: COLOR_GRID, drawBorder: false },
+              ticks: {
+                color: COLOR_LABEL,
+                font: { family: FONT_SANS, size: 10 },
+                callback: (v) => {
+                  if (v === 10000)   return '10k';
+                  if (v === 100000)  return '100k';
+                  if (v === 1000000) return '1M';
+                  if (v === 10000000)return '10M';
+                  return '';
+                },
+              },
+            },
+            y: {
+              min: 0,
+              max: 6,
+              title: { display: true, text: 'ER %', color: COLOR_LABEL, font: { family: FONT_SANS, size: 10, weight: '600' }, padding: { bottom: 12 } },
+              grid: { color: COLOR_GRID, drawBorder: false },
+              ticks: {
+                color: COLOR_LABEL,
+                font: { family: FONT_SANS, size: 10 },
+                callback: (v) => v + '%',
+              },
+            },
+          },
+        },
+        plugins: [
+          {
+            id: 'avgLine',
+            afterDatasetsDraw: (chart) => {
+              const { ctx, chartArea, scales } = chart;
+              const y = scales.y.getPixelForValue(avgER);
+              ctx.save();
+              ctx.setLineDash([6, 5]);
+              ctx.strokeStyle = COLOR_WINE;
+              ctx.lineWidth = 1.2;
+              ctx.beginPath();
+              ctx.moveTo(chartArea.left, y);
+              ctx.lineTo(chartArea.right, y);
+              ctx.stroke();
+              ctx.restore();
+              ctx.fillStyle = COLOR_WINE;
+              ctx.font = '10px ' + FONT_SANS;
+              ctx.textAlign = 'right';
+              ctx.fillText('ER% médio (qualificados) · ' + avgER.toFixed(1) + '%', chartArea.right - 10, y - 8);
+            },
+          },
+          {
+            id: 'topBubbleLabels',
+            afterDatasetsDraw: (chart) => {
+              const { ctx, scales } = chart;
+              // Highlight top fit profiles with handles
+              const highlight = ['@edioalberti ★','@mariopinheirooficial','@academiaparacasais ★','@casal_empauta','@bruno.capanema'];
+              chart.data.datasets.forEach((ds) => {
+                ds.data.forEach((pt) => {
+                  if (!highlight.includes(pt._handle)) return;
+                  const x = scales.x.getPixelForValue(pt.x);
+                  const y = scales.y.getPixelForValue(pt.y);
+                  const label = pt._handle.replace(' ★','');
+                  ctx.save();
+                  ctx.fillStyle = COLOR_IVORY;
+                  ctx.font = '600 10px ' + FONT_SANS;
+                  ctx.textAlign = 'center';
+                  ctx.textBaseline = 'bottom';
+                  // backdrop
+                  const w = ctx.measureText(label).width + 10;
+                  ctx.fillStyle = 'rgba(13,16,22,0.78)';
+                  ctx.fillRect(x - w/2, y - pt.r - 18, w, 14);
+                  ctx.strokeStyle = 'rgba(214,188,129,0.35)';
+                  ctx.lineWidth = 0.8;
+                  ctx.strokeRect(x - w/2, y - pt.r - 18, w, 14);
+                  ctx.fillStyle = COLOR_GOLD;
+                  ctx.fillText(label, x, y - pt.r - 6);
+                  ctx.restore();
+                });
+              });
+            },
+          },
+        ],
+      });
+
+      // ===================== GRÁFICO 2 — TOP 10 BARS =====================
+      const top10 = qualified.sort((a, b) => b[4] - a[4]).slice(0, 10);
+      const ctx2 = document.getElementById('chart-top10').getContext('2d');
+
+      new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          labels: top10.map(p => `${p[0]}   ${formatFollowers(p[3])}`),
+          datasets: [{
+            data: top10.map(p => p[4]),
+            backgroundColor: top10.map(p => classColor[p[2]] + 'DD'),
+            borderColor: top10.map(p => classColor[p[2]]),
+            borderWidth: 1,
+            barThickness: 24,
+            borderRadius: 3,
+          }],
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: { right: 56 } },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(13,16,22,0.96)',
+              titleColor: COLOR_GOLD,
+              bodyColor: COLOR_IVORY,
+              padding: 10,
+              displayColors: false,
+              callbacks: { label: (item) => `ER% · ${item.raw.toFixed(2)}` },
+            },
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 5,
+              grid: { color: COLOR_GRID, drawBorder: false },
+              ticks: { color: COLOR_LABEL, font: { family: FONT_SANS, size: 10 }, callback: (v) => v + '%' },
+            },
+            y: {
+              grid: { display: false, drawBorder: false },
+              ticks: { color: COLOR_IVORY, font: { family: FONT_SANS, size: 11 } },
+            },
+          },
+          animation: { duration: 900 },
+        },
+        plugins: [{
+          id: 'barLabels',
+          afterDatasetDraw(chart) {
+            const { ctx } = chart;
+            const meta = chart.getDatasetMeta(0);
+            meta.data.forEach((bar, i) => {
+              const value = chart.data.datasets[0].data[i];
+              ctx.save();
+              ctx.fillStyle = COLOR_GOLD;
+              ctx.font = '600 12px ' + FONT_SANS;
+              ctx.textAlign = 'left';
+              ctx.textBaseline = 'middle';
+              ctx.fillText(value.toFixed(2) + '%', bar.x + 10, bar.y);
+              ctx.restore();
+            });
+          },
+        }],
+      });
+
+      // ===================== GRÁFICO 3 — RADAR TOP 5 =====================
+      const top5 = qualified.slice().sort((a, b) => b[6] - a[6]).slice(0, 5);
+
+      const radarData = {
+        '@edioalberti ★':        [10, 6, 9, 7, 9],
+        '@bruno.capanema':       [ 8, 9, 6, 8, 8],
+        '@casal_empauta':        [ 9, 7, 7, 7, 8],
+        '@mariopinheirooficial': [ 8, 5, 9, 8, 7],
+        '@academiaparacasais ★': [ 9, 5, 8, 6, 8],
+        '@scudeler.lucas ★':     [ 6,10, 4, 9, 8],
+      };
+
+      const radarColors = [COLOR_WARM, COLOR_GOLD, '#D2B673', COLOR_WINE, COLOR_STEEL];
+
+      const radarDatasets = top5.map((p, i) => ({
+        label: p[0],
+        data: radarData[p[0]] || [5,5,5,5,5],
+        backgroundColor: radarColors[i] + '26',
+        borderColor: radarColors[i],
+        borderWidth: 1.8,
+        pointBackgroundColor: radarColors[i],
+        pointBorderColor: radarColors[i],
+        pointRadius: 3.5,
+      }));
+
+      const ctx3 = document.getElementById('chart-radar').getContext('2d');
+      new Chart(ctx3, {
+        type: 'radar',
+        data: {
+          labels: ['Fit Nicho', 'Alcance PT-BR', 'ER%', 'Atividade', 'Alinhamento Elevem-se'],
+          datasets: radarDatasets,
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: COLOR_IVORY,
+                font: { family: FONT_SANS, size: 10 },
+                boxWidth: 10,
+                boxHeight: 10,
+                usePointStyle: true,
+                padding: 14,
+              },
+            },
+            tooltip: {
+              backgroundColor: 'rgba(13,16,22,0.96)',
+              titleColor: COLOR_GOLD,
+              bodyColor: COLOR_IVORY,
+              displayColors: false,
+            },
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 10,
+              angleLines: { color: COLOR_GRID },
+              grid: { color: COLOR_GRID },
+              pointLabels: {
+                color: COLOR_IVORY,
+                font: { family: FONT_SANS, size: 10, weight: '600' },
+              },
+              ticks: {
+                color: COLOR_LABEL,
+                backdropColor: 'transparent',
+                font: { family: FONT_SANS, size: 9 },
+                stepSize: 2,
+              },
+            },
+          },
+        },
+      });
+
+      // ===================== GRÁFICO 4 — DONUT CLASSIFICAÇÃO =====================
+      // distribuição: avaliados 47, qualificados 18 (sweet 4 + tier1 2 + tier2 5 ≈ neste recorte), descartados 11, escala 4, a confirmar 4
+      const ctx4 = document.getElementById('chart-donut').getContext('2d');
+      new Chart(ctx4, {
+        type: 'doughnut',
+        data: {
+          labels: ['Sweet Spot ★ (joias)', 'Tier 1 / Referência', 'Tier 2 / Emergente', 'Macro / Escala', 'Descartados', 'A confirmar'],
+          datasets: [{
+            data: [4, 2, 5, 4, 11, 4],
+            backgroundColor: [
+              COLOR_WARM + 'E0',
+              COLOR_GOLD + 'E0',
+              COLOR_WINE + 'E0',
+              COLOR_STEEL + 'CC',
+              COLOR_MUTED + '99',
+              'rgba(168,99,111,0.55)',
+            ],
+            borderColor: [
+              COLOR_WARM, COLOR_GOLD, COLOR_WINE, COLOR_STEEL, COLOR_MUTED, '#A8636F'
+            ],
+            borderWidth: 1.5,
+            hoverOffset: 12,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '58%',
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: {
+                color: COLOR_IVORY,
+                font: { family: FONT_SANS, size: 11 },
+                boxWidth: 12,
+                boxHeight: 12,
+                usePointStyle: true,
+                padding: 14,
+                generateLabels: (chart) => {
+                  const data = chart.data;
+                  return data.labels.map((label, i) => {
+                    const v = data.datasets[0].data[i];
+                    return {
+                      text: `${label}  ·  ${v}`,
+                      fillStyle: data.datasets[0].backgroundColor[i],
+                      strokeStyle: data.datasets[0].borderColor[i],
+                      lineWidth: 1,
+                      pointStyle: 'circle',
+                      index: i,
+                    };
+                  });
+                },
+              },
+            },
+            tooltip: {
+              backgroundColor: 'rgba(13,16,22,0.96)',
+              titleColor: COLOR_GOLD,
+              bodyColor: COLOR_IVORY,
+              padding: 10,
+              displayColors: false,
+              callbacks: {
+                label: (item) => {
+                  const total = item.dataset.data.reduce((a, b) => a + b, 0);
+                  const pct = (item.raw / total * 100).toFixed(0);
+                  return `${item.raw} perfis · ${pct}%`;
+                },
+              },
+            },
+          },
+        },
+        plugins: [{
+          id: 'donutCenter',
+          afterDraw: (chart) => {
+            const { ctx, chartArea } = chart;
+            const cx = (chartArea.left + chartArea.right) / 2;
+            const cy = (chartArea.top + chartArea.bottom) / 2;
+            ctx.save();
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = COLOR_GOLD;
+            ctx.font = '700 11px ' + FONT_SANS;
+            ctx.fillText('TOTAL', cx, cy - 18);
+            ctx.fillStyle = COLOR_IVORY;
+            ctx.font = '300 36px ' + FONT_SERIF;
+            ctx.fillText('30', cx, cy + 8);
+            ctx.fillStyle = COLOR_LABEL;
+            ctx.font = '10px ' + FONT_SANS;
+            ctx.fillText('perfis analisados', cx, cy + 32);
+            ctx.restore();
+          },
+        }],
+      });
+
+      function formatFollowers(n) {
+        if (n >= 1000000) return (n / 1000000).toFixed(1).replace('.0','') + 'M';
+        if (n >= 1000)    return Math.round(n / 1000) + 'k';
+        return String(n);
+      }
+    });
+  </script>
+
+</body>
+</html>

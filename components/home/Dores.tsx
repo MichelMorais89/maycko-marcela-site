@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import { Reveal } from '@/components/shared/Reveal'
-import { SectionHead } from '@/components/shared/SectionHead'
 import { SplitText } from '@/components/motion/SplitText'
+import { Ornament } from '@/components/shared/Ornament'
 
 const PAINS = [
-  'Conversam menos — e discutem pelos mesmos motivos de sempre.',
+  'Conversam menos e discutem pelos mesmos motivos de sempre.',
   'Resolvem os problemas, mas não evoluem com eles.',
   'A rotina engoliu a admiração que um tinha pelo outro.',
   'O dinheiro, às vezes, gera uma tensão silenciosa.',
@@ -15,120 +15,178 @@ export function Dores() {
   return (
     <section
       className="elv-sec dores-sec"
-      style={{ background: 'var(--surface-wine-deep)', overflow: 'hidden' }}
+      style={{
+        position: 'relative',
+        minHeight: '110vh',
+        display: 'flex',
+        alignItems: 'center',
+        overflow: 'hidden',
+        background: 'var(--surface-wine-deep)',
+        paddingBlock: 'clamp(80px, 12vw, 140px)',
+      }}
     >
+      {/* Foto full-bleed — casal fisicamente deslocado pra direita via inner container */}
       <div
-        className="elv-wrap dores-grid"
-        style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'var(--space-10)', alignItems: 'center' }}
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          overflow: 'hidden',
+          zIndex: 0,
+        }}
       >
-        {/* Foto BW flutuante com mask-image — sem caixa retangular */}
-        <Reveal
-          className="dores-photo elv-photo-float"
+        <div
           style={{
-            position: 'relative',
-            aspectRatio: '4 / 5',
-            maxWidth: 460,
-            margin: '0 auto',
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: '22%',
+            right: '-22%',
           }}
         >
           <Image
             src="/photos/dores-couple-hug-bw.jpg"
-            alt="Casal em abraço — empatia contemplativa"
+            alt=""
             fill
-            sizes="(max-width: 900px) 90vw, 40vw"
+            sizes="120vw"
             style={{
               objectFit: 'cover',
               objectPosition: '50% 22%',
-              filter: 'grayscale(10%) contrast(1.08)',
-              mixBlendMode: 'screen',
+              filter: 'grayscale(10%) contrast(1.1) brightness(0.98)',
             }}
           />
+        </div>
+        {/* Overlay em "muro" — bloqueia esquerda até ~55%, casal só aparece à direita */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(to right, rgba(28,10,16,0.98) 0%, rgba(28,10,16,0.97) 42%, rgba(28,10,16,0.88) 52%, rgba(28,10,16,0.50) 62%, rgba(28,10,16,0.12) 78%, rgba(28,10,16,0) 95%)',
+          }}
+        />
+        {/* Vinheta inferior sutil pra ancorar a foto no bloco */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(to bottom, transparent 65%, rgba(28,10,16,0.55) 100%)',
+          }}
+        />
+      </div>
+
+      {/* Content — coluna ESQUERDA com respiro maior (não no canto) */}
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 1,
+          maxWidth: '500px',
+          paddingLeft: 'clamp(44px, 8vw, 132px)',
+          paddingRight: 'clamp(24px, 4vw, 40px)',
+        }}
+      >
+        <Reveal>
+          <p
+            className="elv-sans"
+            style={{
+              fontSize: 'clamp(0.75rem, 0.7rem + 0.2vw, 0.9rem)',
+              letterSpacing: '0.26em',
+              textTransform: 'uppercase',
+              color: 'var(--gold-400)',
+              fontWeight: 600,
+              marginBottom: 'var(--space-5)',
+            }}
+          >
+            Talvez vocês reconheçam
+          </p>
+
+          {/* Título — reduzido, respirando melhor */}
+          <h2
+            className="elv-serif"
+            style={{
+              fontSize: 'clamp(1.65rem, 3.4vw, 3rem)',
+              color: 'var(--white-warm)',
+              lineHeight: 1.12,
+              margin: 0,
+              textTransform: 'uppercase',
+              letterSpacing: '0.01em',
+              fontWeight: 'var(--weight-medium)',
+              textWrap: 'balance',
+              maxWidth: '18ch',
+            }}
+          >
+            <span style={{ whiteSpace: 'nowrap' }}>
+              <SplitText delay={100}>Vocês se amam.</SplitText>
+            </span>{' '}
+            <span style={{ whiteSpace: 'nowrap' }}>
+              <SplitText delay={400}>Mas o relacionamento</SplitText>
+            </span>{' '}
+            <SplitText delay={600}>está</SplitText>{' '}
+            <em
+              style={{
+                fontStyle: 'italic',
+                color: 'var(--gold-400)',
+                fontWeight: 'var(--weight-regular)',
+              }}
+            >
+              <SplitText delay={800}>apenas funcionando.</SplitText>
+            </em>
+          </h2>
         </Reveal>
 
-        {/* Texto */}
-        <div>
-          <Reveal>
-            <p
+        <Reveal
+          delay={1}
+          as="ul"
+          style={{
+            listStyle: 'none',
+            margin: 'var(--space-9) 0 0',
+            padding: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'clamp(20px, 2.4vw, 28px)',
+            maxWidth: '52ch',
+          }}
+        >
+          {PAINS.map((p, i) => (
+            <li
+              key={i}
               className="elv-sans"
               style={{
-                fontSize: 'var(--text-xs)',
-                letterSpacing: 'var(--tracking-widest)',
-                textTransform: 'uppercase',
-                color: 'var(--gold-400)',
-                marginBottom: 'var(--space-4)',
-              }}
-            >
-              Talvez você reconheça
-            </p>
-            <h2
-              className="elv-serif"
-              style={{
-                fontSize: 'clamp(1.75rem, 3.5vw, 3rem)',
-                color: 'var(--white-warm)',
-                lineHeight: 1.1,
-                margin: '0 0 var(--space-5)',
-                maxWidth: '22ch',
-              }}
-            >
-              <SplitText delay={100}>
-                Vocês se amam. Mas sabem que poderiam estar melhores.
-              </SplitText>
-            </h2>
-            <p
-              className="elv-sans"
-              style={{
-                fontSize: 'var(--text-md)',
-                color: 'rgba(255,248,235,0.70)',
+                display: 'flex',
+                gap: 'var(--space-4)',
+                alignItems: 'flex-start',
+                fontSize: 'clamp(1rem, 1.35vw, 1.15rem)',
                 lineHeight: 'var(--leading-relaxed)',
-                maxWidth: '44ch',
+                color: 'rgba(255,248,235,0.85)',
+                paddingBottom: 'clamp(20px, 2.4vw, 28px)',
+                borderBottom:
+                  i < PAINS.length - 1 ? '1px solid rgba(184,140,72,0.18)' : 'none',
               }}
             >
-              A casa funciona, os filhos estão bem, o trabalho anda. Mas o relacionamento está apenas funcionando.
-            </p>
-          </Reveal>
-          <Reveal
-            delay={1}
-            as="div"
-            style={{ display: 'flex', flexDirection: 'column', marginTop: 'var(--space-7)' }}
+              <Ornament variant="diamond" tone="gold" style={{ marginTop: 8 }} />
+              <span>{p}</span>
+            </li>
+          ))}
+        </Reveal>
+
+        <Reveal delay={2} style={{ marginTop: 'var(--space-9)' }}>
+          <p
+            className="elv-serif"
+            style={{
+              fontSize: 'clamp(1.15rem, 1.9vw, 1.55rem)',
+              color: 'var(--gold-300)',
+              fontStyle: 'italic',
+              lineHeight: 1.35,
+              margin: 0,
+              maxWidth: '34ch',
+            }}
           >
-            {PAINS.map((p, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'flex',
-                  gap: 'var(--space-4)',
-                  padding: 'var(--space-4) 0',
-                  borderBottom:
-                    i < PAINS.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none',
-                  alignItems: 'baseline',
-                }}
-              >
-                <span
-                  className="elv-serif"
-                  style={{
-                    fontStyle: 'italic',
-                    fontSize: 'var(--text-lg)',
-                    color: 'var(--gold-400)',
-                    minWidth: 34,
-                  }}
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <p
-                  className="elv-sans"
-                  style={{
-                    fontSize: 'var(--text-md)',
-                    lineHeight: 'var(--leading-normal)',
-                    color: 'rgba(255,248,235,0.80)',
-                    margin: 0,
-                  }}
-                >
-                  {p}
-                </p>
-              </div>
-            ))}
-          </Reveal>
-        </div>
+            Talvez o problema nunca tenha sido falta de amor.
+            <br />
+            <span style={{ color: 'var(--white-warm)' }}>Talvez tenha sido falta de direção.</span>
+          </p>
+        </Reveal>
       </div>
     </section>
   )

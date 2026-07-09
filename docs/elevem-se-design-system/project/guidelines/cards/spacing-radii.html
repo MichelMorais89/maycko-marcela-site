@@ -1,0 +1,27 @@
+<!-- @dsCard group="Spacing" viewport="700x170" name="Raios & cantos" subtitle="Restritos — editorial premium, cantos sutis" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); padding: 24px 28px; font-family: var(--font-sans); }
+  .row { display: flex; gap: 20px; align-items: flex-end; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 9px; }
+  .box { width: 74px; height: 60px; background: var(--white-warm); box-shadow: var(--ring-hairline); }
+  .item b { font-size: 11px; color: var(--graphite-900); font-weight: 500; }
+  .item span { font-size: 9.5px; color: var(--text-muted); }
+  .pill { width: 96px !important; border-radius: var(--radius-pill); background: var(--wine-600); box-shadow: none; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="box" style="border-radius:var(--radius-none)"></div><b>none</b><span>0</span></div>
+    <div class="item"><div class="box" style="border-radius:var(--radius-sm)"></div><b>sm</b><span>4px</span></div>
+    <div class="item"><div class="box" style="border-radius:var(--radius-md)"></div><b>md</b><span>8px · default</span></div>
+    <div class="item"><div class="box" style="border-radius:var(--radius-lg)"></div><b>lg</b><span>14px</span></div>
+    <div class="item"><div class="box" style="border-radius:var(--radius-xl)"></div><b>xl</b><span>22px</span></div>
+    <div class="item"><div class="box pill"></div><b>pill</b><span>chips · botões</span></div>
+  </div>
+</body>
+</html>

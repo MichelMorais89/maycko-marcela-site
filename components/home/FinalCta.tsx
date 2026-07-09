@@ -4,6 +4,7 @@ import { Eyebrow } from '@/components/shared/Eyebrow'
 import { SplitText } from '@/components/motion/SplitText'
 import { MagneticButton } from '@/components/motion/MagneticButton'
 import { ShimmerCTA } from '@/components/motion/ShimmerCTA'
+import { Ornament } from '@/components/shared/Ornament'
 
 export function FinalCta() {
   return (
@@ -78,58 +79,69 @@ export function FinalCta() {
         style={{ position: 'relative', zIndex: 1 }}
       >
         <Reveal className="elv-center">
-          <div
-            style={{
-              width: 52,
-              height: 52,
-              borderRadius: '50%',
-              background: 'var(--wine-600)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: 'var(--space-5)',
-            }}
-          >
-            <span
-              className="elv-serif"
-              style={{ color: 'var(--gold-300)', fontSize: 'var(--text-lg)', fontStyle: 'italic' }}
-            >
-              E
-            </span>
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/monogram-light.svg"
+            alt=""
+            width={44}
+            height={44}
+            style={{ display: 'block', margin: '0 auto var(--space-5)' }}
+          />
 
-          <Eyebrow tone="onWine">A decisão é estratégica</Eyebrow>
-
-          <h2
-            className="elv-serif elv-fluid-h1"
-            style={{ marginTop: 'var(--space-4)', maxWidth: '20ch', color: 'var(--white-warm)' }}
-          >
-            <SplitText delay={100}>
-              Se o casamento de vocês pode viver em outro nível
-            </SplitText>
-          </h2>
+          <Ornament tone="gold" style={{ marginBottom: 'var(--space-6)' }} />
 
           <p
             className="elv-sans"
             style={{
-              marginTop: 'var(--space-5)',
+              fontSize: 'var(--text-xs)',
+              letterSpacing: 'var(--tracking-widest)',
+              textTransform: 'uppercase',
+              color: 'var(--gold-300)',
+              margin: 0,
               maxWidth: '46ch',
-              fontSize: 'clamp(1rem, 1.6vw, 1.2rem)',
-              lineHeight: 'var(--leading-relaxed)',
-              color: 'rgba(255,248,235,0.78)',
+              lineHeight: 1.4,
             }}
           >
-            Preencham a aplicação. Se houver alinhamento, vocês entram. Se não, indicamos o melhor
-            caminho.
+            A decisão mais importante da vida de vocês talvez não seja a próxima conquista profissional.
           </p>
+
+          <h2
+            className="elv-serif elv-fluid-h1"
+            style={{ marginTop: 'var(--space-5)', maxWidth: '22ch', color: 'var(--white-warm)' }}
+          >
+            <SplitText delay={100}>
+              Talvez seja fortalecer aquilo que sustenta todas as outras.
+            </SplitText>
+          </h2>
+
+          <div
+            className="elv-sans"
+            style={{
+              marginTop: 'var(--space-6)',
+              maxWidth: '48ch',
+              fontSize: 'clamp(1rem, 1.5vw, 1.2rem)',
+              lineHeight: 'var(--leading-relaxed)',
+              color: 'rgba(255,248,235,0.80)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 'var(--space-3)',
+              marginInline: 'auto',
+            }}
+          >
+            <p style={{ margin: 0 }}>Se existe amor, existe um caminho.</p>
+            <p style={{ margin: 0 }}>Preencham a aplicação.</p>
+            <p style={{ margin: 0 }}>
+              Se identificarmos que a mentoria faz sentido para vocês, teremos alegria em caminhar juntos durante os próximos doze meses.
+            </p>
+          </div>
 
           <div
             className="elv-row"
-            style={{ justifyContent: 'center', marginTop: 'var(--space-7)' }}
+            style={{ justifyContent: 'center', marginTop: 'var(--space-8)' }}
           >
             <MagneticButton>
               <ShimmerCTA href="/mentoria#aplicar" style={{ padding: '16px 36px' }}>
-                Quero aplicar
+                Quero aplicar para a Mentoria Elevem-se
               </ShimmerCTA>
             </MagneticButton>
           </div>
@@ -140,11 +152,11 @@ export function FinalCta() {
               fontSize: 'var(--text-2xs)',
               letterSpacing: 'var(--tracking-widest)',
               textTransform: 'uppercase',
-              color: 'rgba(255,248,235,0.38)',
+              color: 'rgba(255,248,235,0.45)',
               marginTop: 'var(--space-5)',
             }}
           >
-            Processo seletivo por aplicação · Poucos casais por ciclo
+            Processo seletivo · Poucos casais por ciclo
           </p>
         </Reveal>
       </div>

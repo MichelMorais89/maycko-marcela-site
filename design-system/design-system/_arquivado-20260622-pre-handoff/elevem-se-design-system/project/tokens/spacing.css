@@ -1,0 +1,61 @@
+/* ============================================================
+   Elevem-se — Spacing, radii, shadows, layout
+   ------------------------------------------------------------
+   Generous, calm spacing. Subtle, warm shadows. Restrained
+   radii (premium editorial = mostly sharp / softly rounded).
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (4px base) -------------------------- */
+  --space-0:  0;
+  --space-1:  0.25rem;  /* 4   */
+  --space-2:  0.5rem;   /* 8   */
+  --space-3:  0.75rem;  /* 12  */
+  --space-4:  1rem;     /* 16  */
+  --space-5:  1.5rem;   /* 24  */
+  --space-6:  2rem;     /* 32  */
+  --space-7:  2.5rem;   /* 40  */
+  --space-8:  3rem;     /* 48  */
+  --space-9:  4rem;     /* 64  */
+  --space-10: 5rem;     /* 80  */
+  --space-11: 6.5rem;   /* 104 */
+  --space-12: 8rem;     /* 128 */
+
+  /* ---- Radii (restrained) -------------------------------- */
+  --radius-none: 0;
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   8px;   /* default cards / inputs              */
+  --radius-lg:   14px;
+  --radius-xl:   22px;
+  --radius-pill: 999px; /* tags / chips / pills                */
+  --radius-circle: 50%;
+
+  /* ---- Hairline / border widths -------------------------- */
+  --hairline: 1px;
+  --rule-thin: 1px;     /* signature gold rule                 */
+  --rule-medium: 2px;
+
+  /* ---- Shadows (soft, warm-tinted, low spread) ----------- */
+  --shadow-xs: 0 1px 2px rgba(74, 30, 41, 0.06);
+  --shadow-sm: 0 2px 8px rgba(74, 30, 41, 0.07);
+  --shadow-md: 0 10px 30px -12px rgba(74, 30, 41, 0.18);
+  --shadow-lg: 0 24px 60px -24px rgba(46, 14, 26, 0.28);
+  --shadow-gold: 0 8px 28px -14px rgba(154, 114, 51, 0.45);
+  /* Inset hairline for cards on light */
+  --ring-hairline: inset 0 0 0 1px var(--border-hairline);
+
+  /* ---- Layout -------------------------------------------- */
+  --container-sm: 36rem;   /* 576  — prose                     */
+  --container-md: 48rem;   /* 768                              */
+  --container-lg: 64rem;   /* 1024                             */
+  --container-xl: 75rem;   /* 1200 — site max                  */
+  --gutter: var(--space-5);
+
+  /* ---- Motion (calm, no bounce) -------------------------- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --duration-fast: 140ms; /* @kind other */
+  --duration-base: 240ms; /* @kind other */
+  --duration-slow: 420ms; /* @kind other */
+}

@@ -1,0 +1,180 @@
+/* ============================================================
+   Elevem-se — Color tokens
+   ------------------------------------------------------------
+   Mood: "luxo leve". Vinho/bordô + dourado over light, warm
+   neutrals. No pure black, no pure white, no vibrant hues.
+   Wine = romance / depth. Gold = prosperity / sophistication.
+   Light neutrals = lightness / breathing room.
+   ============================================================ */
+
+:root {
+  /* ---- Wine / Bordô (primary brand) — anchored on #6E2A36 */
+  --wine-950: #2A0E16; /* deepest — reserved                    */
+  --wine-900: #3A1420;
+  --wine-800: #4A1B29;
+  --wine-700: #5C2230; /* deep wine — text / hover              */
+  --wine-600: #6E2A36; /* BRAND WINE — buttons, headings, panels*/
+  --wine-500: #874050;
+  --wine-400: #A8636F;
+  --wine-300: #C8939B; /* warm rosé, not cool mauve             */
+  --wine-200: #E6C9CC;
+  --wine-100: #F3E2E0;
+  --wine-50:  #FAF2F0;
+
+  /* ---- Dourado / Gold (accent) — anchored on #C2A14D ----- */
+  --gold-800: #735422; /* gold text on light (AA ≥6:1)          */
+  --gold-700: #946F26;
+  --gold-600: #AC8838;
+  --gold-500: #C2A14D; /* BRAND GOLD — rules, accents           */
+  --gold-400: #D2B673;
+  --gold-300: #E0CB99;
+  --gold-200: #EDDFBE;
+  --gold-100: #F6EFD8;
+  --gold-50:  #FBF7EB;
+
+  /* ---- Light neutrals — anchored on #F4EEE2 / #D9C4A3 ---- */
+  --ivory:   #F4EEE2; /* primary page background — marfim       */
+  --cream:   #EBE1CE; /* secondary surface — creme              */
+  --sand:    #D9C4A3; /* tertiary surface / fills — areia       */
+  --nude:    #C9B492; /* deeper fill / borders — nude           */
+
+  /* ---- Calor — warm clay/rosé accent (Amante/Explorador) -
+     Intimacy & human warmth. Quiet, supporting; NEVER pink/
+     magenta. Bridges wine + gold like candlelight. a confirmar */
+  --warm-600: #8C5038; /* deep clay — warm text/line on light (AA) */
+  --warm-500: #B47254; /* clay-rosé — warm accent                */
+  --warm-300: #D8A98E; /* soft terracotta — highlights           */
+  --warm-100: #F1DECE; /* warm wash — intimate fills             */
+
+  /* ---- Graphite — anchored on #2E2A2B -------------------- */
+  --graphite-900: #2E2A2B; /* primary text                     */
+  --graphite-700: #4D4748; /* secondary text                   */
+  --graphite-500: #716A6B; /* muted text / captions            */
+  --graphite-300: #A99FA0; /* disabled / hairlines             */
+  --graphite-100: #DAD2D2;
+
+  /* ---- Ink / Azul-marinho (ÂNCORA DE FORÇA) — #21314F ----
+     Structure, strength, strategy, authority (Maycko / liderança).
+     The counterweight that keeps "luxo leve" from going fragile.
+     Vinho = emoção · Navy/grafite = estrutura · Dourado = prosperidade. */
+  --ink-950: #0D1422;
+  --ink-900: #16233A;
+  --ink-800: #21314F; /* BRAND NAVY — anchor, Maycko, structure   */
+  --ink-700: #2C3F61;
+  --ink-600: #3B4F74;
+  --ink-500: #51668A;
+  --ink-400: #7487A0; /* steel — navy on dark                     */
+  --ink-300: #A7B4C6;
+  --ink-200: #CCD4DF;
+  --ink-100: #E5EAF0;
+
+  /* ---- Pure-ish utility (use sparingly) ------------------ */
+  --white-warm: #FFFDFA;
+  --black-warm: #1C1518;
+
+  /* ========================================================
+     SEMANTIC ALIASES — author against these
+     ======================================================== */
+
+  /* Surfaces / backgrounds */
+  --surface-page:    var(--ivory);
+  --surface-raised:  var(--white-warm);
+  --surface-card:    var(--white-warm);
+  --surface-sunken:  var(--cream);
+  --surface-fill:    var(--sand);
+  --surface-wine:    var(--wine-600);   /* brand wine sections  */
+  --surface-wine-deep: var(--wine-800);
+
+  /* Text */
+  --text-strong:  var(--graphite-900);
+  --text-body:    var(--graphite-700);
+  --text-muted:   var(--graphite-500);
+  --text-on-wine: var(--gold-100);      /* body text on wine    */
+  --text-on-wine-strong: var(--white-warm);
+  --text-brand:   var(--wine-700);      /* headings accent      */
+  --text-gold:    var(--gold-800);     /* gold label on light — AA ≥4.5:1 */
+
+  /* Lines & borders */
+  --border-hairline: var(--nude);
+  --border-soft:     var(--graphite-100);
+  --rule-gold:       var(--gold-500);   /* signature thin rule  */
+  --rule-gold-on-wine: var(--gold-400);
+
+  /* Interactive */
+  --action-primary:        var(--wine-600);
+  --action-primary-hover:  var(--wine-700);
+  --action-primary-press:  var(--wine-800);
+  --action-gold:           var(--gold-600);
+  --action-gold-hover:     var(--gold-700);
+  --focus-ring:            var(--gold-500);
+
+  /* Calor / warmth (Amante–Explorador) — intimacy accents */
+  --text-warm:       var(--warm-600);   /* warm label/word on light  */
+  --accent-warm:     var(--warm-500);
+  --warm-line:       var(--warm-300);
+  --warm-fill:       var(--warm-100);   /* soft intimate wash        */
+  --highlight-warm:  var(--warm-100);   /* marca-texto behind a word */
+
+  /* Âncora de força (Governante/Sábio) — structure, authority */
+  --text-anchor:     var(--ink-800);    /* navy text/label on light  */
+  --anchor:          var(--ink-800);    /* structural accent (Maycko) */
+  --anchor-soft:     var(--ink-600);
+  --rule-anchor:     var(--ink-700);
+  --surface-anchor:      var(--ink-900); /* dark structural sections  */
+  --surface-anchor-deep: var(--ink-950);
+
+  /* Feedback (kept muted, on-brand) */
+  --success: #5B6B4E;
+  --warning: var(--gold-700);
+  --danger:  var(--wine-600);
+  --info:    var(--graphite-700);
+}
+
+/* ============================================================
+   NOTURNO — dramatic dark mode (opt-in)
+   The "forte/escuro com dourado" register: deep graphite-navy
+   (the âncora de força), NEVER flat black. Gold is the accent,
+   wine the emotional highlight, ivory the type. Cinematic —
+   pairs with the studio ensaio. The system's second mode.
+   Wrap any subtree:  <div data-theme="noturno"> … </div>
+   ============================================================ */
+:root[data-theme="noturno"],
+[data-theme="noturno"] {
+  /* base dark surfaces (deep graphite-navy) */
+  --noir-950: #0C0F14;
+  --noir-900: #14181F;
+  --noir-800: #1A1F28;
+  --noir-700: #242A35;
+
+  /* Surfaces */
+  --surface-page:      var(--noir-800);
+  --surface-raised:    var(--noir-700);
+  --surface-card:      var(--noir-700);
+  --surface-sunken:    var(--noir-900);
+  --surface-fill:      #2E3540;
+  --surface-wine:      var(--wine-600);  /* wine accent panels        */
+  --surface-wine-deep: var(--noir-900);
+  --surface-anchor:    var(--ink-900);
+
+  /* Text */
+  --text-strong:  var(--white-warm);
+  --text-body:    #D8DCE3;          /* cool ivory body              */
+  --text-muted:   #99A2AF;          /* steel grey                   */
+  --text-brand:   var(--gold-300);  /* headings accent on dark      */
+  --text-gold:    var(--gold-300);  /* gold label on dark — AA pass */
+  --text-anchor:  var(--ink-300);   /* steel navy on dark           */
+
+  /* Lines & borders */
+  --border-hairline: rgba(214,188,129,0.20);
+  --border-soft:     rgba(214,188,129,0.12);
+  --rule-gold:       var(--gold-400);
+
+  /* Interactive (wine stays the CTA; white text ≈ 6:1) */
+  --action-primary:        var(--wine-500);
+  --action-primary-hover:  var(--wine-400);
+  --action-primary-press:  var(--wine-600);
+  --focus-ring:            var(--gold-400);
+
+  /* Soft gold ring for cards on dark */
+  --ring-hairline: inset 0 0 0 1px rgba(214,188,129,0.16); /* @kind shadow */
+}

@@ -4,12 +4,10 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/sobre', label: 'Sobre' },
+  { href: '/', label: 'Início' },
+  { href: '/sobre', label: 'Nossa História' },
   { href: '/metodo', label: 'O Método' },
   { href: '/mentoria', label: 'A Mentoria' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contato', label: 'Contato' },
 ]
 
 function useMediaQuery(query: string) {
@@ -134,7 +132,7 @@ export function SiteNav({ active = '/' }: SiteNavProps) {
                 transition: 'background var(--duration-fast) var(--ease-standard)',
               }}
             >
-              Quero a mentoria
+              Aplicar
             </Link>
           </div>
         ) : (
@@ -211,7 +209,7 @@ export function SiteNav({ active = '/' }: SiteNavProps) {
                   textDecoration: 'none',
                 }}
               >
-                Quero a mentoria
+                Aplicar
               </Link>
             </div>
           </div>

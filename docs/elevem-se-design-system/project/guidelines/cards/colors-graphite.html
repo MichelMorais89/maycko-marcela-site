@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Grafite suave" subtitle="Texto e linhas — substitui o preto puro (sem peso)" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); font-family: var(--font-sans); padding: 22px 24px; }
+  .row { display: flex; gap: 14px; }
+  .sw { flex: 1; height: 104px; border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: flex-end; padding: 10px 11px; }
+  .sw b { font-weight: 500; font-size: 12px; letter-spacing: .04em; }
+  .sw span { font-size: 10px; opacity: .85; font-variant-numeric: tabular-nums; }
+  .dk { color: var(--ivory); }
+  .lt { color: var(--graphite-900); box-shadow: var(--ring-hairline); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw dk" style="background:var(--graphite-900)"><b>900 · text</b><span>#2E2A2B</span></div>
+    <div class="sw dk" style="background:var(--graphite-700)"><b>700 · body</b><span>#4D4748</span></div>
+    <div class="sw dk" style="background:var(--graphite-500)"><b>500 · muted</b><span>#716A6B</span></div>
+    <div class="sw lt" style="background:var(--graphite-300)"><b>300 · hairline</b><span>#A99FA0</span></div>
+    <div class="sw lt" style="background:var(--graphite-100)"><b>100</b><span>#DAD2D2</span></div>
+  </div>
+</body>
+</html>

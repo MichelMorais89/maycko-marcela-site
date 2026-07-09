@@ -1,0 +1,59 @@
+<!-- @dsCard group="Brand" viewport="700x380" name="Fotografia — direção de uso" subtitle="Ensaio escuro editorial dentro do luxo leve: emoldurar, full-bleed ou P&B + dourado" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); font-family: var(--font-sans); padding: 22px 24px; }
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .lbl { font-size: 9px; letter-spacing: .22em; text-transform: uppercase; color: var(--text-gold); }
+  .frame { aspect-ratio: 3 / 4; border-radius: var(--radius-md); overflow: hidden; position: relative; }
+
+  /* 1 — emoldurado sobre claro */
+  .onlight { background: var(--cream); padding: 14px; box-shadow: var(--ring-hairline); }
+  .onlight img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; box-shadow: inset 0 0 0 1px var(--gold-500); display: block; }
+
+  /* 2 — full-bleed com tipografia */
+  .bleed img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+  .bleed .grad { position: absolute; inset: 0; background: linear-gradient(to top, rgba(42,16,22,0.82) 0%, rgba(42,16,22,0.12) 46%, transparent 70%); }
+  .bleed .cap { position: absolute; left: 14px; right: 14px; bottom: 13px; }
+  .bleed .eye { font-size: 8px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold-300); }
+  .bleed h4 { font-family: var(--font-display); font-weight: 500; font-size: 21px; line-height: 1.04; color: var(--white-warm); margin: 4px 0 0; }
+
+  /* 3 — P&B + dourado */
+  .bw img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.04); display: block; }
+  .bw .tick { position: absolute; left: 14px; bottom: 14px; width: 30px; height: 1px; background: var(--gold-400); }
+
+  .rules { margin-top: 16px; display: flex; gap: 22px; font-size: 11px; color: var(--text-body); line-height: 1.4; }
+  .rules b { color: var(--graphite-900); font-weight: 600; }
+  .rules .do::before { content: "✓ "; color: var(--success); }
+  .rules .dont::before { content: "✕ "; color: var(--danger); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <figure>
+      <span class="lbl">Sobre claro · emoldurado</span>
+      <div class="frame onlight"><img src="../../assets/photos/marcela-01-web.jpg" alt=""></div>
+    </figure>
+    <figure>
+      <span class="lbl">Full-bleed · tipografia clara</span>
+      <div class="frame bleed">
+        <img src="../../assets/photos/casal-01-web.jpg" alt="">
+        <div class="grad"></div>
+        <div class="cap"><div class="eye">Quem conduz</div><h4>Vivemos o que ensinamos</h4></div>
+      </div>
+    </figure>
+    <figure>
+      <span class="lbl">P&amp;B · acento dourado</span>
+      <div class="frame bw"><img src="../../assets/photos/casal-bw-web.jpg" alt=""><span class="tick"></span></div>
+    </figure>
+  </div>
+  <div class="rules">
+    <span class="do"><b>Faça:</b> respiro claro ao redor; pele quente; vinho/dourado como acento; P&amp;B atemporal.</span>
+    <span class="dont"><b>Evite:</b> página inteira escura; grade fria; recolorir a pele; texto escuro sobre foto escura.</span>
+  </div>
+</body>
+</html>

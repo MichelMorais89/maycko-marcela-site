@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elevem-se — Design System</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--surface-page); color: var(--text-strong); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 80px 40px 96px; }
+
+  /* hero */
+  .hero { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 22px; padding-bottom: 64px; border-bottom: 1px solid var(--border-hairline); }
+  .eyebrow { font-size: 12px; letter-spacing: .32em; text-transform: uppercase; color: var(--text-gold); font-weight: 500; }
+  .wordmark { font-family: var(--font-display); font-weight: 500; font-size: 92px; line-height: .95; color: var(--wine-700); letter-spacing: -.01em; white-space: nowrap; }
+  .warmtext { background: linear-gradient(to bottom, transparent 60%, var(--highlight-warm) 60%); padding: 0 .06em; font-style: italic; }
+  .lede { font-weight: 300; font-size: 19px; line-height: 1.7; color: var(--text-body); max-width: 56ch; }
+  .rule { width: 44px; height: 1px; background: var(--rule-gold); }
+
+  section.block { padding: 56px 0; border-bottom: 1px solid var(--border-hairline); }
+  .label { font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 22px; }
+
+  /* palette */
+  .swatches { display: flex; gap: 0; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .sw { flex: 1; height: 92px; display: flex; align-items: flex-end; padding: 9px 11px; font-size: 11px; letter-spacing: .04em; }
+
+  /* type specimen */
+  .type-row { display: flex; align-items: baseline; gap: 22px; margin-bottom: 14px; }
+  .type-row .meta { width: 130px; flex: none; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); }
+  .serif { font-family: var(--font-display); color: var(--graphite-900); line-height: 1; }
+
+  /* explore cards */
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .card { display: block; text-decoration: none; color: inherit; background: var(--white-warm); border-radius: var(--radius-md); padding: 26px 28px; box-shadow: var(--ring-hairline); transition: box-shadow var(--duration-base) var(--ease-standard), transform var(--duration-base) var(--ease-standard); }
+  .card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 24px; color: var(--wine-700); margin: 10px 0 6px; }
+  .card p { font-size: 14px; line-height: 1.55; color: var(--text-body); margin: 0; }
+  .card .k { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--text-gold); }
+
+  .foot { text-align: center; padding-top: 48px; }
+  .foot .tag { font-size: 12px; letter-spacing: .32em; text-transform: uppercase; color: var(--text-gold); }
+  .note { margin-top: 14px; font-size: 12px; color: var(--text-muted); max-width: 60ch; margin-left: auto; margin-right: auto; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <img src="assets/elevemse-monogram.svg" width="92" height="92" alt="Elevem-se">
+    <div class="eyebrow">Mentoria para casais</div>
+    <div class="wordmark">Elevem-se</div>
+    <div class="rule"></div>
+    <p class="lede">Sistema de design da marca — vinho, dourado e neutros claros. Luxo leve: sofisticado, refinado e <span class="warmtext">acolhedor</span>, com muito respiro. Conduzido por Maycko &amp; Marcela.</p>
+  </div>
+
+  <section class="block">
+    <div class="label">Paleta</div>
+    <div class="swatches">
+      <div class="sw" style="background:var(--wine-600);color:var(--gold-100)">Vinho 600</div>
+      <div class="sw" style="background:var(--ink-800);color:var(--ink-100)">Navy 800</div>
+      <div class="sw" style="background:var(--gold-500);color:var(--wine-900)">Gold 500</div>
+      <div class="sw" style="background:var(--warm-500);color:#fff">Clay 500</div>
+      <div class="sw" style="background:var(--sand);color:var(--graphite-700)">Areia</div>
+      <div class="sw" style="background:var(--cream);color:var(--graphite-700)">Creme</div>
+      <div class="sw" style="background:var(--ivory);color:var(--graphite-700)">Marfim</div>
+      <div class="sw" style="background:var(--graphite-900);color:var(--ivory)">Grafite</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="label">Tipografia</div>
+    <div class="type-row"><span class="meta">Spectral · display</span><span class="serif" style="font-size:48px;font-weight:500">Vida a dois</span></div>
+    <div class="type-row"><span class="meta">Spectral · italic</span><span class="serif" style="font-size:30px;font-style:italic;font-weight:500;color:var(--wine-600)">Vivemos o que ensinamos</span></div>
+    <div class="type-row"><span class="meta">Mulish · corpo</span><span style="font-size:17px;font-weight:300;color:var(--text-body)">Tire o casal do modo automático.</span></div>
+    <div class="type-row" style="margin-bottom:0"><span class="meta">Mulish · label</span><span style="font-size:12px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--text-gold)">Mentoria para casais</span></div>
+  </section>
+
+  <section class="block" style="border-bottom:none">
+    <div class="label">Explore</div>
+    <div class="cards">
+      <a class="card" href="ui_kits/landing/index.html"><span class="k">UI kit</span><h3>Página de vendas</h3><p>Landing da mentoria: hero, método, mentores, oferta e captura.</p></a>
+      <a class="card" href="ui_kits/social/index.html"><span class="k">UI kit</span><h3>Carrossel de Instagram</h3><p>Post 4:5 com chrome real — capa, princípio, citação e CTA.</p></a>
+      <a class="card" href="components/brand/brand.card.html"><span class="k">Componentes</span><h3>Marca &amp; Logo</h3><p>Lockups do logo, monograma e citações editoriais.</p></a>
+      <a class="card" href="components/core/core.card.html"><span class="k">Componentes</span><h3>Core</h3><p>Botões, badges/eyebrows, cards e avatares.</p></a>
+    </div>
+  </section>
+
+  <div class="foot">
+    <div class="tag">Mentoria para casais</div>
+    <p class="note">Fontes (Spectral + Mulish) e a chama são propostas a validar com o casal. Veja <strong>readme.md</strong> para o guia completo e as pendências.</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!-- @dsCard group="Brand" viewport="700x320" name="Arquétipos → design" subtitle="Mago · Governante/Sábio · Amante/Explorador — transformação + autoridade + calor" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); padding: 26px 28px; font-family: var(--font-sans); }
+  .intro { font-family: var(--font-display); font-size: 21px; font-weight: 400; color: var(--graphite-900); line-height: 1.3; margin: 0 0 20px; max-width: 52ch; }
+  .intro em { font-style: italic; color: var(--wine-700); }
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .col { display: flex; flex-direction: column; gap: 9px; }
+  .num { font-family: var(--font-display); font-size: 15px; font-style: italic; color: var(--gold-800); }
+  .rule { width: 26px; height: 1px; }
+  h3 { font-family: var(--font-display); font-weight: 500; font-size: 22px; margin: 0; line-height: 1.05; }
+  .role { font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); }
+  ul { margin: 6px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  li { font-size: 12px; line-height: 1.45; color: var(--text-body); padding-left: 13px; position: relative; }
+  li::before { content: ""; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; border-radius: 50%; }
+  .mago h3 { color: var(--wine-700); } .mago .rule { background: var(--wine-600); } .mago li::before { background: var(--wine-500); }
+  .gov h3 { color: var(--gold-800); } .gov .rule { background: var(--gold-600); } .gov li::before { background: var(--gold-600); }
+  .amante h3 { color: var(--warm-600); } .amante .rule { background: var(--warm-500); } .amante li::before { background: var(--warm-500); }
+</style>
+</head>
+<body>
+  <p class="intro">Transformação e sofisticação <span style="background:linear-gradient(to bottom,transparent 58%,var(--highlight-warm) 58%);padding:0 .06em">com calor</span> — elegante, premium e <em>acolhedor</em>.</p>
+  <div class="cols">
+    <div class="col mago">
+      <span class="num">01</span>
+      <h3>Mago</h3>
+      <span class="rule"></span>
+      <span class="role">Transformação · elevação</span>
+      <ul>
+        <li>Monograma que se eleva (broto/união)</li>
+        <li>Vinho como alma; gesto de subida</li>
+        <li>Antes → depois, sair do automático</li>
+      </ul>
+    </div>
+    <div class="col gov">
+      <span class="num">02</span>
+      <h3>Governante / Sábio</h3>
+      <span class="rule"></span>
+      <span class="role">Autoridade · estrutura · ensino</span>
+      <ul>
+        <li>Serifada editorial, grid e respiro</li>
+        <li>Linha dourada como assinatura</li>
+        <li>Numerais e método em pilares</li>
+      </ul>
+    </div>
+    <div class="col amante">
+      <span class="num">03</span>
+      <h3>Amante / Explorador</h3>
+      <span class="rule"></span>
+      <span class="role">Intimidade · conexão · calor</span>
+      <ul>
+        <li>Neutros quentes, luz de vela</li>
+        <li>Acento clay e marca-texto suave</li>
+        <li>Voz próxima, fotos quentes do casal</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

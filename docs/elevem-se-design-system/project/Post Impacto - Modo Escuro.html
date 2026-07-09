@@ -1,0 +1,96 @@
+<!-- @dsCard group="Social" viewport="660x825" name="Post de impacto — modo escuro" subtitle="Feed 4:5 dramático — duotone navy + dourado sobre o ensaio" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elevem-se — Post de impacto (modo escuro)</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { background: #15110F; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: var(--font-sans); padding: 24px; }
+  .stage { position: relative; }
+
+  /* 4:5 feed post @ 1080x1350, scaled to fit */
+  .post {
+    width: 1080px; height: 1350px;
+    position: absolute; top: 0; left: 0;
+    overflow: hidden;
+    background: var(--ink-950);
+    transform-origin: top left;
+  }
+
+  .ph { position: absolute; inset: 0; }
+  .ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 16%; display: block; }
+
+  /* navy duotone + cinematic protection gradient */
+  .tone { position: absolute; inset: 0; background: var(--ink-800); mix-blend-mode: color; opacity: 0.46; }
+  .deepen { position: absolute; inset: 0; background: var(--ink-950); mix-blend-mode: multiply; opacity: 0.20; }
+  .grad { position: absolute; inset: 0; background:
+      linear-gradient(180deg, rgba(13,20,34,0.55) 0%, rgba(13,20,34,0.10) 24%, rgba(13,20,34,0.15) 50%, rgba(13,20,34,0.72) 78%, rgba(13,20,34,0.97) 100%); }
+  /* subtle top vignette for the logo */
+  .vig { position: absolute; inset: 0; background: radial-gradient(120% 60% at 50% 120%, rgba(110,42,54,0.18) 0%, transparent 55%); }
+
+  .content { position: absolute; inset: 0; padding: 76px 74px 84px; display: flex; flex-direction: column; }
+
+  .brand { display: flex; align-items: center; gap: 18px; }
+  .brand img { display: block; width: 58px; height: 58px; }
+  .brand b { font-family: var(--font-display); font-weight: 500; font-size: 40px; color: var(--ivory); letter-spacing: .04em; }
+
+  .bottom { margin-top: auto; }
+  .eye { font-family: var(--font-sans); font-size: 21px; letter-spacing: .34em; text-transform: uppercase; color: var(--gold-300); font-weight: 600; }
+  .head { font-family: var(--font-display); font-weight: 600; font-size: 74px; line-height: 1.04; color: var(--white-warm); margin: 30px 0 0; text-transform: uppercase; letter-spacing: .015em; text-wrap: balance; text-shadow: 0 2px 40px rgba(13,20,34,0.7); }
+  .head em { font-style: italic; color: var(--gold-300); }
+  .rule { width: 84px; height: 2px; background: var(--gold-400); margin: 40px 0 0; }
+  .sub { font-family: var(--font-sans); font-weight: 300; font-size: 27px; line-height: 1.55; color: var(--ink-100); margin: 30px 0 0; max-width: 24ch; }
+
+  .foot { display: flex; align-items: center; justify-content: space-between; margin-top: 54px; }
+  .handle { font-family: var(--font-sans); font-size: 22px; letter-spacing: .12em; color: var(--ivory); opacity: .85; }
+  .tagpill { font-family: var(--font-sans); font-size: 17px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-200); border: 1px solid rgba(214,182,115,0.5); border-radius: 999px; padding: 12px 24px; }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="post" id="post">
+      <div class="ph"><img src="assets/photos/casal-bw-web.jpg" alt="Maycko e Marcela"></div>
+      <div class="tone"></div>
+      <div class="deepen"></div>
+      <div class="grad"></div>
+      <div class="vig"></div>
+      <div class="content">
+        <div class="brand">
+          <img src="assets/elevemse-monogram-light.svg" alt="">
+          <b>Elevem-se</b>
+        </div>
+        <div class="bottom">
+          <div class="eye">O método · 12 meses</div>
+          <h1 class="head">Casamento não se sustenta na sorte. Se sustenta com <em>método.</em></h1>
+          <div class="rule"></div>
+          <p class="sub">Estrutura, força e estratégia para o casal que decidiu evoluir no mesmo nível que conquistou.</p>
+          <div class="foot">
+            <span class="handle">@elevem.se</span>
+            <span class="tagpill">Mentoria para casais</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Scale the 1080x1350 post to fit the viewport (height-constrained, with margin).
+  function fit() {
+    const post = document.getElementById('post');
+    const margin = 48;
+    const s = Math.min((window.innerWidth - margin) / 1080, (window.innerHeight - margin) / 1350, 1);
+    post.style.transform = 'scale(' + s + ')';
+    const stage = document.querySelector('.stage');
+    stage.style.height = (1350 * s) + 'px';
+    stage.style.width = (1080 * s) + 'px';
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  fit();
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!-- @dsCard group="Type" viewport="700x340" name="Hierarquia" subtitle="Display fino → título → corpo → legenda · ritmo editorial" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); padding: 26px 30px; }
+  .ramp { display: flex; flex-direction: column; gap: 14px; }
+  .ln { display: flex; align-items: baseline; gap: 20px; }
+  .tag { font-family: var(--font-sans); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); width: 150px; flex: none; }
+  .ser { font-family: var(--font-display); color: var(--graphite-900); line-height: 1; }
+  .san { font-family: var(--font-sans); color: var(--graphite-900); line-height: 1; }
+  .div { height: 1px; background: var(--border-hairline); margin: 2px 0; }
+</style>
+</head>
+<body>
+  <div class="ramp">
+    <div class="ln"><span class="tag">Display · Spectral 400</span><span class="ser" style="font-size:50px;font-weight:400;color:var(--wine-600);letter-spacing:-.01em">Vida a dois</span></div>
+    <div class="ln"><span class="tag">Título H1 · 500</span><span class="ser" style="font-size:36px;font-weight:500">Propósito e parceria</span></div>
+    <div class="ln"><span class="tag">Título H2 · 600</span><span class="ser" style="font-size:27px;font-weight:600">Método integrado</span></div>
+    <div class="ln"><span class="tag">Subtítulo · italic</span><span class="ser" style="font-size:22px;font-style:italic;font-weight:500;color:var(--wine-600)">vivemos o que ensinamos</span></div>
+    <div class="div"></div>
+    <div class="ln"><span class="tag">Lead · Mulish 300</span><span class="san" style="font-size:18px;font-weight:300;color:var(--text-body)">Tire o casal do modo automático.</span></div>
+    <div class="ln"><span class="tag">Corpo · Mulish 400</span><span class="san" style="font-size:15px;font-weight:400;color:var(--text-body)">Relacionamento, desenvolvimento, empreendedorismo e propósito.</span></div>
+    <div class="ln"><span class="tag">Legenda · Mulish 500</span><span class="san" style="font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--text-gold)">Mentoria para casais</span></div>
+  </div>
+</body>
+</html>

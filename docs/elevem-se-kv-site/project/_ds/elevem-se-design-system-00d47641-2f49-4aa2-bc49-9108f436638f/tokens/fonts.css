@@ -1,0 +1,29 @@
+/* ============================================================
+   Elevem-se — Webfonts
+   ------------------------------------------------------------
+   SUBSTITUTION NOTE: brand font files not yet provided. These
+   are the chosen Google Fonts direction — text/editorial serifs
+   with well-proportioned PT-BR diacritics (the high-contrast
+   display serifs had oversized acute/circumflex/tilde marks).
+
+   - Display serif -> Spectral (editorial, sober, timeless;
+                      contained, balanced accents — "luxo leve")
+   - Sans support  -> Mulish (soft, warm, clean accents; built
+                      for body + wide-tracking taglines/labels)
+
+   Warm alternative for the serif: Lora (swap --font-display).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-display: 'Spectral', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Mulish', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Tagline / eyebrow tracking presets */
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.12em;
+  --tracking-wider: 0.2em;
+  --tracking-widest: 0.3em;
+}

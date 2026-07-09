@@ -1,0 +1,77 @@
+<!-- @template name="Headline de impacto (Instagram)" description="Statement tipográfico 4:5 que 'grita' — CAIXA-ALTA grande em serifada, sem foto. Modo escuro (navy) por padrão; comente uma linha para o claro." -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elevem-se — Headline de impacto</title>
+<script src="./ds-base.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { background: #15110F; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: var(--font-sans); padding: 24px; }
+  .stage { position: relative; }
+
+  /* 4:5 @ 1080x1350 */
+  .post { width: 1080px; height: 1350px; position: absolute; top: 0; left: 0; overflow: hidden;
+          transform-origin: top left; display: flex; flex-direction: column;
+          padding: 92px 88px 84px; }
+
+  /* === MODO ESCURO (padrão) === */
+  .post { background: var(--ink-900); }
+  /* === MODO CLARO: troque a linha acima por:  .post { background: var(--ivory); }
+         e use data-theme removido + cores claras (kicker text-gold, head wine-700) === */
+
+  .deep { position: absolute; inset: 0; background: radial-gradient(120% 80% at 50% 0%, rgba(110,42,54,0.22) 0%, transparent 52%); }
+  .edge { position: absolute; left: 88px; right: 88px; top: 88px; height: 2px; background: var(--gold-500); opacity: .8; }
+
+  .top { position: relative; display: flex; align-items: center; gap: 16px; }
+  .top img { width: 52px; height: 52px; display: block; }
+  .top b { font-family: var(--font-display); font-weight: 500; font-size: 34px; color: var(--ivory); letter-spacing: .05em; }
+
+  .mid { position: relative; margin: auto 0; }
+  .kicker { font-family: var(--font-sans); font-size: 22px; letter-spacing: .36em; text-transform: uppercase; color: var(--gold-300); font-weight: 600; }
+  /* HEADLINE — CAIXA-ALTA, enorme, serifada (a regra: legível, "grita") */
+  .head { font-family: var(--font-display); font-weight: 600; font-size: 108px; line-height: 1.0;
+          color: var(--white-warm); margin: 34px 0 0; text-transform: uppercase; letter-spacing: .012em;
+          text-wrap: balance; }
+  .head em { font-style: italic; color: var(--gold-300); }
+  .rule { width: 96px; height: 3px; background: var(--gold-400); margin: 44px 0 0; }
+
+  .foot { position: relative; display: flex; align-items: center; justify-content: space-between; }
+  .handle { font-family: var(--font-sans); font-size: 22px; letter-spacing: .14em; color: var(--ivory); opacity: .82; }
+  .tag { font-family: var(--font-sans); font-size: 17px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-200); }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="post" id="post">
+      <div class="deep"></div>
+      <div class="edge"></div>
+      <div class="top">
+        <img src="../../assets/elevemse-monogram-light.svg" alt="">
+        <b>Elevem-se</b>
+      </div>
+      <div class="mid">
+        <div class="kicker">A verdade que ninguém diz</div>
+        <h1 class="head">O amor começa. A <em>estrutura</em> sustenta.</h1>
+        <div class="rule"></div>
+      </div>
+      <div class="foot">
+        <span class="handle">@elevem.se</span>
+        <span class="tag">Mentoria para casais</span>
+      </div>
+    </div>
+  </div>
+<script>
+  function fit() {
+    const post = document.getElementById('post');
+    const s = Math.min((window.innerWidth - 48) / 1080, (window.innerHeight - 48) / 1350, 1);
+    post.style.transform = 'scale(' + s + ')';
+    const st = document.querySelector('.stage');
+    st.style.height = (1350 * s) + 'px'; st.style.width = (1080 * s) + 'px';
+  }
+  addEventListener('resize', fit); addEventListener('load', fit); fit();
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!-- @dsCard group="Brand" viewport="980x680" name="Dois modos, uma essência" subtitle="Modo claro/elegante × modo escuro/dramático — mesma mensagem, mesma marca" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--sand); font-family: var(--font-sans); padding: 30px; }
+  .stage { display: flex; gap: 26px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+
+  .col { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  .tag { font-size: 10px; letter-spacing: .26em; text-transform: uppercase; font-weight: 600; }
+  .tag.light { color: var(--wine-700); }
+  .tag.dark { color: var(--ink-800); }
+
+  /* poster base 4:5 */
+  .poster { width: 384px; height: 480px; border-radius: 6px; overflow: hidden; position: relative; box-shadow: var(--shadow-lg); }
+
+  /* ---------- LIGHT / ELEGANT ---------- */
+  .light-poster { background: var(--ivory); padding: 34px 32px; display: flex; flex-direction: column; }
+  .lp-top { display: flex; align-items: center; gap: 10px; }
+  .lp-top img { display: block; }
+  .lp-top b { font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--wine-700); letter-spacing: .04em; }
+  .lp-photo { margin: 20px 0; border-radius: 4px; overflow: hidden; flex: 1; box-shadow: inset 0 0 0 1px var(--gold-500); position: relative; }
+  .lp-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; filter: grayscale(1) contrast(1.03); display: block; }
+  .lp-eye { font-size: 9.5px; letter-spacing: .28em; text-transform: uppercase; color: var(--text-gold); font-weight: 600; }
+  .lp-h { font-family: var(--font-display); font-weight: 500; font-size: 27px; line-height: 1.08; color: var(--wine-700); margin: 9px 0 0; letter-spacing: -.01em; }
+  .lp-h em { font-style: italic; background: linear-gradient(to bottom, transparent 60%, var(--highlight-warm) 60%); padding: 0 .04em; }
+  .lp-rule { width: 30px; height: 1px; background: var(--rule-gold); margin-top: 13px; }
+
+  /* ---------- DARK / DRAMATIC ---------- */
+  .dark-poster { background: var(--ink-950); }
+  .dp-photo { position: absolute; inset: 0; }
+  .dp-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block; }
+  /* navy tint over the b&w photo + bottom protection gradient */
+  .dp-tint { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,20,34,0.30) 0%, rgba(13,20,34,0.05) 32%, rgba(13,20,34,0.55) 68%, rgba(13,20,34,0.94) 100%); }
+  .dp-tone { position: absolute; inset: 0; background: var(--ink-800); mix-blend-mode: color; opacity: 0.42; }
+  .dp-content { position: absolute; inset: 0; padding: 30px 30px 32px; display: flex; flex-direction: column; }
+  .dp-top { display: flex; align-items: center; gap: 9px; }
+  .dp-top b { font-family: var(--font-display); font-weight: 500; font-size: 16px; color: var(--ivory); letter-spacing: .05em; }
+  .dp-bottom { margin-top: auto; }
+  .dp-eye { font-size: 9.5px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-300); font-weight: 600; }
+  .dp-h { font-family: var(--font-display); font-weight: 500; font-size: 30px; line-height: 1.06; color: var(--white-warm); margin: 10px 0 0; letter-spacing: -.01em; text-shadow: 0 1px 24px rgba(13,20,34,0.6); }
+  .dp-h em { font-style: italic; color: var(--gold-300); }
+  .dp-rule { width: 36px; height: 1px; background: var(--gold-400); margin-top: 14px; }
+  .dp-sub { font-size: 11px; letter-spacing: .04em; color: var(--ink-100); margin-top: 12px; max-width: 30ch; line-height: 1.5; font-weight: 300; }
+
+  .legend { text-align: center; max-width: 980px; margin: 26px auto 0; font-size: 12px; color: var(--graphite-700); line-height: 1.6; }
+  .legend b { color: var(--graphite-900); font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="stage">
+
+    <!-- LIGHT / ELEGANT -->
+    <div class="col">
+      <span class="tag light">Modo claro · elegante · dia a dia</span>
+      <div class="poster light-poster">
+        <div class="lp-top">
+          <img src="../../assets/elevemse-monogram.svg" width="26" height="26" alt="">
+          <b>Elevem-se</b>
+        </div>
+        <div class="lp-photo"><img src="../../assets/photos/marcela-poltrona-web.jpg" alt=""></div>
+        <div class="lp-eye">Mentoria para casais</div>
+        <h2 class="lp-h">Casais que crescem juntos dependem de <em>estrutura.</em></h2>
+        <div class="lp-rule"></div>
+      </div>
+    </div>
+
+    <!-- DARK / DRAMATIC -->
+    <div class="col">
+      <span class="tag dark">Modo escuro · dramático · impacto</span>
+      <div class="poster dark-poster">
+        <div class="dp-photo"><img src="../../assets/photos/casal-bw-web.jpg" alt="Maycko e Marcela"></div>
+        <div class="dp-tone"></div>
+        <div class="dp-tint"></div>
+        <div class="dp-content">
+          <div class="dp-top">
+            <img src="../../assets/elevemse-monogram-light.svg" width="24" height="24" alt="">
+            <b>Elevem-se</b>
+          </div>
+          <div class="dp-bottom">
+            <div class="dp-eye">O método · 12 meses</div>
+            <h2 class="dp-h">Casamento não se sustenta na sorte. Se sustenta com <em>método.</em></h2>
+            <div class="dp-rule"></div>
+            <p class="dp-sub">Estrutura, força e estratégia para o casal que decidiu evoluir no mesmo nível que conquistou.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="legend">
+    <b>Mesma essência, dois registros.</b> O modo claro carrega a leveza e o respiro do dia a dia; o modo escuro traz a força, a estrutura e o drama cinematográfico para peças de impacto — navy-grafite + dourado sobre o ensaio. Leveza com peso, nunca fragilidade.
+  </p>
+</body>
+</html>

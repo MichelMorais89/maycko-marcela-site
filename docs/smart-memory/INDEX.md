@@ -1,0 +1,39 @@
+---
+title: Smart Memory Index
+type: index
+updated: 2026-07-08
+tags: [index]
+---
+
+# Site Maycko e Marcela — ELEVEM-SE — Smart Memory
+
+MOC raiz. Todo arquivo novo em `docs/smart-memory/` deve ser referenciado aqui.
+
+## Projeto
+- [[project/overview]] — contexto e objetivo
+- [[project/tech-stack]] — stack proposta: Next.js 15 + TS + Tailwind v4 + shadcn/ui (fonte: sites-analyst, 2026-07-08)
+- [[project/architecture]] — padrão arquitetural (fonte: sites-architect)
+- [[project/modules]] — mapa de módulos (fonte: sites-architect)
+- [[project/conventions]] — convenções de código: naming, imports, ESLint, commits, regras playbook (fonte: sites-analyst, 2026-07-08)
+- [[project/handoff-bundles]] — bundles do Claude Design (KV + Design System)
+- [[project/design-tokens]] — tokens extraídos do DS: cores, tipografia, spacing, radius, sombras, motion + config Tailwind
+
+## Stories
+- [[stories/BACKLOG]] — stories pendentes
+- `stories/active/` — em desenvolvimento
+- `stories/done/` — concluídas
+
+## Decisões Arquiteturais
+- `decisions/` — ADRs numerados
+
+## Operações
+- [[ops/delegation-log]] — histórico de delegações do lead
+- [[ops/teams-log]] — times formados e seus objetivos
+
+## Agentes
+- [[agents/ux/components]] — catálogo de componentes do design bundle
+- `agents/research/` — research reports
+- `agents/qa/` — histórico de veredictos
+
+## Status
+- [[shared-context]] — status board em tempo real

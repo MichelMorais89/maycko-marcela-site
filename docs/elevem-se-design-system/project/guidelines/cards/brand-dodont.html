@@ -1,0 +1,42 @@
+<!-- @dsCard group="Brand" viewport="700x250" name="Do / Don't" subtitle="Luxo leve — sóbrio, elegante, com respiro" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); padding: 24px 28px; font-family: var(--font-sans); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  h4 { margin: 0 0 12px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
+  .do h4 { color: var(--success); }
+  .dont h4 { color: var(--danger); }
+  ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  li { display: flex; gap: 9px; font-size: 13px; line-height: 1.45; color: var(--graphite-700); }
+  li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; margin-top: 6px; flex: none; }
+  .do li::before { background: var(--success); }
+  .dont li::before { background: var(--danger); }
+</style>
+</head>
+<body>
+  <div class="cols">
+    <div class="do">
+      <h4>Do</h4>
+      <ul>
+        <li>Fundo claro, muito espaço em branco, brilho sutil</li>
+        <li>Vinho + dourado como acentos sobre neutros</li>
+        <li>Serifada elegante nos títulos; sans espaçada nos apoios</li>
+        <li>Tom firme, acolhedor e premium — de igual para igual</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>Don't</h4>
+      <ul>
+        <li>Fundo escuro pesado, cores vibrantes ou rosa/magenta</li>
+        <li>Cara de terapia, frases motivacionais vazias, tom de guru</li>
+        <li>Símbolos religiosos ou linguagem religiosa explícita</li>
+        <li>Clip-art, emoji, estética jovem/popular/descontraída</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

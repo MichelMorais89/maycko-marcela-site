@@ -1,0 +1,50 @@
+<!-- @dsCard group="Brand" viewport="700x250" name="Assinaturas dos mentores" subtitle="Forma da Opção B + cores da marca · Marcela dourado, Maycko azul-marinho · Spectral" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); font-family: var(--font-sans); padding: 30px 28px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .pair > div + div { border-left: 1px solid var(--border-hairline); }
+  .sig { display: flex; flex-direction: column; align-items: center; gap: 9px; padding: 6px 12px 22px; }
+  .name { font-family: var(--font-display); font-weight: 500; font-size: 30px; letter-spacing: .14em; line-height: 1; }
+  .rule { display: flex; align-items: center; justify-content: center; gap: 8px; width: 150px; }
+  .rule .ln { flex: 1; height: 1px; }
+  .rule .dot { width: 4px; height: 4px; border-radius: 50%; flex: none; }
+  .sur { font-family: var(--font-display); font-size: 12px; letter-spacing: .42em; }
+  .role { font-family: var(--font-sans); font-size: 9px; letter-spacing: .26em; text-transform: uppercase; color: var(--text-muted); margin-top: 2px; }
+
+  .marcela .name, .marcela .sur { color: var(--gold-700); }
+  .marcela .ln, .marcela .dot { background: var(--gold-600); }
+  .maycko .name, .maycko .sur { color: var(--ink-800); }
+  .maycko .ln, .maycko .dot { background: var(--ink-600); }
+
+  .combo { border-top: 1px solid var(--border-hairline); margin-top: 6px; padding-top: 22px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
+  .combo .lockup { font-family: var(--font-display); font-weight: 500; font-size: 22px; letter-spacing: .04em; color: var(--graphite-900); }
+  .combo .lockup .amp { color: var(--gold-600); font-style: italic; padding: 0 2px; }
+  .combo .cap { font-family: var(--font-sans); font-size: 9.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--text-gold); }
+</style>
+</head>
+<body>
+  <div class="pair">
+    <div class="sig marcela">
+      <div class="name">MARCELA</div>
+      <div class="rule"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+      <div class="sur">ZANARDO</div>
+      <div class="role">Dourado · prosperidade</div>
+    </div>
+    <div class="sig maycko">
+      <div class="name">MAYCKO</div>
+      <div class="rule"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+      <div class="sur">ALVES</div>
+      <div class="role">Azul · estrutura</div>
+    </div>
+  </div>
+  <div class="combo">
+    <div class="lockup">Maycko <span class="amp">&amp;</span> Marcela</div>
+    <div class="cap">Assinatura do casal · endosso da Elevem-se</div>
+  </div>
+</body>
+</html>

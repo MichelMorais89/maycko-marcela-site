@@ -11,7 +11,6 @@ import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { FlameCursor } from '@/components/motion/FlameCursor'
 import { LenisProvider } from '@/components/motion/LenisProvider'
 import { NarrativeThread } from '@/components/motion/NarrativeThread'
-import { CursorTrail } from '@/components/motion/CursorTrail'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -46,7 +45,6 @@ export default function RootLayout({
             <GrainOverlay />
             <ScrollProgress />
             <FlameCursor />
-            <CursorTrail />
             <NarrativeThread />
 
             <a href="#conteudo" className="elv-skip">

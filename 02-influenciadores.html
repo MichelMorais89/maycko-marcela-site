@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>maycko — Influenciadores</title>
+<link rel="stylesheet" href="design-system/design-system/elevem-se-design-system/project/styles.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); background: var(--surface-page); color: var(--text-body); -webkit-font-smoothing: antialiased; }
+  .site-header { position: sticky; top: 0; z-index: 100; background: var(--surface-page); border-bottom: 1px solid var(--rule-gold); padding: var(--space-4) var(--space-8); display: flex; align-items: center; justify-content: space-between; }
+  .site-header__logo { font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: var(--text-lg); color: var(--text-brand); letter-spacing: var(--tracking-tight); line-height: 1; text-decoration: none; }
+  .site-header__nav { display: flex; align-items: center; gap: var(--space-6); }
+  .site-header__nav a { font-family: var(--font-sans); font-weight: var(--weight-medium); font-size: var(--text-2xs); letter-spacing: var(--tracking-widest); text-transform: uppercase; text-decoration: none; color: var(--text-muted); transition: color 140ms cubic-bezier(0.4,0,0.2,1); }
+  .site-header__nav a.active, .site-header__nav a:hover { color: var(--text-gold); }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="site-header__logo" href="index.html">Elevem-se</a>
+  <nav class="site-header__nav" aria-label="Seções">
+    <a href="01-universo.html">01 Universo</a>
+    <a href="02-influenciadores.html" class="active">02 Influenciadores</a>
+    <a href="03-scraping.html">03 Scraping</a>
+  </nav>
+</header>
+</body>
+</html>
