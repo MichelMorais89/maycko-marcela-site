@@ -79,7 +79,7 @@ export function Manifesto() {
       />
 
       <div
-        className="elv-wrap manifesto-grid"
+        className="elv-wrap manifesto-grid mobile-stack"
         style={{
           position: 'relative',
           zIndex: 1,

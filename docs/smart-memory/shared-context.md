@@ -30,6 +30,14 @@ Story 1.2 (HOME) só desbloqueia após 1.1 passar em `pnpm build`.
 **Objetivo:** Bootstrap — descoberta inicial do projeto do site ELEVEM-SE
 **Início:** 2026-07-08
 
+## Marco atual — V2 pronta pra apresentação
+
+- **Branch:** `feature/2-3-vida-profundidade`
+- **V2 commit:** `bb2af46` (2026-07-08) — HOME + /sobre + /metodo com reposicionamento "evolução"
+- **V1 congelada:** tag `v1.0` / commit `c2a1f79`
+- **Apresentação cliente:** prevista 2026-07-09
+- **Story:** [[stories/done/2.8-v2-reposicionamento-evolucao]]
+
 ## Decisões ativas
 <!-- Architect atualiza após cada ADR -->
 

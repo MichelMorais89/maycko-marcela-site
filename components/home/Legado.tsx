@@ -57,7 +57,7 @@ export function Legado() {
       />
 
       <div
-        className="elv-wrap"
+        className="elv-wrap mobile-stack"
         style={{
           position: 'relative',
           paddingBlock: 'clamp(80px, 12vh, 140px)',
@@ -68,7 +68,7 @@ export function Legado() {
         }}
       >
         {/* Espaço vazio à esquerda (foto do casal aparece nele) */}
-        <div aria-hidden="true" />
+        <div aria-hidden="true" className="mobile-hide" />
 
         {/* Coluna direita — copy */}
         <div style={{ maxWidth: '520px' }}>

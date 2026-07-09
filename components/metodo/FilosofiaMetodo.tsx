@@ -159,6 +159,7 @@ export function FilosofiaMetodo() {
 
         {/* Pilares em triângulo */}
         <div
+          className="mobile-stack-tight"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(2, minmax(280px, 1fr))',
@@ -172,6 +173,7 @@ export function FilosofiaMetodo() {
             <Reveal
               key={i}
               delay={(i % 3) as 0 | 1 | 2}
+              className={i === 2 ? 'mobile-pillar-full' : undefined}
               style={
                 i === 2
                   ? {

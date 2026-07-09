@@ -37,6 +37,7 @@ export function ResultadoMetodo() {
       {/* Overlay: escuro à esquerda (casal respira), creme sólido à direita (copy vinho ganha contraste) */}
       <div
         aria-hidden="true"
+        className="resultado-overlay"
         style={{
           position: 'absolute',
           inset: 0,
@@ -57,7 +58,7 @@ export function ResultadoMetodo() {
       />
 
       <div
-        className="elv-wrap resultado-grid"
+        className="elv-wrap resultado-grid mobile-stack"
         style={{
           position: 'relative',
           paddingBlock: 'clamp(80px, 12vh, 140px)',
@@ -68,7 +69,7 @@ export function ResultadoMetodo() {
         }}
       >
         {/* Espaço vazio à esquerda — foto respira (hidden on mobile) */}
-        <div aria-hidden="true" className="resultado-spacer" />
+        <div aria-hidden="true" className="resultado-spacer mobile-hide" />
 
         {/* Coluna direita — copy */}
         <div style={{ maxWidth: 520 }}>
@@ -189,12 +190,27 @@ export function ResultadoMetodo() {
       </div>
 
       <style>{`
-        @media (max-width: 640px) {
+        @media (max-width: 767px) {
           .resultado-grid {
             grid-template-columns: 1fr !important;
+            padding-block: 0 !important;
           }
           .resultado-spacer {
             display: none !important;
+          }
+          /* Mobile: overlay vira vertical — foto em cima, creme sólido embaixo */
+          .resultado-overlay {
+            background: linear-gradient(
+              to bottom,
+              rgba(10,5,8,0.55) 0%,
+              rgba(10,5,8,0.35) 22%,
+              rgba(245,232,208,0.95) 42%,
+              var(--surface-cream, #f5e8d0) 55%
+            ) !important;
+          }
+          /* Empurra o texto pra parte inferior (área creme) */
+          .resultado-grid > div:last-child {
+            padding-top: 42vh !important;
           }
         }
       `}</style>

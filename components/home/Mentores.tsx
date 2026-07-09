@@ -10,7 +10,7 @@ export function Mentores() {
     <section className="elv-sec elv-sec--cream" style={{ paddingBlock: 'clamp(6rem, 12vw, 10rem)' }}>
       <div className="elv-wrap">
         <div
-          className="mentores-row"
+          className="mentores-row mobile-stack"
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
@@ -69,7 +69,7 @@ export function Mentores() {
 
             <Reveal delay={1}>
               <h2
-                className="elv-serif"
+                className="elv-serif mobile-h1-wrap"
                 style={{
                   fontSize: 'clamp(1.9rem, 3.8vw, 3.4rem)',
                   color: 'var(--text-strong)',

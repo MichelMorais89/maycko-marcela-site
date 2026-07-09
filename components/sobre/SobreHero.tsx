@@ -84,7 +84,7 @@ export function SobreHero() {
 
         <Reveal delay={1}>
           <h1
-            className="elv-serif"
+            className="elv-serif mobile-h1-wrap"
             style={{
               fontSize: 'clamp(2.2rem, 5.5vw, 5rem)',
               color: 'var(--white-warm)',

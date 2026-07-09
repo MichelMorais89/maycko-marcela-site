@@ -548,3 +548,83 @@ body:has(.flame-cursor) { cursor: none; }
   z-index: 1;
   pointer-events: none;
 }
+
+/* =========================================================
+   MOBILE OVERRIDES — força single-column e ajusta tipografia
+   Aplicar via className: mobile-stack, mobile-h1-wrap
+   ========================================================= */
+@media (max-width: 767px) {
+  /* Grid de 2 colunas quebra para 1 no mobile */
+  .mobile-stack {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-6) !important;
+    text-align: left;
+  }
+  .mobile-stack > * {
+    max-width: 100% !important;
+    width: 100%;
+  }
+  /* Grids 2col que devem colapsar mas manter compacto */
+  .mobile-stack-tight {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-5) !important;
+  }
+  /* H1/H2 grandes que tinham whiteSpace nowrap */
+  .mobile-h1-wrap {
+    white-space: normal !important;
+    font-size: clamp(2rem, 9vw, 3.4rem) !important;
+    line-height: 1.05 !important;
+  }
+  /* Filosofia — cards centralizados quando um vira full-width */
+  .mobile-pillar-full {
+    max-width: 100% !important;
+    grid-column: auto !important;
+  }
+  /* Padding lateral menor em mobile */
+  .elv-wrap {
+    padding-inline: var(--space-4) !important;
+  }
+  /* Seções — menos padding vertical */
+  .elv-sec,
+  section[class*="elv-sec"] {
+    padding-block: clamp(3rem, 12vw, 5rem) !important;
+  }
+  /* Hero full-bleed mobile */
+  .mobile-hero-tight {
+    min-height: 80vh !important;
+    padding-bottom: 3rem !important;
+  }
+  /* Foto oval — reduzir em mobile pra não estourar */
+  .elv-photo-oval {
+    max-width: 78vw;
+    margin-inline: auto;
+  }
+  /* Bloco Legado — coluna vazia (foto atrás) some no mobile */
+  .mobile-hide {
+    display: none !important;
+  }
+  /* Font sizes gigantes viram controlados */
+  .mobile-tighten-hero {
+    font-size: clamp(2.2rem, 10vw, 3.8rem) !important;
+    line-height: 1.02 !important;
+  }
+  /* Nav mobile — reduz padding do CTA aplicar */
+  .mobile-nav-cta {
+    padding: 10px 18px !important;
+    font-size: 0.72rem !important;
+  }
+  /* Timeline do método — vira coluna */
+  .mobile-timeline {
+    grid-template-columns: 1fr !important;
+  }
+  /* Videos side-by-side no SobreIntimidadePresenca — empilhar */
+  .mobile-videos-stack {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-5) !important;
+  }
+  /* Footer cols */
+  .elv-footer-cols {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-6) !important;
+  }
+}

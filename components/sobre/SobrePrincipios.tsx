@@ -167,6 +167,7 @@ export function SobrePrincipios() {
         >
           {/* Linha 1: 3 cards */}
           <div
+            className="mobile-stack-tight"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',

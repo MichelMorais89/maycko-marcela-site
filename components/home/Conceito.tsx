@@ -440,7 +440,7 @@ export function Conceito() {
 
         {/* 3 pilares em TRIÂNGULO — estilo V1 (2 em cima + 1 embaixo centralizado) */}
         <div
-          className="conceito-triangle"
+          className="conceito-triangle mobile-stack-tight"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(2, minmax(300px, 1fr))',
@@ -454,6 +454,7 @@ export function Conceito() {
             <Reveal
               key={i}
               delay={(i % 3) as 0 | 1 | 2}
+              className={i === 2 ? 'mobile-pillar-full' : undefined}
               style={
                 i === 2
                   ? {

@@ -316,7 +316,7 @@ function TimelineFase({
 
       {/* Two-column layout */}
       <div
-        className="timeline-layout"
+        className="timeline-layout mobile-timeline"
         style={{
           display: 'grid',
           gridTemplateColumns: 'clamp(120px, 16vw, 200px) 1fr',
