@@ -27,7 +27,7 @@ export function Legado() {
         overflow: 'hidden',
       }}
     >
-      {/* Vídeo full-bleed — legado começa aqui */}
+      {/* Vídeo full-bleed, legado começa aqui */}
       <video
         src="/videos/legado-inicio.mp4"
         autoPlay
@@ -70,7 +70,7 @@ export function Legado() {
         {/* Espaço vazio à esquerda (foto do casal aparece nele) */}
         <div aria-hidden="true" className="mobile-hide" />
 
-        {/* Coluna direita — copy */}
+        {/* Coluna direita, copy */}
         <div style={{ maxWidth: '520px' }}>
           <Reveal>
             <Ornament tone="gold" style={{ marginBottom: 'var(--space-5)', opacity: 0.9 }} />
@@ -89,7 +89,7 @@ export function Legado() {
             </p>
           </Reveal>
 
-          {/* Bloco 1 — o que NÃO se lembra */}
+          {/* Bloco 1, o que NÃO se lembra */}
           <Reveal delay={1} style={{ marginTop: 'var(--space-7)' }}>
             <p
               className="elv-serif"
@@ -114,7 +114,7 @@ export function Legado() {
               }}
             >
               {FORGET_LINES.map((line, i) => {
-                // Duração proporcional ao comprimento da frase — como se lesse, um pouco mais rápido
+                // Duração proporcional ao comprimento da frase, como se lesse, um pouco mais rápido
                 const charDurationMs = 32
                 const duration = Math.max(900, line.length * charDurationMs)
                 // Delay: começa após a linha anterior
@@ -144,7 +144,7 @@ export function Legado() {
             </ul>
           </Reveal>
 
-          {/* Bloco 2 — o que SE lembra (destaque) */}
+          {/* Bloco 2, o que SE lembra (destaque) */}
           <Reveal delay={2} style={{ marginTop: 'var(--space-8)' }}>
             <p
               className="elv-serif"

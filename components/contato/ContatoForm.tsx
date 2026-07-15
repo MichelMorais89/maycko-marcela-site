@@ -12,7 +12,7 @@ const schema = z.object({
   assunto: z.enum(['aplicacao', 'duvida', 'imprensa', 'parceria'] as const, {
     error: 'Selecione um assunto',
   }),
-  mensagem: z.string().min(20, 'Mensagem muito curta — escreva pelo menos 20 caracteres'),
+  mensagem: z.string().min(20, 'Mensagem muito curta, escreva pelo menos 20 caracteres'),
 })
 
 type FormData = z.infer<typeof schema>
@@ -134,7 +134,7 @@ export function ContatoForm() {
         {errors.nome && <span role="alert" style={errorStyle}>{errors.nome.message}</span>}
       </div>
 
-      {/* Email + Telefone — lado a lado em desktop */}
+      {/* Email + Telefone, lado a lado em desktop */}
       <div
         style={{
           display: 'grid',

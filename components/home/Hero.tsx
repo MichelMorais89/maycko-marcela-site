@@ -8,6 +8,7 @@ import { MagneticButton } from '@/components/motion/MagneticButton'
 import { ShimmerCTA } from '@/components/motion/ShimmerCTA'
 import { Ornament } from '@/components/shared/Ornament'
 import { BrandArrow } from '@/components/shared/BrandArrow'
+import { FlameWatermark } from '@/components/brand/FlameWatermark'
 
 const TITLE = 'ELEVEM-SE'
 
@@ -131,7 +132,7 @@ export function Hero() {
         background: 'var(--surface-anchor)',
       }}
     >
-      {/* Wordmark topo — monograma + Elevem-se */}
+      {/* Wordmark topo, monograma + Elevem-se */}
       <div
         aria-hidden="true"
         style={{
@@ -204,6 +205,9 @@ export function Hero() {
         }}
       />
 
+      {/* Chama viva, lateral esquerda, entre borda e rosto */}
+      <FlameWatermark side="left" heightVh={145} offsetPct={28} />
+
       {/* Canvas particles */}
       <canvas
         ref={canvasRef}
@@ -218,7 +222,7 @@ export function Hero() {
         }}
       />
 
-      {/* Content — centralizado */}
+      {/* Content, centralizado */}
       <div
         className="elv-wrap"
         style={{
@@ -255,7 +259,7 @@ export function Hero() {
           </p>
         </div>
 
-        {/* Título — direto ao visitante */}
+        {/* Título, Versão A aprovada 2026-07-14 */}
         <h1
           className="elv-serif"
           style={{
@@ -263,16 +267,12 @@ export function Hero() {
             fontWeight: 'var(--weight-medium)',
             letterSpacing: '-0.005em',
             color: 'var(--white-warm)',
-            lineHeight: 1.12,
+            lineHeight: 1.14,
             margin: '0 auto',
             maxWidth: '28ch',
           }}
         >
-          <SplitText delay={1200}>{`Vocês construíram uma empresa.`}</SplitText>
-          <br />
-          <SplitText delay={1500}>{`Construíram patrimônio.`}</SplitText>
-          <br />
-          <SplitText delay={1800}>{`Construíram uma família.`}</SplitText>
+          <SplitText delay={1200}>{`Vocês construíram uma vida extraordinária.`}</SplitText>
           <br />
           <em
             style={{
@@ -283,7 +283,7 @@ export function Hero() {
               fontWeight: 'var(--weight-regular)',
             }}
           >
-            <SplitText delay={2200}>{`Agora, é hora de construir o relacionamento que sustentará tudo isso.`}</SplitText>
+            <SplitText delay={1800}>{`Agora construam um casamento capaz de sustentá-la.`}</SplitText>
           </em>
         </h1>
 
@@ -300,8 +300,8 @@ export function Hero() {
             maxWidth: '38ch',
           }}
         >
-          <SplitText delay={2800}>
-            {`Casamentos extraordinários não acontecem por sorte. Eles são construídos.`}
+          <SplitText delay={2400}>
+            {`Construímos juntos o que a rotina não constrói sozinha.`}
           </SplitText>
         </p>
 

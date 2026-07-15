@@ -162,7 +162,7 @@ export function MetodoResumo() {
           </p>
         </Reveal>
 
-        {/* Cards horizontais empilhados — 3D real */}
+        {/* Cards horizontais empilhados, 3D real */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(24px, 3vw, 40px)' }}>
           {FASES.map((f, i) => (
             <Reveal key={i} delay={(i % 3) as 0 | 1 | 2}>

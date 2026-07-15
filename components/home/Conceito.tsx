@@ -7,7 +7,7 @@ const PILARES = [
     title: 'Intenção',
     tagline: 'Nada aqui é deixado ao acaso',
     icon: (
-      // Bússola — direção clara, propósito de norte
+      // Bússola, direção clara, propósito de norte
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
         <defs>
           <linearGradient id="intencaoGrad" x1="0" y1="0" x2="1" y2="1">
@@ -23,7 +23,7 @@ const PILARES = [
         <line x1="50" y1="78" x2="50" y2="86" stroke="url(#intencaoGrad)" strokeWidth="1.2" strokeLinecap="round" opacity="0.55" />
         <line x1="14" y1="50" x2="22" y2="50" stroke="url(#intencaoGrad)" strokeWidth="1.2" strokeLinecap="round" opacity="0.55" />
         <line x1="78" y1="50" x2="86" y2="50" stroke="url(#intencaoGrad)" strokeWidth="1.2" strokeLinecap="round" opacity="0.55" />
-        {/* Agulha norte (dourado sólido) — mais destaque */}
+        {/* Agulha norte (dourado sólido), mais destaque */}
         <path
           d="M 50 22 L 55 50 L 50 44 L 45 50 Z"
           fill="var(--gold-500)"
@@ -50,7 +50,7 @@ const PILARES = [
     title: 'Maturidade',
     tagline: 'A escuta amplia. O ego recua',
     icon: (
-      // Árvore da vida — copa cheia com galhos + tronco + raízes em espelho
+      // Árvore da vida, copa cheia com galhos + tronco + raízes em espelho
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
         <defs>
           <linearGradient id="maturidadeGrad" x1="0" y1="0" x2="0" y2="1">
@@ -72,7 +72,7 @@ const PILARES = [
           opacity="0.35"
         />
 
-        {/* Copa preenchida sutil — dá volume */}
+        {/* Copa preenchida sutil, dá volume */}
         <path
           d="M 50 8
              C 34 8, 22 20, 24 32
@@ -148,7 +148,7 @@ const PILARES = [
           strokeLinecap="round"
         />
 
-        {/* Raízes — espelho da copa em formato mais aberto */}
+        {/* Raízes, espelho da copa em formato mais aberto */}
         {/* Raiz principal central */}
         <path
           d="M 50 62 L 50 90"
@@ -156,7 +156,7 @@ const PILARES = [
           strokeWidth="1.6"
           strokeLinecap="round"
         />
-        {/* Raízes secundárias — curvas suaves saindo do tronco */}
+        {/* Raízes secundárias, curvas suaves saindo do tronco */}
         <path
           d="M 47 62 C 40 68, 30 74, 22 84"
           fill="none"
@@ -224,7 +224,7 @@ const PILARES = [
     title: 'Escolhas diárias',
     tagline: 'A soma dos pequenos gestos que se tornam legado',
     icon: (
-      // Tijolos empilhados — construção literal do casamento
+      // Tijolos empilhados, construção literal do casamento
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
         <defs>
           <linearGradient id="escolhasGrad" x1="0" y1="0" x2="0" y2="1">
@@ -232,27 +232,27 @@ const PILARES = [
             <stop offset="100%" stopColor="var(--gold-500)" />
           </linearGradient>
         </defs>
-        {/* Linha 1 (topo) — 3 tijolos alinhados */}
+        {/* Linha 1 (topo), 3 tijolos alinhados */}
         <rect x="24" y="26" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" />
         <rect x="41.5" y="26" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" />
         <rect x="59" y="26" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" />
-        {/* Linha 2 — 4 tijolos deslocados (estilo tijolo travado) */}
+        {/* Linha 2, 4 tijolos deslocados (estilo tijolo travado) */}
         <rect x="15.5" y="37" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.9" />
         <rect x="33" y="37" width="17" height="10" fill="url(#escolhasGrad)" opacity="0.18" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" />
         <rect x="50.5" y="37" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.9" />
         <rect x="68" y="37" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.7" />
-        {/* Linha 3 — 3 tijolos alinhados */}
+        {/* Linha 3, 3 tijolos alinhados */}
         <rect x="24" y="48" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.9" />
         <rect x="41.5" y="48" width="17" height="10" fill="url(#escolhasGrad)" opacity="0.25" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" />
         <rect x="59" y="48" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.9" />
-        {/* Linha 4 — 4 tijolos deslocados */}
+        {/* Linha 4, 4 tijolos deslocados */}
         <rect x="15.5" y="59" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.75" />
         <rect x="33" y="59" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.85" />
         <rect x="50.5" y="59" width="17" height="10" fill="url(#escolhasGrad)" opacity="0.15" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" />
         <rect x="68" y="59" width="17" height="10" fill="none" stroke="url(#escolhasGrad)" strokeWidth="1.4" strokeLinejoin="round" opacity="0.75" />
-        {/* Base — linha do chão */}
+        {/* Base, linha do chão */}
         <line x1="10" y1="72" x2="90" y2="72" stroke="url(#escolhasGrad)" strokeWidth="1.6" strokeLinecap="round" opacity="0.9" />
-        {/* Chama pequena no topo — coroa simbólica do que se constrói */}
+        {/* Chama pequena no topo, coroa simbólica do que se constrói */}
         <path
           d="M 50 22 C 47 19 46 15 48 12 C 49 15 51 15 52 12 C 54 15 53 19 50 22 Z"
           fill="var(--gold-500)"
@@ -306,7 +306,7 @@ export function Conceito() {
           </p>
         </Reveal>
 
-        {/* H2 GIGANTE CAIXA-ALTA — estilo V1 */}
+        {/* H2 GIGANTE CAIXA-ALTA, estilo V1 */}
         <Reveal className="elv-center">
           <h2
             className="elv-serif"
@@ -438,7 +438,7 @@ export function Conceito() {
           </p>
         </Reveal>
 
-        {/* 3 pilares em TRIÂNGULO — estilo V1 (2 em cima + 1 embaixo centralizado) */}
+        {/* 3 pilares em TRIÂNGULO, estilo V1 (2 em cima + 1 embaixo centralizado) */}
         <div
           className="conceito-triangle mobile-stack-tight"
           style={{

@@ -153,7 +153,7 @@ export function HeroMetodo() {
             lineHeight: 'var(--leading-relaxed)',
           }}
         >
-          Um método estruturado em duas fases — primeiro a elevação de cada indivíduo,
+          Um método estruturado em duas fases, primeiro a elevação de cada indivíduo,
           depois a construção do que vocês são juntos.
         </p>
 

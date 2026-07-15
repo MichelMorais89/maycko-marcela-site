@@ -17,14 +17,14 @@ const FASE1: Mes[] = [
   {
     n: '01',
     titulo: 'Mentalidade',
-    lead: 'Os padrões subconscientes que moldam suas reações — e como reescrever os que estão te limitando.',
+    lead: 'Os padrões subconscientes que moldam suas reações, e como reescrever os que estão te limitando.',
     exercicios: ['Mapeamento de crenças herdadas', 'Diário de padrões reativos', 'Reprogramação de narrativas internas', 'Prática de presença intencional'],
     quote: 'O casamento que vocês têm é reflexo direto de quem cada um escolheu ser.',
   },
   {
     n: '02',
     titulo: 'Inteligência Emocional',
-    lead: 'Reconhecer, nomear e administrar emoções — a habilidade que mais falta em casamentos que parecem ter tudo.',
+    lead: 'Reconhecer, nomear e administrar emoções, a habilidade que mais falta em casamentos que parecem ter tudo.',
     exercicios: ['Vocabulário emocional ampliado', 'Escuta sem defesa', 'Regulação antes de responder', 'Registro de ciclos emocionais'],
     quote: 'Quem aprende a nomear o que sente, para de deixar que as emoções falem por ele.',
   },
@@ -45,14 +45,14 @@ const FASE1: Mes[] = [
   {
     n: '05',
     titulo: 'Ressignificação',
-    lead: 'As crenças herdadas sobre casamento — e a decisão consciente de manter as que elevam e soltar as que limitam.',
+    lead: 'As crenças herdadas sobre casamento, e a decisão consciente de manter as que elevam e soltar as que limitam.',
     exercicios: ['Genograma relacional', 'Contratos invisíveis identificados', 'Escolhas conscientes em casal', 'Novos modelos de referência'],
     quote: 'Você carrega modelos de casamento que não escolheu. Chegou a hora de escolher os seus.',
   },
   {
     n: '06',
     titulo: 'Identidade e Propósito',
-    lead: 'Quem você é hoje — não quem você era quando se casou. Identidade clara é pré-requisito para parceria real.',
+    lead: 'Quem você é hoje, não quem você era quando se casou. Identidade clara é pré-requisito para parceria real.',
     exercicios: ['Declaração de identidade atualizada', 'Propósito individual articulado', 'Valores pessoais revisitados', 'Visão de si mesmo no futuro'],
     quote: 'Dois propósitos individuais claros formam um propósito de casal inabalável.',
   },
@@ -64,7 +64,7 @@ const FASE2: Mes[] = [
     titulo: 'Comunicação Madura',
     lead: 'Falar sem ferir. Ouvir sem se defender. A habilidade que transforma conflito em construção.',
     exercicios: ['Comunicação não-violenta aplicada', 'Conversas difíceis com estrutura', 'Escuta ativa em prática', 'Acordos de comunicação'],
-    quote: 'A maioria dos problemas do casal não é o problema — é a forma como tentam resolvê-lo.',
+    quote: 'A maioria dos problemas do casal não é o problema, é a forma como tentam resolvê-lo.',
   },
   {
     n: '08',
@@ -76,30 +76,30 @@ const FASE2: Mes[] = [
   {
     n: '09',
     titulo: 'Alinhamento Financeiro',
-    lead: 'Decisões de dinheiro em unidade. O tema que mais divide casais — e o que mais une quando dominado.',
+    lead: 'Decisões de dinheiro em unidade. O tema que mais divide casais, e o que mais une quando dominado.',
     exercicios: ['Diagnóstico financeiro do casal', 'Metas financeiras compartilhadas', 'Modelo de decisão conjunta', 'Projeto patrimonial de longo prazo'],
     quote: 'Dinheiro não é um problema de número. É um problema de acordo.',
   },
   {
     n: '10',
     titulo: 'Intimidade',
-    lead: 'Física, emocional, espiritual. A intimidade real vai muito além do óbvio — e exige os três níveis.',
+    lead: 'Física, emocional, espiritual. A intimidade real vai muito além do óbvio, e exige os três níveis.',
     exercicios: ['Mapa de necessidades de intimidade', 'Presença emocional profunda', 'Rituais de conexão diária', 'Espaço sagrado do casal'],
-    quote: 'Intimidade real é ser completamente visto — e escolhido assim mesmo.',
+    quote: 'Intimidade real é ser completamente visto, e escolhido assim mesmo.',
   },
   {
     n: '11',
     titulo: 'Parceria',
-    lead: 'Projetos em conjunto. Quando o casal aprende a construir junto — negócios, família, vida — tudo se multiplica.',
+    lead: 'Projetos em conjunto. Quando o casal aprende a construir junto, negócios, família, vida, tudo se multiplica.',
     exercicios: ['Mapa de projetos em casal', 'Divisão consciente de papéis', 'Tomada de decisão conjunta', 'Celebração de conquistas partilhadas'],
-    quote: 'Parceiros de vida constroem juntos — não dividem o peso: multiplicam a força.',
+    quote: 'Parceiros de vida constroem juntos, não dividem o peso: multiplicam a força.',
   },
   {
     n: '12',
     titulo: 'Decisões em Unidade',
     lead: 'Visão de futuro compartilhada. O mês em que tudo o que foi construído se transforma em legado com direção.',
     exercicios: ['Visão de casal para 10 anos', 'Manifesto de família', 'Acordos de longo prazo', 'Rituais de renovação de compromisso'],
-    quote: 'Um casal com visão compartilhada não tem concorrente — tem missão.',
+    quote: 'Um casal com visão compartilhada não tem concorrente, tem missão.',
   },
 ]
 
@@ -187,7 +187,7 @@ function MesCard({ mes, isVisible }: { mes: Mes; isVisible: boolean }) {
         ))}
       </ul>
 
-      {/* Quote — border-left dourado + texto sólido */}
+      {/* Quote, border-left dourado + texto sólido */}
       <div
         style={{
           marginTop: 'var(--space-6)',
@@ -325,7 +325,7 @@ function TimelineFase({
           position: 'relative',
         }}
       >
-        {/* Left — sticky numero + titulo */}
+        {/* Left, sticky numero + titulo */}
         <div
           style={{
             position: 'sticky',
@@ -422,7 +422,7 @@ function TimelineFase({
           </div>
         </div>
 
-        {/* Right — scroll items */}
+        {/* Right, scroll items */}
         <div
           ref={rightRef}
           style={{
@@ -527,7 +527,7 @@ export function TimelineMetodo() {
 
         {/* Fase 1 */}
         <TimelineFase
-          fase="Primeira Fase — Elevação Individual"
+          fase="Primeira Fase, Elevação Individual"
           meses={FASE1}
           startIndex={0}
         />
@@ -548,7 +548,7 @@ export function TimelineMetodo() {
 
         {/* Fase 2 */}
         <TimelineFase
-          fase="Segunda Fase — Construção do Nós"
+          fase="Segunda Fase, Construção do Nós"
           meses={FASE2}
           startIndex={6}
         />

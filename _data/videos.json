@@ -1,0 +1,122 @@
+[
+  {
+    "id": "v-01",
+    "youtubeId": "dQw4w9WgXcQ",
+    "title": "Como a rotina consome o casamento sem que ninguém perceba",
+    "description": "A distância entre dois cônjuges quase nunca acontece de uma vez, ela se acumula em pequenos silêncios diários.",
+    "date": "2026-07-10",
+    "duration": "12:34",
+    "category": "Rotina",
+    "cover": "/photos/stock/casal-sofa-laptop.jpg"
+  },
+  {
+    "id": "v-02",
+    "youtubeId": "dQw4w9WgXcQ",
+    "title": "Comunicação de verdade: o que casais de alto nível fazem diferente",
+    "description": "Não é papo de terapia. É estrutura de conversa, protocolo, escuta e revisão semanal.",
+    "date": "2026-07-03",
+    "duration": "18:22",
+    "category": "Comunicação",
+    "cover": "/photos/stock/casal-conversa-simples.jpg"
+  },
+  {
+    "id": "v-03",
+    "youtubeId": "dQw4w9WgXcQ",
+    "title": "As 3 fases que todo casamento percorre, e como navegar cada uma",
+    "description": "Elevação Individual, Construção do Nós e Legado. Um método em três fases.",
+    "date": "2026-06-25",
+    "duration": "24:15",
+    "category": "Método",
+    "cover": "/photos/metodo-casal-caminho.jpg"
+  },
+  {
+    "id": "v-04",
+    "youtubeId": "dQw4w9WgXcQ",
+    "title": "Filhos que veem os pais nunca discutirem: o problema silencioso",
+    "description": "Uma geração inteira está aprendendo que amor é ausência de conflito.",
+    "date": "2026-06-18",
+    "duration": "15:47",
+    "category": "Legado",
+    "cover": "/photos/stock/familia-pjs-crianca.jpg"
+  },
+  {
+    "id": "v-05",
+    "youtubeId": "dQw4w9WgXcQ",
+    "title": "Por que 'tempo de qualidade' virou o maior mito conjugal moderno",
+    "description": "A ideia de compensar ausência com intensidade não funciona.",
+    "date": "2026-06-10",
+    "duration": "9:52",
+    "category": "Comunicação",
+    "cover": "/photos/dores-couple-bw.jpg"
+  },
+  {
+    "id": "v-06",
+    "youtubeId": "dQw4w9WgXcQ",
+    "title": "Dormir em quartos separados: crise ou maturidade?",
+    "description": "O 'sleep divorce' cresce entre casais de classe A. Discutimos os dois lados.",
+    "date": "2026-06-03",
+    "duration": "11:28",
+    "category": "Rotina",
+    "cover": "/photos/conceito-marcela-dark.jpg"
+  },
+  {
+    "id": "v-07",
+    "youtubeId": "dQw4w9WgXcQ",
+    "title": "Casais que compartilham finanças brigam 40% menos, a pesquisa",
+    "description": "Análise do estudo com 1.200 casais brasileiros. Não é dinheiro que estabiliza.",
+    "date": "2026-05-27",
+    "duration": "16:09",
+    "category": "Método",
+    "cover": "/photos/final-cta-couple-navy.jpg"
+  },
+  {
+    "id": "v-08",
+    "youtubeId": "dQw4w9WgXcQ",
+    "title": "O casamento como último projeto da agenda: os números por trás",
+    "description": "Casais de alta performance dedicam 2h/semana à carreira e 22min ao casamento.",
+    "date": "2026-05-20",
+    "duration": "21:03",
+    "category": "Método",
+    "cover": "/photos/manifesto-couple-hands.jpg"
+  },
+  {
+    "id": "v-09",
+    "youtubeId": "dQw4w9WgXcQ",
+    "title": "Metodologia da briga produtiva: por que casais precisam de protocolo",
+    "description": "Toda briga sem protocolo vira improvisada. Casais que treinam recuperam 3x mais rápido.",
+    "date": "2026-05-13",
+    "duration": "13:41",
+    "category": "Método",
+    "cover": "/photos/stock/casal-conversa-terapia.jpg"
+  },
+  {
+    "id": "v-10",
+    "youtubeId": "dQw4w9WgXcQ",
+    "title": "O silêncio conjugal, o novo divórcio que ninguém está contando",
+    "description": "Duas pessoas continuam juntas, e simplesmente pararam de se conhecer.",
+    "date": "2026-05-06",
+    "duration": "17:55",
+    "category": "Rotina",
+    "cover": "/photos/stock/casal-cozinha-tensao.jpg"
+  },
+  {
+    "id": "v-11",
+    "youtubeId": "dQw4w9WgXcQ",
+    "title": "Um legado que se vive: educar filhos como casal (e não como pais)",
+    "description": "Educar como casal é mostrar o próprio casamento com dignidade.",
+    "date": "2026-04-29",
+    "duration": "19:12",
+    "category": "Legado",
+    "cover": "/photos/stock/familia-campo-crianca.jpg"
+  },
+  {
+    "id": "v-12",
+    "youtubeId": "dQw4w9WgXcQ",
+    "title": "Casais que planejam férias juntos têm mais intimidade, não é a viagem",
+    "description": "A intimidade se constrói no planejamento, não na chegada.",
+    "date": "2026-04-22",
+    "duration": "10:37",
+    "category": "Comunicação",
+    "cover": "/photos/stock/conquista-casal-praia.jpg"
+  }
+]

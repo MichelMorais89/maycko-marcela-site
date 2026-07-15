@@ -6,7 +6,7 @@ const FORMATOS = [
   {
     n: '01',
     titulo: 'Encontro Semanal',
-    desc: 'Uma sessão por semana com os mentores — ao vivo, focada no tema do mês. Dúvidas, avanços e próximos passos.',
+    desc: 'Uma sessão por semana com os mentores, ao vivo, focada no tema do mês. Dúvidas, avanços e próximos passos.',
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{ width: 40, height: 40 }}>
         <circle cx="24" cy="24" r="18" stroke="var(--gold-400)" strokeWidth="1.2" />

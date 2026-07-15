@@ -14,7 +14,7 @@ interface BrandArrowProps {
 
 /**
  * Setas oficiais ELEVEM-SE.
- * - fios: dois fios que viram uma seta só (CTA principal — mais autoral)
+ * - fios: dois fios que viram uma seta só (CTA principal, mais autoral)
  * - elos: dois anéis entrelaçados (marcador de afeto, não direcional)
  * - subir: dois "v" invertidos sobem lado a lado (scroll hint / vertical)
  *
@@ -42,18 +42,18 @@ export function BrandArrow({
   }
 
   if (variant === 'fios') {
-    // Opção A — Dois fios, um destino
+    // Opção A, Dois fios, um destino
     // Duas curvas suaves que se entrelaçam à esquerda e viram uma seta única à direita
     return (
       <svg {...commonProps}>
-        {/* Fio 1 (superior) — entra em curva descendente */}
+        {/* Fio 1 (superior), entra em curva descendente */}
         <path
           d="M4 11 C 10 11, 13 14, 18 16"
           stroke={color}
           strokeWidth={strokeWidth}
           strokeLinecap="round"
         />
-        {/* Fio 2 (inferior) — entra em curva ascendente */}
+        {/* Fio 2 (inferior), entra em curva ascendente */}
         <path
           d="M4 21 C 10 21, 13 18, 18 16"
           stroke={color}
@@ -73,7 +73,7 @@ export function BrandArrow({
   }
 
   if (variant === 'elos') {
-    // Opção B — Elos (dois anéis entrelaçados, sem ponta)
+    // Opção B, Elos (dois anéis entrelaçados, sem ponta)
     return (
       <svg {...commonProps}>
         <circle
@@ -98,10 +98,10 @@ export function BrandArrow({
     )
   }
 
-  // Opção C — Subir juntos (dois v invertidos lado a lado)
+  // Opção C, Subir juntos (dois v invertidos lado a lado)
   return (
     <svg {...commonProps}>
-      {/* V invertido esquerdo — chevron up */}
+      {/* V invertido esquerdo, chevron up */}
       <path
         d="M6 20 L12 12 L18 20"
         stroke={color}
@@ -109,7 +109,7 @@ export function BrandArrow({
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      {/* V invertido direito — chevron up */}
+      {/* V invertido direito, chevron up */}
       <path
         d="M14 20 L20 12 L26 20"
         stroke={color}

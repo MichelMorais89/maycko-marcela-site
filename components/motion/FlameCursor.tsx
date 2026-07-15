@@ -51,7 +51,7 @@ export function FlameCursor() {
 
   return (
     <div ref={wrapRef} aria-hidden="true">
-      {/* Glow radial que segue o cursor com delay — clareia em volta */}
+      {/* Glow radial que segue o cursor com delay, clareia em volta */}
       <div
         ref={glowRef}
         aria-hidden="true"

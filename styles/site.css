@@ -478,6 +478,24 @@ body:has(.flame-cursor) { cursor: none; }
 .final-cta-flame { animation: flameBgPulse 4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .final-cta-flame { animation: none; } }
 
+/* ---- Hero flame live (chama gigante lateral, viva) ------------- */
+@keyframes heroFlameLive {
+  0%   { transform: scale(1)    rotate(-0.4deg) skewX(0deg);    opacity: 0.14; }
+  20%  { transform: scale(1.02) rotate(0.3deg)  skewX(0.3deg);  opacity: 0.19; }
+  45%  { transform: scale(0.99) rotate(-0.5deg) skewX(-0.2deg); opacity: 0.13; }
+  70%  { transform: scale(1.03) rotate(0.2deg)  skewX(0.4deg);  opacity: 0.20; }
+  100% { transform: scale(1)    rotate(-0.4deg) skewX(0deg);    opacity: 0.14; }
+}
+.hero-flame-live {
+  animation: heroFlameLive 7s ease-in-out infinite;
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+  mix-blend-mode: screen;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-flame-live { animation: none; opacity: 0.15; }
+}
+
 /* ---- Shimmer CTA (AC7) -------------------------------- */
 @keyframes shimmerPass {
   0% { background-position: 200% center; }

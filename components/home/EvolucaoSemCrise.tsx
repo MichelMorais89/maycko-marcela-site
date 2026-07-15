@@ -74,7 +74,7 @@ export function EvolucaoSemCrise() {
           </h2>
         </Reveal>
 
-        {/* Subtexto — restauração riscado, evolução sublinhado */}
+        {/* Subtexto, restauração riscado, evolução sublinhado */}
         <Reveal delay={2} style={{ marginTop: 'var(--space-9)' }}>
           <p
             className="elv-serif"

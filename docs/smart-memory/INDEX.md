@@ -17,6 +17,8 @@ MOC raiz. Todo arquivo novo em `docs/smart-memory/` deve ser referenciado aqui.
 - [[project/conventions]] — convenções de código: naming, imports, ESLint, commits, regras playbook (fonte: sites-analyst, 2026-07-08)
 - [[project/handoff-bundles]] — bundles do Claude Design (KV + Design System)
 - [[project/design-tokens]] — tokens extraídos do DS: cores, tipografia, spacing, radius, sombras, motion + config Tailwind
+- [[project/v3-briefing]] — briefing canônico da V3: leveza editorial + nova IA (norte de tudo)
+- [[project/conceito-central-marca]] — frase-conceito canônica da marca ELEVEM-SE
 
 ## Stories
 - [[stories/BACKLOG]] — stories pendentes
@@ -33,7 +35,9 @@ MOC raiz. Todo arquivo novo em `docs/smart-memory/` deve ser referenciado aqui.
 ## Agentes
 - [[agents/ux/components]] — catálogo de componentes do design bundle
 - `agents/research/` — research reports
-- `agents/qa/` — histórico de veredictos
+- [[agents/qa/gate-criteria-v3]] — critérios formais de PASS/CONCERNS/FAIL para a V3
+- `agents/qa/veredictos-v3/` — veredictos por story (gerados por Axilun)
+- [[agents/dev-alpha/v3-refactor-map]] — mapa de problemas V3 no código atual: escuro-em-escuro, repetições, rotas novas (Novael, 2026-07-09)
 
 ## Status
 - [[shared-context]] — status board em tempo real

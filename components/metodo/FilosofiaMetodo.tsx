@@ -5,7 +5,7 @@ import { Ornament } from '@/components/shared/Ornament'
 const PILLARS = [
   {
     title: 'Propósito',
-    tagline: 'Saber para onde caminham — juntos e individualmente.',
+    tagline: 'Saber para onde caminham, juntos e individualmente.',
     icon: (
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="elv-pillar-flame" style={{ width: '100%', height: '100%' }}>
         <defs>

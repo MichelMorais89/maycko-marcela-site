@@ -4,37 +4,16 @@ import { SplitText } from '@/components/motion/SplitText'
 import { Ornament } from '@/components/shared/Ornament'
 
 const RECEBEM_CUIDADO = [
-  {
-    n: '01',
-    area: 'Empresa',
-    verbo: 'recebe',
-    cuidado: 'planejamento',
-  },
-  {
-    n: '02',
-    area: 'Patrimônio',
-    verbo: 'recebe',
-    cuidado: 'investimento',
-  },
-  {
-    n: '03',
-    area: 'Filhos',
-    verbo: 'recebem',
-    cuidado: 'atenção',
-  },
+  { n: '01', area: 'Empresa', verbo: 'recebe', cuidado: 'planejamento' },
+  { n: '02', area: 'Patrimônio', verbo: 'recebe', cuidado: 'investimento' },
+  { n: '03', area: 'Filhos', verbo: 'recebem', cuidado: 'atenção' },
 ]
 
 function CheckIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-      <circle cx="10" cy="10" r="9" fill="none" stroke="var(--gold-400)" strokeWidth="1.4" opacity="0.4" />
-      <path
-        d="M6 10.5 L8.7 13.2 L14.5 7"
-        stroke="var(--gold-400)"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <circle cx="10" cy="10" r="9" fill="none" stroke="var(--gold-500, #C2A14D)" strokeWidth="1.4" opacity="0.6" />
+      <path d="M6 10.5 L8.7 13.2 L14.5 7" stroke="var(--gold-500, #C2A14D)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -42,13 +21,8 @@ function CheckIcon() {
 function XIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-      <circle cx="10" cy="10" r="9" fill="none" stroke="var(--wine-500, #a44a5c)" strokeWidth="1.4" opacity="0.5" />
-      <path
-        d="M6.5 6.5 L13.5 13.5 M13.5 6.5 L6.5 13.5"
-        stroke="var(--wine-500, #a44a5c)"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-      />
+      <circle cx="10" cy="10" r="9" fill="none" stroke="var(--wine-600, #6E2A36)" strokeWidth="1.4" opacity="0.6" />
+      <path d="M6.5 6.5 L13.5 13.5 M13.5 6.5 L6.5 13.5" stroke="var(--wine-600, #6E2A36)" strokeWidth="1.7" strokeLinecap="round" />
     </svg>
   )
 }
@@ -58,26 +32,12 @@ export function Manifesto() {
     <section
       className="elv-sec"
       style={{
-        background: 'var(--surface-anchor)',
+        background: 'var(--surface-bege, #EDE3CF)',
         paddingBlock: 'clamp(6rem, 12vw, 10rem)',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Aurora — inicia na base */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'radial-gradient(ellipse 80% 60% at 20% 95%, rgba(184,140,72,0.14) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 90% 100%, rgba(122,28,46,0.18) 0%, transparent 68%)',
-          pointerEvents: 'none',
-          maskImage: 'linear-gradient(to top, black 0%, black 60%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to top, black 0%, black 60%, transparent 100%)',
-        }}
-      />
-
       <div
         className="elv-wrap manifesto-grid mobile-stack"
         style={{
@@ -100,14 +60,14 @@ export function Manifesto() {
                 marginBottom: 'var(--space-4)',
               }}
             >
-              <Ornament variant="rule" ruleWidth={44} tone="gold" style={{ opacity: 0.8 }} />
+              <Ornament variant="rule" ruleWidth={44} tone="gold" style={{ opacity: 0.7 }} />
               <p
                 className="elv-sans"
                 style={{
-                  fontSize: 'clamp(1rem, 1.15vw, 1.35rem)',
-                  letterSpacing: '0.26em',
+                  fontSize: 'clamp(0.72rem, 0.68rem + 0.22vw, 0.88rem)',
+                  letterSpacing: '0.28em',
                   textTransform: 'uppercase',
-                  color: 'var(--gold-400)',
+                  color: 'var(--text-gold, #735422)',
                   fontWeight: 600,
                   margin: 0,
                 }}
@@ -116,15 +76,14 @@ export function Manifesto() {
               </p>
             </div>
 
-            {/* Pergunta-frame */}
             <p
               className="elv-serif"
               style={{
                 marginTop: 'var(--space-7)',
                 fontSize: 'clamp(1.5rem, 2.6vw, 2.2rem)',
-                color: 'var(--white-warm)',
+                color: 'var(--text-strong, #2E2A2B)',
                 lineHeight: 1.25,
-                fontWeight: 'var(--weight-medium)',
+                fontWeight: 500,
                 letterSpacing: '-0.005em',
                 margin: 'var(--space-7) 0 0',
                 maxWidth: '24ch',
@@ -134,7 +93,6 @@ export function Manifesto() {
             </p>
           </Reveal>
 
-          {/* Lista de 3 que RECEBEM cuidado (positivos) */}
           <Reveal
             delay={1}
             as="ul"
@@ -163,7 +121,7 @@ export function Manifesto() {
                     fontSize: 'var(--text-xs)',
                     letterSpacing: '0.28em',
                     textTransform: 'uppercase',
-                    color: 'var(--gold-400)',
+                    color: 'var(--text-gold, #735422)',
                     fontWeight: 600,
                     fontStyle: 'italic',
                     minWidth: '2ch',
@@ -177,17 +135,17 @@ export function Manifesto() {
                   className="elv-sans"
                   style={{
                     fontSize: 'clamp(1.05rem, 1.5vw, 1.3rem)',
-                    color: 'var(--white-warm)',
+                    color: 'var(--text-strong, #2E2A2B)',
                     margin: 0,
                     lineHeight: 1.4,
                   }}
                 >
                   <strong style={{ fontWeight: 600 }}>{item.area}</strong>
-                  <span style={{ color: 'rgba(255,248,235,0.55)' }}> {item.verbo} </span>
+                  <span style={{ color: 'var(--text-muted, #716A6B)' }}> {item.verbo} </span>
                   <em
                     style={{
                       fontStyle: 'italic',
-                      color: 'var(--gold-300)',
+                      color: 'var(--text-gold, #735422)',
                       fontFamily: 'var(--font-display)',
                     }}
                   >
@@ -213,8 +171,7 @@ export function Manifesto() {
                 style={{
                   flex: 1,
                   height: 1,
-                  background:
-                    'linear-gradient(to right, transparent 0%, rgba(184,140,72,0.35) 50%, transparent 100%)',
+                  background: 'linear-gradient(to right, transparent 0%, rgba(194,161,77,0.4) 50%, transparent 100%)',
                 }}
               />
               <span
@@ -223,7 +180,7 @@ export function Manifesto() {
                   fontSize: 'clamp(1rem, 1.25vw, 1.15rem)',
                   letterSpacing: '0.4em',
                   textTransform: 'uppercase',
-                  color: 'var(--wine-500, #a44a5c)',
+                  color: 'var(--wine-600, #6E2A36)',
                   fontStyle: 'italic',
                   fontWeight: 500,
                 }}
@@ -234,14 +191,13 @@ export function Manifesto() {
                 style={{
                   flex: 1,
                   height: 1,
-                  background:
-                    'linear-gradient(to right, transparent 0%, rgba(164,74,92,0.35) 50%, transparent 100%)',
+                  background: 'linear-gradient(to right, transparent 0%, rgba(110,42,54,0.3) 50%, transparent 100%)',
                 }}
               />
             </div>
           </Reveal>
 
-          {/* Linha 04 — casamento — destaque negativo */}
+          {/* Linha 04, casamento */}
           <Reveal delay={3}>
             <div
               style={{
@@ -251,8 +207,8 @@ export function Manifesto() {
                 gap: 'clamp(14px, 2vw, 22px)',
                 padding: 'clamp(20px, 2.5vw, 28px)',
                 borderRadius: 'var(--radius-md)',
-                background: 'rgba(122,28,46,0.14)',
-                border: '1px solid rgba(164,74,92,0.28)',
+                background: 'rgba(110,42,54,0.07)',
+                border: '1px solid rgba(110,42,54,0.18)',
               }}
             >
               <span
@@ -261,7 +217,7 @@ export function Manifesto() {
                   fontSize: 'var(--text-xs)',
                   letterSpacing: '0.28em',
                   textTransform: 'uppercase',
-                  color: 'var(--wine-500, #a44a5c)',
+                  color: 'var(--wine-600, #6E2A36)',
                   fontWeight: 600,
                   fontStyle: 'italic',
                   minWidth: '2ch',
@@ -275,17 +231,17 @@ export function Manifesto() {
                 className="elv-sans"
                 style={{
                   fontSize: 'clamp(1.05rem, 1.5vw, 1.3rem)',
-                  color: 'var(--white-warm)',
+                  color: 'var(--text-strong, #2E2A2B)',
                   margin: 0,
                   lineHeight: 1.4,
                 }}
               >
                 <strong style={{ fontWeight: 600 }}>Casamento</strong>
-                <span style={{ color: 'rgba(255,248,235,0.55)' }}> fica </span>
+                <span style={{ color: 'var(--text-muted, #716A6B)' }}> fica </span>
                 <em
                   style={{
                     fontStyle: 'italic',
-                    color: 'var(--wine-300, #d1899b)',
+                    color: 'var(--wine-700, #5C2230)',
                     fontFamily: 'var(--font-display)',
                   }}
                 >
@@ -295,24 +251,23 @@ export function Manifesto() {
             </div>
           </Reveal>
 
-          {/* Manifesto síntese */}
+          {/* Síntese */}
           <Reveal delay={4} style={{ marginTop: 'clamp(40px, 5vw, 64px)' }}>
             <p
               className="elv-serif"
               style={{
                 fontSize: 'clamp(1.3rem, 2.2vw, 1.85rem)',
                 fontStyle: 'italic',
-                color: 'var(--gold-300)',
+                color: 'var(--text-body, #4D4748)',
                 lineHeight: 1.35,
                 margin: 0,
                 maxWidth: '38ch',
               }}
             >
-              Acreditamos que o relacionamento deve crescer{' '}
-              <strong style={{ color: 'var(--white-warm)', fontWeight: 500, fontStyle: 'normal' }}>
-                na mesma velocidade
-              </strong>{' '}
-              que a vida de vocês cresce.
+              Acreditamos que o relacionamento deve receber o mesmo cuidado que vocês dão à empresa, ao patrimônio e aos filhos.{' '}
+              <strong style={{ color: 'var(--text-strong, #2E2A2B)', fontWeight: 500, fontStyle: 'normal' }}>
+                Não porque está em risco. Porque é o que sustenta tudo.
+              </strong>
             </p>
           </Reveal>
         </div>
@@ -329,30 +284,18 @@ export function Manifesto() {
               marginLeft: 'auto',
               borderRadius: 'var(--radius-lg)',
               overflow: 'hidden',
-              boxShadow:
-                '0 30px 80px rgba(0,0,0,0.55), 0 10px 30px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(184,140,72,0.14)',
+              boxShadow: '0 20px 60px rgba(44,26,18,0.18), 0 6px 20px rgba(44,26,18,0.10)',
               flex: 1,
-              cursor: 'pointer',
             }}
           >
             <Image
               src="/photos/manifesto-couple-hands.jpg"
-              alt="Maycko e Marcela — de mãos dadas"
+              alt="Maycko e Marcela"
               fill
               sizes="(max-width: 900px) 90vw, 40vw"
               style={{
                 objectFit: 'cover',
                 objectPosition: '50% 30%',
-                filter: 'contrast(1.05) brightness(0.9)',
-              }}
-            />
-            <div
-              aria-hidden="true"
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background:
-                  'radial-gradient(ellipse at center, transparent 55%, rgba(28,10,16,0.55) 100%)',
               }}
             />
           </div>

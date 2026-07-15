@@ -1,0 +1,98 @@
+[
+  {
+    "id": "p-01",
+    "youtubeId": "dQw4w9WgXcQ",
+    "spotifyUrl": "https://open.spotify.com/",
+    "title": "Por que o casamento fica sempre por último na agenda",
+    "description": "Uma conversa aberta sobre como casais de alta performance transformam o casamento no projeto mais importante da carreira, antes que ele vire o único que ficou de fora.",
+    "date": "2026-07-10",
+    "duration": "48:22",
+    "category": "Método",
+    "cover": "/photos/manifesto-couple-hands.jpg",
+    "guest": "Maycko & Marcela"
+  },
+  {
+    "id": "p-02",
+    "youtubeId": "dQw4w9WgXcQ",
+    "spotifyUrl": "https://open.spotify.com/",
+    "title": "O silêncio conjugal: o novo divórcio que ninguém está contando",
+    "description": "Duas pessoas continuam morando juntas, dormindo na mesma cama, e pararam de se conhecer. Terapeutas relatam um fenômeno silencioso que atinge casamentos aparentemente saudáveis.",
+    "date": "2026-07-03",
+    "duration": "56:14",
+    "category": "Rotina",
+    "cover": "/photos/stock/casal-cozinha-tensao.jpg",
+    "guest": "Convidada: terapeuta familiar"
+  },
+  {
+    "id": "p-03",
+    "youtubeId": "dQw4w9WgXcQ",
+    "spotifyUrl": "https://open.spotify.com/",
+    "title": "As 3 fases que todo casamento percorre, bastidores do método",
+    "description": "Como o método ELEVEM-SE nasceu na prática. Da Fase 1 (Elevação Individual) à Fase 3 (Legado em Casal), uma conversa sobre os marcos, os erros e o que faz o método funcionar.",
+    "date": "2026-06-25",
+    "duration": "1:12:08",
+    "category": "Método",
+    "cover": "/photos/metodo-casal-caminho.jpg",
+    "guest": "Maycko & Marcela"
+  },
+  {
+    "id": "p-04",
+    "youtubeId": "dQw4w9WgXcQ",
+    "spotifyUrl": "https://open.spotify.com/",
+    "title": "Educar filhos como casal, e não como pais individuais",
+    "description": "A responsabilidade de mostrar aos filhos o que é um casamento saudável em movimento. Como educar como casal virou o legado mais raro da geração.",
+    "date": "2026-06-18",
+    "duration": "52:47",
+    "category": "Legado",
+    "cover": "/photos/stock/familia-pjs-crianca.jpg",
+    "guest": "Convidados: casais mentorados"
+  },
+  {
+    "id": "p-05",
+    "youtubeId": "dQw4w9WgXcQ",
+    "spotifyUrl": "https://open.spotify.com/",
+    "title": "Comunicação de verdade: o que casais de alto nível fazem diferente",
+    "description": "Protocolo de escuta, briga produtiva, revisão semanal do casamento. As estruturas que separam casais que crescem dos que só coexistem.",
+    "date": "2026-06-10",
+    "duration": "44:31",
+    "category": "Comunicação",
+    "cover": "/photos/stock/casal-conversa-simples.jpg",
+    "guest": "Maycko & Marcela"
+  },
+  {
+    "id": "p-06",
+    "youtubeId": "dQw4w9WgXcQ",
+    "spotifyUrl": "https://open.spotify.com/",
+    "title": "Dormir em quartos separados: crise, maturidade ou estratégia?",
+    "description": "O 'sleep divorce' cresce entre casais brasileiros de alta renda. Discutimos os dois lados, quando é ferramenta e quando é sintoma silencioso de afastamento.",
+    "date": "2026-06-03",
+    "duration": "39:52",
+    "category": "Rotina",
+    "cover": "/photos/conceito-marcela-dark.jpg",
+    "guest": "Convidada: especialista do sono"
+  },
+  {
+    "id": "p-07",
+    "youtubeId": "dQw4w9WgXcQ",
+    "spotifyUrl": "https://open.spotify.com/",
+    "title": "Finanças em casal: como transparência muda tudo (pesquisa comentada)",
+    "description": "Análise ao vivo do estudo com 1.200 casais brasileiros que revelou uma verdade desconfortável, a maior fonte de estabilidade conjugal não é romance. É dinheiro na mesa.",
+    "date": "2026-05-27",
+    "duration": "58:16",
+    "category": "Método",
+    "cover": "/photos/final-cta-couple-navy.jpg",
+    "guest": "Convidado: pesquisador do estudo"
+  },
+  {
+    "id": "p-08",
+    "youtubeId": "dQw4w9WgXcQ",
+    "spotifyUrl": "https://open.spotify.com/",
+    "title": "Casais que planejam férias juntos têm mais intimidade, não é a viagem",
+    "description": "A intimidade se constrói no planejamento, não na chegada. Uma conversa sobre projetar futuro em dois, e por que o casal que decide junto sobre o próximo mês, decide junto sobre a próxima década.",
+    "date": "2026-05-20",
+    "duration": "41:23",
+    "category": "Comunicação",
+    "cover": "/photos/stock/conquista-casal-praia.jpg",
+    "guest": "Maycko & Marcela"
+  }
+]

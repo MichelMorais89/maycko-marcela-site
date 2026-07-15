@@ -9,7 +9,7 @@ const CONQUISTAS = [
   { titulo: 'Patrimônio comum', desc: 'Decisões financeiras alinhadas, visão de longo prazo partilhada.' },
   { titulo: 'Presença plena', desc: 'Estar completamente disponível para o outro no dia a dia.' },
   { titulo: 'Decisões unificadas', desc: 'A mesma direção, mesmo sob pressão, mesmo sem tempo.' },
-  { titulo: 'Intimidade real', desc: 'Profunda, honesta — nos três níveis que sustentam um casamento.' },
+  { titulo: 'Intimidade real', desc: 'Profunda, honesta, nos três níveis que sustentam um casamento.' },
   { titulo: 'Legado', desc: 'Um casamento que passa para os filhos como modelo, não como aviso.' },
 ]
 
@@ -27,7 +27,7 @@ export function ResultadoMetodo() {
       {/* Foto full-bleed */}
       <Image
         src="/photos/stock/conquista-casal-praia.jpg"
-        alt="Casal em conquista — intimidade, presença e destino"
+        alt="Casal em conquista, intimidade, presença e destino"
         fill
         sizes="100vw"
         style={{ objectFit: 'cover', objectPosition: '55% 40%' }}
@@ -68,10 +68,10 @@ export function ResultadoMetodo() {
           alignItems: 'center',
         }}
       >
-        {/* Espaço vazio à esquerda — foto respira (hidden on mobile) */}
+        {/* Espaço vazio à esquerda, foto respira (hidden on mobile) */}
         <div aria-hidden="true" className="resultado-spacer mobile-hide" />
 
-        {/* Coluna direita — copy */}
+        {/* Coluna direita, copy */}
         <div style={{ maxWidth: 520 }}>
           <Reveal>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-5)' }}>
@@ -180,7 +180,7 @@ export function ResultadoMetodo() {
               Não é o casamento perfeito que você constrói.
               <br />
               <span style={{ color: 'var(--wine-800, #3d0a14)', fontStyle: 'normal', fontWeight: 600 }}>
-                É o casamento que dura — com intenção.
+                É o casamento que dura, com intenção.
               </span>
             </p>
 
@@ -198,7 +198,7 @@ export function ResultadoMetodo() {
           .resultado-spacer {
             display: none !important;
           }
-          /* Mobile: overlay vira vertical — foto em cima, creme sólido embaixo */
+          /* Mobile: overlay vira vertical, foto em cima, creme sólido embaixo */
           .resultado-overlay {
             background: linear-gradient(
               to bottom,

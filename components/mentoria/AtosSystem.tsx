@@ -12,7 +12,7 @@ const ATOS = [
     fase: 'Ato I',
     title: 'Quem Você É',
     sub: 'Elevação Individual',
-    desc: 'Antes de fortalecer o casamento, fortalecemos cada pessoa dentro dele. Identidade, mentalidade, energia — a base de tudo.',
+    desc: 'Antes de fortalecer o casamento, fortalecemos cada pessoa dentro dele. Identidade, mentalidade, energia, a base de tudo.',
     itens: ['Ressignificação de crenças', 'Inteligência emocional', 'Propósito individual', 'Saúde e energia'],
   },
   {
@@ -245,7 +245,7 @@ export function AtosSystem() {
                   }}
                 />
 
-                {/* Sweep de luz — atravessa o card quando ativo */}
+                {/* Sweep de luz, atravessa o card quando ativo */}
                 {isActive && (
                   <span
                     aria-hidden="true"
@@ -378,7 +378,7 @@ export function AtosSystem() {
                   </ul>
                 </div>
 
-                {/* Progress bar dourada — só no card ativo */}
+                {/* Progress bar dourada, só no card ativo */}
                 {isActive && (
                   <div
                     aria-hidden="true"

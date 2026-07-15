@@ -10,7 +10,7 @@ const ITEMS = [
     initials: 'RL',
   },
   {
-    q: 'O CNPJ ia bem, o CPF não. A mentoria sintonizou os dois — e o nosso casamento respira de novo.',
+    q: 'O CNPJ ia bem, o CPF não. A mentoria sintonizou os dois, e o nosso casamento respira de novo.',
     n: 'André & Camila',
     r: 'Sócios e casados · 14 anos',
     initials: 'AC',
@@ -38,13 +38,20 @@ export function Depoimentos() {
               marginBottom: 'var(--space-4)',
             }}
           >
-            Casais que decidiram crescer juntos
+            A VOZ DE QUEM VIVEU
           </p>
           <h2
             className="elv-serif elv-fluid-h2"
-            style={{ color: 'var(--text-strong)', margin: 0, textAlign: 'center', maxWidth: '20ch', marginInline: 'auto' }}
+            style={{
+              color: 'var(--text-strong)',
+              margin: 0,
+              textAlign: 'center',
+              maxWidth: '30ch',
+              marginInline: 'auto',
+              textWrap: 'balance',
+            }}
           >
-            <SplitText delay={100}>Mais do que salvar relacionamentos.</SplitText>
+            <SplitText delay={100}>Casais que decidiram elevar antes que o tempo decidisse por&nbsp;eles.</SplitText>
           </h2>
           <p
             className="elv-lead elv-fluid-lead"
@@ -94,7 +101,7 @@ export function Depoimentos() {
                       opacity: 0.55,
                     }}
                   />
-                  {/* Ornamento canto superior direito — sutil */}
+                  {/* Ornamento canto superior direito, sutil */}
                   <span
                     aria-hidden="true"
                     style={{
@@ -215,7 +222,7 @@ export function Depoimentos() {
           className="elv-center elv-sans elv-muted"
           style={{ fontSize: 'var(--text-xs)', marginTop: 'var(--space-6)' }}
         >
-          Depoimentos representativos — substituir por casos reais aprovados.
+          Depoimentos representativos, substituir por casos reais aprovados.
         </p>
       </div>
     </section>

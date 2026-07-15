@@ -1,13 +1,21 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 const NAV_LINKS = [
   { href: '/', label: 'Início' },
-  { href: '/sobre', label: 'Nossa História' },
+  { href: '/biografia', label: 'Biografia' },
   { href: '/metodo', label: 'O Método' },
   { href: '/mentoria', label: 'A Mentoria' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contato', label: 'Contato' },
+]
+
+const CONTEUDO_LINKS = [
+  { href: '/conteudo/ebooks', label: 'Ebooks' },
+  { href: '/conteudo/videos', label: 'Vídeos' },
+  { href: '/conteudo/podcasts', label: 'Podcasts' },
 ]
 
 function useMediaQuery(query: string) {
@@ -29,6 +37,19 @@ interface SiteNavProps {
 export function SiteNav({ active = '/' }: SiteNavProps) {
   const isDesktop = useMediaQuery('(min-width: 1000px)')
   const [open, setOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!dropdownOpen) return
+    function handleClick(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [dropdownOpen])
 
   useEffect(() => {
     document.body.style.overflow = open && !isDesktop ? 'hidden' : ''
@@ -60,7 +81,7 @@ export function SiteNav({ active = '/' }: SiteNavProps) {
           paddingBlock: 'var(--space-3)',
         }}
       >
-        <Link href="/" aria-label="Elevem-se — início" style={{ display: 'inline-flex', textDecoration: 'none', flex: 'none' }}>
+        <Link href="/" aria-label="Elevem-se, início" style={{ display: 'inline-flex', textDecoration: 'none', flex: 'none' }}>
           <strong
             style={{
               fontFamily: 'var(--font-display)',
@@ -113,6 +134,72 @@ export function SiteNav({ active = '/' }: SiteNavProps) {
                 </Link>
               )
             })}
+            {/* Conteúdo dropdown */}
+            <div ref={dropdownRef} style={{ position: 'relative' }}>
+              <button
+                type="button"
+                onClick={() => setDropdownOpen((d) => !d)}
+                aria-expanded={dropdownOpen}
+                aria-haspopup="true"
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: 'var(--text-sm)',
+                  letterSpacing: '0.02em',
+                  color: active.startsWith('/conteudo') ? 'var(--wine-700)' : 'var(--text-body)',
+                  fontWeight: active.startsWith('/conteudo') ? 'var(--weight-semibold)' : 'var(--weight-regular)',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 4,
+                  whiteSpace: 'nowrap',
+                  padding: 0,
+                }}
+              >
+                Conteúdo
+                <span style={{ fontSize: '0.6em', opacity: 0.6 }}>{dropdownOpen ? '▲' : '▼'}</span>
+              </button>
+              {dropdownOpen && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: 0,
+                    marginTop: 8,
+                    background: 'var(--surface-page, #FDFAF5)',
+                    border: '1px solid var(--border-hairline)',
+                    borderRadius: 'var(--radius-md)',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+                    minWidth: 160,
+                    zIndex: 10,
+                    overflow: 'hidden',
+                  }}
+                >
+                  {CONTEUDO_LINKS.map((cl) => (
+                    <Link
+                      key={cl.href}
+                      href={cl.href}
+                      onClick={() => setDropdownOpen(false)}
+                      style={{
+                        display: 'block',
+                        padding: '10px 16px',
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: 'var(--text-sm)',
+                        textDecoration: 'none',
+                        color: active === cl.href ? 'var(--wine-700)' : 'var(--text-body)',
+                        fontWeight: active === cl.href ? 'var(--weight-semibold)' : 'var(--weight-regular)',
+                        borderBottom: '1px solid var(--border-hairline)',
+                        transition: 'background 0.1s',
+                      }}
+                    >
+                      {cl.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <Link
               href="/mentoria#aplicar"
               style={{
@@ -189,6 +276,26 @@ export function SiteNav({ active = '/' }: SiteNavProps) {
                 }}
               >
                 {l.label}
+              </Link>
+            ))}
+            {/* Conteúdo links mobile */}
+            {CONTEUDO_LINKS.map((cl) => (
+              <Link
+                key={cl.href}
+                href={cl.href}
+                onClick={() => setOpen(false)}
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'var(--text-xl)',
+                  textDecoration: 'none',
+                  color: active === cl.href ? 'var(--wine-700)' : 'var(--text-strong)',
+                  padding: 'var(--space-3) 0',
+                  borderBottom: '1px solid var(--border-hairline)',
+                  paddingLeft: 'var(--space-4)',
+                  opacity: 0.85,
+                }}
+              >
+                {cl.label}
               </Link>
             ))}
             <div style={{ marginTop: 'var(--space-4)' }}>

@@ -11,6 +11,12 @@ const PAINS = [
   'Não querem se separar. Mas também não querem envelhecer no automático.',
 ]
 
+// Ritmo do bloco, tempos-chave em ms (acelerado 2026-07-14)
+const T_TITLE_END = 900   // depois do "apenas funcionando"
+const T_BULLETS_START = T_TITLE_END + 200
+const T_BULLET_STEP = 240  // intervalo entre bullets
+const T_FINAL = T_BULLETS_START + PAINS.length * T_BULLET_STEP + 200
+
 export function Dores() {
   return (
     <section
@@ -25,7 +31,7 @@ export function Dores() {
         paddingBlock: 'clamp(80px, 12vw, 140px)',
       }}
     >
-      {/* Foto full-bleed — casal fisicamente deslocado pra direita via inner container */}
+      {/* Foto full-bleed */}
       <div
         aria-hidden="true"
         style={{
@@ -56,7 +62,6 @@ export function Dores() {
             }}
           />
         </div>
-        {/* Overlay em "muro" — bloqueia esquerda até ~55%, casal só aparece à direita */}
         <div
           style={{
             position: 'absolute',
@@ -65,7 +70,6 @@ export function Dores() {
               'linear-gradient(to right, rgba(28,10,16,0.98) 0%, rgba(28,10,16,0.97) 42%, rgba(28,10,16,0.88) 52%, rgba(28,10,16,0.50) 62%, rgba(28,10,16,0.12) 78%, rgba(28,10,16,0) 95%)',
           }}
         />
-        {/* Vinheta inferior sutil pra ancorar a foto no bloco */}
         <div
           style={{
             position: 'absolute',
@@ -76,16 +80,17 @@ export function Dores() {
         />
       </div>
 
-      {/* Content — coluna ESQUERDA com respiro maior (não no canto) */}
+      {/* Content */}
       <div
         style={{
           position: 'relative',
           zIndex: 1,
-          maxWidth: '500px',
+          maxWidth: '540px',
           paddingLeft: 'clamp(44px, 8vw, 132px)',
           paddingRight: 'clamp(24px, 4vw, 40px)',
         }}
       >
+        {/* Eyebrow */}
         <Reveal>
           <p
             className="elv-sans"
@@ -98,10 +103,12 @@ export function Dores() {
               marginBottom: 'var(--space-5)',
             }}
           >
-            Talvez vocês reconheçam
+            <SplitText mode="words" staggerMs={40} durationMs={380}>
+              Talvez vocês reconheçam
+            </SplitText>
           </p>
 
-          {/* Título — reduzido, respirando melhor */}
+          {/* Título, SplitText por palavras, cadência dramática */}
           <h2
             className="elv-serif"
             style={{
@@ -116,28 +123,31 @@ export function Dores() {
               maxWidth: '18ch',
             }}
           >
-            <span style={{ whiteSpace: 'nowrap' }}>
-              <SplitText delay={100}>Vocês se amam.</SplitText>
-            </span>{' '}
-            <span style={{ whiteSpace: 'nowrap' }}>
-              <SplitText delay={400}>Mas o relacionamento</SplitText>
-            </span>{' '}
-            <SplitText delay={600}>está</SplitText>{' '}
+            <SplitText mode="words" staggerMs={60} durationMs={480} delay={160}>
+              Vocês se amam.
+            </SplitText>{' '}
+            <SplitText mode="words" staggerMs={50} durationMs={480} delay={420}>
+              Mas o relacionamento está
+            </SplitText>{' '}
             <em
+              className="dores-highlight-word"
               style={{
                 fontStyle: 'italic',
                 color: 'var(--gold-400)',
                 fontWeight: 'var(--weight-regular)',
+                display: 'inline-block',
+                position: 'relative',
               }}
             >
-              <SplitText delay={800}>apenas funcionando.</SplitText>
+              <SplitText mode="words" staggerMs={70} durationMs={520} delay={720}>
+                apenas funcionando.
+              </SplitText>
             </em>
           </h2>
         </Reveal>
 
-        <Reveal
-          delay={1}
-          as="ul"
+        {/* Lista de dores, cada bullet abre em sequência */}
+        <ul
           style={{
             listStyle: 'none',
             margin: 'var(--space-9) 0 0',
@@ -148,29 +158,74 @@ export function Dores() {
             maxWidth: '52ch',
           }}
         >
-          {PAINS.map((p, i) => (
-            <li
-              key={i}
-              className="elv-sans"
-              style={{
-                display: 'flex',
-                gap: 'var(--space-4)',
-                alignItems: 'flex-start',
-                fontSize: 'clamp(1rem, 1.35vw, 1.15rem)',
-                lineHeight: 'var(--leading-relaxed)',
-                color: 'rgba(255,248,235,0.85)',
-                paddingBottom: 'clamp(20px, 2.4vw, 28px)',
-                borderBottom:
-                  i < PAINS.length - 1 ? '1px solid rgba(184,140,72,0.18)' : 'none',
-              }}
-            >
-              <Ornament variant="diamond" tone="gold" style={{ marginTop: 8 }} />
-              <span>{p}</span>
-            </li>
-          ))}
-        </Reveal>
+          {PAINS.map((p, i) => {
+            const bulletDelay = T_BULLETS_START + i * T_BULLET_STEP
+            return (
+              <Reveal
+                key={i}
+                as="li"
+                className="dores-bullet"
+                style={{
+                  display: 'flex',
+                  gap: 'var(--space-4)',
+                  alignItems: 'flex-start',
+                  fontSize: 'clamp(1rem, 1.35vw, 1.15rem)',
+                  lineHeight: 'var(--leading-relaxed)',
+                  color: 'rgba(255,248,235,0.85)',
+                  paddingBottom: 'clamp(20px, 2.4vw, 28px)',
+                  position: 'relative',
+                  transitionDelay: `${bulletDelay}ms`,
+                }}
+              >
+                <span
+                  className="dores-diamond-in elv-sans"
+                  aria-hidden="true"
+                  style={{
+                    marginTop: 8,
+                    animationDelay: `${bulletDelay + 80}ms`,
+                    flexShrink: 0,
+                  }}
+                >
+                  <Ornament variant="diamond" tone="gold" />
+                </span>
+                <span className="elv-sans" style={{ flex: 1 }}>
+                  <SplitText
+                    mode="words"
+                    staggerMs={18}
+                    durationMs={340}
+                    delay={bulletDelay + 150}
+                  >
+                    {p}
+                  </SplitText>
+                </span>
+                {i < PAINS.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="dores-divider-draw"
+                    style={{
+                      position: 'absolute',
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      height: 1,
+                      background: 'rgba(184,140,72,0.28)',
+                      transformOrigin: 'left center',
+                      animationDelay: `${bulletDelay + 260}ms`,
+                    }}
+                  />
+                )}
+              </Reveal>
+            )
+          })}
+        </ul>
 
-        <Reveal delay={2} style={{ marginTop: 'var(--space-9)' }}>
+        {/* Frase final, cadência lenta, mais dramática */}
+        <Reveal
+          style={{
+            marginTop: 'var(--space-9)',
+            transitionDelay: `${T_FINAL}ms`,
+          }}
+        >
           <p
             className="elv-serif"
             style={{
@@ -182,12 +237,92 @@ export function Dores() {
               maxWidth: '34ch',
             }}
           >
-            Talvez o problema nunca tenha sido falta de amor.
+            <SplitText mode="words" staggerMs={40} durationMs={420} delay={T_FINAL + 50}>
+              Talvez o problema nunca tenha sido falta de amor.
+            </SplitText>
             <br />
-            <span style={{ color: 'var(--white-warm)' }}>Talvez tenha sido falta de direção.</span>
+            <span
+              className="dores-highlight-final"
+              style={{
+                color: 'var(--white-warm)',
+                display: 'inline-block',
+                position: 'relative',
+              }}
+            >
+              <SplitText mode="words" staggerMs={50} durationMs={460} delay={T_FINAL + 500}>
+                Talvez tenha sido falta de direção.
+              </SplitText>
+            </span>
           </p>
         </Reveal>
       </div>
+
+      <style>{`
+        /* Diamante entra rodando + crescendo */
+        @keyframes doresDiamondIn {
+          0%   { transform: rotate(-90deg) scale(0); opacity: 0; }
+          60%  { transform: rotate(20deg) scale(1.25); opacity: 1; }
+          100% { transform: rotate(0deg) scale(1); opacity: 1; }
+        }
+        .dores-diamond-in {
+          display: inline-block;
+          transform: rotate(-90deg) scale(0);
+          opacity: 0;
+          animation: doresDiamondIn 420ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* Linha divisória desenha da esquerda pra direita */
+        @keyframes doresDividerDraw {
+          0%   { transform: scaleX(0); }
+          100% { transform: scaleX(1); }
+        }
+        .dores-divider-draw {
+          transform: scaleX(0);
+          animation: doresDividerDraw 520ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+
+        /* Glow pulsante no "apenas funcionando" (dourado) */
+        @keyframes doresHighlightGlow {
+          0%,100% { text-shadow: 0 0 0 rgba(194,161,77,0); }
+          50%     { text-shadow: 0 0 24px rgba(194,161,77,0.45), 0 0 8px rgba(194,161,77,0.3); }
+        }
+        .dores-highlight-word {
+          animation: doresHighlightGlow 3.8s ease-in-out infinite;
+          animation-delay: 1500ms;
+        }
+
+        /* Underline dourado se desenha embaixo de "falta de direção" */
+        .dores-highlight-final::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -0.08em;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, var(--gold-400) 20%, var(--gold-400) 80%, transparent);
+          transform: scaleX(0);
+          transform-origin: left center;
+          animation: doresDividerDraw 600ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+          animation-delay: ${T_FINAL + 1100}ms;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .dores-diamond-in,
+          .dores-divider-draw,
+          .dores-highlight-word,
+          .dores-highlight-final::after {
+            animation: none;
+            transform: none;
+            opacity: 1;
+          }
+          .dores-divider-draw {
+            transform: scaleX(1);
+          }
+          .dores-highlight-final::after {
+            transform: scaleX(1);
+          }
+        }
+      `}</style>
     </section>
   )
 }
