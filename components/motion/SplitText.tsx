@@ -11,6 +11,7 @@ interface SplitTextProps {
   staggerMs?: number
   durationMs?: number
   delay?: number
+  replay?: boolean
 }
 
 export function SplitText({
@@ -19,12 +20,14 @@ export function SplitText({
   className,
   style,
   mode = 'words',
-  staggerMs = 55,
-  durationMs = 560,
+  staggerMs = 35,
+  durationMs = 380,
   delay = 0,
+  replay = false,
 }: SplitTextProps) {
   const ref = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
+  const [gen, setGen] = useState(0)
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -35,15 +38,18 @@ export function SplitText({
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          setGen((g) => g + 1)
           setVisible(true)
-          obs.disconnect()
+          if (!replay) obs.disconnect()
+        } else if (replay) {
+          setVisible(false)
         }
       },
       { threshold: 0.1, rootMargin: '0px 0px -6% 0px' }
     )
     obs.observe(el)
     return () => obs.disconnect()
-  }, [])
+  }, [replay])
 
   const units = mode === 'chars'
     ? children.split('')
@@ -60,7 +66,7 @@ export function SplitText({
     >
       {units.map((unit, i) => (
         <span
-          key={i}
+          key={`${gen}-${i}`}
           aria-hidden="true"
           style={{
             display: 'inline-block',
@@ -72,18 +78,24 @@ export function SplitText({
           <span
             style={{
               display: 'inline-block',
-              transform: visible ? 'translateY(0)' : 'translateY(105%)',
-              opacity: visible ? 1 : 0,
-              transition: visible
-                ? `transform ${durationMs}ms cubic-bezier(0.16,1,0.3,1) ${delay + i * staggerMs}ms, opacity ${durationMs * 0.6}ms ease ${delay + i * staggerMs}ms`
+              animation: visible
+                ? `splitTextIn ${durationMs}ms cubic-bezier(0.16,1,0.3,1) ${delay + i * staggerMs}ms both`
                 : 'none',
+              transform: visible ? undefined : 'translateY(105%)',
+              opacity: visible ? undefined : 0,
             }}
           >
             {unit}
-            {mode === 'chars' && unit === ' ' ? ' ' : ''}
+            {mode === 'chars' && unit === ' ' ? ' ' : ''}
           </span>
         </span>
       ))}
+      <style>{`
+        @keyframes splitTextIn {
+          0%   { transform: translateY(105%); opacity: 0; }
+          100% { transform: translateY(0);    opacity: 1; }
+        }
+      `}</style>
     </TagEl>
   )
 }

@@ -6,26 +6,13 @@ import { Reveal } from '@/components/shared/Reveal'
 import { Ornament } from '@/components/shared/Ornament'
 
 const FOTOS = [
-  {
-    src: '/photos/mentores-couple-warm.jpg',
-    alt: 'Maycko e Marcela, momento a dois',
-  },
-  {
-    src: '/photos/stock/familia-pjs-crianca.jpg',
-    alt: 'Família em casa de pijamas',
-  },
-  {
-    src: '/photos/historia-couple-navy.jpg',
-    alt: 'Maycko e Marcela, retrato do casal',
-  },
-  {
-    src: '/photos/stock/familia-campo-crianca.jpg',
-    alt: 'Família em passeio no campo',
-  },
-  {
-    src: '/photos/stock/familia-bebe-beijo.jpg',
-    alt: 'Momento em família com o bebê',
-  },
+  { src: '/photos/legado/casal-9769.jpg', alt: 'Maycko e Marcela juntos', pos: '50% 60%' },
+  { src: '/photos/legado/casal-fullsize.jpg', alt: 'Maycko e Marcela, retrato', pos: '50% 55%' },
+  { src: '/photos/legado/dubai-5909.jpg', alt: 'Maycko e Marcela em Dubai', pos: '50% 30%' },
+  { src: '/photos/legado/casal-9068.jpg', alt: 'Maycko e Marcela, momento a dois', pos: '50% 30%' },
+  { src: '/photos/legado/casal-0235.jpg', alt: 'Maycko e Marcela em família', pos: '50% 10%' },
+  { src: '/photos/legado/casal-8910.jpg', alt: 'Maycko e Marcela em momento íntimo', pos: '50% 30%' },
+  { src: '/photos/legado/casal-7701.jpg', alt: 'Maycko e Marcela caminhando juntos', pos: '50% 30%' },
 ]
 
 const AUTOPLAY_MS = 5000
@@ -160,7 +147,7 @@ export function BiografiaLegado() {
                   fill
                   priority={i === 0}
                   sizes="(max-width: 1024px) 100vw, 900px"
-                  style={{ objectFit: 'cover', objectPosition: '50% 30%' }}
+                  style={{ objectFit: 'cover', objectPosition: foto.pos ?? '50% 30%' }}
                 />
                 <div
                   aria-hidden="true"

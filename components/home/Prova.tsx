@@ -78,7 +78,7 @@ export function Prova() {
               margin: 0,
             }}
           >
-            <SplitText>Mais do que ensinar.</SplitText>
+            <SplitText replay>Mais do que ensinar.</SplitText>
             <br />
             <em
               style={{
@@ -86,7 +86,7 @@ export function Prova() {
                 color: 'var(--gold-400)',
               }}
             >
-              <SplitText delay={300}>Nós vivemos.</SplitText>
+              <SplitText replay delay={300}>Nós vivemos.</SplitText>
             </em>
           </h2>
         </Reveal>

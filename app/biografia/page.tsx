@@ -141,6 +141,7 @@ export default function BiografiaPage() {
 
       {/* Bloco 2, Nossa história (bege, foto em moldura arqueada) */}
       <section
+        id="historia"
         style={{ background: 'var(--surface-bege, #EDE3CF)' }}
         className="py-16 lg:py-20 relative overflow-hidden"
       >

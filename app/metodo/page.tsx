@@ -281,6 +281,7 @@ export default function MetodoPage() {
 
       {/* Bloco 2, Filosofia (BEGE + 3 cards 3D tilt) */}
       <section
+        id="filosofia"
         style={{ background: 'var(--surface-bege, #EDE3CF)' }}
         className="py-14 lg:py-20"
       >
@@ -909,6 +910,7 @@ export default function MetodoPage() {
 
       {/* Bloco 5, Quiz (bege, chamativo mas alinhado) */}
       <section
+        id="quiz"
         style={{
           background: 'var(--surface-bege, #EDE3CF)',
           borderTop: '1px solid rgba(194,161,77,0.35)',

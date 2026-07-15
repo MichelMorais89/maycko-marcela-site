@@ -49,12 +49,12 @@ export default function EbooksPage() {
           style={{ position: 'absolute', inset: 0, zIndex: 0 }}
         >
           <Image
-            src="/photos/conceito-marcela-perfil.jpg"
+            src="/photos/ebook-hero-pb.jpg"
             alt=""
             fill
             priority
             sizes="100vw"
-            style={{ objectFit: 'cover', objectPosition: '78% 20%' }}
+            style={{ objectFit: 'cover', objectPosition: '65% 30%' }}
           />
           <div
             style={{

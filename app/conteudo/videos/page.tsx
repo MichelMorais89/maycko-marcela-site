@@ -31,13 +31,13 @@ export default function VideosPage() {
         <div className="absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
           <div className="absolute top-0 bottom-0" style={{ left: '25%', right: '-20%' }}>
             <Image
-              src="/photos/conceito-marcela-dark.jpg"
+              src="/photos/videos-hero-couple-macbook.jpg"
               alt=""
               fill
               priority
               sizes="100vw"
               className="object-cover"
-              style={{ objectPosition: '50% 25%', transform: 'scale(1.05)' }}
+              style={{ objectPosition: '55% 70%', transform: 'scale(1.05)' }}
             />
           </div>
           {/* Overlay muro navy denso à esquerda */}

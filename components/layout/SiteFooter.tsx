@@ -7,8 +7,8 @@ const COLS = [
   {
     head: 'CASAL',
     links: [
-      { label: 'Biografia', href: '/sobre' },
-      { label: 'Marcos', href: '/sobre#marcos' },
+      { label: 'Biografia', href: '/biografia' },
+      { label: 'Nossa história', href: '/biografia#historia' },
       { label: 'Imprensa', href: '/contato' },
     ],
   },

@@ -768,6 +768,7 @@ export default function MentoriaPage() {
 
       {/* Bloco 4, Curadoria de Perfil (bege, 2 colunas espalhadas + ícones 3D interativos) */}
       <section
+        id="perfil"
         style={{ background: 'var(--surface-bege, #EDE3CF)' }}
         className="py-14 lg:py-20 relative overflow-hidden"
       >
@@ -1204,6 +1205,7 @@ export default function MentoriaPage() {
 
       {/* Bloco 5, FAQ (bege, compacto), vem ANTES do formulário */}
       <section
+        id="faq"
         style={{
           background: 'var(--surface-bege, #EDE3CF)',
           borderTop: '1px solid rgba(46,42,43,0.08)',
