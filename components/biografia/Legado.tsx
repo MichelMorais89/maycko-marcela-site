@@ -6,13 +6,25 @@ import { Reveal } from '@/components/shared/Reveal'
 import { Ornament } from '@/components/shared/Ornament'
 
 const FOTOS = [
+  // Fotos originais remanescentes
   { src: '/photos/legado/casal-9769.jpg', alt: 'Maycko e Marcela juntos', pos: '50% 60%' },
-  { src: '/photos/legado/casal-fullsize.jpg', alt: 'Maycko e Marcela, retrato', pos: '50% 55%' },
-  { src: '/photos/legado/dubai-5909.jpg', alt: 'Maycko e Marcela em Dubai', pos: '50% 30%' },
-  { src: '/photos/legado/casal-9068.jpg', alt: 'Maycko e Marcela, momento a dois', pos: '50% 30%' },
+  { src: '/photos/legado/casal-fullsize.jpg', alt: 'Maycko e Marcela em família', pos: '50% 50%', fit: 'contain' as const },
   { src: '/photos/legado/casal-0235.jpg', alt: 'Maycko e Marcela em família', pos: '50% 10%' },
-  { src: '/photos/legado/casal-8910.jpg', alt: 'Maycko e Marcela em momento íntimo', pos: '50% 30%' },
   { src: '/photos/legado/casal-7701.jpg', alt: 'Maycko e Marcela caminhando juntos', pos: '50% 30%' },
+  // 15 fotos novas (jul/2026)
+  { src: '/photos/legado/nova-01-familia-carro.jpg', alt: 'Família no carro', pos: '50% 50%' },
+  { src: '/photos/legado/nova-02-familia-aniversario.jpg', alt: 'Família comemorando', pos: '50% 40%' },
+  { src: '/photos/legado/nova-03-familia-cachorro.jpg', alt: 'Família com o cachorro', pos: '50% 35%' },
+  { src: '/photos/legado/nova-05-evento-selos.jpg', alt: 'Maycko e Marcela em evento', pos: '50% 40%' },
+  { src: '/photos/legado/nova-06-grupo-escada.jpg', alt: 'Família na escada', pos: '50% 30%' },
+  { src: '/photos/legado/nova-07-marcela-filhos-esporte.jpg', alt: 'Marcela com os filhos', pos: '50% 30%' },
+  { src: '/photos/legado/nova-09-marcela-filha-lago.jpg', alt: 'Marcela e filha', pos: '50% 50%', fit: 'contain' as const },
+  { src: '/photos/legado/nova-10-familia-arvore.jpg', alt: 'Família reunida ao ar livre', pos: '50% 40%' },
+  { src: '/photos/legado/nova-11-familia-ampliada.jpg', alt: 'Família ampliada', pos: '50% 25%' },
+  { src: '/photos/legado/nova-12-familia-kids.jpg', alt: 'Família com crianças', pos: '50% 55%' },
+  { src: '/photos/legado/nova-13-familia-circo.jpg', alt: 'Família no circo', pos: '50% 35%' },
+  { src: '/photos/legado/nova-14-marcela-filhos-abcaso.jpg', alt: 'Marcela e filhos em casa', pos: '50% 25%' },
+  { src: '/photos/legado/nova-15-filhos-ferry.jpg', alt: 'Filhos no ferry', pos: '50% 40%' },
 ]
 
 const AUTOPLAY_MS = 5000
@@ -147,7 +159,11 @@ export function BiografiaLegado() {
                   fill
                   priority={i === 0}
                   sizes="(max-width: 1024px) 100vw, 900px"
-                  style={{ objectFit: 'cover', objectPosition: foto.pos ?? '50% 30%' }}
+                  style={{
+                    objectFit: (foto as { fit?: 'cover' | 'contain' }).fit ?? 'cover',
+                    objectPosition: foto.pos ?? '50% 30%',
+                    background: (foto as { fit?: 'cover' | 'contain' }).fit === 'contain' ? 'var(--surface-anchor, #16233A)' : undefined,
+                  }}
                 />
                 <div
                   aria-hidden="true"
