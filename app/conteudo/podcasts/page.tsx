@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const PODCAST = {
   youtubeId: 'P8p6wp8m1VU',
   spotifyUrl: 'https://open.spotify.com/',
-  youtubeUrl: 'https://www.youtube.com/@mayko.alvess',
+  youtubeUrl: 'https://www.youtube.com/@marcelaemaycko',
   title: 'Box 404 com Ines Marcel',
   subtitle: 'Uma conversa sobre casamento, propósito e o que sustenta uma vida a dois.',
   eyebrow: 'PODCAST · PARTICIPAÇÃO',

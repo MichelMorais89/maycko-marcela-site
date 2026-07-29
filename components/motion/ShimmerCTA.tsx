@@ -5,12 +5,14 @@ interface ShimmerCTAProps {
   children: React.ReactNode
   style?: React.CSSProperties
   className?: string
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
 }
 
-export function ShimmerCTA({ href, children, style, className }: ShimmerCTAProps) {
+export function ShimmerCTA({ href, children, style, className, onClick }: ShimmerCTAProps) {
   return (
     <Link
       href={href}
+      onClick={onClick}
       className={`shimmer-cta elv-cta-glow ${className ?? ''}`}
       style={{
         display: 'inline-flex',

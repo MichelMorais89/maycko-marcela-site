@@ -32,7 +32,7 @@ export default function BlogPage() {
           color="dourado"
           motion="horizontal-slide"
           opacity={0.1}
-          size="full"
+          size="half"
         />
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-4 flex-wrap relative z-10">
           <div className="flex items-center gap-3">

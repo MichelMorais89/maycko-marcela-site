@@ -4,13 +4,13 @@ import { spectral, mulish } from './fonts'
 import { SiteNav } from '@/components/layout/SiteNav'
 import { SiteFooter } from '@/components/layout/SiteFooter'
 import { MobileCTABar } from '@/components/layout/MobileCTABar'
-import { Aurora } from '@/components/motion/Aurora'
 import { DottedGrid } from '@/components/motion/DottedGrid'
 import { GrainOverlay } from '@/components/motion/GrainOverlay'
 import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { FlameCursor } from '@/components/motion/FlameCursor'
 import { LenisProvider } from '@/components/motion/LenisProvider'
 import { NarrativeThread } from '@/components/motion/NarrativeThread'
+import { AplicarModal } from '@/components/aplicar/AplicarModal'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -40,7 +40,6 @@ export default function RootLayout({
         <ThemeProvider attribute="data-theme" defaultTheme="light" disableTransitionOnChange>
           <LenisProvider>
             {/* Global ambient layers */}
-            <Aurora />
             <DottedGrid />
             <GrainOverlay />
             <ScrollProgress />
@@ -54,6 +53,7 @@ export default function RootLayout({
             <main id="conteudo">{children}</main>
             <SiteFooter />
             <MobileCTABar />
+            <AplicarModal />
           </LenisProvider>
         </ThemeProvider>
       </body>

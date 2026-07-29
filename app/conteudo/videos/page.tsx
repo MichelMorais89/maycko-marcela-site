@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { VideoGrid } from '@/components/videos/VideoGrid'
 import videos from '@/_data/videos.json'
 
 export const metadata: Metadata = {
@@ -98,7 +97,7 @@ export default function VideosPage() {
               Reflexões curtas, análises de pesquisa e recortes do método, para casais que constroem casamento no meio da rotina.
             </p>
             <a
-              href="https://www.youtube.com/@mayko.alvess"
+              href="https://www.youtube.com/@marcelaemaycko"
               target="_blank"
               rel="noopener noreferrer"
               className="videos-hero-cta"
@@ -136,13 +135,130 @@ export default function VideosPage() {
         </div>
       </section>
 
-      {/* Bloco 2, Grid de vídeos (bege) */}
+      {/* Bloco 2, Manutenção — só as capas em preview, sem interação */}
       <section
         style={{ background: 'var(--surface-bege, #EDE3CF)' }}
         className="py-12 lg:py-16"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <VideoGrid videos={videos} />
+          {/* Aviso de manutenção */}
+          <div
+            style={{
+              maxWidth: 720,
+              marginInline: 'auto',
+              textAlign: 'center',
+              marginBottom: 'clamp(2rem, 4vw, 3rem)',
+              padding: 'clamp(1.5rem, 3vw, 2rem)',
+              background: 'rgba(110,42,54,0.06)',
+              border: '1px solid rgba(110,42,54,0.22)',
+              borderRadius: 12,
+            }}
+          >
+            <p
+              className="elv-sans"
+              style={{
+                fontSize: '0.72rem',
+                letterSpacing: '0.32em',
+                textTransform: 'uppercase',
+                color: 'var(--wine-700, #5A1F28)',
+                fontWeight: 600,
+                margin: 0,
+              }}
+            >
+              PÁGINA EM MANUTENÇÃO
+            </p>
+            <h2
+              className="elv-serif"
+              style={{
+                fontSize: 'clamp(1.2rem, 2vw, 1.6rem)',
+                color: 'var(--text-strong, #2E2A2B)',
+                margin: 'var(--space-3) 0 var(--space-3)',
+                fontStyle: 'italic',
+                fontWeight: 500,
+                lineHeight: 1.3,
+              }}
+            >
+              Os vídeos originais estão sendo preparados.
+            </h2>
+            <p
+              className="elv-sans"
+              style={{
+                fontSize: '0.95rem',
+                color: 'var(--text-body, #4D4748)',
+                lineHeight: 1.55,
+                margin: 0,
+                maxWidth: '52ch',
+                marginInline: 'auto',
+              }}
+            >
+              As capas abaixo são apenas uma prévia do formato editorial. Em
+              breve trazemos aqui o acervo oficial do canal ELEVEM-SE, direto do
+              YouTube.
+            </p>
+          </div>
+
+          {/* Grid de capas — só preview visual, sem link, sem play, sem título */}
+          <div
+            aria-hidden="true"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+              gap: 'clamp(1.25rem, 2.2vw, 2rem)',
+              opacity: 0.55,
+              filter: 'grayscale(0.35)',
+              pointerEvents: 'none',
+              userSelect: 'none',
+            }}
+          >
+            {videos.map((v) => (
+              <div
+                key={v.id}
+                style={{
+                  position: 'relative',
+                  aspectRatio: '16 / 10',
+                  borderRadius: 10,
+                  overflow: 'hidden',
+                  border: '1px solid rgba(46,42,43,0.14)',
+                  boxShadow: '0 4px 14px rgba(46,42,43,0.08)',
+                  background: '#111',
+                }}
+              >
+                <Image
+                  src={v.cover}
+                  alt=""
+                  fill
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 320px"
+                  style={{ objectFit: 'cover' }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background:
+                      'linear-gradient(to top, rgba(15,10,20,0.55) 0%, transparent 55%)',
+                  }}
+                />
+                <span
+                  style={{
+                    position: 'absolute',
+                    left: 12,
+                    top: 12,
+                    padding: '4px 10px',
+                    borderRadius: 4,
+                    background: 'rgba(0,0,0,0.55)',
+                    color: 'rgba(245,240,232,0.85)',
+                    fontSize: '0.6rem',
+                    letterSpacing: '0.28em',
+                    textTransform: 'uppercase',
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: 600,
+                  }}
+                >
+                  EM BREVE
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -162,7 +278,7 @@ export default function VideosPage() {
             Quer ver todo o acervo?
           </p>
           <a
-            href="https://www.youtube.com/@mayko.alvess"
+            href="https://www.youtube.com/@marcelaemaycko"
             target="_blank"
             rel="noopener noreferrer"
             className="videos-canal-btn inline-flex items-center gap-2 px-8 py-3 text-xs tracking-[0.22em] uppercase font-semibold rounded"
