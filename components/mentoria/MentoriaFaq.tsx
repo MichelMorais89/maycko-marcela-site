@@ -5,7 +5,7 @@ import { useState } from 'react'
 const FAQ_ITEMS = [
   {
     q: 'Para quem é a mentoria ELEVEM-SE?',
-    a: 'Para casais que já conquistaram resultados expressivos na vida profissional, mas percebem que o casamento ficou para segundo plano. Para quem quer construir, não consertar. Para casais que desejam sair do senso comum, sair do automático. Que desejam construir um casamento, uma família com intenção, pautados em valores e objetivos claros. Para casais que performam muito bem no profissional mas deixaram de lado seu bem mais precioso, seu maior patrimônio. Sua família!',
+    a: 'Para casais que desejam sair do senso comum, sair do automático. Que desejam construir um casamento, uma família com intenção, pautados em valores e objetivos claros. Para casais que performam muito bem no profissional mas deixaram de lado seu bem mais precioso, seu maior patrimônio. Sua família!',
   },
   {
     q: 'Qual a duração do programa?',
