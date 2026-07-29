@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ElevemseWatermark } from '@/components/brand/ElevemseWatermark'
 import { QuizTrigger } from '@/components/metodo/QuizTrigger'
+import { AplicarButton } from '@/components/aplicar/AplicarButton'
 
 export const metadata: Metadata = {
   title: 'O Método ELEVEM-SE, 12 Meses que Constroem um Casamento',
@@ -241,12 +242,9 @@ export default function MetodoPage() {
               Um método estruturado em fases, primeiro a elevação de cada indivíduo, depois a construção do que vocês são juntos.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/mentoria#aplicar"
-                className="metodo-cta-primary inline-block px-7 py-3 text-xs tracking-[0.22em] uppercase font-medium rounded-sm"
-              >
+              <AplicarButton className="metodo-cta-primary inline-block px-7 py-3 text-xs tracking-[0.22em] uppercase font-medium rounded-sm">
                 QUERO APLICAR
-              </Link>
+              </AplicarButton>
               <a
                 href="#fases"
                 className="metodo-cta-secondary inline-block px-7 py-3 text-xs tracking-[0.22em] uppercase font-medium rounded-sm"

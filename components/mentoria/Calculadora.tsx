@@ -345,7 +345,15 @@ export function Calculadora() {
 
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <MagneticButton>
-                  <ShimmerCTA href="#aplicar">Quero minha aplicação</ShimmerCTA>
+                  <ShimmerCTA
+                    href="#aplicar"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      openAplicarModal()
+                    }}
+                  >
+                    Quero minha aplicação
+                  </ShimmerCTA>
                 </MagneticButton>
               </div>
             </div>

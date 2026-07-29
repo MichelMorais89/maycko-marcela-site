@@ -6,6 +6,7 @@ import { SplitText } from '@/components/motion/SplitText'
 import { ShimmerCTA } from '@/components/motion/ShimmerCTA'
 import { MagneticButton } from '@/components/motion/MagneticButton'
 import { Ornament } from '@/components/shared/Ornament'
+import { openAplicarModal } from '@/components/aplicar/AplicarModal'
 
 export function HeroMetodo() {
   const imgRef = useRef<HTMLDivElement>(null)
@@ -159,7 +160,15 @@ export function HeroMetodo() {
 
         <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap', justifyContent: 'center', marginTop: 'var(--space-2)' }}>
           <MagneticButton>
-            <ShimmerCTA href="/mentoria">Quero aplicar</ShimmerCTA>
+            <ShimmerCTA
+              href="/mentoria"
+              onClick={(e) => {
+                e.preventDefault()
+                openAplicarModal()
+              }}
+            >
+              Quero aplicar
+            </ShimmerCTA>
           </MagneticButton>
           <MagneticButton>
             <Link

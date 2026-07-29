@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ElevemseWatermark } from '@/components/brand/ElevemseWatermark'
 import { MentoriaFormAplicacao } from '@/components/mentoria/MentoriaFormAplicacao'
 import { MentoriaFaq } from '@/components/mentoria/MentoriaFaq'
+import { AplicarButton } from '@/components/aplicar/AplicarButton'
 
 export const metadata: Metadata = {
   title: '12 Meses ELEVEM-SE, A Mentoria para Casais que Decidiram',
@@ -158,12 +159,9 @@ export default function MentoriaPage() {
               Para casais que decidiram construir juntos, com método, estrutura e intenção.
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
-              <Link
-                href="#aplicar"
-                className="mentoria-hero-cta-primary inline-block px-8 py-3.5 text-xs tracking-[0.22em] uppercase font-medium rounded-sm"
-              >
+              <AplicarButton className="mentoria-hero-cta-primary inline-block px-8 py-3.5 text-xs tracking-[0.22em] uppercase font-medium rounded-sm">
                 QUERO APLICAR
-              </Link>
+              </AplicarButton>
               <Link
                 href="/metodo"
                 className="mentoria-hero-cta-secondary inline-block px-8 py-3.5 text-xs tracking-[0.22em] uppercase font-medium rounded-sm"
@@ -1174,12 +1172,9 @@ export default function MentoriaPage() {
 
             {/* CTA */}
             <div className="text-center mt-8">
-              <a
-                href="#aplicar"
-                className="mentoria-invest-cta inline-block px-10 py-3.5 text-xs tracking-[0.22em] uppercase font-medium rounded-full"
-              >
+              <AplicarButton className="mentoria-invest-cta inline-block px-10 py-3.5 text-xs tracking-[0.22em] uppercase font-medium rounded-full">
                 QUERO A MENTORIA
-              </a>
+              </AplicarButton>
               <p
                 className="mt-4 text-xs tracking-[0.22em] uppercase"
                 style={{ color: 'rgba(210,182,115,0.55)' }}

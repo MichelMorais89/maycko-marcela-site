@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { openAplicarModal } from '@/components/aplicar/AplicarModal'
 
 const COLS = [
   {
@@ -26,7 +27,7 @@ const COLS = [
     links: [
       { label: 'Experiência', href: '/mentoria' },
       { label: 'Para quem é', href: '/mentoria#perfil' },
-      { label: 'Aplicação', href: '/mentoria#aplicar' },
+      { label: 'Aplicação', href: '/mentoria#aplicar', action: 'openAplicar' as const },
       { label: 'FAQ', href: '/mentoria#faq' },
     ],
   },
@@ -90,6 +91,7 @@ interface ColItem {
   label: string
   href: string
   external?: boolean
+  action?: 'openAplicar'
 }
 
 function FooterCol({ head, links, openIdx, onToggle, idx }: {
@@ -111,8 +113,30 @@ function FooterCol({ head, links, openIdx, onToggle, idx }: {
     display: 'block',
   }
 
-  const links_el = links.map((l) =>
-    l.external ? (
+  const links_el = links.map((l) => {
+    if (l.action === 'openAplicar') {
+      return (
+        <button
+          key={l.href}
+          type="button"
+          onClick={() => openAplicarModal()}
+          style={{
+            ...linkStyle,
+            background: 'transparent',
+            border: 'none',
+            padding: 0,
+            textAlign: 'left',
+            cursor: 'pointer',
+            font: 'inherit',
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--wine-400, #A8636F)' }}
+          onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(246,239,216,0.72)' }}
+        >
+          {l.label}
+        </button>
+      )
+    }
+    return l.external ? (
       <a
         key={l.href}
         href={l.href}
@@ -135,7 +159,7 @@ function FooterCol({ head, links, openIdx, onToggle, idx }: {
         {l.label}
       </Link>
     )
-  )
+  })
 
   return (
     <div>

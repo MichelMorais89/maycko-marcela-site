@@ -139,7 +139,7 @@ export default async function BlogPostPage({ params }: Props) {
               ← Ver mais matérias
             </Link>
             <Link
-              href="/mentoria#aplicar"
+              href="/mentoria"
               className="post-mentoria-btn inline-block px-8 py-3 text-sm tracking-[0.15em] uppercase font-medium"
             >
               Conhecer a mentoria
