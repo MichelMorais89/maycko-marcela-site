@@ -20,6 +20,7 @@ tags: [story, v3, backlog]
 
 | Story | Título | Complexidade | Status | Agente | Depende |
 |---|---|---|---|---|---|
+| [[backlog/5.0-ajustes-pre-lancamento\|5.0]] | Ajustes finais pré-lançamento MM | XL | 🟡 active | sites-dev-alpha | 4.0→4.9 |
 | [[backlog/4.0-setup-marca-dagua\|4.0]] | Setup Branch V3 + Elemento Gráfico ELEVEM-SE | M | 📋 backlog | sites-dev-alpha | — |
 | [[backlog/4.1-home-7-blocos\|4.1]] | Home V3 — 7 Blocos com "O que é elevar-se?" | L | 📋 backlog | sites-dev-alpha | 4.0 |
 | [[backlog/4.2-metodo-quiz\|4.2]] | /metodo V3 — 5 blocos visuais + Quiz das 3 fases | XL | 📋 backlog | sites-dev-alpha | 4.0, 4.1 |
