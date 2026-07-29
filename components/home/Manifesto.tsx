@@ -264,10 +264,7 @@ export function Manifesto() {
                 maxWidth: '38ch',
               }}
             >
-              Acreditamos que o relacionamento deve receber o mesmo cuidado que vocês dão à empresa, ao patrimônio e aos filhos.{' '}
-              <strong style={{ color: 'var(--text-strong, #2E2A2B)', fontWeight: 500, fontStyle: 'normal' }}>
-                Não porque está em risco. Porque é o que sustenta tudo.
-              </strong>
+              Acreditamos que o relacionamento deve receber o mesmo cuidado que vocês dão à empresa, ao patrimônio e aos filhos. Não porque está em risco. Porque é a estrutura da vida de vocês, a base onde tudo mais se apoia. É para onde se volta no fim do dia. O lugar onde a energia se recarrega, leve e acolhedor. Onde, enfim, é possível descansar.
             </p>
           </Reveal>
         </div>

@@ -5,11 +5,11 @@ import { useState } from 'react'
 const FAQ_ITEMS = [
   {
     q: 'Para quem é a mentoria ELEVEM-SE?',
-    a: 'Para casais que já conquistaram resultados expressivos na vida profissional e financeira, mas percebem que o casamento ficou para segundo plano. A mentoria é para quem quer construir, não consertar.',
+    a: 'Para casais que já conquistaram resultados expressivos na vida profissional, mas percebem que o casamento ficou para segundo plano. Para quem quer construir, não consertar. Para casais que desejam sair do senso comum, sair do automático. Que desejam construir um casamento, uma família com intenção, pautados em valores e objetivos claros. Para casais que performam muito bem no profissional mas deixaram de lado seu bem mais precioso, seu maior patrimônio. Sua família!',
   },
   {
     q: 'Qual a duração do programa?',
-    a: '12 meses. Cada fase tem duração e ritmo próprios: Elevação Individual, Construção do Nós e Legado em Casal se desenvolvem em ciclos progressivos.',
+    a: 'Duração são de 12 meses. Os encontros online ocorreram nos primeiros 6 meses de mentoria, chamamos esse período de ativo, é quando todo o conhecimento é transmitido. Os próximos 6 meses é o chamado período passivo, onde o mentorado pode nos contactar diretamente via whatsapp, sempre quando precisar, para dúvidas e orientações. Essa fase é a consolidação de todo conhecimento adquirido.',
   },
   {
     q: 'Como funciona o processo seletivo?',
@@ -17,15 +17,15 @@ const FAQ_ITEMS = [
   },
   {
     q: 'É necessário os dois participarem juntos?',
-    a: 'Sim. A mentoria é fundamentalmente um programa para o casal. A presença e o comprometimento de ambos é requisito básico.',
+    a: 'Não é necessário. É claro que o ideal seria a participação do casal, mas se apenas um dos cônjuges entrar já vai haver uma melhora bem significativa. Lembrando que mesmo se o casal participar juntos, todos os encontros são individuais.',
   },
   {
     q: 'Tem garantia?',
     a: 'Sim. Oferecemos 7 dias de garantia incondicional desde o início do programa. Se por qualquer razão você sentir que não é o momento certo, devolvemos o investimento integral.',
   },
   {
-    q: 'Os encontros são presenciais ou online?',
-    a: 'Os encontros em grupo são online ao vivo. Dependendo do plano escolhido, há opção de sessões presenciais em Brasília.',
+    q: 'Como ocorrerão os encontros?',
+    a: 'Os encontros são 100% online e sempre individual. Mulheres são mentoradas pela Marcela e os homens são mentorados pelo Maycko. Todo assunto tratado nos encontros é confidencial e sigiloso, isso acontece para que cada cônjuge tenha liberdade de falar a sua visão sobre o outro e sobre o relacionamento, sem ser mal interpretado pelo parceiro.',
   },
   {
     q: 'Qual o investimento?',
@@ -33,7 +33,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Em quanto tempo vemos resultados?',
-    a: 'Os primeiros deslocamentos costumam aparecer nas primeiras semanas, especialmente em comunicação e perspectiva. Os resultados estruturais se consolidam ao longo dos 12 meses.',
+    a: 'Os primeiros resultados já podem ser sentido logo no inicio. Mas isso vai depender do empenho do participante. Em cada encontro, o mentorado receberá muita informação valiosa, mas caberá a ele colocar em pratica.',
   },
 ]
 

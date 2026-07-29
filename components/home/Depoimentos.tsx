@@ -51,7 +51,7 @@ export function Depoimentos() {
               textWrap: 'balance',
             }}
           >
-            <SplitText delay={100}>Casais que decidiram elevar antes que o tempo decidisse por&nbsp;eles.</SplitText>
+            <SplitText delay={100}>Casais que escolheram elevar-se antes que a rotina decidisse por&nbsp;eles.</SplitText>
           </h2>
           <p
             className="elv-lead elv-fluid-lead"
@@ -218,12 +218,6 @@ export function Depoimentos() {
           ))}
         </div>
 
-        <p
-          className="elv-center elv-sans elv-muted"
-          style={{ fontSize: 'var(--text-xs)', marginTop: 'var(--space-6)' }}
-        >
-          Depoimentos representativos, substituir por casos reais aprovados.
-        </p>
       </div>
     </section>
   )

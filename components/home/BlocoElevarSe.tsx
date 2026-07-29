@@ -61,7 +61,7 @@ export function BlocoElevarSe() {
         </Reveal>
 
         {/* Eyebrow */}
-        <Reveal className="elv-center" delay={0.5}>
+        <Reveal className="elv-center">
           <p
             className="elv-sans"
             style={{
@@ -74,7 +74,7 @@ export function BlocoElevarSe() {
             }}
           >
             <SplitText mode="words" staggerMs={40} durationMs={400} delay={150}>
-              O QUE É ELEVAR-SE?
+              O QUE É ELEVEM-SE?
             </SplitText>
           </p>
         </Reveal>
@@ -104,7 +104,7 @@ export function BlocoElevarSe() {
           }}
         >
           <SplitText mode="words" staggerMs={45} durationMs={420} delay={500}>
-            Elevar-se é escolher
+            Elevem-se não é apenas um nome, é um
           </SplitText>{' '}
           <span
             className="elevarse-highlight-word"
@@ -117,11 +117,11 @@ export function BlocoElevarSe() {
             }}
           >
             <SplitText mode="words" staggerMs={45} durationMs={420} delay={800}>
-              crescer
+              convite
             </SplitText>
-          </span>{' '}
+          </span>
           <SplitText mode="words" staggerMs={45} durationMs={420} delay={900}>
-            antes que a rotina escolha por vocês.
+            , um chamado,
           </SplitText>
         </h2>
 
@@ -160,7 +160,7 @@ export function BlocoElevarSe() {
             }}
           >
             <SplitText mode="words" staggerMs={22} durationMs={340} delay={1350}>
-              É entender que um casamento saudável não permanece forte apenas porque existe amor.
+              para sair do modo automático e assumir, conscientemente, um novo nível de vida, de relacionamento e de propósito.
             </SplitText>
           </p>
           <p
@@ -175,24 +175,7 @@ export function BlocoElevarSe() {
             }}
           >
             <SplitText mode="words" staggerMs={22} durationMs={340} delay={1750}>
-              Ele permanece forte porque duas pessoas continuam
-            </SplitText>{' '}
-            <span
-              className="elevarse-highlight-word"
-              style={{
-                display: 'inline-block',
-                position: 'relative',
-                fontStyle: 'normal',
-                color: 'var(--text-strong, #2E2A2B)',
-                fontWeight: 500,
-              }}
-            >
-              <SplitText mode="words" staggerMs={22} durationMs={340} delay={2200}>
-                construindo
-              </SplitText>
-            </span>{' '}
-            <SplitText mode="words" staggerMs={22} durationMs={340} delay={2280}>
-              e caminhando na mesma direção.
+              O verbo no imperativo (elevem-se) carrega ação, decisão e movimento. Ele diz, com clareza: é hora de subir, é hora de crescer, é hora de ir além do que vocês vivem hoje.
             </SplitText>
           </p>
         </div>

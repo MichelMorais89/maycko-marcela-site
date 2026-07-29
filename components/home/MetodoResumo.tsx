@@ -418,19 +418,40 @@ export function MetodoResumo() {
 
         {/* Fecho + CTA */}
         <Reveal className="elv-center" style={{ marginTop: 'var(--space-10)' }}>
-          <p
-            className="elv-serif"
+          <div
             style={{
-              fontSize: 'clamp(1.2rem, 1.8vw, 1.5rem)',
-              fontStyle: 'italic',
-              color: 'var(--gold-300)',
-              lineHeight: 1.4,
               maxWidth: '40ch',
               margin: '0 auto var(--space-7)',
+              textAlign: 'center',
             }}
           >
-            Porque casamentos extraordinários não acontecem por sorte. Eles são construídos.
-          </p>
+            <p
+              className="elv-sans"
+              style={{
+                fontSize: 'clamp(0.82rem, 1.1vw, 1rem)',
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: 'var(--gold-400, #D2B673)',
+                fontWeight: 600,
+                lineHeight: 1.4,
+                margin: '0 0 var(--space-2)',
+              }}
+            >
+              CASAMENTOS EXTRAORDINÁRIOS SÃO CONSTRUÍDOS.
+            </p>
+            <p
+              className="elv-serif"
+              style={{
+                fontSize: 'clamp(0.95rem, 1.3vw, 1.15rem)',
+                fontStyle: 'italic',
+                color: 'rgba(210,182,115,0.72)',
+                lineHeight: 1.5,
+                margin: 0,
+              }}
+            >
+              Casamentos extraordinários são construídos com intenção.
+            </p>
+          </div>
 
           <Link
             href="/metodo"

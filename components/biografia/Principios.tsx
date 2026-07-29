@@ -4,33 +4,33 @@ import { Ornament } from '@/components/shared/Ornament'
 const PRINCIPIOS = [
   {
     numero: '01',
-    titulo: 'Construção antes de sorte',
+    titulo: 'A transformação sempre começa em nós.',
     descricao:
-      'Relacionamentos extraordinários são resultado de decisões intencionais, não de circunstâncias favoráveis.',
+      'Antes de fortalecermos um relacionamento, fortalecemos cada indivíduo. Porque acreditamos que casamentos saudáveis são construídos por pessoas emocionalmente saudáveis.',
   },
   {
     numero: '02',
-    titulo: 'Presença antes de resultado',
+    titulo: 'Amar é uma decisão que fazemos todos os dias.',
     descricao:
-      'O que você constrói juntos vale mais do que o que você entrega separados. Presença é o maior ativo de um casal.',
+      'Para nós, um relacionamento sólido não se sustenta apenas pelo sentimento, mas pelas escolhas conscientes, pelo respeito e pelo compromisso diário de evoluir juntos.',
   },
   {
     numero: '03',
-    titulo: 'Aliança antes de individualidade',
+    titulo: 'Construímos de dentro para fora.',
     descricao:
-      'Dois crescem mais do que um quando a aliança é o ponto de partida, não a consequência do sucesso.',
+      'Trabalhamos mente, espírito, corpo e prosperidade porque sabemos que uma vida equilibrada é o alicerce de um relacionamento forte e duradouro.',
   },
   {
     numero: '04',
-    titulo: 'Estrutura antes de intuição',
+    titulo: 'Prosperidade só faz sentido quando fortalece a família.',
     descricao:
-      'A emoção indica o destino; a estrutura determina o caminho. Casamentos duradouros têm método, não apenas sentimento.',
+      'Acreditamos que sucesso não deve custar a saúde, o casamento ou os filhos. Crescer vale a pena quando todas as áreas da vida crescem juntas.',
   },
   {
     numero: '05',
-    titulo: 'Legado antes de patrimônio',
+    titulo: 'Vivemos aquilo que queremos deixar como legado.',
     descricao:
-      'O que você deixa para seus filhos não é o que acumulou, mas o que eles viram você construir junto.',
+      'Mais do que ensinar, escolhemos viver pelo exemplo. Sabemos que as maiores transformações acontecem quando nossos valores são vistos no dia a dia, dentro de casa.',
   },
 ]
 
