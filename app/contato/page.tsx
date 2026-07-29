@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 }
 
 const REDES = [
-  { label: 'WhatsApp', short: '+55 17 99115-1006', href: 'https://wa.me/5517991151006', icon: 'WA' },
+  { label: 'WhatsApp', short: '+55 11 94168-8639', href: 'https://wa.me/5511941688639', icon: 'WA' },
   { label: 'Instagram Marcela', short: '@marcelazanardo', href: 'https://www.instagram.com/marcelazanardo/', icon: 'IG' },
   { label: 'Instagram Maycko', short: '@maycko.alves', href: 'https://www.instagram.com/maycko.alves/', icon: 'IG' },
-  { label: 'YouTube', short: '@mayko.alvess', href: 'https://www.youtube.com/@mayko.alvess', icon: 'YT' },
-  { label: 'E-mail', short: 'contato@eleve-mse.com.br', href: 'mailto:contato@eleve-mse.com.br', icon: '@' },
+  { label: 'YouTube', short: '@marcelaemaycko', href: 'https://www.youtube.com/@marcelaemaycko', icon: 'YT' },
+  { label: 'E-mail', short: 'contato@elevemsementoria.com', href: 'mailto:contato@elevemsementoria.com', icon: '@' },
 ]
 
 export default function ContatoPage() {

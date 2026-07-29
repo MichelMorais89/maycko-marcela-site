@@ -45,8 +45,8 @@ const COLS = [
       { label: 'Fale conosco', href: '/contato' },
       { label: 'Instagram Marcela', href: 'https://www.instagram.com/marcelazanardo/', external: true },
       { label: 'Instagram Maycko', href: 'https://www.instagram.com/maycko.alves/', external: true },
-      { label: 'YouTube', href: 'https://youtube.com/@mayko.alvess', external: true },
-      { label: 'WhatsApp', href: 'https://wa.me/5517991151006', external: true },
+      { label: 'YouTube', href: 'https://youtube.com/@marcelaemaycko', external: true },
+      { label: 'WhatsApp', href: 'https://wa.me/5511941688639', external: true },
     ],
   },
 ]
@@ -400,7 +400,7 @@ export function SiteFooter() {
                   position: 'relative',
                 }}
               >
-                são construídos.
+                são construídos com intenção.
               </span>
             </p>
 
@@ -480,7 +480,7 @@ export function SiteFooter() {
             </a>
             <a
               className="footer-social-link"
-              href="https://youtube.com/@mayko.alvess"
+              href="https://youtube.com/@marcelaemaycko"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Canal YouTube"
@@ -498,7 +498,7 @@ export function SiteFooter() {
             </a>
             <a
               className="footer-social-link"
-              href="https://wa.me/5517991151006"
+              href="https://wa.me/5511941688639"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"

@@ -243,6 +243,23 @@ export function QuizFase({ onClose }: { onClose: () => void }) {
 
   const bg = 'var(--surface-anchor, #16233A)'
 
+  const waHref = (() => {
+    if (!state.phase) return 'https://wa.me/5511941688639'
+    const phaseName = RESULTS[state.phase].headline.replace(/\.$/, '')
+    const msg = `Olá, Maycko e Marcela!
+
+Fiz o diagnóstico ELEVEM-SE no site.
+
+Nome: ${state.capture.nome}
+E-mail: ${state.capture.email}
+WhatsApp: ${state.capture.whatsapp}
+
+Resultado: Fase ${state.phase} — ${phaseName}
+
+Gostaria de conversar sobre a mentoria.`
+    return `https://wa.me/5511941688639?text=${encodeURIComponent(msg)}`
+  })()
+
   return (
     <div
       role="dialog"
@@ -644,7 +661,9 @@ export function QuizFase({ onClose }: { onClose: () => void }) {
               ))}
             </div>
             <a
-              href="/mentoria#aplicar"
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => {
                 localStorage.removeItem(LS_KEY)
                 onClose()
