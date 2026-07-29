@@ -1,12 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import { openAplicarModal } from '@/components/aplicar/AplicarModal'
 
 interface MobileCTABarProps {
   label?: string
   cta?: string
-  href?: string
 }
 
 function useMediaQuery(query: string) {
@@ -24,7 +23,6 @@ function useMediaQuery(query: string) {
 export function MobileCTABar({
   label = 'Vagas abertas neste ciclo',
   cta = 'Aplicar',
-  href = '/mentoria#aplicar',
 }: MobileCTABarProps) {
   const isMobile = useMediaQuery('(max-width: 999px)')
   const [shown, setShown] = useState(false)
@@ -72,8 +70,9 @@ export function MobileCTABar({
       >
         {label}
       </span>
-      <Link
-        href={href}
+      <button
+        type="button"
+        onClick={() => openAplicarModal()}
         style={{
           padding: '8px 18px',
           borderRadius: 'var(--radius-pill)',
@@ -84,12 +83,13 @@ export function MobileCTABar({
           fontWeight: 'var(--weight-medium)',
           letterSpacing: 'var(--tracking-wider)',
           textTransform: 'uppercase',
-          textDecoration: 'none',
+          border: 'none',
+          cursor: 'pointer',
           whiteSpace: 'nowrap',
         }}
       >
         {cta}
-      </Link>
+      </button>
     </div>
   )
 }

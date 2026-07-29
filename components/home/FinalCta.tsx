@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import { Reveal } from '@/components/shared/Reveal'
 import { Eyebrow } from '@/components/shared/Eyebrow'
@@ -5,6 +7,7 @@ import { SplitText } from '@/components/motion/SplitText'
 import { MagneticButton } from '@/components/motion/MagneticButton'
 import { ShimmerCTA } from '@/components/motion/ShimmerCTA'
 import { Ornament } from '@/components/shared/Ornament'
+import { openAplicarModal } from '@/components/aplicar/AplicarModal'
 
 export function FinalCta() {
   return (
@@ -140,7 +143,14 @@ export function FinalCta() {
             style={{ justifyContent: 'center', marginTop: 'var(--space-8)' }}
           >
             <MagneticButton>
-              <ShimmerCTA href="/mentoria#aplicar" style={{ padding: '16px 36px' }}>
+              <ShimmerCTA
+                href="/mentoria"
+                onClick={(e) => {
+                  e.preventDefault()
+                  openAplicarModal()
+                }}
+                style={{ padding: '16px 36px' }}
+              >
                 Quero aplicar para a Mentoria Elevem-se
               </ShimmerCTA>
             </MagneticButton>

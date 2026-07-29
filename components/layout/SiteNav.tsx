@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { openAplicarModal } from '@/components/aplicar/AplicarModal'
 
 const NAV_LINKS = [
   { href: '/', label: 'Início' },
@@ -200,8 +201,9 @@ export function SiteNav({ active = '/' }: SiteNavProps) {
               )}
             </div>
 
-            <Link
-              href="/mentoria#aplicar"
+            <button
+              type="button"
+              onClick={() => openAplicarModal()}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -214,13 +216,14 @@ export function SiteNav({ active = '/' }: SiteNavProps) {
                 fontWeight: 'var(--weight-medium)',
                 letterSpacing: 'var(--tracking-wider)',
                 textTransform: 'uppercase',
-                textDecoration: 'none',
+                border: 'none',
+                cursor: 'pointer',
                 whiteSpace: 'nowrap',
                 transition: 'background var(--duration-fast) var(--ease-standard)',
               }}
             >
               Aplicar
-            </Link>
+            </button>
           </div>
         ) : (
           <button
@@ -299,11 +302,13 @@ export function SiteNav({ active = '/' }: SiteNavProps) {
               </Link>
             ))}
             <div style={{ marginTop: 'var(--space-4)' }}>
-              <Link
-                href="/mentoria#aplicar"
+              <button
+                type="button"
+                onClick={() => openAplicarModal()}
                 style={{
                   display: 'flex',
                   justifyContent: 'center',
+                  width: '100%',
                   padding: '14px 24px',
                   borderRadius: 'var(--radius-pill)',
                   background: 'var(--action-primary)',
@@ -313,11 +318,12 @@ export function SiteNav({ active = '/' }: SiteNavProps) {
                   fontWeight: 'var(--weight-medium)',
                   letterSpacing: 'var(--tracking-wider)',
                   textTransform: 'uppercase',
-                  textDecoration: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
                 }}
               >
                 Aplicar
-              </Link>
+              </button>
             </div>
           </div>
         </div>

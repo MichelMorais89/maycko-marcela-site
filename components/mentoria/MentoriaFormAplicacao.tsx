@@ -1,209 +1,118 @@
 'use client'
 
-import { useState } from 'react'
-
-type State = 'idle' | 'loading' | 'success' | 'error'
+import { Ornament } from '@/components/shared/Ornament'
+import { openAplicarModal } from '@/components/aplicar/AplicarModal'
 
 export function MentoriaFormAplicacao() {
-  const [state, setState] = useState<State>('idle')
-  const [fields, setFields] = useState({
-    nomeCasal: '',
-    email: '',
-    whatsapp: '',
-    tempoCasamento: '',
-    motivacao: '',
-  })
-
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) {
-    setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setState('loading')
-    try {
-      const endpoint = process.env.NEXT_PUBLIC_FORM_ENDPOINT
-      if (endpoint) {
-        await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ...fields, form: 'mentoria-aplicacao' }),
-        })
-      }
-      setState('success')
-    } catch {
-      setState('error')
-    }
-  }
-
-  const inputClass =
-    'w-full px-4 py-3 text-base border rounded-sm outline-none transition-colors duration-150 focus:border-amber-700'
-
-  const inputStyle: React.CSSProperties = {
-    background: '#fff',
-    borderColor: 'rgba(46,42,43,0.15)',
-    color: 'var(--text-strong, #2E2A2B)',
-    fontFamily: 'inherit',
-  }
-
-  if (state === 'success') {
-    return (
-      <div className="text-center py-12">
-        <p
-          className="font-serif text-3xl mb-4"
-          style={{ color: 'var(--text-strong, #2E2A2B)' }}
-        >
-          Aplicação recebida.
-        </p>
-        <p style={{ color: 'var(--text-muted, #716A6B)' }}>
-          Em breve entraremos em contato para a conversa de alinhamento.
-        </p>
-      </div>
-    )
-  }
-
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label
-            htmlFor="nomeCasal"
-            className="block text-xs tracking-[0.2em] uppercase mb-2"
-            style={{ color: 'var(--text-gold, #735422)' }}
-          >
-            Nome do casal
-          </label>
-          <input
-            id="nomeCasal"
-            name="nomeCasal"
-            type="text"
-            required
-            value={fields.nomeCasal}
-            onChange={handleChange}
-            className={inputClass}
-            style={inputStyle}
-            placeholder="Ex: Ana e Pedro"
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-xs tracking-[0.2em] uppercase mb-2"
-            style={{ color: 'var(--text-gold, #735422)' }}
-          >
-            E-mail
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            value={fields.email}
-            onChange={handleChange}
-            className={inputClass}
-            style={inputStyle}
-            placeholder="casal@email.com"
-          />
-        </div>
+    <div
+      style={{
+        maxWidth: 720,
+        marginInline: 'auto',
+        background: 'var(--surface-bege, #EDE3CF)',
+        border: '1px solid rgba(194,161,77,0.28)',
+        borderRadius: 'var(--radius-lg)',
+        padding: 'clamp(2rem, 4vw, 3rem)',
+        boxShadow: '0 4px 20px rgba(44,26,18,0.06)',
+        textAlign: 'center',
+      }}
+    >
+      <div style={{ marginBottom: 'var(--space-4)' }}>
+        <Ornament variant="diamond" tone="gold" />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label
-            htmlFor="whatsapp"
-            className="block text-xs tracking-[0.2em] uppercase mb-2"
-            style={{ color: 'var(--text-gold, #735422)' }}
-          >
-            WhatsApp
-          </label>
-          <input
-            id="whatsapp"
-            name="whatsapp"
-            type="tel"
-            required
-            value={fields.whatsapp}
-            onChange={handleChange}
-            className={inputClass}
-            style={inputStyle}
-            placeholder="(61) 9 9999-9999"
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="tempoCasamento"
-            className="block text-xs tracking-[0.2em] uppercase mb-2"
-            style={{ color: 'var(--text-gold, #735422)' }}
-          >
-            Tempo de casamento
-          </label>
-          <select
-            id="tempoCasamento"
-            name="tempoCasamento"
-            required
-            value={fields.tempoCasamento}
-            onChange={handleChange}
-            className={inputClass}
-            style={inputStyle}
-          >
-            <option value="">Selecione</option>
-            <option value="menos-2">Menos de 2 anos</option>
-            <option value="2-5">2 a 5 anos</option>
-            <option value="5-10">5 a 10 anos</option>
-            <option value="10-20">10 a 20 anos</option>
-            <option value="mais-20">Mais de 20 anos</option>
-          </select>
-        </div>
-      </div>
+      <p
+        className="elv-sans"
+        style={{
+          fontSize: '0.72rem',
+          letterSpacing: '0.32em',
+          textTransform: 'uppercase',
+          color: 'var(--text-gold, #735422)',
+          fontWeight: 600,
+          margin: 0,
+        }}
+      >
+        PROCESSO SELETIVO
+      </p>
 
-      <div>
-        <label
-          htmlFor="motivacao"
-          className="block text-xs tracking-[0.2em] uppercase mb-2"
-          style={{ color: 'var(--text-gold, #735422)' }}
-        >
-          O que motivou vocês a aplicarem?
-        </label>
-        <textarea
-          id="motivacao"
-          name="motivacao"
-          required
-          rows={5}
-          value={fields.motivacao}
-          onChange={handleChange}
-          className={inputClass}
-          style={{ ...inputStyle, resize: 'vertical' }}
-          placeholder="Contem um pouco do momento do casal..."
-        />
-      </div>
+      <h3
+        className="elv-serif"
+        style={{
+          fontSize: 'clamp(1.4rem, 2.2vw, 1.8rem)',
+          color: 'var(--text-strong, #2E2A2B)',
+          lineHeight: 1.25,
+          margin: 'var(--space-4) auto 0',
+          maxWidth: '28ch',
+          fontWeight: 500,
+        }}
+      >
+        Dê o primeiro passo.{' '}
+        <em style={{ fontStyle: 'italic', color: 'var(--wine-600, #6E2A36)', fontWeight: 400 }}>
+          Preencha a aplicação.
+        </em>
+      </h3>
 
-      {state === 'error' && (
-        <p
-          role="alert"
-          className="text-sm"
-          style={{ color: 'var(--wine-600, #6E2A36)' }}
-        >
-          Ocorreu um erro. Tente novamente ou entre em contato pelo WhatsApp.
-        </p>
-      )}
+      <p
+        className="elv-sans"
+        style={{
+          fontSize: 'clamp(0.92rem, 1.1vw, 1rem)',
+          color: 'var(--text-body, #4D4748)',
+          lineHeight: 1.6,
+          margin: 'var(--space-4) auto 0',
+          maxWidth: '46ch',
+        }}
+      >
+        A ELEVEM-SE é boutique. Trabalhamos com um número reduzido de casais por
+        ciclo. O formulário é o primeiro filtro — respostas honestas ajudam a
+        gente a entender se vale um convite pra conversa de alinhamento.
+      </p>
 
       <button
-        type="submit"
-        disabled={state === 'loading'}
-        className="mentoria-submit-btn px-10 py-4 text-sm tracking-[0.2em] uppercase font-medium transition-colors duration-200 disabled:opacity-60"
+        type="button"
+        onClick={() => openAplicarModal()}
+        style={{
+          marginTop: 'var(--space-6)',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.5rem',
+          padding: '16px 36px',
+          borderRadius: 'var(--radius-pill)',
+          background: 'var(--wine-600, #6E2A36)',
+          color: '#F5F0E8',
+          border: 'none',
+          cursor: 'pointer',
+          fontFamily: 'var(--font-sans)',
+          fontSize: '0.9rem',
+          fontWeight: 600,
+          letterSpacing: '0.22em',
+          textTransform: 'uppercase',
+          boxShadow: '0 10px 24px rgba(110,42,54,0.28)',
+          transition: 'background 0.15s ease, transform 0.15s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'var(--wine-700, #5A1F28)'
+          e.currentTarget.style.transform = 'translateY(-1px)'
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'var(--wine-600, #6E2A36)'
+          e.currentTarget.style.transform = 'translateY(0)'
+        }}
       >
-        {state === 'loading' ? 'ENVIANDO...' : 'ENVIAR APLICAÇÃO'}
+        Preencher aplicação
       </button>
-      <style>{`
-        .mentoria-submit-btn {
-          background: var(--wine-600, #6E2A36);
-          color: #F5F0E8;
-        }
-        .mentoria-submit-btn:hover:not(:disabled) {
-          background: var(--wine-700, #5A1F28);
-        }
-      `}</style>
-    </form>
+
+      <p
+        className="elv-sans"
+        style={{
+          fontSize: '0.78rem',
+          color: 'var(--text-muted, #716A6B)',
+          margin: 'var(--space-4) auto 0',
+          maxWidth: '38ch',
+        }}
+      >
+        Retorno em até 48h úteis. Aceitamos no máximo 12 casais por ciclo.
+      </p>
+    </div>
   )
 }

@@ -5,6 +5,7 @@ import { MagneticButton } from '@/components/motion/MagneticButton'
 import { ShimmerCTA } from '@/components/motion/ShimmerCTA'
 import { Ornament } from '@/components/shared/Ornament'
 import { Reveal } from '@/components/shared/Reveal'
+import { openAplicarModal } from '@/components/aplicar/AplicarModal'
 
 function formatBRL(n: number) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(n)

@@ -9,6 +9,7 @@ import { ShimmerCTA } from '@/components/motion/ShimmerCTA'
 import { Ornament } from '@/components/shared/Ornament'
 import { BrandArrow } from '@/components/shared/BrandArrow'
 import { FlameWatermark } from '@/components/brand/FlameWatermark'
+import { openAplicarModal } from '@/components/aplicar/AplicarModal'
 
 const TITLE = 'ELEVEM-SE'
 
@@ -315,7 +316,15 @@ export function Hero() {
           }}
         >
           <MagneticButton>
-            <ShimmerCTA href="/mentoria#aplicar">Quero aplicar</ShimmerCTA>
+            <ShimmerCTA
+              href="/mentoria"
+              onClick={(e) => {
+                e.preventDefault()
+                openAplicarModal()
+              }}
+            >
+              Quero aplicar
+            </ShimmerCTA>
           </MagneticButton>
           <MagneticButton>
             <Link
